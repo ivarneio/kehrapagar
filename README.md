@@ -17,6 +17,24 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Muudatused on tagasikeeratavad. Eelmise versiooni failid jäävad alles.
 - Ivar ei kirjuta koodi. Muudatus käib lihtsa juhisega.
 
+## Lehe struktuur (mustand, ülevaatamiseks)
+
+See ei ole veel lukus. Üks pikk vaade, mitte pood paljude alamlehtedega. Telefonis on kerimine selgem kui menüü. Kampaania link avab sama lehe ja kerib õigesse kohta.
+
+Ülevalt alla:
+
+1. Kampaaniariba. Nähtav ainult siis, kui kampaania on sees. Tavaline aadress näitab jooksvat kampaaniat või on tühi. Sotsiaalmeedia link on sama leht, riba ja seotud toode ees.
+2. Päis. Nimi, keel, suur nupp «Helista ja telli».
+3. Tellimus. Vorm kohe: kringel, suurus, päev ja kellaaeg, nimi, telefon. Ettemaksu ega ostukorvi ei ole.
+4. Tootegrupid. Suured kaardid, üks puudutus avab grupi.
+5. Tooted. Pilt, nimi, lühike tekst, hind. Kringel on tellitav. Teised tooted on vaatamiseks ja poes ostmiseks.
+6. Oma pood. Aadress, lahtiolek, kuidas järgi tulla. See ei ole e-pood.
+7. Jalus. Telefon ja aadress.
+
+Pagarivaade on eraldi aadress, menüüs seda ei ole. Keel vahetub samal lehel.
+
+Gruppide esimene mustand, ei ole lukus: Kringlid, Pirukad ja saiad, Tordid ja koogid, Küpsised. Pood on oma plokk, mitte tootegrupp.
+
 ## Keel ja tekst
 
 Eesti on ainus keel, mida inimene muudab. Vene ja inglise tulevad sellest.
@@ -55,6 +73,8 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 
 ## Mis on veel lahti
 
+- Kas üks pikk vaade jääb. Mustand on üleval, kinnitust veel ei ole.
+- Tootegruppide nimed.
 - Pilvefaili täpne koht. Looduslik valik on Google'i tabel. Excel OneDrive'is või Dropboxis käib ka, aga sünk on kohmakam.
 - Kes vene ja inglise toiduteksti enne avaldamist üle vaatab.
 - Tootenimekiri, pildid, suurused, järeletulemise ajad, tellimuse e-posti aadress.
