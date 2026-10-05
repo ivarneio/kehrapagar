@@ -16,7 +16,8 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Igal kampaanial on lühike link. `?keel=ru` või `?keel=en` avab sama lehe teises keeles.
 - Muudatused on tagasikeeratavad. Eelmise versiooni failid jäävad alles.
 - Ivar ei kirjuta koodi. Muudatus käib lihtsa juhisega.
-- Pildid ja tekstid on pilves. Reliis kopeerib need Zone'i. Külastaja pilve ei loe.
+- Pildid ja tekstid on Google'is. Reliisi osa on sealne makro või skript. Külastaja Google'it ei loe.
+- ZoneCloud ei ole andmehoidla. Sealt ei ole reliisi ajal ligipääsu.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -58,21 +59,23 @@ Kui tõlget pole, näitab leht eesti teksti.
 
 Tõlge toimub ainult reliisi ajal. Muud tekstid kohendatakse samuti reliisiga. Kliendi lehe avamisel ei toimu mingit tõlkimist ega teksti kohendamist. Leht loeb valmis faili.
 
-## Pilvefail ja tõlkesünk
+## Google ja tõlkesünk
 
-Tekstid ja pildid on pilves. Neid muudab kolmas pool, mitte arendaja. Töökoht on pilv, mitte GitHub.
+Töökoht on Google, mitte ZoneCloud ega GitHub. Kolmas pool muudab tabelit ja pildikausta. ZoneCloud jäi kõrvale, sest sealt ei ole reliisi ajal ligipääsu.
 
 - Üks rida on üks toode või üks tekst.
 - Eesti veerud on ainsad, mida kolmas pool täidab.
-- Vene ja inglise veerud täidab tõlkesünk. Käsitsi neid ei parandata. Parandus käib eesti tekstist.
+- Vene ja inglise veerud täidab makro. Käsitsi neid ei parandata. Parandus käib eesti tekstist.
 - Samast reast tuleb, kas toode on aktiivne, mitu päeva on säilivus, ja muu tooteinfo. Mitteaktiivset toodet leht ei näita.
-- Pilt on pilvekataloogis. Reliis kopeerib selle Zone'i. Leht ei lae pilti otse Drive'ist ega Dropboxist.
+- Pilt on Google'i kaustas. Makro on reliisi osa: tõlgib muutunud read ja paneb tekstid ning pildid väljundiks.
+- Leht ei lae pilti otse Google'ist. Külastaja loeb Zone'i koopiat.
 - Sünk käib reliisi ajal, mitte lehe avamisel ega iga salvestusega.
 - Sünk võrdleb eesti teksti eelmise korraga. Muutunud rida tõlgitakse uuesti. Muutumata rida jääb puutumata.
-- Tulemus kirjutatakse tagasi samasse faili ja kopeeritakse lehe JSON-i ja pildikausta, mida Zone serveerib.
-- Külastaja loeb Zone'i koopiat. Kui pilv on maas, jääb pood lahti.
-- Tellimused pilve ei lähe.
+- Kui Google on maas, jääb pood lahti, sest leht loeb juba kopeeritud faile.
+- Tellimused Google'isse ei lähe.
 - Toidunime või allergeeni reale saab märkida «ära tõlgi üle», kuni keegi on tõlke üle vaadanud.
+
+Makro elab Google'i kontos. Siit vestlusest seda ei käivitata. Skripti saab kirjutada ja sinna kleepida, nagu Helirännaku vormi skript.
 
 Tõlkesünk on eraldi reliisi ülesanne. Seda ei ehitata esimese lehefailiga koos.
 
@@ -87,7 +90,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Kas üks pikk vaade jääb. Mustand on üleval, kinnitust veel ei ole.
 - Kas tootegrupi avanemine jääb nii, nagu mustandis. Kinnitust veel ei ole.
 - Tootegruppide nimed.
-- Pilve täpne koht. Looduslik valik on Google'i tabel ja pildikaust. Excel OneDrive'is või Dropboxis käib ka, aga sünk on kohmakam.
+- Kuhu makro väljundi paneb: GitHubi testversiooni, Zone'i kausta, või mõlemasse.
 - Kes vene ja inglise toiduteksti enne avaldamist üle vaatab.
 - Tootenimekiri, suurused, järeletulemise ajad, tellimuse e-posti aadress.
 - Mis muud tooteväljad peale aktiivsuse ja säilivuspäevade reas on.
