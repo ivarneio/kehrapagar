@@ -35,6 +35,14 @@ Pagarivaade on eraldi aadress, menüüs seda ei ole. Keel vahetub samal lehel.
 
 Gruppide esimene mustand, ei ole lukus: Kringlid, Pirukad ja saiad, Tordid ja koogid, Küpsised. Pood on oma plokk, mitte tootegrupp.
 
+### Tootegrupi avanemine (mustand)
+
+Tootegrupp on suletuna üks kaart. Puudutus ei vaheta lehte. Kaart avaneb samal kohal, ja sealt tulevad toodete pildid ükshaaval, mitte kõik korraga. Silm jõuab järge pidada. Iga pilt on valik, mitte galerii: nimi ja hind tulevad pildiga kaasa, et aju hakkaks kohe otsustama.
+
+Avamine ja sulgemine on üks liikumine. Näha on, kust kaart tuli ja kuhu tooted lähevad. Sulgemisel rullub sama tee tagasi, mitte ei kao järsku. Nii on aru saada, mis milleks avanes.
+
+Efekt on lühike, umbes poole sekundi sees. Kui telefon küsib vähem liikumist, on efekt väljas. Piltide rida ei peida tellimust ega poodi. Korraga on lahti üks grupp. Teise avamine sulgeb eelmise sama liikumisega.
+
 ## Keel ja tekst
 
 Eesti on ainus keel, mida inimene muudab. Vene ja inglise tulevad sellest.
@@ -74,6 +82,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 ## Mis on veel lahti
 
 - Kas üks pikk vaade jääb. Mustand on üleval, kinnitust veel ei ole.
+- Kas tootegrupi avanemine jääb nii, nagu mustandis. Kinnitust veel ei ole.
 - Tootegruppide nimed.
 - Pilvefaili täpne koht. Looduslik valik on Google'i tabel. Excel OneDrive'is või Dropboxis käib ka, aga sünk on kohmakam.
 - Kes vene ja inglise toiduteksti enne avaldamist üle vaatab.
