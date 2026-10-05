@@ -27,7 +27,9 @@ Muster on sama mis Helirännakul (ivarneio/helivann):
 - `tekstid.json` — nupud, vormi sildid, menüü. Võti on sama igas keeles: `et`, `ru`, `en`.
 - `sisu.json` — tooted, kampaaniariba, kringli suurused.
 
-Kui tõlget pole, näitab leht eesti teksti. Leht ei küsi tõlget iga külastuse ajal.
+Kui tõlget pole, näitab leht eesti teksti.
+
+Tõlge toimub ainult reliisi ajal. Muud tekstid kohendatakse samuti reliisiga. Kliendi lehe avamisel ei toimu mingit tõlkimist ega teksti kohendamist. Leht loeb valmis faili.
 
 ## Pilvefail ja tõlkesünk
 
@@ -36,6 +38,7 @@ Tekste on palju ja neid muudab kolmas pool, mitte arendaja. Töökoht on pilvefa
 - Üks rida on üks toode või üks tekst.
 - Eesti veerud on ainsad, mida kolmas pool täidab.
 - Vene ja inglise veerud täidab tõlkesünk. Käsitsi neid ei parandata. Parandus käib eesti tekstist.
+- Sünk käib reliisi ajal, mitte lehe avamisel ega iga salvestusega.
 - Sünk võrdleb eesti teksti eelmise korraga. Muutunud rida tõlgitakse uuesti. Muutumata rida jääb puutumata.
 - Tulemus kirjutatakse tagasi samasse faili ja kopeeritakse lehe JSON-i, mida Zone serveerib.
 - Külastaja loeb Zone'i koopiat. Kui pilvefail on maas, jääb pood lahti.
@@ -44,10 +47,15 @@ Tekste on palju ja neid muudab kolmas pool, mitte arendaja. Töökoht on pilvefa
 
 Tõlkesünk on eraldi reliisi ülesanne. Seda ei ehitata esimese lehefailiga koos.
 
+## Reliis ja kirjavead
+
+Kirjavead tuleb raporteerida. Raport on märkus, mitte tõke.
+
+Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnnestunud. Reliis läheb läbi. Parandatud vead on eraldi nimekiri.
+
 ## Mis on veel lahti
 
 - Pilvefaili täpne koht. Looduslik valik on Google'i tabel. Excel OneDrive'is või Dropboxis käib ka, aga sünk on kohmakam.
-- Kas sünk käib käsul, iga salvestusega või kord päevas.
 - Kes vene ja inglise toiduteksti enne avaldamist üle vaatab.
 - Tootenimekiri, pildid, suurused, järeletulemise ajad, tellimuse e-posti aadress.
 
