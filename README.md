@@ -16,6 +16,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Igal kampaanial on lühike link. `?keel=ru` või `?keel=en` avab sama lehe teises keeles.
 - Muudatused on tagasikeeratavad. Eelmise versiooni failid jäävad alles.
 - Ivar ei kirjuta koodi. Muudatus käib lihtsa juhisega.
+- Pildid ja tekstid on pilves. Reliis kopeerib need Zone'i. Külastaja pilve ei loe.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -59,16 +60,18 @@ Tõlge toimub ainult reliisi ajal. Muud tekstid kohendatakse samuti reliisiga. K
 
 ## Pilvefail ja tõlkesünk
 
-Tekste on palju ja neid muudab kolmas pool, mitte arendaja. Töökoht on pilvefail, mitte GitHub.
+Tekstid ja pildid on pilves. Neid muudab kolmas pool, mitte arendaja. Töökoht on pilv, mitte GitHub.
 
 - Üks rida on üks toode või üks tekst.
 - Eesti veerud on ainsad, mida kolmas pool täidab.
 - Vene ja inglise veerud täidab tõlkesünk. Käsitsi neid ei parandata. Parandus käib eesti tekstist.
+- Samast reast tuleb, kas toode on aktiivne, mitu päeva on säilivus, ja muu tooteinfo. Mitteaktiivset toodet leht ei näita.
+- Pilt on pilvekataloogis. Reliis kopeerib selle Zone'i. Leht ei lae pilti otse Drive'ist ega Dropboxist.
 - Sünk käib reliisi ajal, mitte lehe avamisel ega iga salvestusega.
 - Sünk võrdleb eesti teksti eelmise korraga. Muutunud rida tõlgitakse uuesti. Muutumata rida jääb puutumata.
-- Tulemus kirjutatakse tagasi samasse faili ja kopeeritakse lehe JSON-i, mida Zone serveerib.
-- Külastaja loeb Zone'i koopiat. Kui pilvefail on maas, jääb pood lahti.
-- Tellimused pilvefaili ei lähe.
+- Tulemus kirjutatakse tagasi samasse faili ja kopeeritakse lehe JSON-i ja pildikausta, mida Zone serveerib.
+- Külastaja loeb Zone'i koopiat. Kui pilv on maas, jääb pood lahti.
+- Tellimused pilve ei lähe.
 - Toidunime või allergeeni reale saab märkida «ära tõlgi üle», kuni keegi on tõlke üle vaadanud.
 
 Tõlkesünk on eraldi reliisi ülesanne. Seda ei ehitata esimese lehefailiga koos.
@@ -84,9 +87,10 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Kas üks pikk vaade jääb. Mustand on üleval, kinnitust veel ei ole.
 - Kas tootegrupi avanemine jääb nii, nagu mustandis. Kinnitust veel ei ole.
 - Tootegruppide nimed.
-- Pilvefaili täpne koht. Looduslik valik on Google'i tabel. Excel OneDrive'is või Dropboxis käib ka, aga sünk on kohmakam.
+- Pilve täpne koht. Looduslik valik on Google'i tabel ja pildikaust. Excel OneDrive'is või Dropboxis käib ka, aga sünk on kohmakam.
 - Kes vene ja inglise toiduteksti enne avaldamist üle vaatab.
-- Tootenimekiri, pildid, suurused, järeletulemise ajad, tellimuse e-posti aadress.
+- Tootenimekiri, suurused, järeletulemise ajad, tellimuse e-posti aadress.
+- Mis muud tooteväljad peale aktiivsuse ja säilivuspäevade reas on.
 
 ## Tööviis
 
