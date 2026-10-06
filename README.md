@@ -24,7 +24,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Jalus on kogu aeg näha. Seal on firma kontaktandmed.
 - Päis on nagu Helirännakul: üleval menüü ja sotsiaalmeedia.
 - Avaleht on `pealeht/pealeht.jpg`. Kui faili ei ole, on tavaline avaleht. Cron kopeerib.
-- Uudiskiri: soovija kirjutab e-posti, nimekiri on Zone'is, inimene koostab kirja ja saadab välja.
+- Uudiskiri: soovija kirjutab e-posti, nimekiri on Zone'is, inimene koostab kirja ja saadab välja. Saatmine jääb Zone'i piiride sisse.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -57,11 +57,13 @@ Zone'i cron vaatab kausta umbes iga 15 minuti tagant ja kopeerib faili lehe kaus
 
 ### Uudiskiri
 
-Lihtne. Külastaja kirjutab e-posti ja kinnitab, et tahab kirja. Nimekiri salvestub Zone'i, mitte Google'isse. Igas kirjas on link «Ei soovi enam». Ilma nõusolekuta aadressi nimekirja ei lisata.
+Kinnitatud. Lihtne ja teostatav Zone'i piiride sees.
+
+Külastaja kirjutab e-posti ja kinnitab, et tahab kirja. Nimekiri salvestub Zone'i, mitte Google'isse. Igas kirjas on link «Ei soovi enam». Ilma nõusolekuta aadressi nimekirja ei lisata.
 
 Koostamine on üks vaade: pealkiri, tekst, nupp «Saada». Enne saatmist näeb, mitmele inimesele kiri läheb. Saatja ei kirjuta koodi.
 
-Saatmine käib Zone'i postist, aeglaselt. Zone lubab ühe kirja iga 5 sekundi tagant ja tavalisel postkastil kuni 2000 adressaati 24 tunni jooksul. Ühes kirjas tohib olla kuni 400 adressaati, seega saadetakse ükshaaval. Kui nimekiri on sellest suurem, jääb järg ööle. Reklaamkiri ilma nõusolekuta on Zone'i mõttes rämpspost ja on keelatud.
+Saatmine käib Zone'i postist, aeglaselt, ja jääb piiride sisse. Üks kiri iga 5 sekundi tagant. Tavalisel postkastil kuni 2000 adressaati 24 tunni jooksul. Ühes kirjas tohib olla kuni 400 adressaati, seega saadetakse ükshaaval. Kui nimekiri on sellest suurem, jääb ülejäänu järjekorda ja läheb järgmisel ööpäeval. Saatja näeb, mis on läinud ja mis ootab. Reklaamkiri ilma nõusolekuta on Zone'i mõttes rämpspost ja on keelatud.
 
 ### Tootegrupi avanemine (mustand)
 
