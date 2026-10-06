@@ -36,7 +36,10 @@
     document.documentElement.lang = keel;
     document.querySelectorAll("[data-k]").forEach(function (el) {
       var t = sona(el.getAttribute("data-k"));
-      if (t) el.textContent = t;
+      if (t) {
+        if (el.classList.contains("sulge")) el.setAttribute("aria-label", t);
+        else el.textContent = t;
+      }
     });
     if (menu) menu.setAttribute("aria-label", sona("menu") || "Menüü");
     document.querySelectorAll(".keeled button").forEach(function (x) {
@@ -73,9 +76,6 @@
 
   function sulgeGrupp(grupp) {
     grupp.classList.remove("lahti");
-    grupp.querySelectorAll(".paneel.lahti").forEach(function (p) {
-      p.classList.remove("lahti");
-    });
   }
 
   var lava = document.querySelector(".grupid");
@@ -148,6 +148,20 @@
     });
   });
 
+  document.querySelectorAll(".riba").forEach(function (riba) {
+    riba.addEventListener("wheel", function (e) {
+      if (vahemLiikumine) return;
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      var max = riba.scrollWidth - riba.clientWidth;
+      if (max <= 1) return;
+      var otsasParemal = riba.scrollLeft >= max - 1;
+      var otsasVasakul = riba.scrollLeft <= 0;
+      if ((e.deltaY > 0 && otsasParemal) || (e.deltaY < 0 && otsasVasakul)) return;
+      e.preventDefault();
+      riba.scrollLeft += e.deltaY;
+    }, { passive: false });
+  });
+
   var telli = document.querySelector("#telli");
   if (telli) {
     var telliNupp = telli.querySelector(":scope > button");
@@ -160,27 +174,51 @@
     }
   }
 
-  document.querySelectorAll(".toode > button.ava").forEach(function (nupp) {
-    nupp.addEventListener("click", function () {
-      var toode = nupp.parentElement;
-      var paneel = toode.querySelector(".paneel");
-      var oli = paneel.classList.contains("lahti");
-      toode.parentElement.querySelectorAll(".paneel.lahti").forEach(function (p) {
-        p.classList.remove("lahti");
-      });
-      if (!oli) paneel.classList.add("lahti");
-    });
-  });
-
-  document.querySelectorAll(".lahemalt").forEach(function (nupp) {
-    nupp.addEventListener("click", function () {
-      nupp.nextElementSibling.classList.toggle("lahti");
-    });
-  });
-
+  var vaade = document.querySelector(".taisekraan");
+  var kujud = vaade.querySelector(".kujud");
+  var suurTelli = vaade.querySelector(".telli-nupp");
   var vorm = document.querySelector("form");
+  var kringel = vorm ? vorm.querySelector("[name=kringel]") : null;
+
+  function sulgeVaade() {
+    vaade.classList.remove("sees");
+    kujud.innerHTML = "";
+    suurTelli.hidden = true;
+  }
+
+  document.querySelectorAll(".pisi").forEach(function (nupp) {
+    nupp.addEventListener("click", function () {
+      var pildid = (nupp.getAttribute("data-pildid") || "").split("|");
+      var sildid = (nupp.getAttribute("data-sildid") || "").split("|");
+      kujud.innerHTML = "";
+      pildid.forEach(function (src, i) {
+        if (!src) return;
+        var kast = document.createElement("figure");
+        kast.className = "kuju";
+        var img = document.createElement("img");
+        img.src = src;
+        img.alt = nupp.querySelector("img").alt;
+        kast.appendChild(img);
+        if (sildid[i]) {
+          var silt = document.createElement("span");
+          silt.textContent = sildid[i];
+          kast.appendChild(silt);
+        }
+        kujud.appendChild(kast);
+      });
+      var nimi = nupp.getAttribute("data-kringel");
+      suurTelli.hidden = !nimi;
+      suurTelli.setAttribute("data-kringel", nimi || "");
+      vaade.classList.add("sees");
+    });
+  });
+
+  vaade.querySelector(".sulge").addEventListener("click", sulgeVaade);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") sulgeVaade();
+  });
+
   if (vorm && telli) {
-    var kringel = vorm.querySelector("[name=kringel]");
     var tee = vorm.querySelector("[name=tee]");
     var taidised = document.querySelector(".taidised");
     function naitaTaidised() {
@@ -189,39 +227,20 @@
     tee.addEventListener("change", naitaTaidised);
     naitaTaidised();
 
-    document.querySelectorAll(".telli-nupp").forEach(function (nupp) {
-      nupp.addEventListener("click", function () {
-        kringel.value = nupp.getAttribute("data-kringel");
-        tee.value = "valmis";
-        naitaTaidised();
-        telli.classList.add("lahti");
-        telli.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
+    suurTelli.addEventListener("click", function () {
+      if (kringel && suurTelli.getAttribute("data-kringel")) {
+        kringel.value = suurTelli.getAttribute("data-kringel");
+      }
+      tee.value = "valmis";
+      naitaTaidised();
+      sulgeVaade();
+      telli.classList.add("lahti");
+      telli.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
     vorm.addEventListener("submit", function (e) {
       e.preventDefault();
       document.querySelector(".olek").textContent = sona("olek_luu") || "See on luu. Kiri ei lähe veel välja.";
-    });
-  }
-
-  var vaade = document.querySelector(".taisekraan");
-  if (vaade) {
-    var suur = vaade.querySelector("img");
-    document.querySelectorAll(".pisipildid button").forEach(function (nupp) {
-      nupp.addEventListener("click", function () {
-        suur.src = nupp.querySelector("img").src;
-        suur.alt = nupp.querySelector("img").alt;
-        vaade.classList.add("sees");
-      });
-    });
-    function sulgeVaade() { vaade.classList.remove("sees"); }
-    suur.addEventListener("click", sulgeVaade);
-    vaade.addEventListener("click", function (e) {
-      if (e.target === vaade) sulgeVaade();
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") sulgeVaade();
     });
   }
 })();
