@@ -18,6 +18,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Ivar ei kirjuta koodi. Muudatus käib lihtsa juhisega.
 - Pildid ja tekstid on Google'is. Reliisi osa on sealne makro või skript. Külastaja Google'it ei loe.
 - ZoneCloud ei ole andmehoidla. Sealt ei ole reliisi ajal ligipääsu.
+- Foto ja tekst seotakse failinimega. Tunnus on püsiv, nimi ja rea järjekord ei seo.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -78,6 +79,19 @@ Töökoht on Google, mitte ZoneCloud ega GitHub. Kolmas pool muudab tabelit ja p
 Makro elab Google'i kontos. Siit vestlusest seda ei käivitata. Skripti saab kirjutada ja sinna kleepida, nagu Helirännaku vormi skript.
 
 Tõlkesünk on eraldi reliisi ülesanne. Seda ei ehitata esimese lehefailiga koos.
+
+## Foto ja tekst
+
+Side on failinimi. See on lihtne ja ei sõltu tõlkest.
+
+- Igal tootel on tabelis püsiv tunnus, näiteks `kaneel`. Seda ei tõlgita.
+- Pildifail kannab sama tunnust: `kaneel.jpg`. Veerg `pilt` ütleb selle failinime.
+- Makro otsib kaustast sama nime ja kopeerib pildi koos selle rea tekstiga.
+- Mitu pilti: `kaneel-1.jpg`, `kaneel-2.jpg`. Veergu kirjutatakse need komaga. Esimene on see, mis grupi avanedes välja rullub.
+- Grupi kaart on sama loogika: tunnus `kypsised`, fail `kypsised.jpg`.
+- Kui faili ei ole, tuleb märkus, nagu kirjaveast. Reliis ei jää tegemata. Toode läheb välja ilma pildita, kuni fail tuleb.
+
+Nime ega rea järjekorraga pilti ei seota. Nimi muutub, ja rida nihkub, kui keegi vahele lisab.
 
 ## Reliis ja kirjavead
 
