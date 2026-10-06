@@ -14,8 +14,8 @@
     <a class="logo" href="#avaleht">Kehra Pagar</a>
     <button class="menu-nupp" type="button" aria-label="Menüü">☰</button>
     <nav>
-      <a href="#telli">Telli</a>
       <a href="#tooted">Tooted</a>
+      <a href="#telli">Telli</a>
       <a href="#firmast">Firmast</a>
       <a href="#kauplus">Kauplus</a>
       <a href="#kontakt">Kontakt</a>
@@ -39,154 +39,171 @@
       <p class="markus">Avalehe pilt tuleb kaustast pealeht. Kui faili ei ole, on see vaade.</p>
     </section>
 
-    <section id="telli">
-      <h2>Telli</h2>
-      <a class="helista" href="tel:+3720000000">Helista ja telli</a>
-      <form>
-        <label>Kringel
-          <select name="kringel">
-            <option>Kaneelikringel</option>
-            <option>Kardemonikringel</option>
-          </select>
-        </label>
-        <label>Suurus
-          <select name="suurus">
-            <option>Väike</option>
-            <option>Suur</option>
-          </select>
-        </label>
-        <label>Järeletulemise päev
-          <input type="date" name="paev">
-        </label>
-        <label>Kellaaeg
-          <input type="time" name="kell">
-        </label>
-        <label>Nimi
-          <input type="text" name="nimi">
-        </label>
-        <label>Telefon
-          <input type="tel" name="telefon">
-        </label>
-        <label class="rida"><input type="checkbox" name="uudis"> Tahan uudiseid</label>
-        <label>E-post
-          <input type="email" name="epost">
-        </label>
-        <button class="saada" type="submit">Saada tellimus</button>
-        <p class="olek"></p>
-      </form>
-    </section>
-
     <section id="tooted">
       <h2>Tooted</h2>
+      <div class="grupid">
+        <article class="grupp">
+          <button type="button">Kringlid</button>
+          <div class="sisu"><div>
+            <div class="toode">
+              <button class="ava" type="button">
+                <img src="pildid/kringel.svg" alt="Kaneelikringel">
+                <span><span class="nimi">Kaneelikringel</span><br><span class="hind">näidishind</span></span>
+              </button>
+              <div class="paneel"><div>
+                <div class="pisipildid">
+                  <button type="button"><img src="pildid/kringel.svg" alt="Kaneelikringel 1"></button>
+                  <button type="button"><img src="pildid/kringel.svg" alt="Kaneelikringel 2"></button>
+                </div>
+                <button class="lahemalt" type="button">Lähemalt</button>
+                <p class="tekst">Näidistekst. Päris tutvustus tuleb tabelist.</p>
+                <button class="telli-nupp" type="button" data-kringel="Kaneelikringel">Telli</button>
+              </div></div>
+            </div>
+            <div class="toode">
+              <button class="ava" type="button">
+                <img src="pildid/kringel.svg" alt="Kardemonikringel">
+                <span><span class="nimi">Kardemonikringel</span><br><span class="hind">näidishind</span></span>
+              </button>
+              <div class="paneel"><div>
+                <div class="pisipildid">
+                  <button type="button"><img src="pildid/kringel.svg" alt="Kardemonikringel"></button>
+                </div>
+                <button class="lahemalt" type="button">Lähemalt</button>
+                <p class="tekst">Näidistekst.</p>
+                <button class="telli-nupp" type="button" data-kringel="Kardemonikringel">Telli</button>
+              </div></div>
+            </div>
+          </div></div>
+        </article>
 
-      <article class="grupp">
-        <button type="button">Kringlid</button>
-        <div class="sisu"><div>
-          <div class="toode">
-            <button type="button">
-              <img src="pildid/kringel.svg" alt="Kaneelikringel">
-              <span><span class="nimi">Kaneelikringel</span><br><span class="hind">näidishind</span></span>
-            </button>
-            <div class="paneel"><div>
-              <div class="pisipildid">
-                <button type="button"><img src="pildid/kringel.svg" alt="Kaneelikringel 1"></button>
-                <button type="button"><img src="pildid/kringel.svg" alt="Kaneelikringel 2"></button>
-              </div>
-              <button class="lahemalt" type="button">Lähemalt</button>
-              <p class="tekst">Näidistekst. Päris tutvustus tuleb tabelist.</p>
-            </div></div>
-          </div>
-          <div class="toode">
-            <button type="button">
-              <img src="pildid/kringel.svg" alt="Kardemonikringel">
-              <span><span class="nimi">Kardemonikringel</span><br><span class="hind">näidishind</span></span>
-            </button>
-            <div class="paneel"><div>
-              <div class="pisipildid">
-                <button type="button"><img src="pildid/kringel.svg" alt="Kardemonikringel"></button>
-              </div>
-              <button class="lahemalt" type="button">Lähemalt</button>
-              <p class="tekst">Näidistekst.</p>
-            </div></div>
-          </div>
-        </div></div>
-      </article>
+        <article class="grupp">
+          <button type="button">Pagaritooted</button>
+          <div class="sisu"><div>
+            <div class="toode">
+              <button class="ava" type="button">
+                <img src="pildid/sai.svg" alt="Sai">
+                <span><span class="nimi">Sai</span><br><span class="hind">näidishind</span></span>
+              </button>
+              <div class="paneel"><div>
+                <div class="pisipildid">
+                  <button type="button"><img src="pildid/sai.svg" alt="Sai 1"></button>
+                  <button type="button"><img src="pildid/sai.svg" alt="Sai 2"></button>
+                  <button type="button"><img src="pildid/sai.svg" alt="Sai 3"></button>
+                  <button type="button"><img src="pildid/sai.svg" alt="Sai 4"></button>
+                </div>
+                <button class="lahemalt" type="button">Lähemalt</button>
+                <p class="tekst">Neli pisipilti ühes reas.</p>
+              </div></div>
+            </div>
+          </div></div>
+        </article>
 
-      <article class="grupp">
-        <button type="button">Pagaritooted</button>
-        <div class="sisu"><div>
-          <div class="toode">
-            <button type="button">
-              <img src="pildid/sai.svg" alt="Sai">
-              <span><span class="nimi">Sai</span><br><span class="hind">näidishind</span></span>
-            </button>
-            <div class="paneel"><div>
-              <div class="pisipildid">
-                <button type="button"><img src="pildid/sai.svg" alt="Sai 1"></button>
-                <button type="button"><img src="pildid/sai.svg" alt="Sai 2"></button>
-                <button type="button"><img src="pildid/sai.svg" alt="Sai 3"></button>
-                <button type="button"><img src="pildid/sai.svg" alt="Sai 4"></button>
-              </div>
-              <button class="lahemalt" type="button">Lähemalt</button>
-              <p class="tekst">Neli pisipilti ühes reas.</p>
-            </div></div>
-          </div>
-        </div></div>
-      </article>
+        <article class="grupp">
+          <button type="button">Kondiitritooted</button>
+          <div class="sisu"><div>
+            <div class="toode">
+              <button class="ava" type="button">
+                <img src="pildid/kook.svg" alt="Kook">
+                <span><span class="nimi">Kook</span><br><span class="hind">näidishind</span></span>
+              </button>
+              <div class="paneel"><div>
+                <div class="pisipildid">
+                  <button type="button"><img src="pildid/kook.svg" alt="Kook"></button>
+                </div>
+                <button class="lahemalt" type="button">Lähemalt</button>
+                <p class="tekst">Näidistekst.</p>
+              </div></div>
+            </div>
+          </div></div>
+        </article>
 
-      <article class="grupp">
-        <button type="button">Kondiitritooted</button>
-        <div class="sisu"><div>
-          <div class="toode">
-            <button type="button">
-              <img src="pildid/kook.svg" alt="Kook">
-              <span><span class="nimi">Kook</span><br><span class="hind">näidishind</span></span>
-            </button>
-            <div class="paneel"><div>
-              <div class="pisipildid">
-                <button type="button"><img src="pildid/kook.svg" alt="Kook"></button>
-              </div>
-              <button class="lahemalt" type="button">Lähemalt</button>
-              <p class="tekst">Näidistekst.</p>
-            </div></div>
-          </div>
-        </div></div>
-      </article>
-
-      <article class="grupp">
-        <button type="button">Tordid</button>
-        <div class="sisu"><div>
-          <div class="toode">
-            <button type="button">
-              <img src="pildid/tort.svg" alt="Tort">
-              <span><span class="nimi">Tort</span><br><span class="hind">näidishind</span></span>
-            </button>
-            <div class="paneel"><div>
-              <div class="pisipildid">
-                <button type="button"><img src="pildid/tort.svg" alt="Tort"></button>
-              </div>
-              <button class="lahemalt" type="button">Lähemalt</button>
-              <p class="tekst">Tordid võivad tabelist kaduda.</p>
-            </div></div>
-          </div>
-        </div></div>
-      </article>
+        <article class="grupp">
+          <button type="button">Tordid</button>
+          <div class="sisu"><div>
+            <div class="toode">
+              <button class="ava" type="button">
+                <img src="pildid/tort.svg" alt="Tort">
+                <span><span class="nimi">Tort</span><br><span class="hind">näidishind</span></span>
+              </button>
+              <div class="paneel"><div>
+                <div class="pisipildid">
+                  <button type="button"><img src="pildid/tort.svg" alt="Tort"></button>
+                </div>
+                <button class="lahemalt" type="button">Lähemalt</button>
+                <p class="tekst">Tordid võivad tabelist kaduda.</p>
+              </div></div>
+            </div>
+          </div></div>
+        </article>
+      </div>
     </section>
 
-    <section id="firmast">
-      <h2>Firmast</h2>
-      <p class="markus">Lühike tekst tuleb hiljem tabelist.</p>
+    <section id="telli" class="grupp">
+      <button type="button">Telli</button>
+      <div class="sisu"><div>
+        <a class="helista" href="tel:+3720000000">Helista ja telli</a>
+        <form>
+          <label>Tee
+            <select name="tee">
+              <option value="valmis">Valmis kringel</option>
+              <option value="fantaasia">Fantaasiakringel</option>
+            </select>
+          </label>
+          <label>Kringel
+            <select name="kringel">
+              <option>Kaneelikringel</option>
+              <option>Kardemonikringel</option>
+            </select>
+          </label>
+          <fieldset class="taidised">
+            <legend>Täidised</legend>
+            <label><input type="checkbox" name="taidis" value="kaneel"> Kaneel</label>
+            <label><input type="checkbox" name="taidis" value="kardemon"> Kardemon</label>
+            <label><input type="checkbox" name="taidis" value="suhkur"> Suhkur</label>
+          </fieldset>
+          <label>Suurus
+            <select name="suurus">
+              <option>Väike</option>
+              <option>Suur</option>
+            </select>
+          </label>
+          <label>Järeletulemise päev
+            <input type="date" name="paev">
+          </label>
+          <label>Kellaaeg
+            <input type="time" name="kell">
+          </label>
+          <label>Nimi
+            <input type="text" name="nimi">
+          </label>
+          <label>Telefon
+            <input type="tel" name="telefon">
+          </label>
+          <label class="rida"><input type="checkbox" name="uudis"> Tahan uudiseid</label>
+          <label>E-post
+            <input type="email" name="epost">
+          </label>
+          <button class="saada" type="submit">Saada tellimus</button>
+          <p class="olek"></p>
+        </form>
+      </div></div>
     </section>
 
-    <section id="kauplus">
-      <h2>Kauplus</h2>
-      <p class="markus">Aadress ja lahtiolek. See ei ole e-pood.</p>
-    </section>
-
-    <section id="kontakt">
-      <h2>Kontakt</h2>
-      <p class="markus">Telefon ja aadress on ka jaluses.</p>
-    </section>
+    <div class="info">
+      <section id="firmast">
+        <h2>Firmast</h2>
+        <p class="markus">Lühike tekst tuleb hiljem tabelist.</p>
+      </section>
+      <section id="kauplus">
+        <h2>Kauplus</h2>
+        <p class="markus">Aadress ja lahtiolek. See ei ole e-pood.</p>
+      </section>
+      <section id="kontakt">
+        <h2>Kontakt</h2>
+        <p class="markus">Telefon ja aadress on ka jaluses.</p>
+      </section>
+    </div>
   </main>
 
   <div class="taisekraan">
