@@ -12,13 +12,64 @@
     });
   });
 
+  var tekstid = {};
+  var keel = "et";
+
+  function loeKeel() {
+    var q = new URLSearchParams(location.search).get("keel");
+    if (q === "et" || q === "ru" || q === "en") return q;
+    try {
+      var m = localStorage.getItem("kehrapagar-keel");
+      if (m === "et" || m === "ru" || m === "en") return m;
+    } catch (e) {}
+    return "et";
+  }
+
+  function sona(k) {
+    var plokk = tekstid[keel] || {};
+    if (plokk[k]) return plokk[k];
+    var et = tekstid.et || {};
+    return et[k] || "";
+  }
+
+  function rakenda() {
+    document.documentElement.lang = keel;
+    document.querySelectorAll("[data-k]").forEach(function (el) {
+      var t = sona(el.getAttribute("data-k"));
+      if (t) el.textContent = t;
+    });
+    if (menu) menu.setAttribute("aria-label", sona("menu") || "Menüü");
+    document.querySelectorAll(".keeled button").forEach(function (x) {
+      x.classList.toggle("sees", x.getAttribute("data-keel") === keel);
+    });
+  }
+
+  function vali(uus) {
+    keel = uus;
+    try { localStorage.setItem("kehrapagar-keel", keel); } catch (e) {}
+    var url = new URL(location.href);
+    if (keel === "et") url.searchParams.delete("keel");
+    else url.searchParams.set("keel", keel);
+    history.replaceState(null, "", url);
+    rakenda();
+  }
+
   document.querySelectorAll(".keeled button").forEach(function (nupp) {
     nupp.addEventListener("click", function () {
-      document.querySelectorAll(".keeled button").forEach(function (x) {
-        x.classList.toggle("sees", x === nupp);
-      });
+      vali(nupp.getAttribute("data-keel"));
     });
   });
+
+  keel = loeKeel();
+  fetch("tekstid.json")
+    .then(function (r) { return r.json(); })
+    .then(function (andmed) {
+      tekstid = andmed || {};
+      rakenda();
+    })
+    .catch(function () {
+      rakenda();
+    });
 
   function sulgeGrupp(grupp) {
     grupp.classList.remove("lahti");
@@ -95,6 +146,6 @@
 
   vorm.addEventListener("submit", function (e) {
     e.preventDefault();
-    document.querySelector(".olek").textContent = "See on luu. Kiri ei lähe veel välja.";
+    document.querySelector(".olek").textContent = sona("olek_luu") || "See on luu. Kiri ei lähe veel välja.";
   });
 })();
