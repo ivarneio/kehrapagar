@@ -28,7 +28,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Eemaldamine on kirja lõpu link. Skript kustutab selle aadressi võtme järgi.
 - Kõike ei kuhjata ühte indexisse. Külastaja leht on üks. Tellimus, uudis ja andmed on eraldi failid.
 - Mallist võetakse olemasolev luu: päis, jalus, keel, pildi side, galerii. Lehte ennast ei kopeerita.
-- Visuaal on kandiline, taust valge. Avamine on nagu ballonsis. Sulgemine on pehmem.
+- Visuaal on kandiline, taust jahune valge. Avamine on nagu ballonsis. Sulgemine on pehmem.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -195,7 +195,7 @@ Avamise liikumine tuleb `ivarneio/balloons` seest, mitte mallist.
 
 Kinnitatud. Sai on ülar, kaart on kandiline. Helirännaku ümaraid nurki ei võeta.
 
-Taust on valge. Küpsetis paistab selle peal välja. Grupp ei ole eraldi teema, vaid viide samal taustal. Valik tõstab selle üles.
+Taust on jahune valge, mitte ekraani valge. Kergelt soe, nagu paber või jahu. Küpsetis paistab selle peal välja. Linane ja hallikas jäid kõrvale. Grupp ei ole eraldi teema, vaid viide samal taustal. Valik tõstab selle üles.
 
 Avamine on nagu ballonsis. Valitud kaart tõuseb ja lükkab teised alla, umbes 0,4 sekundit. Sulgemine ei ole sama hüpe: kaart langeb oma kohale ja teised tulevad tagasi, ilma et rida kokku hüppaks.
 
@@ -220,7 +220,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Mis aadressilt uudiskiri välja läheb.
 - Põhimenüü mustand: Telli, Tooted, Firmast, Kauplus, Kontakt. Kinnitust veel ei ole.
 - Kas failijaotus jääb nii. Esimene hoog on üleval.
-- Kirja värv. Taust on valge.
+- Kirja värv. Taust on jahune valge.
 
 ## Tööviis
 
