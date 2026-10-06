@@ -20,6 +20,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - ZoneCloud ei ole andmehoidla. Sealt ei ole reliisi ajal ligipääsu.
 - Foto ja tekst seotakse failinimega. Tunnus on püsiv, nimi ja rea järjekord ei seo.
 - Drive'is on kataloog `tooted`. Tootegrupid võivad olla selle all kataloogidena.
+- Toote valik avab toote alla paneeli. Tutvustus on peidus. Pilt avaneb täisekraanil.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -46,6 +47,16 @@ Tootegrupp on suletuna üks kaart. Puudutus ei vaheta lehte. Kaart avaneb samal 
 Avamine ja sulgemine on üks liikumine. Näha on, kust kaart tuli ja kuhu tooted lähevad. Sulgemisel rullub sama tee tagasi, mitte ei kao järsku. Nii on aru saada, mis milleks avanes.
 
 Efekt on lühike, umbes poole sekundi sees. Kui telefon küsib vähem liikumist, on efekt väljas. Piltide rida ei peida tellimust ega poodi. Korraga on lahti üks grupp. Teise avamine sulgeb eelmise sama liikumisega.
+
+### Toote paneel (mustand)
+
+Toote puudutus ei ava uut lehte. Selle toote alla tuleb paneel. Paneelis on kuni neli pisipilti. Kui pilte on vähem, näidatakse neid, mis on. Tühi koht ei jää ootama.
+
+Tutvustus on peidus. Paneelis on viide «Lähemalt». See avab teksti piltide all. Kes ei taha lugeda, ei näe seda. Inimene teab niigi, millega tegu.
+
+Pisipildile vajutus avab selle pildi täisekraanil. Sulgemine on sama pildi vajutus või Esc. Telefonis piisab vajutusest.
+
+Paneel käib sama liikumisega mis grupp. Näha on, kust see tuli. Teise toote valik sulgeb eelmise paneeli. Grupi avanemine ja toote paneel on kaks sammu. Esmalt rulluvad grupi pildid. Siis ühe toote all avaneb kuni neli pisipilti. Tekst on kolmas samm, ja ainult viitel.
 
 ## Keel ja tekst
 
@@ -91,7 +102,7 @@ Drive'is on üks kataloog `tooted`. Selle all võivad olla tootegrupid kataloogi
 - Pildifail kannab sama tunnust: `kaneel.jpg`. Veerg `pilt` ütleb selle failinime.
 - Makro otsib `tooted` alt, ka alamkataloogidest, sama nime ja kopeerib pildi koos selle rea tekstiga.
 - Uus fail uue nimega ja sama tunnusega rida on tavaline reliis. Koodi selleks ei muudeta.
-- Mitu pilti: `kaneel-1.jpg`, `kaneel-2.jpg`. Veergu kirjutatakse need komaga. Esimene on see, mis grupi avanedes välja rullub.
+- Mitu pilti: `kaneel-1.jpg`, `kaneel-2.jpg`, kuni neli. Veergu kirjutatakse need komaga. Esimene on see, mis grupi avanedes välja rullub. Ülejäänud on paneeli pisipildid.
 - Kui faili ei ole, tuleb märkus, nagu kirjaveast. Reliis ei jää tegemata. Toode läheb välja ilma pildita, kuni fail tuleb.
 
 Kausta koht ei seo pilti tekstiga. Kui `kaneel.jpg` liigub ühest grupikataloogist teise, jääb side alles. Grupi otsustab tabeli veerg, mitte see, mis kaustas fail parasjagu on.
@@ -107,7 +118,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 ## Mis on veel lahti
 
 - Kas üks pikk vaade jääb. Mustand on üleval, kinnitust veel ei ole.
-- Kas tootegrupi avanemine jääb nii, nagu mustandis. Kinnitust veel ei ole.
+- Kas tootegrupi avanemine ja toote paneel jäävad nii, nagu mustandis. Kinnitust veel ei ole.
 - Tootegruppide nimed.
 - Kuhu makro väljundi paneb: GitHubi testversiooni, Zone'i kausta, või mõlemasse.
 - Kes vene ja inglise toiduteksti enne avaldamist üle vaatab.
