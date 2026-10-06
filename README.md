@@ -21,6 +21,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Foto ja tekst seotakse failinimega. Tunnus on püsiv, nimi ja rea järjekord ei seo.
 - Drive'is on kataloog `tooted`. Tootegrupid võivad olla selle all kataloogidena.
 - Toote valik avab toote alla paneeli. Tutvustus on peidus. Pilt avaneb täisekraanil.
+- Paneeli neli pisipilti on ühes reas, mitte üksteise all.
 - Jalus on kogu aeg näha. Seal on firma kontaktandmed.
 - Päis on nagu Helirännakul: üleval menüü ja sotsiaalmeedia.
 - Avaleht on `pealeht/pealeht.jpg`. Kui faili ei ole, on tavaline avaleht. Cron kopeerib.
@@ -83,13 +84,15 @@ Kui telefon küsib vähem liikumist, on efekt väljas. Piltide rida ei peida tel
 
 ### Toote paneel (mustand)
 
-Toote puudutus ei ava uut lehte. Selle toote alla tuleb paneel. Paneelis on kuni neli pisipilti. Kui pilte on vähem, näidatakse neid, mis on. Tühi koht ei jää ootama.
+Toote puudutus ei ava uut lehte. Selle toote alla tuleb paneel. Teised tooted lükkuvad alla. Näha on, kust paneel tuli.
+
+Paneelis on kuni neli pisipilti ühes reas, mitte üksteise all. Vertikaalne rida lükkaks järgmised tooted liiga kaugele. Kui pilte on vähem, näidatakse neid, mis on. Tühi koht ei jää ootama. Kitsal ekraanil jääb rida rõhtsalt, pildid lähevad väiksemaks. Kahte ritta ei lähe.
 
 Tutvustus on peidus. Paneelis on viide «Lähemalt». See avab teksti piltide all. Kes ei taha lugeda, ei näe seda. Inimene teab niigi, millega tegu.
 
-Pisipildile vajutus avab selle pildi täisekraanil. Sulgemine on sama pildi vajutus või Esc. Telefonis piisab vajutusest.
+Pisipildile vajutus avab selle pildi täisekraanil. See on eraldi samm, mitte pisipiltide suund. Sulgemine on sama pildi vajutus või Esc. Telefonis piisab vajutusest.
 
-Paneel käib sama liikumisega mis grupp. Näha on, kust see tuli. Teise toote valik sulgeb eelmise paneeli. Grupi avanemine ja toote paneel on kaks sammu. Esmalt rulluvad grupi pildid. Siis ühe toote all avaneb kuni neli pisipilti. Tekst on kolmas samm, ja ainult viitel.
+Paneel käib sama liikumisega mis grupp. Teise toote valik sulgeb eelmise paneeli. Korraga on lahti üks paneel. Grupi avanemine ja toote paneel on kaks sammu. Esmalt rulluvad grupi pildid. Siis ühe toote all avaneb kuni neli pisipilti reas. Tekst on kolmas samm, ja ainult viitel.
 
 Jalus jääb paneeli ja täisekraani pildi ajal nähtavale. Kontakt ei kao kerides. Päis jääb samuti nähtavale.
 
@@ -208,7 +211,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 ## Mis on veel lahti
 
 - Kas üks pikk vaade jääb. Mustand on üleval, kinnitust veel ei ole.
-- Kas toote paneel jääb nii, nagu mustandis. Kinnitust veel ei ole.
+- Kas toote paneel jääb nii, nagu mustandis. Pisipildid on reas. Kinnitust veel ei ole.
 - Tootegruppide nimed.
 - Kuhu makro väljundi paneb: GitHubi testversiooni, Zone'i kausta, või mõlemasse.
 - Kes vene ja inglise toiduteksti enne avaldamist üle vaatab.
