@@ -23,10 +23,9 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Firmast ja Kauplus ei ole pealehe kerimises. Päis avab `firmast.html` ja `kauplus.html`. Kontakt jääb pealehele.
 - Tootegrupid on üksteise all ka desktopis. Kõrvuti võrku ei ole.
 - Valitud grupp tõuseb üles ja lükkab teised alla. Liikumine on 0,8 sekundit.
-- Iga grupp avab horisontaalse lindi. Lint sõidab sisse teema paremalt küljelt vasakule. Edasi saab lükata vasakule ja paremale. Lint kordub, nagu filmilint. Otsa ei ole.
-- Kui kursor on lindi peal, leht edasi ei keri. Lehte saab kerida siis, kui kursor ei ole lindi peal. Telefonis peeglit ei ole.
-- Pisipilt avab suure vaate. Mitu kuju on koos. Sulgemine on rist või Esc.
-- Küpsised on oma grupp. Kringlitel on 10 näidispilti juures, et linti hinnata.
+- Iga tootegrupp avab sama lindi. Lint sõidab sisse paremalt vasakule, kordub, otsa ei ole. Kursori all leht edasi ei keri.
+- Pisipilt avab suure vaate. Sulgemine on rist või Esc.
+- Kõigil gruppidel on näidispildid, et linti hinnata.
 
 ## Järgmine
 
@@ -40,9 +39,11 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Teemad üksteise alla ja balloonsi liikumine. 2026-10-06.
 - Horisontaalne rida, suur pilt ja küpsised. 2026-10-06. Sünk: `grupp_kypsised` ja `sulge`.
 - Liikumised poole aeglasemad. 2026-10-06.
-- Filmilint. Ringil otsa ei ole. Kringlitele 10 näidispilti juurde. 2026-10-06. Eesti teksti ei muudetud, nimesid ei tõlgitud.
+- Filmilint. Ringil otsa ei ole. 2026-10-06.
+- Sama avamine kõigil tootegruppidel. Näidispildid pagarile, kondiitrile, küpsistele ja tortidele. 2026-10-06. Eesti teksti ei muudetud, nimesid ei tõlgitud.
 
 ## Märkused
 
 - Eesti silt «Tee» on tõlgitud «Вариант» ja «Choice». Reliisi ei peatatud.
-- Marjakringel, Moonikringel, Kirsikringel, Pähklikringel, Kohvikringel, Šokolaadikringel, Vanillikringel, Toorjuustukringel, Rosinakringel ja Piparkoogikringel on näidised, mitte tabelist. Neid ei tõlgitud.
+- Uued tootenimed on näidised, mitte tabelist. Neid ei tõlgitud.
+- Näidisnimi «Räimemarja pirukas» on kohmakas. Õigem oleks «Räimepirukas». Reliisi ei peatatud.
