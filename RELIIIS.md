@@ -44,6 +44,7 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Sama avamine kõigil tootegruppidel. 2026-10-06. Eesti teksti ei muudetud, nimesid ei tõlgitud.
 - Suur pilt sulgub vajutusest. Rist ja Esc jäävad. Kerimine ei sulge. 2026-10-06. Eesti teksti ei muudetud.
 - Sotsiaallingid päris aadressidega ja Helirännaku ikoonidega. 2026-10-06. Eesti teksti ei muudetud.
+- Päise andmed on lehega ühelaiused. Desktop on 52rem. Ikoonidel on oma mõõt, et need ei kaoks. 2026-10-06.
 
 ## Märkused
 
