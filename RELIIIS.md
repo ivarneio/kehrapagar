@@ -47,6 +47,8 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Päis pandud Helirännaku ritta. Logo vasakul, menüü keskel, ikoonid paremal. 2026-10-06.
 - Kontakt oma lehena. Sünk: uus võti `kontakt_pikem`. 2026-10-06.
 
+- Proov: paneelid on taustaga ühte värvi, serva ei ole. 2026-10-06. Eesti teksti ei muudetud.
+
 ## Märkused
 
 - Eesti silt «Tee» on tõlgitud «Вариант» ja «Choice». Reliisi ei peatatud.
