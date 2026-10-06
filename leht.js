@@ -305,4 +305,28 @@
       document.querySelector(".olek").textContent = sona("olek_luu") || "See on luu. Kiri ei lähe veel välja.";
     });
   }
+
+  fetch("seaded.json")
+    .then(function (r) { return r.json(); })
+    .then(function (s) {
+      if (!s) return;
+      document.querySelectorAll(".sots a.fb").forEach(function (a) {
+        if (s.facebook) a.href = s.facebook;
+      });
+      document.querySelectorAll(".sots a.ig").forEach(function (a) {
+        if (s.instagram) a.href = s.instagram;
+      });
+      document.querySelectorAll("a[href^='tel:']").forEach(function (a) {
+        if (s.telefon) a.href = "tel:" + s.telefon;
+      });
+      document.querySelectorAll("[data-seade='aadress']").forEach(function (el) {
+        if (s.aadress) el.textContent = s.aadress;
+      });
+      document.querySelectorAll("[data-seade='telefon']").forEach(function (el) {
+        if (s.telefon_kuva) el.textContent = s.telefon_kuva;
+        if (s.telefon) el.href = "tel:" + s.telefon;
+      });
+    })
+    .catch(function () {});
+
 })();
