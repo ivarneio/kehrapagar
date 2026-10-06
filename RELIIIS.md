@@ -22,7 +22,10 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Tootenimed ja täidised ei vahetu. Need tulevad hiljem sisufailist.
 - Firmast ja Kauplus ei ole pealehe kerimises. Päis avab `firmast.html` ja `kauplus.html`. Kontakt jääb pealehele.
 - Tootegrupid on üksteise all ka desktopis. Kõrvuti võrku ei ole.
-- Valitud grupp tõuseb üles ja lükkab teised alla, nagu `ivarneio/balloons`. Liikumine on 0,4 sekundit. Sulgemine toob kaardi oma kohale tagasi, rida ei hüppa kokku. Kui seade küsib vähem liikumist, jääb kaart oma kohale.
+- Valitud grupp tõuseb üles ja lükkab teised alla, nagu `ivarneio/balloons`. Liikumine on 0,4 sekundit. Sulgemine toob kaardi oma kohale tagasi.
+- Iga grupp avab horisontaalse pisipiltide rea. Pildid ilmuvad ükshaaval. Hiire rullik rea peal liigutab rida vasakule ja paremale. Rea otsas läheb kerimine lehele edasi. Telefonis peeglit ei ole.
+- Pisipilt avab suure vaate. Mitu kuju, näiteks 1 kg ja 0,5 kg, on koos. Sulgemine on rist või Esc.
+- Küpsised on oma grupp.
 
 ## Järgmine
 
@@ -31,10 +34,12 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 
 ## Tehtud
 
-- Keelefail ja nupud. 2026-10-06. Sünk: eesti võtmed said ru ja en samas failis. Uusi võtmeid hiljem ei lisandunud.
+- Keelefail ja nupud. 2026-10-06. Sünk: eesti võtmed said ru ja en samas failis.
 - Firmast ja Kauplus oma lehtedena. 2026-10-06. Eesti teksti ei muudetud, seega ru ja en jäid puutumata.
 - Teemad üksteise alla ja balloonsi liikumine. 2026-10-06. Eesti teksti ei muudetud, tõlget üle ei kirjutatud.
+- Horisontaalne rida, suur pilt ja küpsised. 2026-10-06. Sünk: uued võtmed `grupp_kypsised` ja `sulge`. Teisi ridu üle ei kirjutatud.
 
 ## Märkused
 
 - Eesti silt «Tee» on tõlgitud «Вариант» ja «Choice». See on valik, mitte jook. Reliisi ei peatatud.
+- Tootenimed Jussike, Kaeraküpsis ja Piparkook on näidis, mitte tabelist. Neid ei tõlgitud.
