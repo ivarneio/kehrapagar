@@ -79,7 +79,7 @@
   }
 
   var lava = document.querySelector(".grupid");
-  var FLIP_MS = 400;
+  var FLIP_MS = 800;
   var flipKinni = false;
   var vahemLiikumine = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
