@@ -39,7 +39,8 @@
     "grupp_pagar": "Pagaritooted",
     "grupp_kondiiter": "Kondiitritooted",
     "grupp_kypsised": "Küpsised",
-    "grupp_tordid": "Tordid"
+    "grupp_tordid": "Tordid",
+    "kontakt_pikem": "Siin on aadress, lahtiolek ja kuidas kohale tulla. Täpsem tekst tuleb tabelist."
   },
   "ru": {
     "menu": "Меню",
@@ -81,7 +82,8 @@
     "grupp_pagar": "Выпечка",
     "grupp_kondiiter": "Кондитерские",
     "grupp_kypsised": "Печенье",
-    "grupp_tordid": "Торты"
+    "grupp_tordid": "Торты",
+    "kontakt_pikem": "Здесь адрес, часы и как добраться. Точный текст позже придёт из таблицы."
   },
   "en": {
     "menu": "Menu",
@@ -123,6 +125,7 @@
     "grupp_pagar": "Bakery goods",
     "grupp_kondiiter": "Confectionery",
     "grupp_kypsised": "Cookies",
-    "grupp_tordid": "Cakes"
+    "grupp_tordid": "Cakes",
+    "kontakt_pikem": "Address, hours and how to get here. The fuller text will come from the sheet."
   }
 }
