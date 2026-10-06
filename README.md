@@ -27,6 +27,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Uudiskiri: soovija kirjutab e-posti, nimekiri on Zone'is, inimene koostab kirja ja saadab välja. Saatmine jääb Zone'i piiride sisse.
 - Eemaldamine on kirja lõpu link. Skript kustutab selle aadressi võtme järgi.
 - Kõike ei kuhjata ühte indexisse. Külastaja leht on üks. Tellimus, uudis ja andmed on eraldi failid.
+- Mallist võetakse olemasolev luu: päis, jalus, keel, pildi side, galerii. Lehte ennast ei kopeerita.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -166,6 +167,26 @@ Server, külastaja ei loe:
 Cron on eraldi väike skript. See kopeerib `pealeht.jpg` ja saadab uudiskirja järjekorda. See ei ela `index.html` sees.
 
 Iga töö on oma fail, et eelmise versiooni saaks tagasi panna ilma teisi puutumata.
+
+## Mall
+
+Alus on `ivarneio/mall`, mitte uus leiutis. Kui käitumine on seal juba olemas, võetakse see sealt. Malli ennast ei kopeerita pagarileheks ja sinna ei kirjutata kliendi andmeid.
+
+Võetakse:
+
+- Kleepuv päis ja kleepuv jalus.
+- Keel `et`, `ru`, `en`. Puuduv tõlge näitab eesti teksti.
+- Tekst ja pildid on JSON-is, käitumine on lukus.
+- Pilt on seotud failinimega ja kaustaga.
+- Galerii avaneb suureks ja sulgub.
+- Tühi väli ei ole viga.
+
+Ei võeta:
+
+- Kolme ust. Tootegruppe on rohkem ja grupp avaneb samal lehel.
+- Pakette allkorrusena. Siin on tellimus, tooted, pood ja uudiskiri.
+- Ühte `index.html` kõige jaoks. Tellimus ja nimekiri on eraldi failid.
+- Mallis ei ole vormi, poodi ega sisselogimist. Neid sealt ei otsita.
 
 ## Reliis ja kirjavead
 
