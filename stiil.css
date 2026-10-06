@@ -127,16 +127,14 @@ fieldset input { width: auto; }
   margin: .7rem 1rem .9rem;
   padding: .4rem .7rem;
 }
+.grupid { display: flex; flex-direction: column; gap: .45rem; }
 .grupp {
   background: var(--paber);
   border: 1px solid var(--joon);
-  margin: .45rem 0;
-  transition: transform .4s ease, box-shadow .4s ease;
+  margin: 0;
+  transition: box-shadow .4s ease;
 }
-.grupp.lahti {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(44, 36, 22, .08);
-}
+.grupp.lahti { box-shadow: 0 10px 24px rgba(44, 36, 22, .08); }
 .grupp > button {
   width: 100%;
   text-align: left;
@@ -225,6 +223,7 @@ fieldset input { width: auto; }
   font-size: .82rem;
 }
 .jalus a { color: inherit; text-decoration: none; }
+.info { display: flex; flex-direction: column; gap: 1.2rem; }
 @media (max-width: 799px) {
   .pais .parem { display: flex; align-items: center; gap: .45rem; }
 }
@@ -246,18 +245,7 @@ fieldset input { width: auto; }
   }
   nav a { border: 0; padding: 0; }
   .pais .parem { justify-self: end; display: flex; align-items: center; gap: .7rem; }
-  main { width: min(76rem, calc(100% - 3rem)); }
-  .grupid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: .8rem;
-    align-items: start;
-  }
-  .info {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.2rem;
-  }
+  main { width: min(40rem, calc(100% - 3rem)); }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
