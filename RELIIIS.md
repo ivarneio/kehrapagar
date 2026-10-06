@@ -21,6 +21,8 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Keelevalik loeb `tekstid.json`. `?keel=ru` ja `?keel=en` avavad vastava keele. Valik jääb meelde.
 - Tootenimed ja täidised ei vahetu. Need tulevad hiljem sisufailist.
 - Firmast ja Kauplus ei ole pealehe kerimises. Päis avab `firmast.html` ja `kauplus.html`. Kontakt jääb pealehele.
+- Tootegrupid on üksteise all ka desktopis. Kõrvuti võrku ei ole.
+- Valitud grupp tõuseb üles ja lükkab teised alla, nagu `ivarneio/balloons`. Liikumine on 0,4 sekundit. Sulgemine toob kaardi oma kohale tagasi, rida ei hüppa kokku. Kui seade küsib vähem liikumist, jääb kaart oma kohale.
 
 ## Järgmine
 
@@ -31,6 +33,7 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 
 - Keelefail ja nupud. 2026-10-06. Sünk: eesti võtmed said ru ja en samas failis. Uusi võtmeid hiljem ei lisandunud.
 - Firmast ja Kauplus oma lehtedena. 2026-10-06. Eesti teksti ei muudetud, seega ru ja en jäid puutumata.
+- Teemad üksteise alla ja balloonsi liikumine. 2026-10-06. Eesti teksti ei muudetud, tõlget üle ei kirjutatud.
 
 ## Märkused
 
