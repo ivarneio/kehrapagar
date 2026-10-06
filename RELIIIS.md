@@ -28,6 +28,8 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Kõigil gruppidel on näidispildid, et linti hinnata.
 - Facebook ja Instagram on päises, samad ümargused märgid nagu Helirännakul. Päis on nagu Helirännakul: logo vasakul, menüü keskel, ikoonid paremal.
 
+- Paneelid on taustaga ühte värvi. Serva ega varju ei ole.
+
 ## Järgmine
 
 - Kui eesti teksti muudetakse, käib samm 2–6 enne, kui muudatus lehele jääb.
@@ -47,7 +49,7 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Päis pandud Helirännaku ritta. Logo vasakul, menüü keskel, ikoonid paremal. 2026-10-06.
 - Kontakt oma lehena. Sünk: uus võti `kontakt_pikem`. 2026-10-06.
 
-- Proov: paneelid on taustaga ühte värvi, serva ei ole. 2026-10-06. Eesti teksti ei muudetud.
+- Paneelid on taustaga ühte värvi, serva ega varju ei ole. Kinnitatud 2026-10-06. Eesti teksti ei muudetud.
 
 ## Märkused
 
