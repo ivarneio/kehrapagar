@@ -26,6 +26,7 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Iga tootegrupp avab sama lindi. Lint sõidab sisse paremalt vasakule, kordub, otsa ei ole. Kursori all leht edasi ei keri.
 - Pisipilt avab suure vaate. Sulgemine on vajutus samal pildil, rist või Esc. Kerimine ei sulge. Mitu kuju jääb keritavaks.
 - Kõigil gruppidel on näidispildid, et linti hinnata.
+- Facebook ja Instagram on päises, samad ümargused märgid nagu Helirännakul, originaalvärvidega. Facebook on www.facebook.com/KehraPagar. Instagram on www.instagram.com/kehrapagar/.
 
 ## Järgmine
 
@@ -42,6 +43,7 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Filmilint. Ringil otsa ei ole. 2026-10-06.
 - Sama avamine kõigil tootegruppidel. 2026-10-06. Eesti teksti ei muudetud, nimesid ei tõlgitud.
 - Suur pilt sulgub vajutusest. Rist ja Esc jäävad. Kerimine ei sulge. 2026-10-06. Eesti teksti ei muudetud.
+- Sotsiaallingid päris aadressidega ja Helirännaku ikoonidega. 2026-10-06. Eesti teksti ei muudetud.
 
 ## Märkused
 
