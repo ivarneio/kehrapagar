@@ -17,7 +17,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Muudatused on tagasikeeratavad. Eelmise versiooni failid jäävad alles.
 - Ivar ei kirjuta koodi. Muudatus käib lihtsa juhisega.
 - Pildid ja tekstid on Google'is. Reliisi osa on sealne makro või skript. Külastaja Google'it ei loe.
-- Google on praegu isiklikul kontol. See on proovikoht. Toodangus on teine koht.
+- Testleht töötab isiklikul Google'i kontol. Pildid ja tabel lähevad sinna. Toodangu konto on hilisem tõste.
 - ZoneCloud ei ole andmehoidla. Sealt ei ole reliisi ajal ligipääsu.
 - Foto ja tekst seotakse failinimega. Tunnus on püsiv, nimi ja rea järjekord ei seo.
 - Drive'is on kataloog `tooted`. Tootegrupid võivad olla selle all kataloogidena.
@@ -118,7 +118,7 @@ Tõlge toimub ainult reliisi ajal. Muud tekstid kohendatakse samuti reliisiga. K
 
 Töökoht on Google, mitte ZoneCloud ega GitHub. Kolmas pool muudab tabelit ja pildikausta. ZoneCloud jäi kõrvale, sest sealt ei ole reliisi ajal ligipääsu.
 
-Praegu on ühendus isiklikul kontol. See sobib proovimiseks. Toodangus ei jää. Tabel, pildikaust ja makro lähevad teise kohta, mis on pagarikoja oma. Isiklik konto ei jää reliisi külge. Kuni see koht ei ole olemas, ei ehitata tõlkesünki valmis. Lehe esimene tükk ei vaja Google'it. Külastaja loeb Zone'i koopiat ka siis, kui konto vahetub.
+Testleht töötab isiklikul kontol. Pildid ja tabel lähevad sinna, samasse jaotusse: `pealeht` ja `tooted`. Peaasi, et töötab. Toodangu konto on hilisem tõste, mitte testlehe takistus. Kui konto vahetub, tõstetakse kaustad ja makro. Külastaja loeb Zone'i koopiat ka siis.
 
 - Üks rida on üks toode või üks tekst.
 - Eesti veerud on ainsad, mida kolmas pool täidab.
@@ -216,7 +216,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 
 ## Mis on veel lahti
 
-- Mis Google'i konto on toodangus, ja kes seda hoiab.
+- Mis Google'i konto on toodangus, ja kes seda hoiab. Test ei oota seda.
 - Kas üks pikk vaade jääb. Mustand on üleval, kinnitust veel ei ole.
 - Kas toote paneel jääb nii, nagu mustandis. Pisipildid on reas. Kinnitust veel ei ole.
 - Kuhu makro väljundi paneb: GitHubi testversiooni, Zone'i kausta, või mõlemasse.
