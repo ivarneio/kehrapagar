@@ -28,6 +28,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Eemaldamine on kirja lõpu link. Skript kustutab selle aadressi võtme järgi.
 - Kõike ei kuhjata ühte indexisse. Külastaja leht on üks. Tellimus, uudis ja andmed on eraldi failid.
 - Mallist võetakse olemasolev luu: päis, jalus, keel, pildi side, galerii. Lehte ennast ei kopeerita.
+- Visuaal on kandiline ja sama taustaga. Avamine on nagu ballonsis. Sulgemine on pehmem.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -74,11 +75,11 @@ Saatmine käib Zone'i postist, aeglaselt, ja jääb piiride sisse. Üks kiri iga
 
 ### Tootegrupi avanemine (mustand)
 
-Tootegrupp on suletuna üks kaart. Puudutus ei vaheta lehte. Kaart avaneb samal kohal, ja sealt tulevad toodete pildid ükshaaval, mitte kõik korraga. Silm jõuab järge pidada. Iga pilt on valik, mitte galerii: nimi ja hind tulevad pildiga kaasa, et aju hakkaks kohe otsustama.
+Tootegrupp on suletuna üks kaart. Puudutus ei vaheta lehte. Valitud kaart tõuseb üles, nagu `ivarneio/balloons`, ja avanedes lükkab teised alla. Sealt tulevad toodete pildid ükshaaval, mitte kõik korraga. Silm jõuab järge pidada. Iga pilt on valik, mitte galerii: nimi ja hind tulevad pildiga kaasa, et aju hakkaks kohe otsustama.
 
-Avamine ja sulgemine on üks liikumine. Näha on, kust kaart tuli ja kuhu tooted lähevad. Sulgemisel rullub sama tee tagasi, mitte ei kao järsku. Nii on aru saada, mis milleks avanes.
+Avamine on ballonsi liikumine, umbes 0,4 sekundit. Sulgemine ei ole sama hüpe. Kaart langeb oma kohale ja teised tulevad tagasi, ilma et rida kokku hüppaks. Nii on aru saada, mis milleks avanes.
 
-Efekt on lühike, umbes poole sekundi sees. Kui telefon küsib vähem liikumist, on efekt väljas. Piltide rida ei peida tellimust ega poodi. Korraga on lahti üks grupp. Teise avamine sulgeb eelmise sama liikumisega.
+Kui telefon küsib vähem liikumist, on efekt väljas. Piltide rida ei peida tellimust ega poodi. Korraga on lahti üks grupp. Teise avamine sulgeb eelmise.
 
 ### Toote paneel (mustand)
 
@@ -188,6 +189,16 @@ Ei võeta:
 - Ühte `index.html` kõige jaoks. Tellimus ja nimekiri on eraldi failid.
 - Mallis ei ole vormi, poodi ega sisselogimist. Neid sealt ei otsita.
 
+Avamise liikumine tuleb `ivarneio/balloons` seest, mitte mallist.
+
+## Visuaal
+
+Kinnitatud. Sai on ülar, kaart on kandiline. Helirännaku ümaraid nurki ei võeta.
+
+Taust on üks värv. Grupp ei ole eraldi teema, vaid viide. Valik tõstab selle üles.
+
+Avamine on nagu ballonsis. Valitud kaart tõuseb ja lükkab teised alla, umbes 0,4 sekundit. Sulgemine ei ole sama hüpe: kaart langeb oma kohale ja teised tulevad tagasi, ilma et rida kokku hüppaks.
+
 ## Reliis ja kirjavead
 
 Kirjavead tuleb raporteerida. Raport on märkus, mitte tõke.
@@ -197,7 +208,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 ## Mis on veel lahti
 
 - Kas üks pikk vaade jääb. Mustand on üleval, kinnitust veel ei ole.
-- Kas tootegrupi avanemine ja toote paneel jäävad nii, nagu mustandis. Kinnitust veel ei ole.
+- Kas toote paneel jääb nii, nagu mustandis. Kinnitust veel ei ole.
 - Tootegruppide nimed.
 - Kuhu makro väljundi paneb: GitHubi testversiooni, Zone'i kausta, või mõlemasse.
 - Kes vene ja inglise toiduteksti enne avaldamist üle vaatab.
@@ -209,6 +220,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Mis aadressilt uudiskiri välja läheb.
 - Põhimenüü mustand: Telli, Tooted, Firmast, Kauplus, Kontakt. Kinnitust veel ei ole.
 - Kas failijaotus jääb nii. Esimene hoog on üleval.
+- Taustavärv ja kirja värv. Kandiline ja üks taust on lukus, toon veel ei ole.
 
 ## Tööviis
 
