@@ -1,0 +1,249 @@
+:root {
+  --taust: #f4f0e6;
+  --paber: #f7f4ec;
+  --tint: #2c2416;
+  --vaikne: #6d6456;
+  --joon: #e4dccb;
+  --pais: #2c2416;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  background: var(--taust);
+  color: var(--tint);
+  line-height: 1.45;
+  padding-bottom: 3.4rem;
+}
+.pais {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--pais);
+  color: var(--taust);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .55rem .8rem;
+}
+.logo {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.menu-nupp {
+  margin-left: auto;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+nav {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: var(--pais);
+  padding: .2rem .8rem .7rem;
+}
+.pais.lahti nav { display: flex; flex-direction: column; }
+nav a {
+  color: inherit;
+  text-decoration: none;
+  padding: .55rem 0;
+  border-bottom: 1px solid rgba(244, 240, 230, .18);
+}
+.keeled { display: flex; gap: .35rem; }
+.keeled button {
+  background: none;
+  border: 0;
+  color: inherit;
+  opacity: .45;
+  font: inherit;
+  letter-spacing: .08em;
+  cursor: pointer;
+}
+.keeled button.sees { opacity: 1; }
+.sots { display: flex; gap: .4rem; }
+.sots a {
+  width: 1.7rem;
+  height: 1.7rem;
+  display: grid;
+  place-items: center;
+  color: var(--taust);
+  text-decoration: none;
+  border: 1px solid rgba(244, 240, 230, .4);
+  font-size: .72rem;
+}
+main { width: min(40rem, calc(100% - 1.6rem)); margin: 0 auto; padding: 1.2rem 0 2rem; }
+section { scroll-margin-top: 4.2rem; margin: 1.4rem 0; }
+h1, h2 { font-weight: 600; margin: 0 0 .6rem; }
+h1 { font-size: 1.7rem; }
+h2 { font-size: 1.25rem; }
+.markus { color: var(--vaikne); margin: 0 0 .8rem; }
+.vorm label, .uudis label {
+  display: block;
+  margin: .55rem 0;
+  font-size: .92rem;
+}
+input, select, button.saada {
+  font: inherit;
+  border: 1px solid var(--joon);
+  background: #fff;
+  color: var(--tint);
+  padding: .55rem .6rem;
+  width: 100%;
+  border-radius: 0;
+}
+.rida { display: flex; gap: .5rem; align-items: center; }
+.rida input[type="checkbox"] { width: auto; }
+.helista, .saada {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: var(--pais);
+  color: var(--taust);
+  padding: .8rem .6rem;
+  margin: .7rem 0;
+  border: 0;
+  cursor: pointer;
+}
+.grupp {
+  background: var(--paber);
+  border: 1px solid var(--joon);
+  margin: .45rem 0;
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.grupp.lahti {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(44, 36, 22, .08);
+}
+.grupp > button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 1.2rem;
+  padding: .9rem 1rem;
+  cursor: pointer;
+  color: inherit;
+}
+.sisu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .55s ease;
+}
+.grupp.lahti .sisu { grid-template-rows: 1fr; }
+.sisu > div { overflow: hidden; min-height: 0; }
+.toode {
+  border-top: 1px solid var(--joon);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.grupp.lahti .toode { opacity: 1; transform: none; }
+.grupp.lahti .toode:nth-child(2) { transition-delay: .08s; }
+.grupp.lahti .toode:nth-child(3) { transition-delay: .16s; }
+.toode > button {
+  width: 100%;
+  display: flex;
+  gap: .7rem;
+  align-items: center;
+  background: none;
+  border: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  padding: .7rem 1rem;
+  cursor: pointer;
+}
+.toode img, .pilt {
+  width: 4.2rem;
+  height: 4.2rem;
+  object-fit: cover;
+  background: #efe6d4;
+  display: block;
+  flex: 0 0 auto;
+}
+.nimi { font-weight: 600; }
+.hind { color: var(--vaikne); font-size: .9rem; }
+.paneel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .45s ease;
+}
+.paneel.lahti { grid-template-rows: 1fr; }
+.paneel > div { overflow: hidden; min-height: 0; padding: 0 1rem; }
+.pisipildid { display: flex; gap: .35rem; padding-bottom: .6rem; }
+.pisipildid button {
+  flex: 1;
+  border: 0;
+  padding: 0;
+  background: #efe6d4;
+  cursor: pointer;
+}
+.pisipildid img { width: 100%; height: 4.4rem; object-fit: cover; }
+.lahemalt {
+  background: none;
+  border: 0;
+  color: var(--vaikne);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0 0 .7rem;
+}
+.tekst { display: none; color: var(--vaikne); padding-bottom: .8rem; }
+.tekst.lahti { display: block; }
+.taisekraan {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(28, 22, 14, .92);
+  place-items: center;
+  padding: 1rem;
+}
+.taisekraan.sees { display: grid; }
+.taisekraan img { max-width: 100%; max-height: 100%; cursor: pointer; }
+.jalus {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 25;
+  background: var(--pais);
+  color: var(--taust);
+  display: flex;
+  justify-content: center;
+  gap: .8rem;
+  padding: .45rem .6rem;
+  font-size: .82rem;
+}
+.jalus a { color: inherit; text-decoration: none; }
+@media (min-width: 800px) {
+  .menu-nupp { display: none; }
+  nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    gap: .9rem;
+    background: none;
+    padding: 0;
+    margin-left: .4rem;
+  }
+  nav a { border: 0; padding: 0; }
+  .pais .parem { margin-left: auto; display: flex; align-items: center; gap: .7rem; }
+}
+@media (max-width: 799px) {
+  .pais .parem { display: flex; align-items: center; gap: .45rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
