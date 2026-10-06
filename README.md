@@ -20,6 +20,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - ZoneCloud ei ole andmehoidla. Sealt ei ole reliisi ajal ligipääsu.
 - Foto ja tekst seotakse failinimega. Tunnus on püsiv, nimi ja rea järjekord ei seo.
 - Drive'is on kataloog `tooted`. Tootegrupid võivad olla selle all kataloogidena.
+- Tootegrupid on Kringlid, Pagaritooted, Kondiitritooted, Tordid. Grupp on tabeli rida. Lisamine ja eemaldamine ei ole kood.
 - Toote valik avab toote alla paneeli. Tutvustus on peidus. Pilt avaneb täisekraanil.
 - Paneeli neli pisipilti on ühes reas, mitte üksteise all.
 - Jalus on kogu aeg näha. Seal on firma kontaktandmed.
@@ -48,7 +49,9 @@ See ei ole veel lukus. Üks pikk vaade, mitte pood paljude alamlehtedega. Telefo
 
 Pagarivaade on eraldi aadress, menüüs seda ei ole. Uudiskirja koostamine on samas suletud vaates, mitte avalikus menüüs. Keel vahetub samal lehel.
 
-Gruppide esimene mustand, ei ole lukus: Kringlid, Pirukad ja saiad, Tordid ja koogid, Küpsised. Pood on oma plokk, mitte tootegrupp.
+Grupid praegu: Kringlid, Pagaritooted, Kondiitritooted, Tordid. Pood on oma plokk, mitte tootegrupp.
+
+Grupp on tabeli rida, mitte koodis kinni. Uus rida lisab grupi. Rea kustutamine või mitteaktiivseks märkimine võtab grupi lehelt. Tordid on praegu sees. Kui neid tulevikus ei ole, kaob kaart reliisiga. Koodi selleks ei muudeta. Leht näitab niipalju gruppe, kui tabelis aktiivseid on.
 
 Sotsiaalmeedia lingid tulevad seadetest, nagu Helirännakul. Neid ei tõlgita.
 
@@ -212,7 +215,6 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 
 - Kas üks pikk vaade jääb. Mustand on üleval, kinnitust veel ei ole.
 - Kas toote paneel jääb nii, nagu mustandis. Pisipildid on reas. Kinnitust veel ei ole.
-- Tootegruppide nimed.
 - Kuhu makro väljundi paneb: GitHubi testversiooni, Zone'i kausta, või mõlemasse.
 - Kes vene ja inglise toiduteksti enne avaldamist üle vaatab.
 - Tootenimekiri, suurused, järeletulemise ajad, tellimuse e-posti aadress.
