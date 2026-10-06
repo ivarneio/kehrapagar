@@ -107,45 +107,49 @@
 
   var telli = document.querySelector("#telli");
   var vorm = document.querySelector("form");
-  var kringel = vorm.querySelector("[name=kringel]");
-  var tee = vorm.querySelector("[name=tee]");
-  var taidised = document.querySelector(".taidised");
-  function naitaTaidised() {
-    taidised.hidden = tee.value !== "fantaasia";
-  }
-  tee.addEventListener("change", naitaTaidised);
-  naitaTaidised();
+  if (vorm && telli) {
+    var kringel = vorm.querySelector("[name=kringel]");
+    var tee = vorm.querySelector("[name=tee]");
+    var taidised = document.querySelector(".taidised");
+    function naitaTaidised() {
+      taidised.hidden = tee.value !== "fantaasia";
+    }
+    tee.addEventListener("change", naitaTaidised);
+    naitaTaidised();
 
-  document.querySelectorAll(".telli-nupp").forEach(function (nupp) {
-    nupp.addEventListener("click", function () {
-      kringel.value = nupp.getAttribute("data-kringel");
-      tee.value = "valmis";
-      naitaTaidised();
-      telli.classList.add("lahti");
-      telli.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.querySelectorAll(".telli-nupp").forEach(function (nupp) {
+      nupp.addEventListener("click", function () {
+        kringel.value = nupp.getAttribute("data-kringel");
+        tee.value = "valmis";
+        naitaTaidised();
+        telli.classList.add("lahti");
+        telli.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     });
-  });
+
+    vorm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.querySelector(".olek").textContent = sona("olek_luu") || "See on luu. Kiri ei lähe veel välja.";
+    });
+  }
 
   var vaade = document.querySelector(".taisekraan");
-  var suur = vaade.querySelector("img");
-  document.querySelectorAll(".pisipildid button").forEach(function (nupp) {
-    nupp.addEventListener("click", function () {
-      suur.src = nupp.querySelector("img").src;
-      suur.alt = nupp.querySelector("img").alt;
-      vaade.classList.add("sees");
+  if (vaade) {
+    var suur = vaade.querySelector("img");
+    document.querySelectorAll(".pisipildid button").forEach(function (nupp) {
+      nupp.addEventListener("click", function () {
+        suur.src = nupp.querySelector("img").src;
+        suur.alt = nupp.querySelector("img").alt;
+        vaade.classList.add("sees");
+      });
     });
-  });
-  function sulgeVaade() { vaade.classList.remove("sees"); }
-  suur.addEventListener("click", sulgeVaade);
-  vaade.addEventListener("click", function (e) {
-    if (e.target === vaade) sulgeVaade();
-  });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") sulgeVaade();
-  });
-
-  vorm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    document.querySelector(".olek").textContent = sona("olek_luu") || "See on luu. Kiri ei lähe veel välja.";
-  });
+    function sulgeVaade() { vaade.classList.remove("sees"); }
+    suur.addEventListener("click", sulgeVaade);
+    vaade.addEventListener("click", function (e) {
+      if (e.target === vaade) sulgeVaade();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") sulgeVaade();
+    });
+  }
 })();
