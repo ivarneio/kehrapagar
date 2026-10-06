@@ -22,10 +22,11 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Tootenimed ja täidised ei vahetu. Need tulevad hiljem sisufailist.
 - Firmast ja Kauplus ei ole pealehe kerimises. Päis avab `firmast.html` ja `kauplus.html`. Kontakt jääb pealehele.
 - Tootegrupid on üksteise all ka desktopis. Kõrvuti võrku ei ole.
-- Valitud grupp tõuseb üles ja lükkab teised alla, nagu `ivarneio/balloons`. Liikumine on 0,8 sekundit. Sulgemine toob kaardi oma kohale tagasi.
-- Iga grupp avab horisontaalse pisipiltide rea. Pildid ilmuvad ükshaaval, tõusva ja kahaneva sammuga, pärast seda kui rida on näha. Hiire rullik rea peal liigutab rida vasakule ja paremale. Rea otsas läheb kerimine lehele edasi. Telefonis peeglit ei ole.
-- Pisipilt avab suure vaate. Mitu kuju, näiteks 1 kg ja 0,5 kg, on koos. Sulgemine on rist või Esc.
-- Küpsised on oma grupp.
+- Valitud grupp tõuseb üles ja lükkab teised alla. Liikumine on 0,8 sekundit.
+- Iga grupp avab horisontaalse lindi. Lint sõidab sisse teema paremalt küljelt vasakule. Edasi saab lükata vasakule ja paremale. Lint kordub, nagu filmilint. Otsa ei ole.
+- Kui kursor on lindi peal, leht edasi ei keri. Lehte saab kerida siis, kui kursor ei ole lindi peal. Telefonis peeglit ei ole.
+- Pisipilt avab suure vaate. Mitu kuju on koos. Sulgemine on rist või Esc.
+- Küpsised on oma grupp. Kringlitel on 10 näidispilti juures, et linti hinnata.
 
 ## Järgmine
 
@@ -34,14 +35,14 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 
 ## Tehtud
 
-- Keelefail ja nupud. 2026-10-06. Sünk: eesti võtmed said ru ja en samas failis.
-- Firmast ja Kauplus oma lehtedena. 2026-10-06. Eesti teksti ei muudetud, seega ru ja en jäid puutumata.
-- Teemad üksteise alla ja balloonsi liikumine. 2026-10-06. Eesti teksti ei muudetud, tõlget üle ei kirjutatud.
-- Horisontaalne rida, suur pilt ja küpsised. 2026-10-06. Sünk: uued võtmed `grupp_kypsised` ja `sulge`. Teisi ridu üle ei kirjutatud.
-- Liikumised poole aeglasemad. Pildid ilmuvad ükshaaval alles siis, kui rida on lahti. 2026-10-06. Eesti teksti ei muudetud.
+- Keelefail ja nupud. 2026-10-06.
+- Firmast ja Kauplus oma lehtedena. 2026-10-06.
+- Teemad üksteise alla ja balloonsi liikumine. 2026-10-06.
+- Horisontaalne rida, suur pilt ja küpsised. 2026-10-06. Sünk: `grupp_kypsised` ja `sulge`.
+- Liikumised poole aeglasemad. 2026-10-06.
+- Filmilint. Ringil otsa ei ole. Kringlitele 10 näidispilti juurde. 2026-10-06. Eesti teksti ei muudetud, nimesid ei tõlgitud.
 
 ## Märkused
 
-- Eesti silt «Tee» on tõlgitud «Вариант» ja «Choice». See on valik, mitte jook. Reliisi ei peatatud.
-- Tootenimed Jussike, Kaeraküpsis ja Piparkook on näidis, mitte tabelist. Neid ei tõlgitud.
-- Piltide efekt jäi enne nähtamatuks, sest see jõudis läbi enne rea avanemist. See ei olnud reliisi peatus.
+- Eesti silt «Tee» on tõlgitud «Вариант» ja «Choice». Reliisi ei peatatud.
+- Marjakringel, Moonikringel, Kirsikringel, Pähklikringel, Kohvikringel, Šokolaadikringel, Vanillikringel, Toorjuustukringel, Rosinakringel ja Piparkoogikringel on näidised, mitte tabelist. Neid ei tõlgitud.
