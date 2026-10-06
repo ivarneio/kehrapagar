@@ -223,6 +223,9 @@
   var suurTelli = vaade.querySelector(".telli-nupp");
   var vorm = document.querySelector("form");
   var kringel = vorm ? vorm.querySelector("[name=kringel]") : null;
+  kujud.style.overflow = "auto";
+  kujud.style.maxHeight = "78vh";
+  kujud.style.cursor = "pointer";
 
   function sulgeVaade() {
     vaade.classList.remove("sees");
@@ -256,6 +259,21 @@
     suurTelli.setAttribute("data-kringel", nimi || "");
     vaade.classList.add("sees");
   });
+
+  var algus = null;
+  kujud.addEventListener("pointerdown", function (e) {
+    if (!e.target.closest || !e.target.closest(".kuju")) return;
+    algus = { x: e.clientX, y: e.clientY, keri: kujud.scrollTop };
+  });
+  kujud.addEventListener("pointerup", function (e) {
+    if (!algus) return;
+    var dx = Math.abs(e.clientX - algus.x);
+    var dy = Math.abs(e.clientY - algus.y);
+    var keris = Math.abs(kujud.scrollTop - algus.keri) > 4;
+    algus = null;
+    if (dx < 8 && dy < 8 && !keris && e.target.closest && e.target.closest(".kuju")) sulgeVaade();
+  });
+  kujud.addEventListener("pointercancel", function () { algus = null; });
 
   vaade.querySelector(".sulge").addEventListener("click", sulgeVaade);
   document.addEventListener("keydown", function (e) {
