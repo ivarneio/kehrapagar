@@ -26,6 +26,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Avaleht on `pealeht/pealeht.jpg`. Kui faili ei ole, on tavaline avaleht. Cron kopeerib.
 - Uudiskiri: soovija kirjutab e-posti, nimekiri on Zone'is, inimene koostab kirja ja saadab välja. Saatmine jääb Zone'i piiride sisse.
 - Eemaldamine on kirja lõpu link. Skript kustutab selle aadressi võtme järgi.
+- Kõike ei kuhjata ühte indexisse. Külastaja leht on üks. Tellimus, uudis ja andmed on eraldi failid.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -141,6 +142,31 @@ Kausta koht ei seo pilti tekstiga. Kui `kaneel.jpg` liigub ühest grupikataloogi
 
 Nime ega rea järjekorraga pilti ei seota. Nimi muutub, ja rida nihkub, kui keegi vahele lisab.
 
+## Failid
+
+Esimene hoog. Kõike ei panda ühte `index` faili, nagu Helirännakul. Seal oli üks vaade ja vorm läks Google'i skripti. Siin on leht, tellimus, pagarivaade ja uudiskiri. Tellimused ja nimekiri ei tohi avalikku lehte sattuda.
+
+Raamistikku ei ole. Külastaja näeb ikka ühte lehte.
+
+Avalik:
+
+- `index.html` on leht: päis, avaleht, tellimisvorm, tooted, pood, uudise väli, jalus.
+- `stiil.css` on välimus.
+- `leht.js` on avamine, sulgemine, täisekraani pilt ja keel. Andmeid see ei hoia.
+- `seaded.json`, `tekstid.json`, `sisu.json` on nagu Helirännakul. Reliis kirjutab need üle.
+- `pildid/` on toodete ja avalehe koopiad.
+
+Server, külastaja ei loe:
+
+- `tellimus.php` võtab vormi vastu, salvestab Zone'i ja saadab e-kirja.
+- `uudis.php` lisab aadressi ja eemaldab võtme järgi.
+- `andmed/` on tellimused ja uudiskirja nimekiri. See kaust ei ole veebist loetav.
+- `pagar.html` on suletud vaade: tellimused ja uudiskirja koostamine. Menüüs seda ei ole.
+
+Cron on eraldi väike skript. See kopeerib `pealeht.jpg` ja saadab uudiskirja järjekorda. See ei ela `index.html` sees.
+
+Iga töö on oma fail, et eelmise versiooni saaks tagasi panna ilma teisi puutumata.
+
 ## Reliis ja kirjavead
 
 Kirjavead tuleb raporteerida. Raport on märkus, mitte tõke.
@@ -161,6 +187,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Kas croni samm on 15 minutit või tund.
 - Mis aadressilt uudiskiri välja läheb.
 - Põhimenüü mustand: Telli, Tooted, Firmast, Kauplus, Kontakt. Kinnitust veel ei ole.
+- Kas failijaotus jääb nii. Esimene hoog on üleval.
 
 ## Tööviis
 
