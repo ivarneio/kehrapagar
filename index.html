@@ -14,11 +14,11 @@
     <a class="logo" href="#avaleht">Kehra Pagar</a>
     <button class="menu-nupp" type="button" aria-label="Menüü">☰</button>
     <nav>
-      <a href="#tooted">Tooted</a>
-      <a href="#telli">Telli</a>
-      <a href="#firmast">Firmast</a>
-      <a href="#kauplus">Kauplus</a>
-      <a href="#kontakt">Kontakt</a>
+      <a href="#tooted" data-k="nav_tooted">Tooted</a>
+      <a href="#telli" data-k="nav_telli">Telli</a>
+      <a href="#firmast" data-k="nav_firmast">Firmast</a>
+      <a href="#kauplus" data-k="nav_kauplus">Kauplus</a>
+      <a href="#kontakt" data-k="nav_kontakt">Kontakt</a>
     </nav>
     <div class="parem">
       <div class="sots">
@@ -26,9 +26,9 @@
         <a href="https://instagram.com" aria-label="Instagram">i</a>
       </div>
       <div class="keeled">
-        <button type="button" class="sees">et</button>
-        <button type="button">ru</button>
-        <button type="button">en</button>
+        <button type="button" data-keel="et" class="sees">et</button>
+        <button type="button" data-keel="ru">ru</button>
+        <button type="button" data-keel="en">en</button>
       </div>
     </div>
   </header>
@@ -36,14 +36,14 @@
   <main>
     <section id="avaleht">
       <h1>Kehra Pagar</h1>
-      <p class="markus">Avalehe pilt tuleb kaustast pealeht. Kui faili ei ole, on see vaade.</p>
+      <p class="markus" data-k="avaleht_markus">Avalehe pilt tuleb kaustast pealeht. Kui faili ei ole, on see vaade.</p>
     </section>
 
     <section id="tooted">
-      <h2>Tooted</h2>
+      <h2 data-k="tooted">Tooted</h2>
       <div class="grupid">
         <article class="grupp">
-          <button type="button">Kringlid</button>
+          <button type="button" data-k="grupp_kringlid">Kringlid</button>
           <div class="sisu"><div>
             <div class="toode">
               <button class="ava" type="button">
@@ -55,9 +55,9 @@
                   <button type="button"><img src="pildid/kringel.svg" alt="Kaneelikringel 1"></button>
                   <button type="button"><img src="pildid/kringel.svg" alt="Kaneelikringel 2"></button>
                 </div>
-                <button class="lahemalt" type="button">Lähemalt</button>
+                <button class="lahemalt" type="button" data-k="lahemalt">Lähemalt</button>
                 <p class="tekst">Näidistekst. Päris tutvustus tuleb tabelist.</p>
-                <button class="telli-nupp" type="button" data-kringel="Kaneelikringel">Telli</button>
+                <button class="telli-nupp" type="button" data-kringel="Kaneelikringel" data-k="telli">Telli</button>
               </div></div>
             </div>
             <div class="toode">
@@ -69,16 +69,16 @@
                 <div class="pisipildid">
                   <button type="button"><img src="pildid/kringel.svg" alt="Kardemonikringel"></button>
                 </div>
-                <button class="lahemalt" type="button">Lähemalt</button>
+                <button class="lahemalt" type="button" data-k="lahemalt">Lähemalt</button>
                 <p class="tekst">Näidistekst.</p>
-                <button class="telli-nupp" type="button" data-kringel="Kardemonikringel">Telli</button>
+                <button class="telli-nupp" type="button" data-kringel="Kardemonikringel" data-k="telli">Telli</button>
               </div></div>
             </div>
           </div></div>
         </article>
 
         <article class="grupp">
-          <button type="button">Pagaritooted</button>
+          <button type="button" data-k="grupp_pagar">Pagaritooted</button>
           <div class="sisu"><div>
             <div class="toode">
               <button class="ava" type="button">
@@ -92,7 +92,7 @@
                   <button type="button"><img src="pildid/sai.svg" alt="Sai 3"></button>
                   <button type="button"><img src="pildid/sai.svg" alt="Sai 4"></button>
                 </div>
-                <button class="lahemalt" type="button">Lähemalt</button>
+                <button class="lahemalt" type="button" data-k="lahemalt">Lähemalt</button>
                 <p class="tekst">Neli pisipilti ühes reas.</p>
               </div></div>
             </div>
@@ -100,7 +100,7 @@
         </article>
 
         <article class="grupp">
-          <button type="button">Kondiitritooted</button>
+          <button type="button" data-k="grupp_kondiiter">Kondiitritooted</button>
           <div class="sisu"><div>
             <div class="toode">
               <button class="ava" type="button">
@@ -111,7 +111,7 @@
                 <div class="pisipildid">
                   <button type="button"><img src="pildid/kook.svg" alt="Kook"></button>
                 </div>
-                <button class="lahemalt" type="button">Lähemalt</button>
+                <button class="lahemalt" type="button" data-k="lahemalt">Lähemalt</button>
                 <p class="tekst">Näidistekst.</p>
               </div></div>
             </div>
@@ -119,7 +119,7 @@
         </article>
 
         <article class="grupp">
-          <button type="button">Tordid</button>
+          <button type="button" data-k="grupp_tordid">Tordid</button>
           <div class="sisu"><div>
             <div class="toode">
               <button class="ava" type="button">
@@ -130,7 +130,7 @@
                 <div class="pisipildid">
                   <button type="button"><img src="pildid/tort.svg" alt="Tort"></button>
                 </div>
-                <button class="lahemalt" type="button">Lähemalt</button>
+                <button class="lahemalt" type="button" data-k="lahemalt">Lähemalt</button>
                 <p class="tekst">Tordid võivad tabelist kaduda.</p>
               </div></div>
             </div>
@@ -140,68 +140,68 @@
     </section>
 
     <section id="telli" class="grupp">
-      <button type="button">Telli</button>
+      <button type="button" data-k="telli">Telli</button>
       <div class="sisu"><div>
-        <a class="helista" href="tel:+3720000000">Helista ja telli</a>
+        <a class="helista" href="tel:+3720000000" data-k="helista">Helista ja telli</a>
         <form>
-          <label>Tee
+          <label><span data-k="vorm_tee">Tee</span>
             <select name="tee">
-              <option value="valmis">Valmis kringel</option>
-              <option value="fantaasia">Fantaasiakringel</option>
+              <option value="valmis" data-k="vorm_valmis">Valmis kringel</option>
+              <option value="fantaasia" data-k="vorm_fantaasia">Fantaasiakringel</option>
             </select>
           </label>
-          <label>Kringel
+          <label><span data-k="vorm_kringel">Kringel</span>
             <select name="kringel">
               <option>Kaneelikringel</option>
               <option>Kardemonikringel</option>
             </select>
           </label>
           <fieldset class="taidised">
-            <legend>Täidised</legend>
+            <legend data-k="vorm_taidised">Täidised</legend>
             <label><input type="checkbox" name="taidis" value="kaneel"> Kaneel</label>
             <label><input type="checkbox" name="taidis" value="kardemon"> Kardemon</label>
             <label><input type="checkbox" name="taidis" value="suhkur"> Suhkur</label>
           </fieldset>
-          <label>Suurus
+          <label><span data-k="vorm_suurus">Suurus</span>
             <select name="suurus">
-              <option>Väike</option>
-              <option>Suur</option>
+              <option data-k="vorm_vaike">Väike</option>
+              <option data-k="vorm_suur">Suur</option>
             </select>
           </label>
-          <label>Järeletulemise päev
+          <label><span data-k="vorm_paev">Järeletulemise päev</span>
             <input type="date" name="paev">
           </label>
-          <label>Kellaaeg
+          <label><span data-k="vorm_kell">Kellaaeg</span>
             <input type="time" name="kell">
           </label>
-          <label>Nimi
+          <label><span data-k="vorm_nimi">Nimi</span>
             <input type="text" name="nimi">
           </label>
-          <label>Telefon
+          <label><span data-k="vorm_telefon">Telefon</span>
             <input type="tel" name="telefon">
           </label>
-          <label class="rida"><input type="checkbox" name="uudis"> Tahan uudiseid</label>
-          <label>E-post
+          <label class="rida"><input type="checkbox" name="uudis"> <span data-k="vorm_uudis">Tahan uudiseid</span></label>
+          <label><span data-k="vorm_epost">E-post</span>
             <input type="email" name="epost">
           </label>
-          <button class="saada" type="submit">Saada tellimus</button>
-          <p class="olek"></p>
+          <button class="saada" type="submit" data-k="vorm_saada">Saada tellimus</button>
+          <p class="olek" data-k-olek="olek_luu"></p>
         </form>
       </div></div>
     </section>
 
     <div class="info">
       <section id="firmast">
-        <h2>Firmast</h2>
-        <p class="markus">Lühike tekst tuleb hiljem tabelist.</p>
+        <h2 data-k="firmast">Firmast</h2>
+        <p class="markus" data-k="firmast_markus">Lühike tekst tuleb hiljem tabelist.</p>
       </section>
       <section id="kauplus">
-        <h2>Kauplus</h2>
-        <p class="markus">Aadress ja lahtiolek. See ei ole e-pood.</p>
+        <h2 data-k="kauplus">Kauplus</h2>
+        <p class="markus" data-k="kauplus_markus">Aadress ja lahtiolek. See ei ole e-pood.</p>
       </section>
       <section id="kontakt">
-        <h2>Kontakt</h2>
-        <p class="markus">Telefon ja aadress on ka jaluses.</p>
+        <h2 data-k="kontakt">Kontakt</h2>
+        <p class="markus" data-k="kontakt_markus">Telefon ja aadress on ka jaluses.</p>
       </section>
     </div>
   </main>
@@ -212,7 +212,7 @@
 
   <footer class="jalus">
     <span>Kehra Pagar</span>
-    <a href="tel:+3720000000">Helista</a>
+    <a href="tel:+3720000000" data-k="jalus_helista">Helista</a>
     <span>Kehra</span>
   </footer>
   <script src="leht.js"></script>
