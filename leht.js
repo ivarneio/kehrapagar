@@ -76,6 +76,8 @@
 
   function sulgeGrupp(grupp) {
     grupp.classList.remove("lahti");
+    var riba = grupp.querySelector(".riba");
+    if (riba) riba.classList.remove("sisse");
   }
 
   var lava = document.querySelector(".grupid");
@@ -91,6 +93,43 @@
     kaardid().sort(function (a, b) {
       return (+a.getAttribute("data-jrk") || 0) - (+b.getAttribute("data-jrk") || 0);
     }).forEach(function (k) { lava.appendChild(k); });
+  }
+
+  function osa(riba) {
+    return riba.scrollWidth / 3;
+  }
+
+  function hoia(riba) {
+    var p = osa(riba);
+    if (p <= 0) return;
+    if (riba.scrollLeft < p * 0.5) riba.scrollLeft += p;
+    else if (riba.scrollLeft > p * 1.5) riba.scrollLeft -= p;
+  }
+
+  function seaLint(riba) {
+    if (riba.getAttribute("data-lint")) return;
+    var orig = Array.prototype.slice.call(riba.children);
+    var ees = document.createDocumentFragment();
+    var jarel = document.createDocumentFragment();
+    orig.forEach(function (el) {
+      ees.appendChild(el.cloneNode(true));
+      jarel.appendChild(el.cloneNode(true));
+    });
+    riba.insertBefore(ees, riba.firstChild);
+    riba.appendChild(jarel);
+    riba.setAttribute("data-lint", "1");
+    requestAnimationFrame(function () {
+      riba.scrollLeft = osa(riba);
+    });
+  }
+
+  function avaLint(grupp) {
+    var riba = grupp.querySelector(".riba");
+    if (!riba) return;
+    seaLint(riba);
+    riba.classList.remove("sisse");
+    void riba.offsetWidth;
+    if (!vahemLiikumine) riba.classList.add("sisse");
   }
 
   function liiguta(uus, ava) {
@@ -125,7 +164,10 @@
           k.style.transform = "";
           k.style.zIndex = "";
         });
-        if (ava) uus.classList.add("lahti");
+        if (ava) {
+          uus.classList.add("lahti");
+          avaLint(uus);
+        }
         flipKinni = false;
       }, FLIP_MS + 30);
     });
@@ -138,7 +180,10 @@
       if (vahemLiikumine) {
         var oliVaikne = grupp.classList.contains("lahti");
         kaardid().forEach(sulgeGrupp);
-        if (!oliVaikne) grupp.classList.add("lahti");
+        if (!oliVaikne) {
+          grupp.classList.add("lahti");
+          avaLint(grupp);
+        }
         return;
       }
       if (flipKinni) return;
@@ -150,16 +195,15 @@
 
   document.querySelectorAll(".riba").forEach(function (riba) {
     riba.addEventListener("wheel", function (e) {
-      if (vahemLiikumine) return;
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-      var max = riba.scrollWidth - riba.clientWidth;
-      if (max <= 1) return;
-      var otsasParemal = riba.scrollLeft >= max - 1;
-      var otsasVasakul = riba.scrollLeft <= 0;
-      if ((e.deltaY > 0 && otsasParemal) || (e.deltaY < 0 && otsasVasakul)) return;
+      if (!riba.getAttribute("data-lint")) seaLint(riba);
+      var samm = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       e.preventDefault();
-      riba.scrollLeft += e.deltaY;
+      riba.scrollLeft += samm;
+      hoia(riba);
     }, { passive: false });
+    riba.addEventListener("scroll", function () {
+      if (riba.getAttribute("data-lint")) hoia(riba);
+    });
   });
 
   var telli = document.querySelector("#telli");
@@ -186,31 +230,31 @@
     suurTelli.hidden = true;
   }
 
-  document.querySelectorAll(".pisi").forEach(function (nupp) {
-    nupp.addEventListener("click", function () {
-      var pildid = (nupp.getAttribute("data-pildid") || "").split("|");
-      var sildid = (nupp.getAttribute("data-sildid") || "").split("|");
-      kujud.innerHTML = "";
-      pildid.forEach(function (src, i) {
-        if (!src) return;
-        var kast = document.createElement("figure");
-        kast.className = "kuju";
-        var img = document.createElement("img");
-        img.src = src;
-        img.alt = nupp.querySelector("img").alt;
-        kast.appendChild(img);
-        if (sildid[i]) {
-          var silt = document.createElement("span");
-          silt.textContent = sildid[i];
-          kast.appendChild(silt);
-        }
-        kujud.appendChild(kast);
-      });
-      var nimi = nupp.getAttribute("data-kringel");
-      suurTelli.hidden = !nimi;
-      suurTelli.setAttribute("data-kringel", nimi || "");
-      vaade.classList.add("sees");
+  document.addEventListener("click", function (e) {
+    var nupp = e.target.closest ? e.target.closest(".pisi") : null;
+    if (!nupp) return;
+    var pildid = (nupp.getAttribute("data-pildid") || "").split("|");
+    var sildid = (nupp.getAttribute("data-sildid") || "").split("|");
+    kujud.innerHTML = "";
+    pildid.forEach(function (src, i) {
+      if (!src) return;
+      var kast = document.createElement("figure");
+      kast.className = "kuju";
+      var img = document.createElement("img");
+      img.src = src;
+      img.alt = nupp.querySelector("img").alt;
+      kast.appendChild(img);
+      if (sildid[i]) {
+        var silt = document.createElement("span");
+        silt.textContent = sildid[i];
+        kast.appendChild(silt);
+      }
+      kujud.appendChild(kast);
     });
+    var nimi = nupp.getAttribute("data-kringel");
+    suurTelli.hidden = !nimi;
+    suurTelli.setAttribute("data-kringel", nimi || "");
+    vaade.classList.add("sees");
   });
 
   vaade.querySelector(".sulge").addEventListener("click", sulgeVaade);
