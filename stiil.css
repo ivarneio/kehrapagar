@@ -72,15 +72,19 @@ nav a {
 .keeled button.sees { opacity: 1; }
 .sots { display: flex; gap: .4rem; }
 .sots a {
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 999px;
   display: grid;
   place-items: center;
-  color: var(--taust);
   text-decoration: none;
-  border: 1px solid rgba(244, 240, 230, .4);
-  font-size: .72rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.28);
 }
+.sots a.fb { background: #1877F2; }
+.sots a.ig {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.sots svg { width: 1.1rem; height: 1.1rem; fill: #fff; }
 main { width: min(40rem, calc(100% - 1.6rem)); margin: 0 auto; padding: 1.2rem 0 2rem; }
 section { scroll-margin-top: 4.2rem; margin: 1.4rem 0; }
 h1, h2 { font-weight: 600; margin: 0 0 .6rem; }
