@@ -53,6 +53,8 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 
 - Testpealeht: pildid/pealeht.jpg on näidispilt, mitte päris pood. 2026-10-06.
 
+- Testlehe avaldamine jäi 2026-10-06 kinni. Uus katse käivitatud.
+
 ## Märkused
 
 - Eesti silt «Tee» on tõlgitud «Вариант» ja «Choice». Reliisi ei peatatud.
