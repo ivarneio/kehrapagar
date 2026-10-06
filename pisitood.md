@@ -8,4 +8,4 @@ Kunstilise juhi ülevaatus tuleb hiljem. Seni kogume, mis silma jääb.
 
 ## Ootel
 
-- Firmast ja Kauplus ei ole pealehe kerimises. Need on lehed, mida peaaegu keegi ei vaata, ja menüüs on need juba olemas. Päise valik avab vastava lehe. Pealehele jäävad avaleht, tooted ja tellimine. Kontakt ei ole selles reas.
+- Tühi. Järgmine rida tuleb siia.
