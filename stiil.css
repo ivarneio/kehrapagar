@@ -87,7 +87,7 @@ h1, h2 { font-weight: 600; margin: 0 0 .6rem; }
 h1 { font-size: 1.7rem; }
 h2 { font-size: 1.25rem; }
 .markus { color: var(--vaikne); margin: 0 0 .8rem; }
-.vorm label, .uudis label {
+form label, .uudis label, fieldset label {
   display: block;
   margin: .55rem 0;
   font-size: .92rem;
@@ -101,9 +101,16 @@ input, select, button.saada {
   width: 100%;
   border-radius: 0;
 }
+fieldset {
+  border: 1px solid var(--joon);
+  margin: .7rem 0;
+  padding: .4rem .7rem .6rem;
+}
+fieldset label { display: flex; gap: .5rem; align-items: center; }
+fieldset input { width: auto; }
 .rida { display: flex; gap: .5rem; align-items: center; }
 .rida input[type="checkbox"] { width: auto; }
-.helista, .saada {
+.helista, .saada, .telli-nupp {
   display: block;
   text-align: center;
   text-decoration: none;
@@ -113,6 +120,12 @@ input, select, button.saada {
   margin: .7rem 0;
   border: 0;
   cursor: pointer;
+  font: inherit;
+}
+.telli-nupp {
+  width: auto;
+  margin: .7rem 1rem .9rem;
+  padding: .4rem .7rem;
 }
 .grupp {
   background: var(--paber);
@@ -142,16 +155,11 @@ input, select, button.saada {
 }
 .grupp.lahti .sisu { grid-template-rows: 1fr; }
 .sisu > div { overflow: hidden; min-height: 0; }
-.toode {
-  border-top: 1px solid var(--joon);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity .35s ease, transform .35s ease;
-}
+.toode { border-top: 1px solid var(--joon); opacity: 0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; }
 .grupp.lahti .toode { opacity: 1; transform: none; }
 .grupp.lahti .toode:nth-child(2) { transition-delay: .08s; }
 .grupp.lahti .toode:nth-child(3) { transition-delay: .16s; }
-.toode > button {
+.toode > button.ava {
   width: 100%;
   display: flex;
   gap: .7rem;
@@ -174,21 +182,11 @@ input, select, button.saada {
 }
 .nimi { font-weight: 600; }
 .hind { color: var(--vaikne); font-size: .9rem; }
-.paneel {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows .45s ease;
-}
+.paneel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
 .paneel.lahti { grid-template-rows: 1fr; }
 .paneel > div { overflow: hidden; min-height: 0; padding: 0 1rem; }
 .pisipildid { display: flex; gap: .35rem; padding-bottom: .6rem; }
-.pisipildid button {
-  flex: 1;
-  border: 0;
-  padding: 0;
-  background: #efe6d4;
-  cursor: pointer;
-}
+.pisipildid button { flex: 1; border: 0; padding: 0; background: #efe6d4; cursor: pointer; }
 .pisipildid img { width: 100%; height: 4.4rem; object-fit: cover; }
 .lahemalt {
   background: none;
@@ -227,22 +225,39 @@ input, select, button.saada {
   font-size: .82rem;
 }
 .jalus a { color: inherit; text-decoration: none; }
+@media (max-width: 799px) {
+  .pais .parem { display: flex; align-items: center; gap: .45rem; }
+}
 @media (min-width: 800px) {
   .menu-nupp { display: none; }
+  .pais {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
   nav {
     display: flex;
     position: static;
     flex-direction: row;
-    gap: .9rem;
+    justify-content: center;
+    gap: 1.4rem;
     background: none;
     padding: 0;
-    margin-left: .4rem;
   }
   nav a { border: 0; padding: 0; }
-  .pais .parem { margin-left: auto; display: flex; align-items: center; gap: .7rem; }
-}
-@media (max-width: 799px) {
-  .pais .parem { display: flex; align-items: center; gap: .45rem; }
+  .pais .parem { justify-self: end; display: flex; align-items: center; gap: .7rem; }
+  main { width: min(76rem, calc(100% - 3rem)); }
+  .grupid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .8rem;
+    align-items: start;
+  }
+  .info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
