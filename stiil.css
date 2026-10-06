@@ -98,6 +98,7 @@ main { width: min(52rem, calc(100% - 1.6rem)); margin: 0 auto; padding: 1.2rem 0
 section { scroll-margin-top: 4.2rem; margin: 1.4rem 0; }
 h1, h2 { font-weight: 600; margin: 0 0 .6rem; }
 h1 { font-size: 1.7rem; }
+.pealeht { width: 100%; max-height: 70vh; object-fit: cover; display: block; margin: 0 0 1rem; }
 h2 { font-size: 1.25rem; }
 .markus { color: var(--vaikne); margin: 0 0 .8rem; }
 form label, .uudis label, fieldset label {
