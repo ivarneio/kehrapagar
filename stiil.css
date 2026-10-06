@@ -137,12 +137,11 @@ fieldset input { width: auto; }
 }
 .grupid { display: flex; flex-direction: column; gap: .45rem; }
 .grupp {
-  background: var(--paber);
-  border: 1px solid var(--joon);
+  background: var(--taust);
+  border: 0;
   margin: 0;
-  transition: box-shadow .8s ease;
+  box-shadow: none;
 }
-.grupp.lahti { box-shadow: 0 10px 24px rgba(44, 36, 22, .08); }
 .grupp > button {
   width: 100%;
   text-align: left;
