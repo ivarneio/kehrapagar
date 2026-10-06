@@ -10,7 +10,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Eesmärgid: tooted, sotsiaalmeedia kampaaniad, kringlitellimused.
 - Tellimus on ainult kohapealne järeletulemine ja kohapealne maksmine. Ettemaksu ei ole.
 - Lehel on suur nupp «Helista ja telli». Telefonis avab see kõne.
-- Kõrval on lühike vorm: kringel, suurus, järeletulemise päev ja kellaaeg, nimi, telefon.
+- Kõrval on lühike vorm: kringel, suurus, järeletulemise päev ja kellaaeg, nimi, telefon. Märkeruut «Tahan uudiseid» ja e-post, kui see on märgitud.
 - Tellimus salvestub Zone'i. Igast tellimusest läheb e-kiri pagarikotta.
 - Pagaril on lihtne telefonivaade. Sinna saab kirja panna ka telefonitellimuse, et kõik tellimused oleks ühes kohas. Pagarivaade on eesti keeles.
 - Igal kampaanial on lühike link. `?keel=ru` või `?keel=en` avab sama lehe teises keeles.
@@ -25,6 +25,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Päis on nagu Helirännakul: üleval menüü ja sotsiaalmeedia.
 - Avaleht on `pealeht/pealeht.jpg`. Kui faili ei ole, on tavaline avaleht. Cron kopeerib.
 - Uudiskiri: soovija kirjutab e-posti, nimekiri on Zone'is, inimene koostab kirja ja saadab välja. Saatmine jääb Zone'i piiride sisse.
+- Eemaldamine on kirja lõpu link. Skript kustutab selle aadressi võtme järgi.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -34,7 +35,7 @@ See ei ole veel lukus. Üks pikk vaade, mitte pood paljude alamlehtedega. Telefo
 
 1. Päis, nagu Helirännakul. Üleval menüü ja sotsiaalmeedia ikoonid. Menüü viib sama lehe plokkideni: tellimus, tooted, pood. Keel on siin.
 2. Avalehe esimene vaade. Üks pilt, kui see on kaustas. Kui ei ole, on tavaline avaleht. Eraldi kampaaniariba ei ole.
-3. Tellimus. Vorm kohe: kringel, suurus, päev ja kellaaeg, nimi, telefon. Ettemaksu ega ostukorvi ei ole. Suur nupp «Helista ja telli» avab telefonis kõne.
+3. Tellimus. Vorm kohe: kringel, suurus, päev ja kellaaeg, nimi, telefon. Märkeruut «Tahan uudiseid» ja selle kõrval e-post. Ettemaksu ega ostukorvi ei ole. Suur nupp «Helista ja telli» avab telefonis kõne.
 4. Tootegrupid. Suured kaardid, üks puudutus avab grupi.
 5. Tooted. Pilt, nimi, lühike tekst, hind. Kringel on tellitav. Teised tooted on vaatamiseks ja poes ostmiseks.
 6. Oma pood. Aadress, lahtiolek, kuidas järgi tulla. See ei ole e-pood.
@@ -59,7 +60,11 @@ Zone'i cron vaatab kausta umbes iga 15 minuti tagant ja kopeerib faili lehe kaus
 
 Kinnitatud. Lihtne ja teostatav Zone'i piiride sees.
 
-Külastaja kirjutab e-posti ja kinnitab, et tahab kirja. Nimekiri salvestub Zone'i, mitte Google'isse. Igas kirjas on link «Ei soovi enam». Ilma nõusolekuta aadressi nimekirja ei lisata.
+Külastaja kirjutab e-posti ja kinnitab, et tahab kirja. Sama saab teha kringlitellimuse juures: märkeruut «Tahan uudiseid» ja e-posti väli. Nimekiri salvestub Zone'i, mitte Google'isse. Ilma nõusolekuta aadressi nimekirja ei lisata. Sama aadress teist korda sisse ei lähe.
+
+Igal aadressil on oma juhuslik võti. Iga saadetud kirja all on väikeses kirjas «Eemalda mind uudiskirjagrupist». Link on võti, mitte paljas e-post, näiteks `kehrapagar.ee/uudis/eemalda?voti=...`. Vajutus avab lehe, skript leiab võtme järgi rea ja kustutab selle. Leht ütleb, et aadress on nimekirjast maas. Keegi teine ei saa aadressi ära arvata ja maha võtta.
+
+Pagarivaates on nimekiri näha, kui on vaja keegi käsitsi maha võtta. Tavaline tee on link kirja lõpus. Seda teeb skript, mitte inimene faili kallal.
 
 Koostamine on üks vaade: pealkiri, tekst, nupp «Saada». Enne saatmist näeb, mitmele inimesele kiri läheb. Saatja ei kirjuta koodi.
 
@@ -155,6 +160,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Mis sotsiaalmeedia ikoonid päises on.
 - Kas croni samm on 15 minutit või tund.
 - Mis aadressilt uudiskiri välja läheb.
+- Põhimenüü mustand: Telli, Tooted, Firmast, Kauplus, Kontakt. Kinnitust veel ei ole.
 
 ## Tööviis
 
