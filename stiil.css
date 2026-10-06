@@ -122,11 +122,6 @@ fieldset input { width: auto; }
   cursor: pointer;
   font: inherit;
 }
-.telli-nupp {
-  width: auto;
-  margin: .7rem 1rem .9rem;
-  padding: .4rem .7rem;
-}
 .grupid { display: flex; flex-direction: column; gap: .45rem; }
 .grupp {
   background: var(--paber);
@@ -153,50 +148,40 @@ fieldset input { width: auto; }
 }
 .grupp.lahti .sisu { grid-template-rows: 1fr; }
 .sisu > div { overflow: hidden; min-height: 0; }
-.toode { border-top: 1px solid var(--joon); opacity: 0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; }
-.grupp.lahti .toode { opacity: 1; transform: none; }
-.grupp.lahti .toode:nth-child(2) { transition-delay: .08s; }
-.grupp.lahti .toode:nth-child(3) { transition-delay: .16s; }
-.toode > button.ava {
-  width: 100%;
+.riba {
   display: flex;
-  gap: .7rem;
-  align-items: center;
-  background: none;
+  gap: .6rem;
+  overflow-x: auto;
+  padding: 0 1rem .9rem;
+  scroll-snap-type: x mandatory;
+}
+.pisi {
+  flex: 0 0 7.4rem;
+  scroll-snap-align: start;
   border: 0;
+  background: none;
+  padding: 0;
   text-align: left;
   font: inherit;
   color: inherit;
-  padding: .7rem 1rem;
   cursor: pointer;
+  opacity: 0;
+  transform: translateX(12px);
 }
-.toode img, .pilt {
-  width: 4.2rem;
-  height: 4.2rem;
+.grupp.lahti .pisi { animation: ilmub .4s ease forwards; }
+.grupp.lahti .pisi:nth-child(2) { animation-delay: .08s; }
+.grupp.lahti .pisi:nth-child(3) { animation-delay: .16s; }
+.grupp.lahti .pisi:nth-child(4) { animation-delay: .24s; }
+.grupp.lahti .pisi:nth-child(5) { animation-delay: .32s; }
+@keyframes ilmub { to { opacity: 1; transform: none; } }
+.pisi img {
+  width: 7.4rem;
+  height: 7.4rem;
   object-fit: cover;
   background: #efe6d4;
   display: block;
-  flex: 0 0 auto;
 }
-.nimi { font-weight: 600; }
-.hind { color: var(--vaikne); font-size: .9rem; }
-.paneel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
-.paneel.lahti { grid-template-rows: 1fr; }
-.paneel > div { overflow: hidden; min-height: 0; padding: 0 1rem; }
-.pisipildid { display: flex; gap: .35rem; padding-bottom: .6rem; }
-.pisipildid button { flex: 1; border: 0; padding: 0; background: #efe6d4; cursor: pointer; }
-.pisipildid img { width: 100%; height: 4.4rem; object-fit: cover; }
-.lahemalt {
-  background: none;
-  border: 0;
-  color: var(--vaikne);
-  font: inherit;
-  text-decoration: underline;
-  cursor: pointer;
-  padding: 0 0 .7rem;
-}
-.tekst { display: none; color: var(--vaikne); padding-bottom: .8rem; }
-.tekst.lahti { display: block; }
+.pisi .nimi { display: block; font-weight: 600; font-size: .92rem; margin-top: .35rem; }
 .taisekraan {
   display: none;
   position: fixed;
@@ -204,10 +189,34 @@ fieldset input { width: auto; }
   z-index: 50;
   background: rgba(28, 22, 14, .92);
   place-items: center;
-  padding: 1rem;
+  padding: 3.2rem 1rem 1.2rem;
 }
 .taisekraan.sees { display: grid; }
-.taisekraan img { max-width: 100%; max-height: 100%; cursor: pointer; }
+.sulge {
+  position: absolute;
+  top: .6rem;
+  right: .7rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 0;
+  background: transparent;
+  color: #f4f0e6;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.kujud {
+  display: flex;
+  gap: .8rem;
+  align-items: end;
+  justify-content: center;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.kuju { text-align: center; color: #f4f0e6; }
+.kuju img { max-height: 70vh; max-width: 46vw; display: block; background: #efe6d4; }
+.kuju span { display: block; margin-top: .35rem; font-size: .9rem; }
+.taisekraan .telli-nupp { width: auto; margin: .8rem 0 0; padding: .45rem .9rem; }
 .jalus {
   position: fixed;
   left: 0;
@@ -226,6 +235,8 @@ fieldset input { width: auto; }
 .info { display: flex; flex-direction: column; gap: 1.2rem; }
 @media (max-width: 799px) {
   .pais .parem { display: flex; align-items: center; gap: .45rem; }
+  .kuju img { max-width: 78vw; max-height: 42vh; }
+  .kujud { flex-direction: column; align-items: center; }
 }
 @media (min-width: 800px) {
   .menu-nupp { display: none; }
@@ -248,5 +259,6 @@ fieldset input { width: auto; }
   main { width: min(40rem, calc(100% - 3rem)); }
 }
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+  * { transition: none !important; animation: none !important; }
+  .pisi { opacity: 1; transform: none; }
 }
