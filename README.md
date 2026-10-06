@@ -22,6 +22,8 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Drive'is on kataloog `tooted`. Tootegrupid võivad olla selle all kataloogidena.
 - Toote valik avab toote alla paneeli. Tutvustus on peidus. Pilt avaneb täisekraanil.
 - Jalus on kogu aeg näha. Seal on firma kontaktandmed.
+- Päis on nagu Helirännakul: üleval menüü ja sotsiaalmeedia.
+- Avaleht on jooksev kampaania. Kui kampaaniat ei ole, on tavaline avaleht.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -29,9 +31,9 @@ See ei ole veel lukus. Üks pikk vaade, mitte pood paljude alamlehtedega. Telefo
 
 Ülevalt alla:
 
-1. Kampaaniariba. Nähtav ainult siis, kui kampaania on sees. Tavaline aadress näitab jooksvat kampaaniat või on tühi. Sotsiaalmeedia link on sama leht, riba ja seotud toode ees.
-2. Päis. Nimi, keel, suur nupp «Helista ja telli».
-3. Tellimus. Vorm kohe: kringel, suurus, päev ja kellaaeg, nimi, telefon. Ettemaksu ega ostukorvi ei ole.
+1. Päis, nagu Helirännakul. Üleval menüü ja sotsiaalmeedia ikoonid. Menüü viib sama lehe plokkideni: tellimus, tooted, pood. Keel on siin.
+2. Avalehe esimene vaade. Kui kampaania on käimas, on see kampaania. Kui ei ole, on tavaline avaleht. Eraldi kampaaniariba ei ole.
+3. Tellimus. Vorm kohe: kringel, suurus, päev ja kellaaeg, nimi, telefon. Ettemaksu ega ostukorvi ei ole. Suur nupp «Helista ja telli» avab telefonis kõne.
 4. Tootegrupid. Suured kaardid, üks puudutus avab grupi.
 5. Tooted. Pilt, nimi, lühike tekst, hind. Kringel on tellitav. Teised tooted on vaatamiseks ja poes ostmiseks.
 6. Oma pood. Aadress, lahtiolek, kuidas järgi tulla. See ei ole e-pood.
@@ -40,6 +42,8 @@ See ei ole veel lukus. Üks pikk vaade, mitte pood paljude alamlehtedega. Telefo
 Pagarivaade on eraldi aadress, menüüs seda ei ole. Keel vahetub samal lehel.
 
 Gruppide esimene mustand, ei ole lukus: Kringlid, Pirukad ja saiad, Tordid ja koogid, Küpsised. Pood on oma plokk, mitte tootegrupp.
+
+Sotsiaalmeedia lingid tulevad seadetest, nagu Helirännakul. Neid ei tõlgita.
 
 ### Tootegrupi avanemine (mustand)
 
@@ -59,7 +63,7 @@ Pisipildile vajutus avab selle pildi täisekraanil. Sulgemine on sama pildi vaju
 
 Paneel käib sama liikumisega mis grupp. Näha on, kust see tuli. Teise toote valik sulgeb eelmise paneeli. Grupi avanemine ja toote paneel on kaks sammu. Esmalt rulluvad grupi pildid. Siis ühe toote all avaneb kuni neli pisipilti. Tekst on kolmas samm, ja ainult viitel.
 
-Jalus jääb paneeli ja täisekraani pildi ajal nähtavale. Kontakt ei kao kerides.
+Jalus jääb paneeli ja täisekraani pildi ajal nähtavale. Kontakt ei kao kerides. Päis jääb samuti nähtavale.
 
 ## Keel ja tekst
 
@@ -67,9 +71,9 @@ Eesti on ainus keel, mida inimene muudab. Vene ja inglise tulevad sellest.
 
 Muster on sama mis Helirännakul (ivarneio/helivann):
 
-- `seaded.json` — telefon, aadress, lahtiolek, kuhu tellimuskiri läheb. Neid ei tõlgita.
+- `seaded.json` — telefon, aadress, lahtiolek, kuhu tellimuskiri läheb, sotsiaalmeedia. Neid ei tõlgita.
 - `tekstid.json` — nupud, vormi sildid, menüü. Võti on sama igas keeles: `et`, `ru`, `en`.
-- `sisu.json` — tooted, kampaaniariba, kringli suurused.
+- `sisu.json` — tooted, kampaania, kringli suurused.
 
 Kui tõlget pole, näitab leht eesti teksti.
 
@@ -128,6 +132,8 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Tootenimekiri, suurused, järeletulemise ajad, tellimuse e-posti aadress.
 - Mis muud tooteväljad peale aktiivsuse ja säilivuspäevade reas on.
 - Mis kontaktid jaluses täpselt on: telefon, aadress, e-post, lahtiolek.
+- Mis on tavaline avaleht, kui kampaaniat ei ole.
+- Mis sotsiaalmeedia ikoonid päises on.
 
 ## Tööviis
 
