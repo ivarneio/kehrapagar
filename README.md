@@ -24,6 +24,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Jalus on kogu aeg näha. Seal on firma kontaktandmed.
 - Päis on nagu Helirännakul: üleval menüü ja sotsiaalmeedia.
 - Avaleht on `pealeht/pealeht.jpg`. Kui faili ei ole, on tavaline avaleht. Cron kopeerib.
+- Uudiskiri: soovija kirjutab e-posti, nimekiri on Zone'is, inimene koostab kirja ja saadab välja.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -37,9 +38,10 @@ See ei ole veel lukus. Üks pikk vaade, mitte pood paljude alamlehtedega. Telefo
 4. Tootegrupid. Suured kaardid, üks puudutus avab grupi.
 5. Tooted. Pilt, nimi, lühike tekst, hind. Kringel on tellitav. Teised tooted on vaatamiseks ja poes ostmiseks.
 6. Oma pood. Aadress, lahtiolek, kuidas järgi tulla. See ei ole e-pood.
-7. Jalus. Kogu aeg ekraani allservas. Firma kontaktandmed: nimi, aadress, telefon. Telefon avab kõne.
+7. Uudis. Üks väli: e-post. Inimene annab ise nõusoleku.
+8. Jalus. Kogu aeg ekraani allservas. Firma kontaktandmed: nimi, aadress, telefon. Telefon avab kõne.
 
-Pagarivaade on eraldi aadress, menüüs seda ei ole. Keel vahetub samal lehel.
+Pagarivaade on eraldi aadress, menüüs seda ei ole. Uudiskirja koostamine on samas suletud vaates, mitte avalikus menüüs. Keel vahetub samal lehel.
 
 Gruppide esimene mustand, ei ole lukus: Kringlid, Pirukad ja saiad, Tordid ja koogid, Küpsised. Pood on oma plokk, mitte tootegrupp.
 
@@ -52,6 +54,14 @@ Tavakasutaja paneb Drive'i kataloogi `pealeht` ühe faili: `pealeht.jpg`. Kui fa
 Tekst võib olla juba pildi peal. Eraldi lauset ei ole vaja. `pealeht.txt` on lubatud hiljem, aga ei ole kohustus.
 
 Zone'i cron vaatab kausta umbes iga 15 minuti tagant ja kopeerib faili lehe kausta. Külastaja loeb ainult seda koopiat. Kui Google on maas, jääb viimane pilt ette. Puuduv fail ei ole viga ega peata midagi.
+
+### Uudiskiri
+
+Lihtne. Külastaja kirjutab e-posti ja kinnitab, et tahab kirja. Nimekiri salvestub Zone'i, mitte Google'isse. Igas kirjas on link «Ei soovi enam». Ilma nõusolekuta aadressi nimekirja ei lisata.
+
+Koostamine on üks vaade: pealkiri, tekst, nupp «Saada». Enne saatmist näeb, mitmele inimesele kiri läheb. Saatja ei kirjuta koodi.
+
+Saatmine käib Zone'i postist, aeglaselt. Zone lubab ühe kirja iga 5 sekundi tagant ja tavalisel postkastil kuni 2000 adressaati 24 tunni jooksul. Ühes kirjas tohib olla kuni 400 adressaati, seega saadetakse ükshaaval. Kui nimekiri on sellest suurem, jääb järg ööle. Reklaamkiri ilma nõusolekuta on Zone'i mõttes rämpspost ja on keelatud.
 
 ### Tootegrupi avanemine (mustand)
 
@@ -142,6 +152,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Mis kontaktid jaluses täpselt on: telefon, aadress, e-post, lahtiolek.
 - Mis sotsiaalmeedia ikoonid päises on.
 - Kas croni samm on 15 minutit või tund.
+- Mis aadressilt uudiskiri välja läheb.
 
 ## Tööviis
 
