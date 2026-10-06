@@ -20,13 +20,13 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 
 - Keelevalik loeb `tekstid.json`. `?keel=ru` ja `?keel=en` avavad vastava keele. Valik jääb meelde.
 - Tootenimed ja täidised ei vahetu. Need tulevad hiljem sisufailist.
-- Firmast ja Kauplus ei ole pealehe kerimises. Päis avab `firmast.html` ja `kauplus.html`. Kontakt jääb pealehele.
+- Firmast, Kauplus ja Kontakt ei ole pealehe kerimises. Päis avab oma lehe. Jaluses jääb lühike kontakt.
 - Tootegrupid on üksteise all ka desktopis. Kõrvuti võrku ei ole.
 - Valitud grupp tõuseb üles ja lükkab teised alla. Liikumine on 0,8 sekundit.
 - Iga tootegrupp avab sama lindi. Lint sõidab sisse paremalt vasakule, kordub, otsa ei ole. Kursori all leht edasi ei keri.
 - Pisipilt avab suure vaate. Sulgemine on vajutus samal pildil, rist või Esc. Kerimine ei sulge. Mitu kuju jääb keritavaks.
 - Kõigil gruppidel on näidispildid, et linti hinnata.
-- Facebook ja Instagram on päises, samad ümargused märgid nagu Helirännakul, originaalvärvidega. Facebook on www.facebook.com/KehraPagar. Instagram on www.instagram.com/kehrapagar/.
+- Facebook ja Instagram on päises, samad ümargused märgid nagu Helirännakul. Päis on nagu Helirännakul: logo vasakul, menüü keskel, ikoonid paremal.
 
 ## Järgmine
 
@@ -44,7 +44,8 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Sama avamine kõigil tootegruppidel. 2026-10-06. Eesti teksti ei muudetud, nimesid ei tõlgitud.
 - Suur pilt sulgub vajutusest. Rist ja Esc jäävad. Kerimine ei sulge. 2026-10-06. Eesti teksti ei muudetud.
 - Sotsiaallingid päris aadressidega ja Helirännaku ikoonidega. 2026-10-06. Eesti teksti ei muudetud.
-- Päise andmed on lehega ühelaiused. Desktop on 52rem. Ikoonidel on oma mõõt, et need ei kaoks. 2026-10-06.
+- Päis pandud Helirännaku ritta. Logo vasakul, menüü keskel, ikoonid paremal. 2026-10-06.
+- Kontakt oma lehena. Sünk: uus võti `kontakt_pikem`. 2026-10-06.
 
 ## Märkused
 
