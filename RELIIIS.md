@@ -51,6 +51,8 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 
 - Paneelid on taustaga ühte värvi, serva ega varju ei ole. Kinnitatud 2026-10-06. Eesti teksti ei muudetud.
 
+- Testpealeht: pildid/pealeht.jpg on näidispilt, mitte päris pood. 2026-10-06.
+
 ## Märkused
 
 - Eesti silt «Tee» on tõlgitud «Вариант» ja «Choice». Reliisi ei peatatud.
