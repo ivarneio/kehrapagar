@@ -20,6 +20,7 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 
 - Keelevalik loeb `tekstid.json`. `?keel=ru` ja `?keel=en` avavad vastava keele. Valik jääb meelde.
 - Tootenimed ja täidised ei vahetu. Need tulevad hiljem sisufailist.
+- Firmast ja Kauplus ei ole pealehe kerimises. Päis avab `firmast.html` ja `kauplus.html`. Kontakt jääb pealehele.
 
 ## Järgmine
 
@@ -28,4 +29,9 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 
 ## Tehtud
 
-- Keelefail ja nupud. 2026-10-06.
+- Keelefail ja nupud. 2026-10-06. Sünk: eesti võtmed said ru ja en samas failis. Uusi võtmeid hiljem ei lisandunud.
+- Firmast ja Kauplus oma lehtedena. 2026-10-06. Eesti teksti ei muudetud, seega ru ja en jäid puutumata.
+
+## Märkused
+
+- Eesti silt «Tee» on tõlgitud «Вариант» ja «Choice». See on valik, mitte jook. Reliisi ei peatatud.
