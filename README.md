@@ -19,6 +19,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Pildid ja tekstid on Google'is. Reliisi osa on sealne makro või skript. Külastaja Google'it ei loe.
 - ZoneCloud ei ole andmehoidla. Sealt ei ole reliisi ajal ligipääsu.
 - Foto ja tekst seotakse failinimega. Tunnus on püsiv, nimi ja rea järjekord ei seo.
+- Drive'is on kataloog `tooted`. Tootegrupid võivad olla selle all kataloogidena.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -82,14 +83,18 @@ Tõlkesünk on eraldi reliisi ülesanne. Seda ei ehitata esimese lehefailiga koo
 
 ## Foto ja tekst
 
-Side on failinimi. See on lihtne ja ei sõltu tõlkest.
+Side on failinimi. Kaust on inimese jaoks, et oleks lihtsam orienteeruda.
+
+Drive'is on üks kataloog `tooted`. Selle all võivad olla tootegrupid kataloogidena, näiteks `tooted/kringlid/kaneel.jpg` ja `tooted/kypsised/jussike.jpg`. Grupi oma kaart on samas kataloogis: `tooted/kypsised/kypsised.jpg`.
 
 - Igal tootel on tabelis püsiv tunnus, näiteks `kaneel`. Seda ei tõlgita.
 - Pildifail kannab sama tunnust: `kaneel.jpg`. Veerg `pilt` ütleb selle failinime.
-- Makro otsib kaustast sama nime ja kopeerib pildi koos selle rea tekstiga.
+- Makro otsib `tooted` alt, ka alamkataloogidest, sama nime ja kopeerib pildi koos selle rea tekstiga.
+- Uus fail uue nimega ja sama tunnusega rida on tavaline reliis. Koodi selleks ei muudeta.
 - Mitu pilti: `kaneel-1.jpg`, `kaneel-2.jpg`. Veergu kirjutatakse need komaga. Esimene on see, mis grupi avanedes välja rullub.
-- Grupi kaart on sama loogika: tunnus `kypsised`, fail `kypsised.jpg`.
 - Kui faili ei ole, tuleb märkus, nagu kirjaveast. Reliis ei jää tegemata. Toode läheb välja ilma pildita, kuni fail tuleb.
+
+Kausta koht ei seo pilti tekstiga. Kui `kaneel.jpg` liigub ühest grupikataloogist teise, jääb side alles. Grupi otsustab tabeli veerg, mitte see, mis kaustas fail parasjagu on.
 
 Nime ega rea järjekorraga pilti ei seota. Nimi muutub, ja rida nihkub, kui keegi vahele lisab.
 
