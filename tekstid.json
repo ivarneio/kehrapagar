@@ -33,10 +33,12 @@
     "vorm_epost": "E-post",
     "vorm_saada": "Saada tellimus",
     "lahemalt": "Lähemalt",
+    "sulge": "Sulge",
     "olek_luu": "See on luu. Kiri ei lähe veel välja.",
     "grupp_kringlid": "Kringlid",
     "grupp_pagar": "Pagaritooted",
     "grupp_kondiiter": "Kondiitritooted",
+    "grupp_kypsised": "Küpsised",
     "grupp_tordid": "Tordid"
   },
   "ru": {
@@ -73,10 +75,12 @@
     "vorm_epost": "Эл. почта",
     "vorm_saada": "Отправить заказ",
     "lahemalt": "Подробнее",
+    "sulge": "Закрыть",
     "olek_luu": "Это каркас. Письмо ещё не уходит.",
     "grupp_kringlid": "Крендели",
     "grupp_pagar": "Выпечка",
     "grupp_kondiiter": "Кондитерские",
+    "grupp_kypsised": "Печенье",
     "grupp_tordid": "Торты"
   },
   "en": {
@@ -113,10 +117,12 @@
     "vorm_epost": "Email",
     "vorm_saada": "Send order",
     "lahemalt": "More",
+    "sulge": "Close",
     "olek_luu": "This is a frame. The letter does not go out yet.",
     "grupp_kringlid": "Kringles",
     "grupp_pagar": "Bakery goods",
     "grupp_kondiiter": "Confectionery",
+    "grupp_kypsised": "Cookies",
     "grupp_tordid": "Cakes"
   }
 }
