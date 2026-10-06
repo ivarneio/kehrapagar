@@ -36,7 +36,7 @@
     });
   });
 
-  document.querySelectorAll(".toode > button").forEach(function (nupp) {
+  document.querySelectorAll(".toode > button.ava").forEach(function (nupp) {
     nupp.addEventListener("click", function () {
       var toode = nupp.parentElement;
       var paneel = toode.querySelector(".paneel");
@@ -50,8 +50,28 @@
 
   document.querySelectorAll(".lahemalt").forEach(function (nupp) {
     nupp.addEventListener("click", function () {
-      var tekst = nupp.nextElementSibling;
-      tekst.classList.toggle("lahti");
+      nupp.nextElementSibling.classList.toggle("lahti");
+    });
+  });
+
+  var telli = document.querySelector("#telli");
+  var vorm = document.querySelector("form");
+  var kringel = vorm.querySelector("[name=kringel]");
+  var tee = vorm.querySelector("[name=tee]");
+  var taidised = document.querySelector(".taidised");
+  function naitaTaidised() {
+    taidised.hidden = tee.value !== "fantaasia";
+  }
+  tee.addEventListener("change", naitaTaidised);
+  naitaTaidised();
+
+  document.querySelectorAll(".telli-nupp").forEach(function (nupp) {
+    nupp.addEventListener("click", function () {
+      kringel.value = nupp.getAttribute("data-kringel");
+      tee.value = "valmis";
+      naitaTaidised();
+      telli.classList.add("lahti");
+      telli.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 
@@ -73,12 +93,8 @@
     if (e.key === "Escape") sulgeVaade();
   });
 
-  var vorm = document.querySelector("form");
-  if (vorm) {
-    vorm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var olek = document.querySelector(".olek");
-      if (olek) olek.textContent = "See on luu. Kiri ei lähe veel välja.";
-    });
-  }
+  vorm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    document.querySelector(".olek").textContent = "See on luu. Kiri ei lähe veel välja.";
+  });
 })();
