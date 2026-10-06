@@ -23,7 +23,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Toote valik avab toote alla paneeli. Tutvustus on peidus. Pilt avaneb täisekraanil.
 - Jalus on kogu aeg näha. Seal on firma kontaktandmed.
 - Päis on nagu Helirännakul: üleval menüü ja sotsiaalmeedia.
-- Avaleht on jooksev kampaania. Kui kampaaniat ei ole, on tavaline avaleht.
+- Avaleht on `pealeht/pealeht.jpg`. Kui faili ei ole, on tavaline avaleht. Cron kopeerib.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -32,7 +32,7 @@ See ei ole veel lukus. Üks pikk vaade, mitte pood paljude alamlehtedega. Telefo
 Ülevalt alla:
 
 1. Päis, nagu Helirännakul. Üleval menüü ja sotsiaalmeedia ikoonid. Menüü viib sama lehe plokkideni: tellimus, tooted, pood. Keel on siin.
-2. Avalehe esimene vaade. Kui kampaania on käimas, on see kampaania. Kui ei ole, on tavaline avaleht. Eraldi kampaaniariba ei ole.
+2. Avalehe esimene vaade. Üks pilt, kui see on kaustas. Kui ei ole, on tavaline avaleht. Eraldi kampaaniariba ei ole.
 3. Tellimus. Vorm kohe: kringel, suurus, päev ja kellaaeg, nimi, telefon. Ettemaksu ega ostukorvi ei ole. Suur nupp «Helista ja telli» avab telefonis kõne.
 4. Tootegrupid. Suured kaardid, üks puudutus avab grupi.
 5. Tooted. Pilt, nimi, lühike tekst, hind. Kringel on tellitav. Teised tooted on vaatamiseks ja poes ostmiseks.
@@ -44,6 +44,14 @@ Pagarivaade on eraldi aadress, menüüs seda ei ole. Keel vahetub samal lehel.
 Gruppide esimene mustand, ei ole lukus: Kringlid, Pirukad ja saiad, Tordid ja koogid, Küpsised. Pood on oma plokk, mitte tootegrupp.
 
 Sotsiaalmeedia lingid tulevad seadetest, nagu Helirännakul. Neid ei tõlgita.
+
+### Avaleht
+
+Tavakasutaja paneb Drive'i kataloogi `pealeht` ühe faili: `pealeht.jpg`. Kui fail on olemas, on see avalehe esimene vaade. Kui kaust on tühi, on tavaline avaleht. Uus pilt pannakse sama nimega vana peale. Kustutamine võtab kampaania maha.
+
+Tekst võib olla juba pildi peal. Eraldi lauset ei ole vaja. `pealeht.txt` on lubatud hiljem, aga ei ole kohustus.
+
+Zone'i cron vaatab kausta umbes iga 15 minuti tagant ja kopeerib faili lehe kausta. Külastaja loeb ainult seda koopiat. Kui Google on maas, jääb viimane pilt ette. Puuduv fail ei ole viga ega peata midagi.
 
 ### Tootegrupi avanemine (mustand)
 
@@ -132,8 +140,8 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Tootenimekiri, suurused, järeletulemise ajad, tellimuse e-posti aadress.
 - Mis muud tooteväljad peale aktiivsuse ja säilivuspäevade reas on.
 - Mis kontaktid jaluses täpselt on: telefon, aadress, e-post, lahtiolek.
-- Mis on tavaline avaleht, kui kampaaniat ei ole.
 - Mis sotsiaalmeedia ikoonid päises on.
+- Kas croni samm on 15 minutit või tund.
 
 ## Tööviis
 
