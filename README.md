@@ -21,6 +21,7 @@ Testversioon on see repo. Lõplik leht ja tellimused elavad Zone'i serveris. Git
 - Foto ja tekst seotakse failinimega. Tunnus on püsiv, nimi ja rea järjekord ei seo.
 - Drive'is on kataloog `tooted`. Tootegrupid võivad olla selle all kataloogidena.
 - Toote valik avab toote alla paneeli. Tutvustus on peidus. Pilt avaneb täisekraanil.
+- Jalus on kogu aeg näha. Seal on firma kontaktandmed.
 
 ## Lehe struktuur (mustand, ülevaatamiseks)
 
@@ -34,7 +35,7 @@ See ei ole veel lukus. Üks pikk vaade, mitte pood paljude alamlehtedega. Telefo
 4. Tootegrupid. Suured kaardid, üks puudutus avab grupi.
 5. Tooted. Pilt, nimi, lühike tekst, hind. Kringel on tellitav. Teised tooted on vaatamiseks ja poes ostmiseks.
 6. Oma pood. Aadress, lahtiolek, kuidas järgi tulla. See ei ole e-pood.
-7. Jalus. Telefon ja aadress.
+7. Jalus. Kogu aeg ekraani allservas. Firma kontaktandmed: nimi, aadress, telefon. Telefon avab kõne.
 
 Pagarivaade on eraldi aadress, menüüs seda ei ole. Keel vahetub samal lehel.
 
@@ -57,6 +58,8 @@ Tutvustus on peidus. Paneelis on viide «Lähemalt». See avab teksti piltide al
 Pisipildile vajutus avab selle pildi täisekraanil. Sulgemine on sama pildi vajutus või Esc. Telefonis piisab vajutusest.
 
 Paneel käib sama liikumisega mis grupp. Näha on, kust see tuli. Teise toote valik sulgeb eelmise paneeli. Grupi avanemine ja toote paneel on kaks sammu. Esmalt rulluvad grupi pildid. Siis ühe toote all avaneb kuni neli pisipilti. Tekst on kolmas samm, ja ainult viitel.
+
+Jalus jääb paneeli ja täisekraani pildi ajal nähtavale. Kontakt ei kao kerides.
 
 ## Keel ja tekst
 
@@ -124,6 +127,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Kes vene ja inglise toiduteksti enne avaldamist üle vaatab.
 - Tootenimekiri, suurused, järeletulemise ajad, tellimuse e-posti aadress.
 - Mis muud tooteväljad peale aktiivsuse ja säilivuspäevade reas on.
+- Mis kontaktid jaluses täpselt on: telefon, aadress, e-post, lahtiolek.
 
 ## Tööviis
 
