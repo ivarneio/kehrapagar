@@ -24,7 +24,7 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Tootegrupid on üksteise all ka desktopis. Kõrvuti võrku ei ole.
 - Valitud grupp tõuseb üles ja lükkab teised alla. Liikumine on 0,8 sekundit.
 - Iga tootegrupp avab sama lindi. Lint sõidab sisse paremalt vasakule, kordub, otsa ei ole. Kursori all leht edasi ei keri.
-- Pisipilt avab suure vaate. Sulgemine on rist või Esc.
+- Pisipilt avab suure vaate. Sulgemine on vajutus samal pildil, rist või Esc. Kerimine ei sulge. Mitu kuju jääb keritavaks.
 - Kõigil gruppidel on näidispildid, et linti hinnata.
 
 ## Järgmine
@@ -40,7 +40,8 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 - Horisontaalne rida, suur pilt ja küpsised. 2026-10-06. Sünk: `grupp_kypsised` ja `sulge`.
 - Liikumised poole aeglasemad. 2026-10-06.
 - Filmilint. Ringil otsa ei ole. 2026-10-06.
-- Sama avamine kõigil tootegruppidel. Näidispildid pagarile, kondiitrile, küpsistele ja tortidele. 2026-10-06. Eesti teksti ei muudetud, nimesid ei tõlgitud.
+- Sama avamine kõigil tootegruppidel. 2026-10-06. Eesti teksti ei muudetud, nimesid ei tõlgitud.
+- Suur pilt sulgub vajutusest. Rist ja Esc jäävad. Kerimine ei sulge. 2026-10-06. Eesti teksti ei muudetud.
 
 ## Märkused
 
