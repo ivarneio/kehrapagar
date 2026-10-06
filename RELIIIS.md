@@ -55,6 +55,8 @@ Tellimused, uudiskiri ja pildid ei ole selle süngi osa. Tellimus ei lähe tõlk
 
 - Testlehe avaldamine jäi 2026-10-06 kinni. Uus katse käivitatud.
 
+- Seaded on `seaded.json`: telefon, aadress, Facebook, Instagram. Leht loeb sealt. 2026-10-06. Eesti teksti ei muudetud.
+
 ## Märkused
 
 - Eesti silt «Tee» on tõlgitud «Вариант» ja «Choice». Reliisi ei peatatud.
