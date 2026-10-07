@@ -21,9 +21,10 @@
     document.documentElement.style.setProperty("--riba-sinine", ribaVarv.sinine);
     document.documentElement.style.setProperty("--riba-valge", ribaVarv.valge);
   }
-  function teeSorm(klass) {
+  function teeSorm() {
     var el = document.createElement("div");
-    el.className = klass;
+    el.className = "sorm";
+    el.setAttribute("aria-hidden", "true");
     ["oranz", "valge", "sinine", "valge"].forEach(function (nimi) {
       var i = document.createElement("i");
       i.className = nimi;
@@ -31,10 +32,8 @@
     });
     return el;
   }
-  var paisRiba = teeSorm("pais-riba");
-  pais.appendChild(paisRiba);
-  document.querySelectorAll(".grupid .grupp").forEach(function (g) {
-    g.insertBefore(teeSorm("sorm"), g.firstChild);
+  document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
+    nupp.insertBefore(teeSorm(), nupp.firstChild);
   });
   function pikkus(t) {
     return 36 + 52 * Math.abs(2 * t - 1);
@@ -43,20 +42,15 @@
     varvi();
     var grupid = document.querySelectorAll(".grupid .grupp");
     var n = grupid.length || 1;
-    var lahti = false;
     grupid.forEach(function (g, i) {
       var t = n === 1 ? 0 : i / (n - 1);
-      if (g.classList.contains("lahti")) {
-        t = 0;
-        lahti = true;
-      }
+      if (g.classList.contains("lahti")) t = 0;
       var w = pikkus(t);
       g.querySelectorAll(".sorm i").forEach(function (bar, k) {
         var kord = [1, 0.78, 0.52, 0.78][k];
         bar.style.width = (w * kord) + "%";
       });
     });
-    document.body.classList.toggle("sorm-sees", lahti);
   }
   seaSormed();
   window.addEventListener("resize", seaSormed);
@@ -84,6 +78,7 @@
   function rakenda() {
     document.documentElement.lang = keel;
     document.querySelectorAll("[data-k]").forEach(function (el) {
+      if (el.classList.contains("sorm")) return;
       var t = sona(el.getAttribute("data-k"));
       if (t) {
         if (el.classList.contains("sulge")) el.setAttribute("aria-label", t);
