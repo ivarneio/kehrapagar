@@ -160,13 +160,15 @@ fieldset input { width: auto; }
   font-weight: 700;
   padding: 0;
   cursor: pointer;
-  color: inherit;
+  color: #fff;
 }
 .sorm-nimi {
   position: relative;
   z-index: 1;
   display: block;
   padding: .85rem 1rem;
+  color: #fff;
+  text-shadow: 0 1px 2px #000, 0 0 4px #000;
 }
 .sorm {
   position: absolute;
