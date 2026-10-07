@@ -187,8 +187,9 @@ fieldset input { width: auto; }
   margin: 0;
   background: var(--riba-valge);
 }
-.sorm i.oranz { background: var(--riba-oranz); }
-.sorm i.sinine { background: var(--riba-sinine); }
+.sorm i.oranz { background: var(--riba-oranz); flex: 1; }
+.sorm i.sinine { background: var(--riba-sinine); flex: 1; }
+.sorm i.valge { flex: 0.5; }
 .sisu {
   display: grid;
   grid-template-rows: 0fr;
