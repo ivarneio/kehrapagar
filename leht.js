@@ -12,6 +12,53 @@
     });
   });
 
+  var pealkiri = document.querySelector("#tooted > h2");
+  if (pealkiri) pealkiri.remove();
+
+  var ribaVarv = { oranz: "#e25b2a", sinine: "#2f7fd1" };
+  function teeSorm(klass) {
+    var el = document.createElement("div");
+    el.className = klass;
+    ["oranz", "vahe", "sinine", "vahe"].forEach(function (nimi) {
+      var i = document.createElement("i");
+      i.className = nimi;
+      if (nimi === "oranz") i.style.background = ribaVarv.oranz;
+      if (nimi === "sinine") i.style.background = ribaVarv.sinine;
+      el.appendChild(i);
+    });
+    return el;
+  }
+  var paisRiba = teeSorm("pais-riba");
+  pais.appendChild(paisRiba);
+  document.querySelectorAll(".grupid .grupp").forEach(function (g) {
+    g.insertBefore(teeSorm("sorm"), g.firstChild);
+  });
+  function pikkus(t) {
+    return 36 + 52 * Math.abs(2 * t - 1);
+  }
+  function seaSormed() {
+    var grupid = document.querySelectorAll(".grupid .grupp");
+    var n = grupid.length || 1;
+    var lahti = false;
+    grupid.forEach(function (g, i) {
+      var t = n === 1 ? 0 : i / (n - 1);
+      if (g.classList.contains("lahti")) {
+        t = 0;
+        lahti = true;
+      }
+      var w = pikkus(t);
+      g.querySelectorAll(".sorm i").forEach(function (bar, k) {
+        var kord = [1, 0.78, 0.52, 0.78][k];
+        bar.style.width = (w * kord) + "%";
+        if (k === 0) bar.style.background = ribaVarv.oranz;
+        if (k === 2) bar.style.background = ribaVarv.sinine;
+      });
+    });
+    document.body.classList.toggle("sorm-sees", lahti);
+  }
+  seaSormed();
+  window.addEventListener("resize", seaSormed);
+
   var tekstid = {};
   var keel = "et";
 
@@ -168,6 +215,7 @@
           uus.classList.add("lahti");
           avaLint(uus);
         }
+        seaSormed();
         flipKinni = false;
       }, FLIP_MS + 30);
     });
@@ -184,6 +232,7 @@
           grupp.classList.add("lahti");
           avaLint(grupp);
         }
+        seaSormed();
         return;
       }
       if (flipKinni) return;
@@ -310,6 +359,11 @@
     .then(function (r) { return r.json(); })
     .then(function (s) {
       if (!s) return;
+      if (s.riba) {
+        if (s.riba.oranz) ribaVarv.oranz = s.riba.oranz;
+        if (s.riba.sinine) ribaVarv.sinine = s.riba.sinine;
+        seaSormed();
+      }
       document.querySelectorAll(".sots a.fb").forEach(function (a) {
         if (s.facebook) a.href = s.facebook;
       });
