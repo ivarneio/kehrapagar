@@ -36,7 +36,7 @@ Lehe vaade on üleval link. Kui see annab tühja lehe, on Pages veel kinni: Sett
 - Kõike ei kuhjata ühte indexisse. Külastaja leht on üks. Tellimus, uudis ja andmed on eraldi failid.
 - Mallist võetakse olemasolev luu: päis, jalus, keel, pildi side, galerii. Lehte ennast ei kopeerita.
 - Visuaal on kandiline, taust jahune valge. Avamine on nagu ballonsis. Sulgemine on pehmem.
-- Firma sõrmejälg on genereeritud rõhtne ribamuster, mitte foto. Värvid on sinine, oranž ja valge.
+- Firma sõrmejälg on genereeritud rõhtne ribamuster, mitte foto. Neli riba: oranž, valge, sinine, valge. Pikkus on koha oma, mitte grupi oma.
 
 ## Tellimus
 
@@ -227,11 +227,11 @@ Avamine on nagu ballonsis. Valitud kaart tõuseb ja lükkab teised alla, umbes 0
 
 Praeguse logo taga on püstised ribad, punane ja helesinine, eri pikkusega. Meie lehel on suund rõhtne. Püstist rippu ei kopeerita.
 
-Riba ei ole foto ega joonistatud fail. See genereeritakse. Värvid on sinine, oranž ja valge, ja need on vahetatavad. Valge on vahe: taust paistab läbi, et muster ei muutuks kastiks. Paksus ja vahe on igal pool samad. Pikkus ei ole kõigil ribadel sama.
+Riba ei ole foto ega joonistatud fail. See genereeritakse. Igal grupil on neli riba, ja need korduvad: oranž, valge, sinine, valge. Valge on vahe, taust paistab läbi, et muster ei muutuks kastiks. Värvitoone saab vahetada. Paksus ja vahe on igal pool samad. Teksti riba peal ei ole.
 
-See on firma sõrmejälg. Sama muster tuleb päises, tootegrupil ja mujal ühest kohast. Teksti riba peal ei ole.
+Pikkus on koha oma, mitte grupi oma. Ülemisel kohal on üks pikkus, alumisel teine. Kui grupp tõuseb, näitab ta ülemise koha pikkust. Kui langeb tagasi, näitab jälle selle koha pikkust, kus ta seisab. Grupp on aken sõrmejälje peal.
 
-Suletud tootegrupil on õhuke rõhtne ripp. Kui grupp saab valitud, liiguvad ribad üles päisesse ja samal ajal paremale, ilma tekstita. Aktiivse grupi kohale jääb pikk rõhtne riba.
+Sama muster tuleb päises, tootegrupil ja mujal ühest kohast. Kui grupp saab valitud, liiguvad ribad üles päisesse ja samal ajal paremale, ilma tekstita. Aktiivse grupi kohale jääb pikk rõhtne riba.
 
 ## Reliis ja kirjavead
 
@@ -256,7 +256,7 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Põhimenüü mustand: Telli, Tooted, Firmast, Kauplus, Kontakt. Kinnitust veel ei ole.
 - Kas failijaotus jääb nii. Esimene hoog on üleval.
 - Kirja värv. Taust on jahune valge.
-- Sõrmejälje täpsed värvitoonid. Suund ja kolm värvi on lukus.
+- Sõrmejälje täpsed värvitoonid ja koha pikkused. Nelja riba kordus ja kohapõhine pikkus on lukus.
 
 ## Tööviis
 
