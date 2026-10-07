@@ -161,7 +161,7 @@ fieldset input { width: auto; }
 .sorm {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0;
   padding: .35rem 0 0;
   pointer-events: none;
 }
@@ -179,7 +179,7 @@ fieldset input { width: auto; }
 .pais-riba {
   display: none;
   flex-direction: column;
-  gap: 2px;
+  gap: 0;
   padding: 0 1.15rem .4rem;
 }
 body.sorm-sees .pais-riba { display: flex; }
