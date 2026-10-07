@@ -35,16 +35,17 @@
   var ylemine = ["oranz", "valge", "sinine", "valge"];
   var sild = ["oranz", "valge", "sinine", "valge", "oranz"];
   var alumine = ["valge", "sinine", "valge", "oranz"];
-  var nupud = document.querySelectorAll(".grupid .grupp > button");
-  nupud.forEach(function (nupp, i) {
+  function muster(i, n) {
+    if (n > 2 && i === n - 1) return alumine;
+    if (n > 2 && i === n - 2) return sild;
+    return ylemine;
+  }
+  document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
     var nimi = document.createElement("span");
     nimi.className = "sorm-nimi";
     nimi.textContent = nupp.textContent.trim();
     nupp.textContent = "";
-    var jarjekord = ylemine;
-    if (nupud.length > 2 && i === nupud.length - 2) jarjekord = sild;
-    if (nupud.length > 2 && i === nupud.length - 1) jarjekord = alumine;
-    nupp.appendChild(teeSorm(jarjekord));
+    nupp.appendChild(teeSorm(ylemine));
     nupp.appendChild(nimi);
   });
   function pikkus(t, i, k) {
@@ -56,11 +57,28 @@
     if (w < 28) w = 28;
     return Math.round(w);
   }
+  function seaVarv(g, i, n) {
+    var sorm = g.querySelector(".sorm");
+    if (!sorm) return;
+    var soov = muster(i, n);
+    var ribad = sorm.querySelectorAll("i");
+    if (ribad.length !== soov.length) {
+      sorm.innerHTML = "";
+      soov.forEach(function (nimi) {
+        var el = document.createElement("i");
+        el.className = nimi;
+        sorm.appendChild(el);
+      });
+      return;
+    }
+    ribad.forEach(function (bar, k) { bar.className = soov[k]; });
+  }
   function seaSormed() {
     varvi();
     var grupid = document.querySelectorAll(".grupid .grupp");
     var n = grupid.length || 1;
     grupid.forEach(function (g, i) {
+      seaVarv(g, i, n);
       var t = n === 1 ? 0 : i / (n - 1);
       if (g.classList.contains("lahti")) t = 0;
       g.querySelectorAll(".sorm i").forEach(function (bar, k) {
@@ -206,6 +224,7 @@
     koik.forEach(sulgeGrupp);
     if (ava) lava.insertBefore(uus, lava.firstChild);
     else taastaJarjekord();
+    seaSormed();
     requestAnimationFrame(function () {
       kaardid().forEach(function (k) {
         var f = enne[k.getAttribute("data-jrk")];
@@ -249,8 +268,11 @@
         var oliVaikne = grupp.classList.contains("lahti");
         kaardid().forEach(sulgeGrupp);
         if (!oliVaikne) {
+          lava.insertBefore(grupp, lava.firstChild);
           grupp.classList.add("lahti");
           avaLint(grupp);
+        } else {
+          taastaJarjekord();
         }
         seaSormed();
         return;
