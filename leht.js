@@ -40,8 +40,14 @@
     nupp.appendChild(teeSorm());
     nupp.appendChild(nimi);
   });
-  function pikkus(t) {
-    return 46 + 29 * Math.abs(2 * t - 1);
+  function pikkus(t, i, k) {
+    var pohi = 44 + 31 * Math.abs(2 * t - 1);
+    var hype = [0.07, -0.05, 0.1, -0.08, 0.04];
+    var samm = [0, 0.14, 0.27, 0.39][k];
+    var w = pohi * (1 - samm) + hype[(i + k) % hype.length] * 16;
+    if (w > 75) w = 75;
+    if (w < 28) w = 28;
+    return Math.round(w);
   }
   function seaSormed() {
     varvi();
@@ -50,9 +56,8 @@
     grupid.forEach(function (g, i) {
       var t = n === 1 ? 0 : i / (n - 1);
       if (g.classList.contains("lahti")) t = 0;
-      var w = pikkus(t);
-      g.querySelectorAll(".sorm i").forEach(function (bar) {
-        bar.style.width = w + "%";
+      g.querySelectorAll(".sorm i").forEach(function (bar, k) {
+        bar.style.width = pikkus(t, i, k) + "%";
         bar.style.marginLeft = "0";
       });
     });
