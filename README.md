@@ -31,12 +31,29 @@ Lehe vaade on üleval link. Kui see annab tühja lehe, on Pages veel kinni: Sett
 - Jalus on kogu aeg näha. Seal on firma kontaktandmed.
 - Päis on nagu Helirännakul: üleval menüü ja sotsiaalmeedia.
 - Avaleht on `pealeht/pealeht.jpg`. Kui faili ei ole, on tavaline avaleht. Cron kopeerib.
+- Uuenduse teeb Zone'i cron, mitte leht. Skripte on mitu. Aadressid on seadetes.
 - Uudiskiri: soovija kirjutab e-posti, nimekiri on Zone'is, inimene koostab kirja ja saadab välja. Saatmine jääb Zone'i piiride sisse.
 - Eemaldamine on kirja lõpu link. Skript kustutab selle aadressi võtme järgi.
 - Kõike ei kuhjata ühte indexisse. Külastaja leht on üks. Tellimus, uudis ja andmed on eraldi failid.
 - Mallist võetakse olemasolev luu: päis, jalus, keel, pildi side, galerii. Lehte ennast ei kopeerita.
 - Visuaal on kandiline, taust jahune valge. Avamine on nagu ballonsis. Sulgemine on pehmem.
 - Firma sõrmejälg on genereeritud rõhtne ribamuster, mitte foto. Neli riba: oranž, valge, sinine, valge. Pikkus on koha oma, mitte grupi oma.
+
+## Zone cron
+
+Kinnitatud plaan. Leht ise ennast ei uuenda. Külastaja brauser ei kirjuta serverisse.
+
+Zone'i cron käivitab skripti, ja neid võib olla mitu. Iga töö on oma rida.
+
+- Pealehe pilt, umbes iga 15 minuti tagant.
+- Tooted ja tekstid, korra päevas.
+- Uudiskirja järjekord, oma reaga, kui see kord tuleb.
+
+`seaded.json` hoiab pilvekaustade aadresse: tooted, pealeht, tekstid. Cron loeb seadeid ja kopeerib samade reeglite järgi.
+
+Google'i ajastatud skript valmistab paketi: tõlgib eesti teksti ja paneb valmis tekstifaili ning piltide nimekirja. Zone'i cron võtab paketi ja kopeerib pildid ning tekstid serverisse. Külastaja loeb ainult Zone'i koopiat.
+
+Lehe avamisel ei tõlgita ega loeta pilve. Kui päevane käik ebaõnnestub, jääb eilne leht püsti.
 
 ## Tellimus
 
@@ -121,7 +138,7 @@ Eesti on ainus keel, mida inimene muudab. Vene ja inglise tulevad sellest.
 
 Muster on sama mis Helirännakul (ivarneio/helivann):
 
-- `seaded.json` — telefon, aadress, lahtiolek, kuhu tellimuskiri läheb, sotsiaalmeedia. Neid ei tõlgita.
+- `seaded.json` — telefon, aadress, lahtiolek, kuhu tellimuskiri läheb, sotsiaalmeedia, pilvekaustade aadressid. Neid ei tõlgita.
 - `tekstid.json` — nupud, vormi sildid, menüü. Võti on sama igas keeles: `et`, `ru`, `en`.
 - `sisu.json` — tooted, kampaania, kringli suurused.
 
@@ -141,7 +158,7 @@ Testleht töötab isiklikul kontol. Pildid ja tabel lähevad sinna, samasse jaot
 - Samast reast tuleb, kas toode on aktiivne, mitu päeva on säilivus, ja muu tooteinfo. Mitteaktiivset toodet leht ei näita.
 - Pilt on Google'i kaustas. Makro on reliisi osa: tõlgib muutunud read ja paneb tekstid ning pildid väljundiks.
 - Leht ei lae pilti otse Google'ist. Külastaja loeb Zone'i koopiat.
-- Sünk käib reliisi ajal, mitte lehe avamisel ega iga salvestusega.
+- Sünk käib reliisi ajal, mitte lehe avamisel ega iga salvestusega. Zone'i cron käivitab selle korra päevas.
 - Sünk võrdleb eesti teksti eelmise korraga. Muutunud rida tõlgitakse uuesti. Muutumata rida jääb puutumata.
 - Kui Google on maas, jääb pood lahti, sest leht loeb juba kopeeritud faile.
 - Tellimused Google'isse ei lähe.
@@ -189,7 +206,7 @@ Server, külastaja ei loe:
 - `andmed/` on tellimused ja uudiskirja nimekiri. See kaust ei ole veebist loetav.
 - `pagar.html` on suletud vaade: tellimused ja uudiskirja koostamine. Menüüs seda ei ole.
 
-Cron on eraldi väike skript. See kopeerib `pealeht.jpg` ja saadab uudiskirja järjekorda. See ei ela `index.html` sees.
+Cron on mitu väikest skripti, mitte üks plokk `index.html` sees. Üks kopeerib avalehe, üks tooted ja tekstid, üks saadab uudiskirja järjekorda.
 
 Iga töö on oma fail, et eelmise versiooni saaks tagasi panna ilma teisi puutumata.
 
@@ -217,7 +234,7 @@ Avamise liikumine tuleb `ivarneio/balloons` seest, mitte mallist.
 
 ## Visuaal
 
-Kinnitatud. Sai on ülar, kaart on kandiline. Helirännaku ümaraid nurki ei võeta.
+Kinnitatud. Sai on ümar, kaart on kandiline. Helirännaku ümaraid nurki ei võeta.
 
 Taust on jahune valge, mitte ekraani valge. Kergelt soe, nagu paber või jahu. Küpsetis paistab selle peal välja. Linane ja hallikas jäid kõrvale. Grupp ei ole eraldi teema, vaid viide samal taustal. Valik tõstab selle üles.
 
@@ -251,7 +268,6 @@ Kui kirjaviga on parandatud, ei ole see veateade ega põhjus, et reliis ei õnne
 - Mis muud tooteväljad peale aktiivsuse ja säilivuspäevade reas on.
 - Mis kontaktid jaluses täpselt on: telefon, aadress, e-post, lahtiolek.
 - Mis sotsiaalmeedia ikoonid päises on.
-- Kas croni samm on 15 minutit või tund.
 - Mis aadressilt uudiskiri välja läheb.
 - Põhimenüü mustand: Telli, Tooted, Firmast, Kauplus, Kontakt. Kinnitust veel ei ole.
 - Kas failijaotus jääb nii. Esimene hoog on üleval.
