@@ -41,7 +41,7 @@
     nupp.appendChild(nimi);
   });
   function pikkus(t) {
-    return 58 + 42 * Math.abs(2 * t - 1);
+    return 46 + 29 * Math.abs(2 * t - 1);
   }
   function seaSormed() {
     varvi();
