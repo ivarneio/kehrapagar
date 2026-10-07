@@ -81,9 +81,21 @@
     grupid.forEach(function (g, i) {
       seaVarv(g, i, n);
       var koht = g.classList.contains("lahti") ? 0 : i;
-      g.querySelectorAll(".sorm i").forEach(function (bar, k) {
+      var ribad = g.querySelectorAll(".sorm i");
+      ribad.forEach(function (bar, k) {
         bar.style.width = pikkus(koht, n, k) + "%";
         bar.style.marginLeft = "0";
+      });
+      var oranz = 75;
+      ribad.forEach(function (bar) {
+        if (bar.className !== "oranz") return;
+        var w = parseFloat(bar.style.width);
+        if (w < oranz) oranz = w;
+      });
+      ribad.forEach(function (bar) {
+        if (bar.className !== "sinine") return;
+        var w = parseFloat(bar.style.width);
+        if (w >= oranz) bar.style.width = Math.max(22, oranz - 8) + "%";
       });
     });
   }
