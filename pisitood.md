@@ -8,4 +8,4 @@ Kunstilise juhi ülevaatus tuleb hiljem. Seni kogume, mis silma jääb.
 
 ## Ootel
 
-- Tühi. Järgmine rida tuleb siia.
+- Telli on muidu suletud. Avaneb ainult Telli nupust menüüs või toote juurest. Kui tellimisvorm on lahti ja valitakse tootegrupp, sulgub Telli. Hügieen.
