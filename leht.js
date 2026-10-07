@@ -49,12 +49,13 @@
     nupp.appendChild(nimi);
   });
   function pikkus(t, i, k) {
-    var serv = t < 0.5 ? 75 - 32 * (t / 0.5) : 43 + 21 * ((t - 0.5) / 0.5);
-    var hype = [0.05, -0.07, 0.09, -0.04, 0.06];
-    var samm = [0, 0.11, 0.23, 0.34, 0.44][k] || 0.44;
-    var w = serv * (1 - samm) + hype[(i * 2 + k) % hype.length] * 12;
+    var kohad = [75, 52, 34, 62];
+    var serv = kohad[Math.round(t * (kohad.length - 1))] || 48;
+    var hype = [3, -5, 7, -2, 4];
+    var samm = [0, 12, 22, 34, 44][k] || 44;
+    var w = serv - samm + hype[(i * 2 + k) % hype.length];
     if (w > 75) w = 75;
-    if (w < 26) w = 26;
+    if (w < 20) w = 20;
     return Math.round(w);
   }
   function seaVarv(g, i, n) {
