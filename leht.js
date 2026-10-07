@@ -40,11 +40,21 @@
     nupp.appendChild(teeSorm());
     nupp.appendChild(nimi);
   });
+  function pikkus(t) {
+    return 58 + 42 * Math.abs(2 * t - 1);
+  }
   function seaSormed() {
     varvi();
-    document.querySelectorAll(".sorm i").forEach(function (bar) {
-      bar.style.width = "100%";
-      bar.style.marginLeft = "0";
+    var grupid = document.querySelectorAll(".grupid .grupp");
+    var n = grupid.length || 1;
+    grupid.forEach(function (g, i) {
+      var t = n === 1 ? 0 : i / (n - 1);
+      if (g.classList.contains("lahti")) t = 0;
+      var w = pikkus(t);
+      g.querySelectorAll(".sorm i").forEach(function (bar) {
+        bar.style.width = w + "%";
+        bar.style.marginLeft = "0";
+      });
     });
   }
   seaSormed();
