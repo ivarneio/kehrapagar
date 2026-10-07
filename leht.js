@@ -33,7 +33,12 @@
     return el;
   }
   document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
-    nupp.insertBefore(teeSorm(), nupp.firstChild);
+    var nimi = document.createElement("span");
+    nimi.className = "sorm-nimi";
+    nimi.textContent = nupp.textContent.trim();
+    nupp.textContent = "";
+    nupp.appendChild(teeSorm());
+    nupp.appendChild(nimi);
   });
   function pikkus(t) {
     return 36 + 52 * Math.abs(2 * t - 1);
@@ -78,12 +83,18 @@
   function rakenda() {
     document.documentElement.lang = keel;
     document.querySelectorAll("[data-k]").forEach(function (el) {
-      if (el.classList.contains("sorm")) return;
       var t = sona(el.getAttribute("data-k"));
-      if (t) {
-        if (el.classList.contains("sulge")) el.setAttribute("aria-label", t);
-        else el.textContent = t;
+      if (!t) return;
+      if (el.classList.contains("sulge")) {
+        el.setAttribute("aria-label", t);
+        return;
       }
+      var nimi = el.querySelector(":scope > .sorm-nimi");
+      if (nimi) {
+        nimi.textContent = t;
+        return;
+      }
+      el.textContent = t;
     });
     if (menu) menu.setAttribute("aria-label", sona("menu") || "Menüü");
     document.querySelectorAll(".keeled button").forEach(function (x) {
