@@ -8,4 +8,4 @@ Kunstilise juhi ülevaatus tuleb hiljem. Seni kogume, mis silma jääb.
 
 ## Ootel
 
-- Tühi. Järgmine rida tuleb siia.
+- Pealehel ei ole tootegruppide juures sõna Tooted. See on ülemäärane. Inimesed kipuvad sellele klikkima.
