@@ -21,23 +21,28 @@
     document.documentElement.style.setProperty("--riba-sinine", ribaVarv.sinine);
     document.documentElement.style.setProperty("--riba-valge", ribaVarv.valge);
   }
-  function teeSorm() {
+  function teeSorm(tagurpidi) {
     var el = document.createElement("div");
     el.className = "sorm";
     el.setAttribute("aria-hidden", "true");
-    ["oranz", "valge", "sinine", "valge"].forEach(function (nimi) {
+    var jarjekord = tagurpidi
+      ? ["valge", "sinine", "valge", "oranz"]
+      : ["oranz", "valge", "sinine", "valge"];
+    jarjekord.forEach(function (nimi) {
       var i = document.createElement("i");
       i.className = nimi;
       el.appendChild(i);
     });
     return el;
   }
-  document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
+  var nupud = document.querySelectorAll(".grupid .grupp > button");
+  var alumine = Math.max(0, nupud.length - 2);
+  nupud.forEach(function (nupp, i) {
     var nimi = document.createElement("span");
     nimi.className = "sorm-nimi";
     nimi.textContent = nupp.textContent.trim();
     nupp.textContent = "";
-    nupp.appendChild(teeSorm());
+    nupp.appendChild(teeSorm(nupud.length > 2 && i >= alumine));
     nupp.appendChild(nimi);
   });
   function pikkus(t, i, k) {
