@@ -5,6 +5,8 @@
   --vaikne: #6d6456;
   --joon: #e4dccb;
   --pais: #2c2416;
+  --riba-oranz: #e25b2a;
+  --riba-sinine: #2f7fd1;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -100,6 +102,7 @@ h1, h2 { font-weight: 600; margin: 0 0 .6rem; }
 h1 { font-size: 1.7rem; }
 .pealeht { width: 100%; max-height: 70vh; object-fit: cover; display: block; margin: 0 0 1rem; }
 h2 { font-size: 1.25rem; }
+#tooted > h2 { display: none; }
 .markus { color: var(--vaikne); margin: 0 0 .8rem; }
 form label, .uudis label, fieldset label {
   display: block;
@@ -138,7 +141,7 @@ fieldset input { width: auto; }
 }
 .grupid { display: flex; flex-direction: column; gap: .45rem; }
 .grupp {
-  background: var(--taust);
+  background: transparent;
   border: 0;
   margin: 0;
   box-shadow: none;
@@ -150,10 +153,35 @@ fieldset input { width: auto; }
   border: 0;
   font: inherit;
   font-size: 1.2rem;
-  padding: .9rem 1rem;
+  padding: .35rem 1rem .7rem;
   cursor: pointer;
   color: inherit;
 }
+.sorm {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: .35rem 0 0;
+  pointer-events: none;
+}
+.sorm i {
+  display: block;
+  height: 5px;
+  width: 40%;
+  margin-left: 0;
+  transition: width .8s cubic-bezier(.22, 1, .36, 1), margin-left .8s cubic-bezier(.22, 1, .36, 1);
+}
+.sorm i.vahe { background: transparent; height: 4px; }
+.grupp.lahti .sorm i { margin-left: 18%; }
+.pais-riba {
+  display: none;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0 1.15rem .4rem;
+}
+body.sorm-sees .pais-riba { display: flex; }
+.pais-riba i { display: block; height: 4px; width: 70%; margin-left: 22%; }
+.pais-riba i.vahe { background: transparent; }
 .sisu {
   display: grid;
   grid-template-rows: 0fr;
