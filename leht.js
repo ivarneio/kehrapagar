@@ -50,12 +50,12 @@
   });
   function pikkus(i, n, k) {
     var servalt = Math.min(i, n - 1 - i);
-    var serv = (i > (n - 1) / 2 ? 70 : 75) - servalt * 14;
+    var serv = (i > (n - 1) / 2 ? 68 : 75) - servalt * 22;
     var hype = [1, -1, 1, 0, -1];
-    var samm = [0, 3, 5, 7, 8][k] || 8;
+    var samm = [0, 2, 4, 5, 6][k] || 6;
     var w = serv - samm + hype[(i + k) % hype.length];
     if (w > 75) w = 75;
-    if (w < 28) w = 28;
+    if (w < 22) w = 22;
     return Math.round(w);
   }
   function seaVarv(g, i, n) {
