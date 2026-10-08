@@ -8,6 +8,7 @@
   --riba-oranz: #e25b2a;
   --riba-sinine: #2f7fd1;
   --riba-valge: #ffffff;
+  --riba-lapa: 0.5;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -187,6 +188,7 @@ fieldset input { width: auto; }
   flex-direction: column;
   gap: 0;
   pointer-events: none;
+  opacity: var(--riba-lapa);
 }
 .sorm i {
   display: block;
