@@ -16,10 +16,12 @@
   if (pealkiri) pealkiri.remove();
 
   var ribaVarv = { oranz: "#e25b2a", sinine: "#2f7fd1", valge: "#ffffff" };
+  var ribaLapa = 50;
   function varvi() {
     document.documentElement.style.setProperty("--riba-oranz", ribaVarv.oranz);
     document.documentElement.style.setProperty("--riba-sinine", ribaVarv.sinine);
     document.documentElement.style.setProperty("--riba-valge", ribaVarv.valge);
+    document.documentElement.style.setProperty("--riba-lapa", String(ribaLapa / 100));
   }
   function teeSorm(jarjekord) {
     var el = document.createElement("div");
@@ -426,6 +428,7 @@
         if (s.riba.oranz) ribaVarv.oranz = s.riba.oranz;
         if (s.riba.sinine) ribaVarv.sinine = s.riba.sinine;
         if (s.riba.valge) ribaVarv.valge = s.riba.valge;
+        if (typeof s.riba.lapa === "number") ribaLapa = Math.max(0, Math.min(100, s.riba.lapa));
         seaSormed();
       }
       document.querySelectorAll(".sots a.fb").forEach(function (a) {
