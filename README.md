@@ -38,6 +38,7 @@ Lehe vaade on üleval link. Kui see annab tühja lehe, on Pages veel kinni: Sett
 - Mallist võetakse olemasolev luu: päis, jalus, keel, pildi side, galerii. Lehte ennast ei kopeerita.
 - Visuaal on kandiline, taust jahune valge. Avamine on nagu ballonsis. Sulgemine on pehmem.
 - Firma sõrmejälg on genereeritud rõhtne ribamuster. Värvireeglid on allpool, jaotises Sõrmejälg.
+- Iga nupuvajutus teeb tabelist backupi. Backup püsib vähemalt 30 päeva. Logi näitab, kes ja millal nuppu vajutas.
 
 ## Zone cron
 
@@ -167,6 +168,14 @@ Testleht töötab isiklikul kontol. Pildid ja tabel lähevad sinna, samasse jaot
 Makro elab Google'i kontos. Siit vestlusest seda ei käivitata. Skripti saab kirjutada ja sinna kleepida, nagu Helirännaku vormi skript.
 
 Tõlkesünk on eraldi reliisi ülesanne. Seda ei ehitata esimese lehefailiga koos.
+
+### Backup ja logi
+
+Iga nupuvajutus teeb enne tööd tabelist koopia. Koopia läheb Drive'i kausta `backup`. Faili nimi on kuupäev ja kellaaeg. Skript kustutab koopiad, mis on vanemad kui 30 päeva. Kui midagi läheb valesti, on eelmine tabel alles ja selle saab tagasi panna.
+
+Logi on eraldi leht samas tabelis. Iga nupuvajutus lisab rea: kuupäev, kellaaeg, kes nuppu vajutas, ja lühike kokkuvõte mis muutus. Näiteks «3 rida tõlgitud, 1 uus toode». Kes lahtrit muutis, seda näitab Google'i enda versiooniajalugu. Skript näeb kindlalt seda, kes nuppu vajutas ja mis ridu sel korral töödeldi.
+
+Kolmas pool logi ei täida. Backup ja logi tekivad ise. Need jäävad firma Drive'i, mitte Zone'i.
 
 ## Foto ja tekst
 
