@@ -427,9 +427,50 @@
       })
       .catch(function () {});
 
+    var korvEl = vorm.querySelector(".korv");
+    var kaal = vorm.querySelector("[name=kaal]");
+    var kogus = vorm.querySelector("[name=kogus]");
+    var lisa = vorm.querySelector(".lisa");
+    var korv = [];
+    function joonista() {
+      if (!korvEl) return;
+      if (!korv.length) { korvEl.innerHTML = ""; return; }
+      var h = "<ul>";
+      korv.forEach(function (r, i) {
+        h += "<li>" + r.nimi + " · " + r.kaal + " · " + r.kogus + " tk <button type=\"button\" data-i=\"" + i + "\">eemalda</button></li>";
+      });
+      h += "</ul>";
+      korvEl.innerHTML = h;
+    }
+    if (lisa) {
+      lisa.addEventListener("click", function () {
+        if (!kringel || !kringel.value) return;
+        korv.push({ nimi: kringel.value, kaal: kaal.value, kogus: kogus.value || "1" });
+        joonista();
+      });
+    }
+    if (korvEl) {
+      korvEl.addEventListener("click", function (e) {
+        var b = e.target.closest ? e.target.closest("button") : null;
+        if (!b) return;
+        var i = +b.getAttribute("data-i");
+        korv.splice(i, 1);
+        joonista();
+      });
+    }
     vorm.addEventListener("submit", function (e) {
       e.preventDefault();
-      document.querySelector(".olek").textContent = sona("olek_luu") || "See on luu. Kiri ei lähe veel välja.";
+      var tel = vorm.querySelector("[name=telefon]");
+      var ep = vorm.querySelector("[name=epost]");
+      if (!tel.value || !ep.value) {
+        document.querySelector(".olek").textContent = "Telefon ja e-post on kohustuslikud.";
+        return;
+      }
+      if (!korv.length) {
+        document.querySelector(".olek").textContent = "Lisa vähemalt üks toode.";
+        return;
+      }
+      document.querySelector(".olek").textContent = "Tellimus on korvis. Saatmine tuleb järgmine samm.";
     });
   }
 
