@@ -150,26 +150,26 @@
       <div class="sisu"><div>
         <a class="helista" href="tel:+3720000000" data-k="helista">Helista ja telli</a>
         <form>
-          <label><span data-k="vorm_tee">Tee</span>
-            <select name="tee">
-              <option value="valmis" data-k="vorm_valmis">Valmis kringel</option>
-              <option value="fantaasia" data-k="vorm_fantaasia">Fantaasiakringel</option>
-            </select>
-          </label>
           <label><span data-k="vorm_kringel">Kringel</span>
             <select name="kringel"></select>
           </label>
-          <label><span>Kaal</span>
-            <select name="kaal">
-              <option>0,5 kg</option>
-              <option>1,0 kg</option>
-              <option>1,5 kg</option>
-              <option>2,0 kg</option>
-            </select>
-          </label>
-          <label><span>Kogus</span>
-            <input type="number" name="kogus" value="1" min="1">
-          </label>
+          <div class="kaal-rida">
+            <label><span>Kaal</span>
+              <select name="kaal">
+                <option>0,5 kg</option>
+                <option>1,0 kg</option>
+                <option>1,5 kg</option>
+                <option>2,0 kg</option>
+              </select>
+            </label>
+            <label class="kogus"><span>Kogus</span>
+              <span class="samm">
+                <button type="button" class="vahenda">−</button>
+                <input type="number" name="kogus" value="1" min="1" readonly>
+                <button type="button" class="suurenda">+</button>
+              </span>
+            </label>
+          </div>
           <button class="lisa" type="button">Lisa korvi</button>
           <div class="korv"></div>
           <fieldset class="taidised">
