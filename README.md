@@ -70,7 +70,11 @@ Korv on ajutine ja elab ainult selle külastuse ajal. Lehe uuesti laadimine tüh
 
 Kringli kaal on fikseeritud valik, mitte vaba number: 0,5 / 1,0 / 1,5 / 2,0 kg.
 
-Vormis on kaks teed. Valmis kringel on üks valik. Teine on fantaasiakringel: klient valib ise täidised. Täidiste nimekiri tuleb tabelist, mitte koodist. Päev, kellaaeg ja nimi jäävad. Märkeruut «Tahan uudiseid» jääb. «Helista ja telli» jääb vormi kõrvale.
+Vormis on kaks teed. Valmis kringel on üks valik. Teine on fantaasiakringel: klient valib ise täidised. Täidiste nimekiri tuleb tabelist, mitte koodist.
+
+Fantaasiakringlil on kuni neli kohta. Klient valib täidised ja saab panna kordaja. Rosinad 2× võtab kaks kohta. Alla kolme ei saa tellida. Neli on maksimum.
+
+Päev, kellaaeg ja nimi jäävad. Märkeruut «Tahan uudiseid» jääb. «Helista ja telli» jääb vormi kõrvale.
 
 Telefon ja e-post on kohustuslikud. Ilma nendeta tellimust ei saadeta.
 
