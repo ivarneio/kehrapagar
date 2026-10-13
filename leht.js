@@ -427,12 +427,15 @@
     var kogus = vorm.querySelector("[name=kogus]");
     var lisa = vorm.querySelector(".lisa");
     var korv = [];
+    function hind(r) {
+      return "—";
+    }
     function joonista() {
       if (!korvEl) return;
       if (!korv.length) { korvEl.innerHTML = ""; return; }
       var h = "<ul>";
       korv.forEach(function (r, i) {
-        h += "<li>" + r.nimi + " · " + r.kaal + " · " + r.kogus + " tk <button type=\"button\" data-i=\"" + i + "\">eemalda</button></li>";
+        h += "<li>" + r.nimi + " · " + r.kaal + " · " + r.kogus + " tk · " + hind(r) + " <button type=\"button\" data-i=\"" + i + "\">eemalda</button></li>";
       });
       h += "</ul>";
       korvEl.innerHTML = h;
