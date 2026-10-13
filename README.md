@@ -64,7 +64,7 @@ Iga tellitava toote juures on nupp «Telli». Vajutus avab vormi ja toote nimi o
 
 ### Korv
 
-Korv on ajutine ja elab ainult selle külastuse ajal. Lehe uuesti laadimine tühjendab korvi. Midagi serverisse ei lähe enne, kui tellimus saadetakse.
+Korv on ajutine ja elab ainult selle külastuse ajal. Lehe uuesti laadimine või sessiooni lõpp tühjendab korvi. Vormi sulgemine ei tühjenda. Kui avatakse muu menüü, vorm sulgub, aga andmed jäävad. Midagi serverisse ei lähe enne, kui tellimus saadetakse.
 
 Üks rida on toode + kaal + kogus. Kõiki kolme saab korvis muuta. Rea saab ära võtta. Korv näitab juba tehtud valikuid.
 
