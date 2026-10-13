@@ -181,15 +181,18 @@
           <label><span data-k="vorm_paev">Järeletulemise päev</span>
             <input type="date" name="paev">
           </label>
-          <label><span data-k="vorm_nimi">Nimi</span>
+          <label><span data-k="vorm_nimi">Nimi</span><span class="tarn">*</span>
             <input type="text" name="nimi">
           </label>
-          <label><span data-k="vorm_telefon">Telefon</span>
+          <label><span data-k="vorm_telefon">Telefon</span><span class="tarn">*</span>
             <input type="tel" name="telefon">
           </label>
           <label class="rida"><input type="checkbox" name="uudis"> <span data-k="vorm_uudis">Tahan uudiseid</span></label>
-          <label><span data-k="vorm_epost">E-post</span>
+          <label><span data-k="vorm_epost">E-post</span><span class="tarn">*</span>
             <input type="email" name="epost">
+          </label>
+          <label><span>Täpsustus</span>
+            <textarea name="tapsustus" rows="3"></textarea>
           </label>
           <button class="saada" type="submit" data-k="vorm_saada">Kinnitan tellimuse</button>
           <div class="tuvastus" hidden>
