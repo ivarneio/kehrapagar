@@ -14,7 +14,7 @@ Lehe vaade on üleval link. Kui see annab tühja lehe, on Pages veel kinni: Sett
 - Eesmärgid: tooted, sotsiaalmeedia kampaaniad, kringlitellimused.
 - Tellimus on ainult kohapealne järeletulemine ja kohapealne maksmine. Ettemaksu ei ole.
 - Lehel on suur nupp «Helista ja telli». Telefonis avab see kõne.
-- Tellimine on avamisel kinnine plokk. Vormis saab valida valmis kringli või panna kokku fantaasiakringli täidistest.
+- Tellimine on avamisel kinnine plokk. Toote «Telli» täidab nime ette. Korv hoiab mitu rida (toode, kaal, kogus) ainult selle külastuse ajal. Kaal on 0,5 / 1,0 / 1,5 / 2,0 kg.
 - Tellimus salvestub Zone'i. Igast tellimusest läheb e-kiri pagarikotta.
 - Pagaril on lihtne telefonivaade. Sinna saab kirja panna ka telefonitellimuse, et kõik tellimused oleks ühes kohas. Pagarivaade on eesti keeles.
 - Igal kampaanial on lühike link. `?keel=ru` või `?keel=en` avab sama lehe teises keeles.
@@ -60,9 +60,17 @@ Lehe avamisel ei tõlgita ega loeta pilve. Kui päevane käik ebaõnnestub, jä�
 
 Avamisel on tellimine kinnine plokk, sama kaaluga mis tootegrupp. Vajutus avab vormi. Vorm ei ole lehe avamisel lahti.
 
-Plokk võib olla toodete all. Iga kringli juures on viide «Telli». See avab sama vormi, ja kringel on juba valitud.
+Iga tellitava toote juures on nupp «Telli». Vajutus avab vormi ja toote nimi on juba sees. Klient valib kaalu ja koguse ning lisab rea korvi. Fotod näitavad kaalude erinevust.
 
-Vormis on kaks teed. Valmis kringel on üks valik. Teine on fantaasiakringel: klient valib ise täidised. Täidiste nimekiri tuleb tabelist, mitte koodist. Suurus, päev, kellaaeg, nimi ja telefon jäävad. Märkeruut «Tahan uudiseid» ja e-post jäävad. «Helista ja telli» jääb vormi kõrvale.
+### Korv
+
+Korv on ajutine ja elab ainult selle külastuse ajal. Lehe uuesti laadimine tühjendab korvi. Midagi serverisse ei lähe enne, kui tellimus saadetakse.
+
+Üks rida on toode + kaal + kogus. Kõiki kolme saab korvis muuta. Rea saab ära võtta. Korv näitab juba tehtud valikuid.
+
+Kringli kaal on fikseeritud valik, mitte vaba number: 0,5 / 1,0 / 1,5 / 2,0 kg.
+
+Vormis on kaks teed. Valmis kringel on üks valik. Teine on fantaasiakringel: klient valib ise täidised. Täidiste nimekiri tuleb tabelist, mitte koodist. Päev, kellaaeg, nimi ja telefon jäävad. Märkeruut «Tahan uudiseid» ja e-post jäävad. «Helista ja telli» jääb vormi kõrvale.
 
 Täidiste nimekiri ei ole veel lukus.
 
