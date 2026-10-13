@@ -458,20 +458,37 @@
         joonista();
       });
     }
+    var tuvastus = vorm.querySelector(".tuvastus");
+    var olek = document.querySelector(".olek");
     vorm.addEventListener("submit", function (e) {
       e.preventDefault();
       var tel = vorm.querySelector("[name=telefon]");
       var ep = vorm.querySelector("[name=epost]");
       if (!tel.value || !ep.value) {
-        document.querySelector(".olek").textContent = "Telefon ja e-post on kohustuslikud.";
+        olek.textContent = "Telefon ja e-post on kohustuslikud.";
         return;
       }
       if (!korv.length) {
-        document.querySelector(".olek").textContent = "Lisa vähemalt üks toode.";
+        olek.textContent = "Lisa vähemalt üks toode.";
         return;
       }
-      document.querySelector(".olek").textContent = "Tellimus on korvis. Saatmine tuleb järgmine samm.";
+      olek.textContent = "";
+      tuvastus.hidden = false;
     });
+    var kinnita = vorm.querySelector(".kinnita");
+    if (kinnita) {
+      kinnita.addEventListener("click", function () {
+        var inimene = vorm.querySelector("[name=inimene]");
+        if (!inimene.checked) {
+          olek.textContent = "Kinnita, et oled inimene.";
+          return;
+        }
+        tuvastus.hidden = true;
+        olek.textContent = "Tellimus on saadetud. Kinnituskiri on e-postile saadetud. Kättesaamispäeval saadame SMS-meeldetuletuse.";
+        korv = [];
+        joonista();
+      });
+    }
   }
 
   fetch("seaded.json")
