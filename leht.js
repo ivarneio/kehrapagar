@@ -368,9 +368,7 @@
       }
       kujud.appendChild(kast);
     });
-    var nimi = nupp.getAttribute("data-kringel");
-    suurTelli.hidden = !nimi;
-    suurTelli.setAttribute("data-kringel", nimi || "");
+    suurTelli.hidden = false;
     vaade.classList.add("sees");
   });
 
