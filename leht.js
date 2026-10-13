@@ -403,16 +403,31 @@
     tee.addEventListener("change", naitaTaidised);
     naitaTaidised();
 
-    suurTelli.addEventListener("click", function () {
-      if (kringel && suurTelli.getAttribute("data-kringel")) {
-        kringel.value = suurTelli.getAttribute("data-kringel");
-      }
-      tee.value = "valmis";
-      naitaTaidised();
+    function avaVorm() {
       sulgeVaade();
       telli.classList.add("lahti");
       telli.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    suurTelli.addEventListener("click", avaVorm);
+    document.querySelectorAll(".telli-link").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        avaVorm();
+      });
     });
+    fetch("tellitavad.json")
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!kringel || !d || !d.kringlid) return;
+        kringel.innerHTML = "";
+        d.kringlid.forEach(function (nimi) {
+          var o = document.createElement("option");
+          o.textContent = nimi;
+          kringel.appendChild(o);
+        });
+      })
+      .catch(function () {});
 
     vorm.addEventListener("submit", function (e) {
       e.preventDefault();
