@@ -393,13 +393,8 @@
   });
 
   if (vorm && telli) {
-    var tee = vorm.querySelector("[name=tee]");
     var taidised = document.querySelector(".taidised");
-    function naitaTaidised() {
-      taidised.hidden = tee.value !== "fantaasia";
-    }
-    tee.addEventListener("change", naitaTaidised);
-    naitaTaidised();
+    if (taidised) taidised.hidden = true;
 
     function avaVorm() {
       sulgeVaade();
@@ -442,6 +437,15 @@
       h += "</ul>";
       korvEl.innerHTML = h;
     }
+    var vahenda = vorm.querySelector(".vahenda");
+    var suurenda = vorm.querySelector(".suurenda");
+    if (vahenda) vahenda.addEventListener("click", function () {
+      var n = Math.max(1, (+kogus.value || 1) - 1);
+      kogus.value = n;
+    });
+    if (suurenda) suurenda.addEventListener("click", function () {
+      kogus.value = (+kogus.value || 1) + 1;
+    });
     if (lisa) {
       lisa.addEventListener("click", function () {
         if (!kringel || !kringel.value) return;
