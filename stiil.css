@@ -330,3 +330,10 @@ fieldset input { width: auto; }
 .korv li { display: flex; gap: .5rem; align-items: center; padding: .3rem 0; border-bottom: 1px solid var(--joon); }
 .korv button { background: none; border: 0; color: var(--vaikne); cursor: pointer; font: inherit; text-decoration: underline; }
 .lisa { display: block; width: 100%; margin: .4rem 0; padding: .55rem; background: var(--paber); border: 1px solid var(--joon); cursor: pointer; font: inherit; }
+
+.kaal-rida { display: flex; gap: .6rem; align-items: end; }
+.kaal-rida label { flex: 1; }
+.kaal-rida .kogus { flex: 0 0 auto; }
+.samm { display: flex; align-items: center; gap: .3rem; }
+.samm button { width: 2rem; height: 2rem; border: 1px solid var(--joon); background: #fff; font: inherit; font-size: 1.1rem; cursor: pointer; }
+.samm input { width: 2.4rem; text-align: center; border: 0; background: transparent; }
