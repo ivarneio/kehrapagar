@@ -70,9 +70,15 @@ Korv on ajutine ja elab ainult selle külastuse ajal. Lehe uuesti laadimine või
 
 Kringli kaal on fikseeritud valik, mitte vaba number: 0,5 / 1,0 / 1,5 / 2,0 kg.
 
-Vormis on kaks teed. Valmis kringel on üks valik. Teine on fantaasiakringel: klient valib ise täidised. Täidiste nimekiri tuleb tabelist, mitte koodist.
+«Tee» valikut ei ole. Fantaasia on nimekirjas nagu teised kringlid.
 
-Fantaasiakringlil on kuni neli kohta. Klient valib täidised ja saab panna kordaja. Rosinad 2× võtab kaks kohta. Alla kolme ei saa tellida. Neli on maksimum.
+Kui valitud on Fantaasia, algab kaal 1,0 kg-st. 0,5 kg ei ole. Ilmub täidiste nimekiri: Kaneel, Moon, Martsipan, Rosin, Pähkel, Juust, Sink. Iga täidist saab valida 1× või 2×. 2× võtab kaks kohta. Kokku kuni neli kohta. Vähem võib, rohkem ei saa. Täidiste nimekiri tuleb tabelist.
+
+Muul kringlil on kaal 0,5 / 1,0 / 1,5 / 2,0 kg. Täidiseid ei ole.
+
+Eraldi ostukorvi vaadet ei ole. Korvi sisu kajastub vormi all: toode, kaal, kogus. Rea saab muuta või ära võtta. All on summa, mida klient maksab kättesaamisel.
+
+Hind on tabelis, mitte koodis. Tellitavatel toodetel on oma tabel. Seal on kringli kilogrammi hind ja täidise lisahind. Kolmas pool muudab seda. Reliis kopeerib hinna Zone'i. Leht loeb Zone'i koopiat, mitte pilve. Vormis on iga kaalu juures hind. Kui hind puudub, näitab «hind kinnitatakse kontoris».
 
 Päev, kellaaeg ja nimi jäävad. Märkeruut «Tahan uudiseid» jääb. «Helista ja telli» jääb vormi kõrvale.
 
