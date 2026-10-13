@@ -78,6 +78,14 @@ Päev, kellaaeg ja nimi jäävad. Märkeruut «Tahan uudiseid» jääb. «Helist
 
 Telefon ja e-post on kohustuslikud. Ilma nendeta tellimust ei saadeta.
 
+Vormis on täpsustuse väli. Kui klient tahab midagi täpsustada, näiteks numbrikujuline kringel, kirjutab ta sinna. Kui väli on tühi, on tavaline tellimus. Kontori kirjas on nupp «Kinnita», mis saadab kliendile kinnituse. Kui täpsustus on täidetud, nuppu ei ole. Inimene peab ise vastama.
+
+Iga tellimuskiri läheb ka BCC-aadressile. Aadress on seadetes. Kui klient ütleb, et kirja ei tulnud, saab kontor vaadata, kas BCC-s on.
+
+Logi on tekstifail `andmed/tellimus.log`. Iga saatmiskatse lisab rea: aeg, kas õnnestus või viga, ja tellimuse sisu. Vead lähevad samasse faili. Fail ei ole veebist loetav. Pagarivaates saab seda vaadata.
+
+Iga kuu esimesel kuupäeval arhiveeritakse logi. Vanale failile lisatakse kuu nimi, näiteks `tellimus-2026-10.log`. Loodakse uus tühi `tellimus.log`.
+
 Kohe pärast saatmist läheb kliendi e-postile kiri: tellimus on edastatud ja ootab kinnitamist kontorist.
 
 Hommikul läheb SMS: kringel ootab kokkulepitud kohas. See on meeldetuletus. Kas SMS läheb ainult kinnitatud tellimusele, mis kell, ja mis teenusega, ei ole veel lukus.
