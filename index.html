@@ -157,12 +157,21 @@
             </select>
           </label>
           <label><span data-k="vorm_kringel">Kringel</span>
-            <select name="kringel">
-              <option>Kaneelikringel</option>
-              <option>Kardemonikringel</option>
-              <option>Õunakringel</option>
+            <select name="kringel"></select>
+          </label>
+          <label><span>Kaal</span>
+            <select name="kaal">
+              <option>0,5 kg</option>
+              <option>1,0 kg</option>
+              <option>1,5 kg</option>
+              <option>2,0 kg</option>
             </select>
           </label>
+          <label><span>Kogus</span>
+            <input type="number" name="kogus" value="1" min="1">
+          </label>
+          <button class="lisa" type="button">Lisa korvi</button>
+          <div class="korv"></div>
           <fieldset class="taidised">
             <legend data-k="vorm_taidised">Täidised</legend>
             <label><input type="checkbox" name="taidis" value="kaneel"> Kaneel</label>
