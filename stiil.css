@@ -337,3 +337,6 @@ fieldset input { width: auto; }
 .samm { display: flex; align-items: center; gap: .3rem; }
 .samm button { width: 2rem; height: 2rem; border: 1px solid var(--joon); background: #fff; font: inherit; font-size: 1.1rem; cursor: pointer; }
 .samm input { width: 2.4rem; text-align: center; border: 0; background: transparent; }
+
+.tarn { color: #c0392b; margin-left: .15rem; }
+textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color: var(--tint); padding: .55rem .6rem; width: 100%; border-radius: 0; }
