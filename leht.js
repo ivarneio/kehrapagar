@@ -398,6 +398,9 @@
 
     function avaVorm() {
       sulgeVaade();
+      if (lava && telli.parentElement !== lava.parentElement) {
+        lava.parentElement.insertBefore(telli, lava);
+      }
       telli.classList.add("lahti");
       telli.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -406,6 +409,11 @@
       a.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
+        var nimi = a.closest(".pisi") ? a.closest(".pisi").querySelector(".nimi").textContent : "";
+        if (nimi) {
+          korv.push({ nimi: nimi, kaal: "1,0 kg", kogus: "1" });
+          joonista();
+        }
         avaVorm();
       });
     });
@@ -433,9 +441,13 @@
     function joonista() {
       if (!korvEl) return;
       if (!korv.length) { korvEl.innerHTML = ""; return; }
+      var kaalud = ["0,5 kg", "1,0 kg", "1,5 kg", "2,0 kg"];
       var h = "<ul>";
       korv.forEach(function (r, i) {
-        h += "<li>" + r.nimi + " · " + r.kaal + " · " + r.kogus + " tk · " + hind(r) + " <button type=\"button\" data-i=\"" + i + "\">eemalda</button></li>";
+        var opts = kaalud.map(function (k) {
+          return "<option" + (k === r.kaal ? " selected" : "") + ">" + k + "</option>";
+        }).join("");
+        h += "<li>" + r.nimi + " <select data-i=\"" + i + "\" class=\"kaal-vali\">" + opts + "</select> · " + r.kogus + " tk · " + hind(r) + " <button type=\"button\" data-i=\"" + i + "\">eemalda</button></li>";
       });
       h += "</ul>";
       korvEl.innerHTML = h;
@@ -462,6 +474,13 @@
         if (!b) return;
         var i = +b.getAttribute("data-i");
         korv.splice(i, 1);
+        joonista();
+      });
+      korvEl.addEventListener("change", function (e) {
+        var s = e.target.closest ? e.target.closest(".kaal-vali") : null;
+        if (!s) return;
+        var i = +s.getAttribute("data-i");
+        if (korv[i]) korv[i].kaal = s.value;
         joonista();
       });
     }
