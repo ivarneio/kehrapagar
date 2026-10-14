@@ -467,6 +467,34 @@
     }
     var tuvastus = vorm.querySelector(".tuvastus");
     var olek = document.querySelector(".olek");
+    var keelatud = {};
+    var paev = vorm.querySelector("[name=paev]");
+    function kontrolliPaev() {
+      if (!paev || !paev.value) return;
+      var p = keelatud[paev.value];
+      if (p !== undefined) {
+        olek.textContent = p ? "See päev ei sobi: " + p : "See päev ei sobi. Vali teine.";
+        paev.value = "";
+      }
+    }
+    if (paev) paev.addEventListener("change", kontrolliPaev);
+    fetch("seaded.json")
+      .then(function (r) { return r.json(); })
+      .then(function (s) {
+        if (!s || !s.keelatud_paevad) return;
+        return fetch(s.keelatud_paevad);
+      })
+      .then(function (r) { return r ? r.text() : ""; })
+      .then(function (csv) {
+        if (!csv) return;
+        csv.split("\n").slice(1).forEach(function (rida) {
+          var osad = rida.split(",");
+          var d = (osad[0] || "").trim();
+          var p = (osad[1] || "").trim();
+          if (d) keelatud[d] = p;
+        });
+      })
+      .catch(function () {});
     vorm.addEventListener("submit", function (e) {
       e.preventDefault();
       var tel = vorm.querySelector("[name=telefon]");
