@@ -285,6 +285,7 @@
 
   document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
     nupp.addEventListener("click", function () {
+      if (telli) telli.classList.remove("lahti");
       var grupp = nupp.parentElement;
       if (!lava) return;
       if (vahemLiikumine) {
