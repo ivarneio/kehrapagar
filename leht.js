@@ -523,7 +523,7 @@
         olek.textContent = "Telefon ja e-post on kohustuslikud.";
         return;
       }
-      if (!/^[0-9]+$/.test(tel.value)) {
+      if (!/^\+?[0-9]+$/.test(tel.value)) {
         olek.textContent = "Telefonis tohib olla ainult numbreid.";
         return;
       }
