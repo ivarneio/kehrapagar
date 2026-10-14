@@ -10,5 +10,6 @@
     "valge": "#ffffff",
     "lapa": 50
   },
-  "tellimus_email": "ivar@neio.ee"
+  "tellimus_email": "ivar@neio.ee",
+  "keelatud_paevad": "https://docs.google.com/spreadsheets/d/1OP3UgZqxvm_jGp6ukpKHKmZ9zJABi56ZjqoRYAFmEbw/export?format=csv&gid=275482179"
 }
