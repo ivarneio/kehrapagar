@@ -34,14 +34,8 @@
     });
     return el;
   }
-  var ylemine = ["oranz", "valge", "sinine", "valge"];
-  var sild = ["oranz", "valge", "sinine", "valge", "oranz"];
-  var alumine = ["valge", "sinine", "valge", "oranz"];
-  function muster(i, n) {
-    if (n > 2 && i === n - 1) return alumine;
-    if (n > 2 && i === n - 2) return sild;
-    return ylemine;
-  }
+  var ylemine = ["sinine", "sinine", "sinine", "sinine"];
+  function muster(i, n) { return ylemine; }
   document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
     var nimi = document.createElement("span");
     nimi.className = "sorm-nimi";
@@ -50,16 +44,7 @@
     nupp.appendChild(teeSorm(ylemine));
     nupp.appendChild(nimi);
   });
-  function pikkus(i, n, k) {
-    var servalt = Math.min(i, n - 1 - i);
-    var serv = (i > (n - 1) / 2 ? 68 : 75) - servalt * 22;
-    var hype = [1, -1, 1, 0, -1];
-    var samm = [0, 2, 4, 5, 6][k] || 6;
-    var w = serv - samm + hype[(i + k) % hype.length];
-    if (w > 75) w = 75;
-    if (w < 22) w = 22;
-    return Math.round(w);
-  }
+  function pikkus(i, n, k) { return 60; }
   function seaVarv(g, i, n) {
     var sorm = g.querySelector(".sorm");
     if (!sorm) return;
