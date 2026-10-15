@@ -371,6 +371,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   display: block;
   height: 6px;
   background: #fff;
-  margin-left: 30%;
+  margin-left: calc(30% + 2rem);
+  margin-right: 4px;
   margin-bottom: 0;
 }
