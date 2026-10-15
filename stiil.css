@@ -357,6 +357,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   width: 4px; background: #fff;
 }
 .grupid .grupp > button {
+  display: block;
   width: calc(70% - 4px);
   margin-left: auto;
   margin-right: 4px;
