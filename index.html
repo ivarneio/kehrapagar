@@ -6,41 +6,226 @@
   <title>Kehra Pagar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="stiil.css">
 </head>
 <body>
-  <main>
-    <header class="pais">
-      <a class="logo" href="#avaleht">Kehra Pagar</a>
-      <nav>
-        <a href="#tooted">Tooted</a>
-        <a href="#telli">Telli</a>
-        <a href="#firmast">Firmast</a>
-        <a href="#kauplus">Kauplus</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-    </header>
+  <header class="pais">
+  <div class="pais-sisu">
+    <a class="logo" href="#avaleht">Kehra Pagar</a>
+    <button class="menu-nupp" type="button" aria-label="Menüü">☰</button>
+    <nav>
+      <a href="#tooted" data-k="nav_tooted">Tooted</a>
+      <a href="#telli" data-k="nav_telli">Lisa tellimusse</a>
+      <a href="firmast.html" data-k="nav_firmast">Firmast</a>
+      <a href="kauplus.html" data-k="nav_kauplus">Kauplus</a>
+      <a href="kontakt.html" data-k="nav_kontakt">Kontakt</a>
+    </nav>
+    <div class="parem">
+            <div class="sots">
+        <a class="fb" href="https://www.facebook.com/KehraPagar" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a>
+        <a class="ig" href="https://www.instagram.com/kehrapagar/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm10 2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm-5 3.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 1.6A2.2 2.2 0 1 0 14.2 12 2.2 2.2 0 0 0 12 9.8zM17.2 6.6a.9.9 0 1 1-.9.9.9.9 0 0 1 .9-.9z"/></svg></a>
+      </div>
+      <div class="keeled">
+        <button type="button" data-keel="et" class="sees">et</button>
+        <button type="button" data-keel="ru">ru</button>
+        <button type="button" data-keel="en">en</button>
+      </div>
+    </div>
+    </div>
+</header>
 
+  <main>
     <section id="avaleht">
       <img class="pealeht" src="pildid/pealeht.jpg" alt="Kehra Pagar">
+      <h1>Kehra Pagar</h1>
     </section>
 
     <section id="tooted">
+      <h2 data-k="tooted">Tooted</h2>
       <div class="grupid">
-        <article class="grupp"><button type="button">Kringlid</button></article>
-        <article class="grupp"><button type="button">Stritslid ja struudlid</button></article>
-        <article class="grupp"><button type="button">Saiad ja pirukad</button></article>
-        <article class="grupp"><button type="button">Koogid</button></article>
-        <article class="grupp"><button type="button">Küpsised</button></article>
-        <article class="grupp"><button type="button">Tordid</button></article>
+        <article class="grupp" data-jrk="1">
+          <button type="button" data-k="grupp_kringlid">Kringlid</button>
+          <div class="sisu"><div>
+            <div class="riba">
+              <button class="pisi" type="button" data-pildid="pildid/kringel.svg" data-sildid="1 kg"><img src="pildid/kringel.svg" alt="Kaneelikringel"><span class="nimi">Kaneelikringel</span><a class="telli-link" href="#telli">Lisa tellimusse</a></button>
+              <button class="pisi" type="button" data-pildid="pildid/kringel.svg" data-sildid="1 kg"><img src="pildid/kringel.svg" alt="Moonikringel"><span class="nimi">Moonikringel</span><a class="telli-link" href="#telli">Lisa tellimusse</a></button>
+              <button class="pisi" type="button" data-pildid="pildid/kringel.svg" data-sildid="1 kg"><img src="pildid/kringel.svg" alt="Max"><span class="nimi">Max</span><a class="telli-link" href="#telli">Lisa tellimusse</a></button>
+              <button class="pisi" type="button" data-pildid="pildid/kringel.svg" data-sildid="1 kg"><img src="pildid/kringel.svg" alt="Vaniljekreemikringel"><span class="nimi">Vaniljekreemikringel</span><a class="telli-link" href="#telli">Lisa tellimusse</a></button>
+              <button class="pisi" type="button" data-pildid="pildid/kringel.svg" data-sildid="1 kg"><img src="pildid/kringel.svg" alt="Martsipani kringel"><span class="nimi">Martsipani kringel</span><a class="telli-link" href="#telli">Lisa tellimusse</a></button>
+              <button class="pisi" type="button" data-pildid="pildid/kringel.svg" data-sildid="1 kg"><img src="pildid/kringel.svg" alt="Martsipani pohla kringel"><span class="nimi">Martsipani pohla kringel</span><a class="telli-link" href="#telli">Lisa tellimusse</a></button>
+              <button class="pisi" type="button" data-pildid="pildid/kringel.svg" data-sildid="1 kg"><img src="pildid/kringel.svg" alt="Pizza kringel"><span class="nimi">Pizza kringel</span><a class="telli-link" href="#telli">Lisa tellimusse</a></button>
+              <button class="pisi" type="button" data-pildid="pildid/kringel.svg" data-sildid="1 kg"><img src="pildid/kringel.svg" alt="Kodu kringel"><span class="nimi">Kodu kringel</span><a class="telli-link" href="#telli">Lisa tellimusse</a></button>
+              <button class="pisi" type="button" data-pildid="pildid/kringel.svg" data-sildid="1 kg"><img src="pildid/kringel.svg" alt="Juustukrigel"><span class="nimi">Juustukrigel</span><a class="telli-link" href="#telli">Lisa tellimusse</a></button>
+              <button class="pisi" type="button" data-pildid="pildid/kringel.svg" data-sildid="1 kg"><img src="pildid/kringel.svg" alt="Juustusingi kringel"><span class="nimi">Juustusingi kringel</span><a class="telli-link" href="#telli">Lisa tellimusse</a></button>
+              <button class="pisi" type="button" data-pildid="pildid/kringel.svg" data-sildid="1 kg"><img src="pildid/kringel.svg" alt="Fantaasia"><span class="nimi">Fantaasia</span><a class="telli-link" href="#telli">Lisa tellimusse</a></button>
+            </div>
+          </div></div>
+        </article>
+
+        <article class="grupp" data-jrk="2">
+          <button type="button" data-k="grupp_stritslid">Stritslid ja struudlid</button>
+          <div class="sisu"><div>
+            <div class="riba">
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="Sai"><img src="pildid/sai.svg" alt="Sai"><span class="nimi">Sai</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="Pirukas"><img src="pildid/sai.svg" alt="Pirukas"><span class="nimi">Pirukas</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="1 kg"><img src="pildid/sai.svg" alt="Sepik"><span class="nimi">Sepik</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="1 kg"><img src="pildid/sai.svg" alt="Rukkileib"><span class="nimi">Rukkileib</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="1 tk"><img src="pildid/sai.svg" alt="Saiake"><span class="nimi">Saiake</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="1 tk"><img src="pildid/sai.svg" alt="Pikk sai"><span class="nimi">Pikk sai</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="1 tk"><img src="pildid/sai.svg" alt="Lihapirukas"><span class="nimi">Lihapirukas</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="1 tk"><img src="pildid/sai.svg" alt="Kapsa pirukas"><span class="nimi">Kapsa pirukas</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="1 tk"><img src="pildid/sai.svg" alt="Kookosirukas"><span class="nimi">Kookosirukas</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="1 tk"><img src="pildid/sai.svg" alt="Porgandipirukas"><span class="nimi">Porgandipirukas</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="1 tk"><img src="pildid/sai.svg" alt="Vorstipirukas"><span class="nimi">Vorstipirukas</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/sai.svg" data-sildid="1 tk"><img src="pildid/sai.svg" alt="Räimemarja pirukas"><span class="nimi">Räimemarja pirukas</span></button>
+            </div>
+          </div></div>
+        </article>
+
+        <article class="grupp" data-jrk="3">
+          <button type="button" data-k="grupp_saiad">Saiad ja pirukad</button>
+          <div class="sisu"><div>
+            <div class="riba">
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="Kook"><img src="pildid/kook.svg" alt="Kook"><span class="nimi">Kook</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="1 tk"><img src="pildid/kook.svg" alt="Napoleon"><span class="nimi">Napoleon</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="1 tk"><img src="pildid/kook.svg" alt="Rummipall"><span class="nimi">Rummipall</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="1 tk"><img src="pildid/kook.svg" alt="Vahukomm"><span class="nimi">Vahukomm</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="1 tk"><img src="pildid/kook.svg" alt="Besee"><span class="nimi">Besee</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="1 tk"><img src="pildid/kook.svg" alt="Šokolaadimuffin"><span class="nimi">Šokolaadimuffin</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="1 tk"><img src="pildid/kook.svg" alt="Pannkook"><span class="nimi">Pannkook</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="1 tk"><img src="pildid/kook.svg" alt="Saiakeste tort"><span class="nimi">Saiakeste tort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="1 tk"><img src="pildid/kook.svg" alt="Õunakook"><span class="nimi">Õunakook</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="1 tk"><img src="pildid/kook.svg" alt="Kohupiimakook"><span class="nimi">Kohupiimakook</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="1 tk"><img src="pildid/kook.svg" alt="Pähklikook"><span class="nimi">Pähklikook</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="1 tk"><img src="pildid/kook.svg" alt="Marjakook"><span class="nimi">Marjakook</span></button>
+            </div>
+          </div></div>
+        </article>
+
+        <article class="grupp" data-jrk="4">
+          <button type="button" data-k="grupp_koogid">Koogid</button>
+          <div class="sisu"><div>
+            <div class="riba">
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="250 g"><img src="pildid/kook.svg" alt="Jussike"><span class="nimi">Jussike</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg|pildid/kook.svg" data-sildid="250 g|500 g"><img src="pildid/kook.svg" alt="Kaeraküpsis"><span class="nimi">Kaeraküpsis</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="250 g"><img src="pildid/kook.svg" alt="Piparkook"><span class="nimi">Piparkook</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="250 g"><img src="pildid/kook.svg" alt="Võiküpsis"><span class="nimi">Võiküpsis</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="250 g"><img src="pildid/kook.svg" alt="Suhkruküpsis"><span class="nimi">Suhkruküpsis</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="250 g"><img src="pildid/kook.svg" alt="Mooniküpsis"><span class="nimi">Mooniküpsis</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="250 g"><img src="pildid/kook.svg" alt="Kakaoküpsis"><span class="nimi">Kakaoküpsis</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="250 g"><img src="pildid/kook.svg" alt="Ingveriküpsis"><span class="nimi">Ingveriküpsis</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="250 g"><img src="pildid/kook.svg" alt="Pähkliküpsis"><span class="nimi">Pähkliküpsis</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="250 g"><img src="pildid/kook.svg" alt="Rosina küpsis"><span class="nimi">Rosina küpsis</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="250 g"><img src="pildid/kook.svg" alt="Sidruniküpsis"><span class="nimi">Sidruniküpsis</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/kook.svg" data-sildid="250 g"><img src="pildid/kook.svg" alt="Kookose küpsis"><span class="nimi">Kookose küpsis</span></button>
+            </div>
+          </div></div>
+        </article>
+
+        <article class="grupp" data-jrk="5">
+          <button type="button" data-k="grupp_kypsised">Küpsised</button>
+          <div class="sisu"><div>
+            <div class="riba">
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="Tort"><img src="pildid/tort.svg" alt="Tort"><span class="nimi">Tort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="1 kg"><img src="pildid/tort.svg" alt="Pähklitort"><span class="nimi">Pähklitort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="1 kg"><img src="pildid/tort.svg" alt="Šokolaaditort"><span class="nimi">Šokolaaditort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="1 kg"><img src="pildid/tort.svg" alt="Marjatort"><span class="nimi">Marjatort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="1 kg"><img src="pildid/tort.svg" alt="Kohupiimatort"><span class="nimi">Kohupiimatort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="1 kg"><img src="pildid/tort.svg" alt="Napoleonitort"><span class="nimi">Napoleonitort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="1 kg"><img src="pildid/tort.svg" alt="Beseetort"><span class="nimi">Beseetort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="1 kg"><img src="pildid/tort.svg" alt="Õunatort"><span class="nimi">Õunatort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="1 kg"><img src="pildid/tort.svg" alt="Kohvitort"><span class="nimi">Kohvitort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="1 kg"><img src="pildid/tort.svg" alt="Laste tort"><span class="nimi">Laste tort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="1 kg"><img src="pildid/tort.svg" alt="Pulmatort"><span class="nimi">Pulmatort</span></button>
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="1 kg"><img src="pildid/tort.svg" alt="Kookosetort"><span class="nimi">Kookosetort</span></button>
+            </div>
+          </div></div>
+        </article>
+        <article class="grupp" data-jrk="6">
+          <button type="button" data-k="grupp_tordid">Tordid</button>
+          <div class="sisu"><div>
+            <div class="riba">
+              <button class="pisi" type="button" data-pildid="pildid/tort.svg" data-sildid="Tort"><img src="pildid/tort.svg" alt="Tort"><span class="nimi">Tort</span></button>
+            </div>
+          </div></div>
+        </article>
       </div>
     </section>
 
-    <section id="telli" class="tegevused">
-      <button type="button" class="tegevus">Telli</button>
-      <button type="button" class="tegevus">Helista</button>
+    <section id="telli" class="grupp">
+      <button type="button" data-k="telli">Telli</button>
+      <div class="sisu"><div>
+        <a class="helista" href="tel:+3720000000" data-k="helista">Helista ja telli</a>
+        <form>
+          <label><span data-k="vorm_kringel">Kringel</span>
+            <select name="kringel"></select>
+          </label>
+          <div class="kaal-rida">
+            <label><span>Kaal</span>
+              <select name="kaal">
+                <option>0,5 kg</option>
+                <option>1,0 kg</option>
+                <option>1,5 kg</option>
+                <option>2,0 kg</option>
+              </select>
+            </label>
+            <label class="kogus"><span>Kogus</span>
+              <span class="samm">
+                <button type="button" class="vahenda">−</button>
+                <input type="number" name="kogus" value="1" min="1" readonly>
+                <button type="button" class="suurenda">+</button>
+              </span>
+            </label>
+          </div>
+          <button class="lisa" type="button">Lisa korvi</button>
+          <div class="korv"></div>
+          <fieldset class="taidised">
+            <legend data-k="vorm_taidised">Täidised</legend>
+            <label><input type="checkbox" name="taidis" value="kaneel"> Kaneel</label>
+            <label><input type="checkbox" name="taidis" value="kardemon"> Kardemon</label>
+            <label><input type="checkbox" name="taidis" value="suhkur"> Suhkur</label>
+          </fieldset>
+          <label><span data-k="vorm_paev">Järeletulemise päev</span>
+            <input type="date" name="paev">
+          </label>
+          <label><span data-k="vorm_nimi">Nimi</span><span class="tarn">*</span>
+            <input type="text" name="nimi">
+          </label>
+          <label><span data-k="vorm_telefon">Telefon</span><span class="tarn">*</span>
+            <input type="tel" name="telefon">
+          </label>
+          <label class="rida"><input type="checkbox" name="uudis"> <span data-k="vorm_uudis">Tahan uudiseid</span></label>
+          <label><span data-k="vorm_epost">E-post</span><span class="tarn">*</span>
+            <input type="email" name="epost">
+          </label>
+          <label><span>Täpsustus</span>
+            <textarea name="tapsustus" rows="3"></textarea>
+          </label>
+          <button class="saada" type="submit" data-k="vorm_saada">Kinnitan tellimuse</button>
+          <div class="tuvastus" hidden>
+            <p>Kinnita, et oled inimene.</p>
+            <label class="rida"><input type="checkbox" name="inimene"> Olen inimene</label>
+            <button class="saada kinnita" type="button">Saada</button>
+          </div>
+          <p class="olek"></p>
+        </form>
+      </div></div>
     </section>
+
   </main>
+
+  <div class="taisekraan">
+    <button class="sulge" type="button" data-k="sulge" aria-label="Sulge">×</button>
+    <div class="kujud"></div>
+    <button class="telli-nupp" type="button" data-k="telli" hidden>Telli</button>
+  </div>
+
+  <footer class="jalus">
+    <span>Kehra Pagar</span>
+    <a href="tel:+3720000000" data-k="jalus_helista">Helista</a>
+    <span data-seade="aadress">Kehra</span>
+  </footer>
+  <script src="leht.js"></script>
 </body>
 </html>
