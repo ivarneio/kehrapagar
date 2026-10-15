@@ -345,4 +345,3 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
 .grupid .grupp:nth-child(odd) > button { background: #5ba3d9; color: #fff; }
 .grupid .grupp:nth-child(even) > button { background: #e8884a; color: #fff; }
 .grupid .grupp > button { border-radius: 2rem; border: 0; }
-.sorm i { background: #5ba3d9 !important; }
