@@ -15,9 +15,10 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: "Source Sans 3", system-ui, sans-serif;
-  background: var(--taust);
+  background: linear-gradient(180deg, #d4e8f5 0%, #f5efe6 55%, #f0e6d8 100%);
   color: var(--tint);
   line-height: 1.45;
+  min-height: 100vh;
   padding-bottom: 3.4rem;
 }
 .pais {
