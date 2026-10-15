@@ -341,3 +341,8 @@ fieldset input { width: auto; }
 
 .tarn { color: #c0392b; margin-left: .15rem; }
 textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color: var(--tint); padding: .55rem .6rem; width: 100%; border-radius: 0; }
+
+.grupid .grupp:nth-child(odd) > button { background: #5ba3d9; color: #fff; }
+.grupid .grupp:nth-child(even) > button { background: #e8884a; color: #fff; }
+.grupid .grupp > button { border-radius: 2rem; border: 0; }
+.sorm i { background: #5ba3d9 !important; }
