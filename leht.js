@@ -47,7 +47,7 @@
     nimi.className = "sorm-nimi";
     nimi.textContent = nupp.textContent.trim();
     nupp.textContent = "";
-    nupp.appendChild(teeSorm(ylemine));
+    /* ribad vasakul eemaldatud */
     nupp.appendChild(nimi);
   });
   function pikkus(i, n, k) { return 60; }
