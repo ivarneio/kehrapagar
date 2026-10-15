@@ -348,23 +348,29 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
 
 
 
-.grupid { position: relative; padding-right: 1.2rem; }
+
+.grupid { position: relative; }
 .grupid::after {
   content: "";
   position: absolute;
-  right: 0; top: .5rem; bottom: .5rem;
+  right: 0; top: 0; bottom: 0;
   width: 4px; background: #fff;
 }
-.grupid .grupp { position: relative; }
-.grupid .grupp::after {
-  content: "";
-  position: absolute;
-  right: -1.2rem; top: 50%;
-  width: 1rem; height: 4px; background: #fff;
-}
 .grupid .grupp > button {
+  width: calc(70% - 4px);
+  margin-left: auto;
+  margin-right: 4px;
   border-radius: 2rem 0 0 2rem;
   text-align: right;
   padding-right: 1rem;
   text-shadow: 0 1px 3px #000;
+}
+.grupid .grupp + .grupp { margin-top: 6px; }
+.grupid .grupp + .grupp::before {
+  content: "";
+  display: block;
+  height: 6px;
+  background: #fff;
+  margin-left: 30%;
+  margin-bottom: 0;
 }
