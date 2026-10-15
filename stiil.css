@@ -157,6 +157,13 @@ main {
 }
 
 @media (min-width: 48rem) {
+  .pais,
+  #avaleht,
+  .tegevused,
+  .grupid {
+    width: 70%;
+  }
+
   .grupid::after {
     left: 0;
     right: auto;
