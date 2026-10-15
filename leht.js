@@ -34,8 +34,14 @@
     });
     return el;
   }
-  var ylemine = ["sinine", "sinine", "sinine", "sinine"];
-  function muster(i, n) { return ylemine; }
+  var ylemine = ["oranz", "valge", "sinine", "valge"];
+  var sild = ["oranz", "valge", "sinine", "valge", "oranz"];
+  var alumine = ["valge", "sinine", "valge", "oranz"];
+  function muster(i, n) {
+    if (n > 2 && i === n - 1) return alumine;
+    if (n > 2 && i === n - 2) return sild;
+    return ylemine;
+  }
   document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
     var nimi = document.createElement("span");
     nimi.className = "sorm-nimi";
