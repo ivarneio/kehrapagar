@@ -345,3 +345,26 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
 .grupid .grupp:nth-child(odd) > button { background: #5ba3d9; color: #fff; }
 .grupid .grupp:nth-child(even) > button { background: #e8884a; color: #fff; }
 .grupid .grupp > button { border-radius: 2rem; border: 0; }
+
+.grupid { position: relative; padding-right: 1.5rem; }
+.grupid::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: .6rem;
+  bottom: .6rem;
+  width: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+.grupid .grupp { position: relative; }
+.grupid .grupp::after {
+  content: "";
+  position: absolute;
+  right: -1.5rem;
+  top: 50%;
+  width: 1.2rem;
+  height: 3px;
+  background: #fff;
+}
+.grupid .grupp > button { text-align: right; padding-right: 1rem; }
