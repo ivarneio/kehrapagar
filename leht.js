@@ -194,6 +194,19 @@
     }).forEach(function (k) { lava.appendChild(k); });
   }
 
+  function allaPaise(el) {
+    if (!el) return;
+    var telefon = window.matchMedia("(max-width: 799px)").matches;
+    if (!telefon) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    var pais = document.querySelector(".pais");
+    var all = pais ? pais.getBoundingClientRect().height : 0;
+    var y = el.getBoundingClientRect().top + window.scrollY - all;
+    window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  }
+
   function sulgeKoik() {
     kaardid().forEach(sulgeGrupp);
     taastaJarjekord();
