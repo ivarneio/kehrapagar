@@ -285,6 +285,7 @@
     var telliNupp = telli.querySelector(":scope > button");
     function viiTelliUles() {
       kaardid().forEach(sulgeGrupp);
+      document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
       if (lava) lava.parentElement.insertBefore(telli, lava);
       telli.classList.add("lahti");
       telli.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -303,6 +304,18 @@
       a.addEventListener("click", function (e) {
         e.preventDefault();
         viiTelliUles();
+      });
+    });
+    document.querySelectorAll("nav a[href='#firmast'], nav a[href='#kauplus'], nav a[href='#kontakt']").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        var id = a.getAttribute("href").slice(1);
+        var leht = document.getElementById(id);
+        if (!leht || !lava) return;
+        document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
+        lava.parentElement.insertBefore(leht, lava);
+        leht.hidden = false;
+        leht.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
   }
