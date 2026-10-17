@@ -207,6 +207,34 @@
     window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
   }
 
+  function avaLeht(leht) {
+    if (!leht || !lava) return;
+    document.querySelectorAll(".tekstileht").forEach(function (x) {
+      x.hidden = true;
+      x.classList.remove("lahti");
+      x.style.height = "";
+      x.style.transition = "";
+    });
+    lava.parentElement.insertBefore(leht, lava);
+    leht.hidden = false;
+    leht.style.overflow = "hidden";
+    leht.style.transition = "none";
+    leht.style.height = "0px";
+    allaPaise(leht);
+    requestAnimationFrame(function () {
+      leht.style.transition = "height .8s cubic-bezier(.22, 1, .36, 1)";
+      leht.style.height = leht.scrollHeight + "px";
+    });
+    function puhasta() {
+      leht.style.height = "";
+      leht.style.overflow = "";
+      leht.style.transition = "";
+      leht.classList.add("lahti");
+      leht.removeEventListener("transitionend", puhasta);
+    }
+    leht.addEventListener("transitionend", puhasta);
+  }
+
   function sulgeKoik() {
     kaardid().forEach(sulgeGrupp);
     taastaJarjekord();
@@ -313,8 +341,10 @@
     function viiTelliUles() {
       sulgeKoik();
       if (lava) lava.parentElement.insertBefore(telli, lava);
-      telli.classList.add("lahti");
       allaPaise(telli);
+      requestAnimationFrame(function () {
+        telli.classList.add("lahti");
+      });
     }
     if (telliNupp) {
       telliNupp.addEventListener("click", function () {
@@ -347,9 +377,7 @@
         var leht = document.getElementById(id);
         if (!leht || !lava) return;
         sulgeKoik();
-        lava.parentElement.insertBefore(leht, lava);
-        leht.hidden = false;
-        allaPaise(leht);
+        avaLeht(leht);
       });
     });
   }
@@ -422,8 +450,10 @@
       sulgeVaade();
       sulgeKoik();
       if (lava) lava.parentElement.insertBefore(telli, lava);
-      telli.classList.add("lahti");
       allaPaise(telli);
+      requestAnimationFrame(function () {
+        telli.classList.add("lahti");
+      });
     }
     suurTelli.addEventListener("click", avaVorm);
     document.querySelectorAll(".telli-link").forEach(function (a) {

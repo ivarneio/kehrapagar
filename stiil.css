@@ -284,7 +284,13 @@ fieldset input { width: auto; }
   color: #f4f0e6;
   border: 0;
 }
-.jalus {
+.tekstileht {
+  overflow: hidden;
+  height: 0;
+}
+.tekstileht.lahti {
+  height: auto;
+}
   position: fixed;
   left: 0;
   right: 0;
