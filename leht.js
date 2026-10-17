@@ -283,13 +283,28 @@
   var telli = document.querySelector("#telli");
   if (telli) {
     var telliNupp = telli.querySelector(":scope > button");
+    function viiTelliUles() {
+      kaardid().forEach(sulgeGrupp);
+      if (lava) lava.parentElement.insertBefore(telli, lava);
+      telli.classList.add("lahti");
+      telli.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     if (telliNupp) {
       telliNupp.addEventListener("click", function () {
         var oli = telli.classList.contains("lahti");
-        sulgeGrupp(telli);
-        if (!oli) telli.classList.add("lahti");
+        if (oli) {
+          sulgeGrupp(telli);
+          return;
+        }
+        viiTelliUles();
       });
     }
+    document.querySelectorAll('nav a[href="#telli"]').forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        viiTelliUles();
+      });
+    });
   }
 
   var vaade = document.querySelector(".taisekraan");
