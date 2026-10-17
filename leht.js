@@ -250,6 +250,7 @@
         if (ava) {
           uus.classList.add("lahti");
           avaLint(uus);
+          allaPaise(uus);
         }
         seaSormed();
         flipKinni = false;
@@ -270,6 +271,7 @@
           lava.insertBefore(grupp, lava.firstChild);
           grupp.classList.add("lahti");
           avaLint(grupp);
+          allaPaise(grupp);
         } else {
           taastaJarjekord();
         }
@@ -299,7 +301,7 @@
       sulgeKoik();
       if (lava) lava.parentElement.insertBefore(telli, lava);
       telli.classList.add("lahti");
-      telli.scrollIntoView({ behavior: "smooth", block: "start" });
+      allaPaise(telli);
     }
     if (telliNupp) {
       telliNupp.addEventListener("click", function () {
@@ -316,7 +318,7 @@
         e.preventDefault();
         sulgeKoik();
         var tooted = document.getElementById("tooted");
-        if (tooted) tooted.scrollIntoView({ behavior: "smooth", block: "start" });
+        allaPaise(tooted);
       });
     });
     document.querySelectorAll('nav a[href="#telli"]').forEach(function (a) {
@@ -334,7 +336,7 @@
         sulgeKoik();
         lava.parentElement.insertBefore(leht, lava);
         leht.hidden = false;
-        leht.scrollIntoView({ behavior: "smooth", block: "start" });
+        allaPaise(leht);
       });
     });
   }
@@ -408,7 +410,7 @@
       sulgeKoik();
       if (lava) lava.parentElement.insertBefore(telli, lava);
       telli.classList.add("lahti");
-      telli.scrollIntoView({ behavior: "smooth", block: "start" });
+      allaPaise(telli);
     }
     suurTelli.addEventListener("click", avaVorm);
     document.querySelectorAll(".telli-link").forEach(function (a) {
