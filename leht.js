@@ -194,6 +194,17 @@
     }).forEach(function (k) { lava.appendChild(k); });
   }
 
+  function sulgeKoik() {
+    kaardid().forEach(sulgeGrupp);
+    taastaJarjekord();
+    if (telli) {
+      telli.classList.remove("lahti");
+      var tooted = document.getElementById("tooted");
+      if (tooted && tooted.nextElementSibling !== telli) tooted.after(telli);
+    }
+    document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
+  }
+
   function avaLint(grupp) {
     var riba = grupp.querySelector(".riba");
     if (!riba) return;
@@ -248,6 +259,7 @@
 
   document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
     nupp.addEventListener("click", function () {
+      document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
       if (telli) telli.classList.remove("lahti");
       var grupp = nupp.parentElement;
       if (!lava) return;
@@ -284,8 +296,7 @@
   if (telli) {
     var telliNupp = telli.querySelector(":scope > button");
     function viiTelliUles() {
-      kaardid().forEach(sulgeGrupp);
-      document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
+      sulgeKoik();
       if (lava) lava.parentElement.insertBefore(telli, lava);
       telli.classList.add("lahti");
       telli.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -300,6 +311,14 @@
         viiTelliUles();
       });
     }
+    document.querySelectorAll('nav a[href="#tooted"]').forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        sulgeKoik();
+        var tooted = document.getElementById("tooted");
+        if (tooted) tooted.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
     document.querySelectorAll('nav a[href="#telli"]').forEach(function (a) {
       a.addEventListener("click", function (e) {
         e.preventDefault();
@@ -312,7 +331,7 @@
         var id = a.getAttribute("href").slice(1);
         var leht = document.getElementById(id);
         if (!leht || !lava) return;
-        document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
+        sulgeKoik();
         lava.parentElement.insertBefore(leht, lava);
         leht.hidden = false;
         leht.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -386,9 +405,8 @@
 
     function avaVorm() {
       sulgeVaade();
-      if (lava && telli.parentElement !== lava.parentElement) {
-        lava.parentElement.insertBefore(telli, lava);
-      }
+      sulgeKoik();
+      if (lava) lava.parentElement.insertBefore(telli, lava);
       telli.classList.add("lahti");
       telli.scrollIntoView({ behavior: "smooth", block: "start" });
     }
