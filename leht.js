@@ -302,7 +302,11 @@
   document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
     nupp.addEventListener("click", function () {
       document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
-      if (telli) telli.classList.remove("lahti");
+      if (telli) {
+        telli.classList.remove("lahti");
+        var tooted = document.getElementById("tooted");
+        if (tooted && tooted.nextElementSibling !== telli) tooted.after(telli);
+      }
       var grupp = nupp.parentElement;
       if (!lava) return;
       if (vahemLiikumine) {
