@@ -291,6 +291,7 @@ fieldset input { width: auto; }
 .tekstileht.lahti {
   height: auto;
 }
+.jalus {
   position: fixed;
   left: 0;
   right: 0;

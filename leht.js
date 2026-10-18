@@ -207,6 +207,29 @@
     window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
   }
 
+  function lukkaAlla(kast) {
+    if (!kast) return;
+    kast.style.overflow = "hidden";
+    kast.style.transition = "none";
+    kast.style.height = "auto";
+    var h = kast.scrollHeight;
+    kast.style.height = "0px";
+    void kast.offsetHeight;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        kast.style.transition = "height 1.6s cubic-bezier(.22, 1, .36, 1)";
+        kast.style.height = h + "px";
+      });
+    });
+    function puhasta() {
+      kast.style.height = "";
+      kast.style.overflow = "";
+      kast.style.transition = "";
+      kast.removeEventListener("transitionend", puhasta);
+    }
+    kast.addEventListener("transitionend", puhasta);
+  }
+
   function avaLeht(leht) {
     if (!leht || !lava) return;
     document.querySelectorAll(".tekstileht").forEach(function (x) {
@@ -217,22 +240,8 @@
     });
     lava.parentElement.insertBefore(leht, lava);
     leht.hidden = false;
-    leht.style.overflow = "hidden";
-    leht.style.transition = "none";
-    leht.style.height = "0px";
     allaPaise(leht);
-    requestAnimationFrame(function () {
-      leht.style.transition = "height .8s cubic-bezier(.22, 1, .36, 1)";
-      leht.style.height = leht.scrollHeight + "px";
-    });
-    function puhasta() {
-      leht.style.height = "";
-      leht.style.overflow = "";
-      leht.style.transition = "";
-      leht.classList.add("lahti");
-      leht.removeEventListener("transitionend", puhasta);
-    }
-    leht.addEventListener("transitionend", puhasta);
+    lukkaAlla(leht);
   }
 
   function sulgeKoik() {
@@ -345,10 +354,14 @@
     function viiTelliUles() {
       sulgeKoik();
       if (lava) lava.parentElement.insertBefore(telli, lava);
+      var sisu = telli.querySelector(".sisu");
+      if (sisu) {
+        sisu.style.display = "block";
+        sisu.style.gridTemplateRows = "none";
+      }
       allaPaise(telli);
-      requestAnimationFrame(function () {
-        telli.classList.add("lahti");
-      });
+      lukkaAlla(sisu || telli);
+      telli.classList.add("lahti");
     }
     if (telliNupp) {
       telliNupp.addEventListener("click", function () {
@@ -454,10 +467,14 @@
       sulgeVaade();
       sulgeKoik();
       if (lava) lava.parentElement.insertBefore(telli, lava);
+      var sisu = telli.querySelector(".sisu");
+      if (sisu) {
+        sisu.style.display = "block";
+        sisu.style.gridTemplateRows = "none";
+      }
       allaPaise(telli);
-      requestAnimationFrame(function () {
-        telli.classList.add("lahti");
-      });
+      lukkaAlla(sisu || telli);
+      telli.classList.add("lahti");
     }
     suurTelli.addEventListener("click", avaVorm);
     document.querySelectorAll(".telli-link").forEach(function (a) {
