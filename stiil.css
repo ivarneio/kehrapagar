@@ -348,12 +348,17 @@ fieldset input { width: auto; }
 .tarn { color: #c0392b; margin-left: .15rem; }
 textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color: var(--tint); padding: .55rem .6rem; width: 100%; border-radius: 0; }
 
-.grupid .grupp:nth-child(odd) > button { background: #5ba3d9; color: #fff; }
-.grupid .grupp:nth-child(even) > button { background: #e8884a; color: #fff; }
+.grupid .grupp:nth-child(odd) > button {
+  background: #5ba3d9;
+  color: #fff;
+  box-shadow: 2px 3px 6px rgba(46, 90, 122, .28);
+}
+.grupid .grupp:nth-child(even) > button {
+  background: #e8884a;
+  color: #fff;
+  box-shadow: 2px 3px 6px rgba(140, 72, 28, .28);
+}
 .grupid .grupp > button { border-radius: 2rem; border: 0; }
-
-
-
 
 .grupid { position: relative; }
 .grupid::after {
@@ -364,7 +369,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
 }
 .grupid .grupp > button {
   display: block;
-  width: calc(100% - 4px);
+  width: calc(66.7% - 4px);
   margin-left: auto;
   margin-right: 4px;
   border-radius: 2rem 0 0 2rem;
@@ -372,15 +377,16 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   padding-right: 1rem;
   text-shadow: 0 1px 3px #000;
 }
-.grupid .grupp + .grupp { margin-top: 6px; }
+.grupid .grupp + .grupp { margin-top: 14px; position: relative; }
 .grupid .grupp + .grupp::before {
   content: "";
-  display: block;
-  height: 6px;
+  position: absolute;
+  left: auto;
+  right: 4px;
+  top: -8px;
+  width: 66.7%;
+  height: 2px;
   background: #fff;
-  margin-left: 0;
-  margin-right: 4px;
-  margin-bottom: 0;
 }
 
 @media (min-width: 800px) {
@@ -397,7 +403,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
     padding-right: 1rem;
   }
   .grupid .grupp + .grupp::before {
-    margin-left: 4px;
-    margin-right: 0;
+    left: 4px;
+    right: auto;
   }
 }
