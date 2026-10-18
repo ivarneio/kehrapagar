@@ -382,3 +382,22 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   margin-right: 4px;
   margin-bottom: 0;
 }
+
+@media (min-width: 800px) {
+  .grupid::after {
+    left: 0;
+    right: auto;
+  }
+  .grupid .grupp > button {
+    margin-left: 4px;
+    margin-right: auto;
+    border-radius: 0 2rem 2rem 0;
+    text-align: left;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .grupid .grupp + .grupp::before {
+    margin-left: 4px;
+    margin-right: 0;
+  }
+}
