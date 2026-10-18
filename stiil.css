@@ -370,7 +370,8 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
 }
 .grupid .grupp > button {
   display: block;
-  width: calc(44.5% - 6px);
+  width: calc(66.7% - 6px);
+  min-height: 2.3rem;
   margin-left: auto;
   margin-right: 6px;
   border-radius: 2rem 0 0 2rem;
@@ -378,6 +379,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   padding-right: 1rem;
   text-shadow: 0 1px 3px #000;
 }
+.grupid .grupp > button .sorm-nimi { padding: .5rem 1rem; }
 .grupid .grupp + .grupp { margin-top: 14px; position: relative; }
 .grupid .grupp + .grupp::before {
   content: "";
@@ -385,7 +387,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   left: auto;
   right: 6px;
   top: -8.5px;
-  width: 44.5%;
+  width: 66.7%;
   height: 3px;
   background: #fff;
 }
@@ -396,7 +398,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
     right: auto;
   }
   .grupid .grupp > button {
-    margin-left: 4px;
+    margin-left: 6px;
     margin-right: auto;
     border-radius: 0 2rem 2rem 0;
     text-align: left;
@@ -404,7 +406,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
     padding-right: 1rem;
   }
   .grupid .grupp + .grupp::before {
-    left: 4px;
+    left: 6px;
     right: auto;
   }
 }
