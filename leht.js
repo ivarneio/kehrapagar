@@ -249,6 +249,14 @@
     taastaJarjekord();
     if (telli) {
       telli.classList.remove("lahti");
+      var sisu = telli.querySelector(".sisu");
+      if (sisu) {
+        sisu.style.height = "";
+        sisu.style.overflow = "";
+        sisu.style.transition = "";
+        sisu.style.display = "";
+        sisu.style.gridTemplateRows = "";
+      }
       var tooted = document.getElementById("tooted");
       if (tooted && tooted.nextElementSibling !== telli) tooted.after(telli);
     }
