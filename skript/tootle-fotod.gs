@@ -87,7 +87,7 @@ function tootleFotod() {
       tehtud.push(kood + " " + pohi);
     });
   }
-  var tekst = tehtud.length ? tehtud.join("\n") : "Uusi pilte ei olnud.";
+  var tekst = tehtud.length ? ("Tehtud:\n" + tehtud.join("\n")) : "Uusi pilte ei leitud.";
   kirjutaOlek(tekst);
   try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
   return tekst;
