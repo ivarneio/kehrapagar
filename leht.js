@@ -357,48 +357,36 @@
     });
   }
 
-  function seoGrupid() {
-    document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
-      if (nupp.getAttribute("data-seo")) return;
-      nupp.setAttribute("data-seo", "1");
-      if (!nupp.querySelector(".sorm-nimi")) {
-        var nimi = document.createElement("span");
-        nimi.className = "sorm-nimi";
-        nimi.textContent = nupp.textContent.trim();
-        nupp.textContent = "";
-        nupp.appendChild(nimi);
+  document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
+    nupp.addEventListener("click", function () {
+      document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
+      if (telli) {
+        telli.classList.remove("lahti");
+        var tooted = document.getElementById("tooted");
+        if (tooted && tooted.nextElementSibling !== telli) tooted.after(telli);
       }
-      nupp.addEventListener("click", function () {
-        document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
-        if (telli) {
-          telli.classList.remove("lahti");
-          var tooted = document.getElementById("tooted");
-          if (tooted && tooted.nextElementSibling !== telli) tooted.after(telli);
+      var grupp = nupp.parentElement;
+      if (!lava) return;
+      if (vahemLiikumine) {
+        var oliVaikne = grupp.classList.contains("lahti");
+        kaardid().forEach(sulgeGrupp);
+        if (!oliVaikne) {
+          lava.insertBefore(grupp, lava.firstChild);
+          grupp.classList.add("lahti");
+          avaLint(grupp);
+          allaPaise(grupp);
+        } else {
+          taastaJarjekord();
         }
-        var grupp = nupp.parentElement;
-        if (!lava) return;
-        if (vahemLiikumine) {
-          var oliVaikne = grupp.classList.contains("lahti");
-          kaardid().forEach(sulgeGrupp);
-          if (!oliVaikne) {
-            lava.insertBefore(grupp, lava.firstChild);
-            grupp.classList.add("lahti");
-            avaLint(grupp);
-            allaPaise(grupp);
-          } else {
-            taastaJarjekord();
-          }
-          seaSormed();
-          return;
-        }
-        if (flipKinni) return;
-        var oli = grupp.classList.contains("lahti");
-        flipKinni = true;
-        liiguta(grupp, !oli);
-      });
+        seaSormed();
+        return;
+      }
+      if (flipKinni) return;
+      var oli = grupp.classList.contains("lahti");
+      flipKinni = true;
+      liiguta(grupp, !oli);
     });
-  }
-  seoGrupid();
+  });
 
   document.querySelectorAll(".riba").forEach(function (riba) {
     riba.addEventListener("wheel", function (e) {
@@ -537,24 +525,18 @@
       viiTelliUles();
     }
     suurTelli.addEventListener("click", avaVorm);
-    var seoTellilink = function () {
-      document.querySelectorAll(".telli-link").forEach(function (a) {
-        if (a.getAttribute("data-seo")) return;
-        a.setAttribute("data-seo", "1");
-        a.addEventListener("click", function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          var nimi = a.closest(".pisi") ? a.closest(".pisi").querySelector(".nimi").textContent : "";
-          if (nimi) {
-            korv.push({ nimi: nimi, kaal: "1,0 kg", kogus: "1" });
-            joonista();
-          }
-          avaVorm();
-        });
+    document.querySelectorAll(".telli-link").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var nimi = a.closest(".pisi") ? a.closest(".pisi").querySelector(".nimi").textContent : "";
+        if (nimi) {
+          korv.push({ nimi: nimi, kaal: "1,0 kg", kogus: "1" });
+          joonista();
+        }
+        avaVorm();
       });
-    };
-    seoTellilink();
-    window.seoTellilink = seoTellilink;
+    });
     fetch("tellitavad.json")
       .then(function (r) { return r.json(); })
       .then(function (d) {
@@ -719,76 +701,6 @@
         if (s.telefon) el.href = "tel:" + s.telefon;
       });
     })
-    .catch(function () {});
-
-  function nimiFailist(fail) {
-    var puhas = String(fail || "").replace(/\.[^.]+$/, "");
-    puhas = puhas.replace(/^\d+_/, "");
-    puhas = puhas.replace(/\d+$/, "");
-    return puhas || fail;
-  }
-
-  function ehitaPakett(read) {
-    var juur = document.querySelector(".grupid");
-    if (!juur || !read || !read.length) return;
-    var grupid = {};
-    var jarjekord = [];
-    read.forEach(function (t) {
-      var g = t.grupp || "Tooted";
-      if (!grupid[g]) { grupid[g] = []; jarjekord.push(g); }
-      grupid[g].push(t);
-    });
-    juur.innerHTML = "";
-    jarjekord.forEach(function (g, i) {
-      var art = document.createElement("article");
-      art.className = "grupp";
-      art.setAttribute("data-jrk", String(i + 1));
-      var nupp = document.createElement("button");
-      nupp.type = "button";
-      nupp.textContent = g;
-      var sisu = document.createElement("div");
-      sisu.className = "sisu";
-      var kest = document.createElement("div");
-      var riba = document.createElement("div");
-      riba.className = "riba";
-      grupid[g].forEach(function (t) {
-        var pildid = t.pildid || [];
-        var esimene = pildid[0] ? ("pildid/pakett/" + pildid[0]) : "pildid/kringel.svg";
-        var nimi = t.nimi || nimiFailist(pildid[0] || t.kood);
-        var p = document.createElement("button");
-        p.className = "pisi";
-        p.type = "button";
-        p.setAttribute("data-pildid", pildid.map(function (x) { return "pildid/pakett/" + x; }).join("|"));
-        p.setAttribute("data-sildid", nimi);
-        var img = document.createElement("img");
-        img.src = esimene;
-        img.alt = nimi;
-        var span = document.createElement("span");
-        span.className = "nimi";
-        span.textContent = nimi;
-        var link = document.createElement("a");
-        link.className = "telli-link";
-        link.href = "#telli";
-        link.textContent = "Lisa tellimusse";
-        p.appendChild(img);
-        p.appendChild(span);
-        p.appendChild(link);
-        riba.appendChild(p);
-      });
-      kest.appendChild(riba);
-      sisu.appendChild(kest);
-      art.appendChild(nupp);
-      art.appendChild(sisu);
-      juur.appendChild(art);
-    });
-    seoGrupid();
-    seaSormed();
-    if (window.seoTellilink) window.seoTellilink();
-  }
-
-  fetch("tooted.json")
-    .then(function (r) { return r.ok ? r.json() : []; })
-    .then(ehitaPakett)
     .catch(function () {});
 
 })();
