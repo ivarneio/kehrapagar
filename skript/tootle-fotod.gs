@@ -76,6 +76,7 @@ function tootleFotod() {
     });
   }
   var tekst = tehtud.length ? tehtud.join("\n") : "Uusi pilte ei olnud.";
+  kirjutaOlek(tekst);
   try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
   return tekst;
 }
@@ -188,6 +189,13 @@ function kropi(fail) {
     outputWidth: siht.w
   });
   return cropped.setName(fail.getName());
+}
+
+function kirjutaOlek(tekst) {
+  var leht = SpreadsheetApp.openById(SEADED.tabel).getSheetByName("Töötle");
+  if (!leht) return;
+  leht.getRange("A5").setValue(new Date());
+  leht.getRange("A6").setValue(tekst);
 }
 
 function kirjutaRida(kood, grupp, kaustaUrl, pildid) {
