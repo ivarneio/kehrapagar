@@ -60,11 +60,14 @@ function tootleFotod() {
       var failinimed = [];
       pildid.forEach(function (p) {
         var pildiId = kood + String(p.jrk);
-        var uusNimi = pildiId + "_" + p.fail.getName();
+        var algne = p.fail.getName();
+        if (!/\.[^.]+$/.test(algne)) algne += ".jpg";
+        var uusNimi = pildiId + "_" + algne;
         var blob = kropi(p.fail);
         blob.setName(uusNimi);
         web.createFile(blob);
         olemas.pildid[pildiId] = true;
+        olemas.nimeJargi[pildiId] = p.fail.getName();
         failinimed.push(uusNimi);
       });
       olemas.tooted[gruppNr] = Math.max(olemas.tooted[gruppNr] || 0, tooteNr);
@@ -72,7 +75,9 @@ function tootleFotod() {
       tehtud.push(kood + " " + pohi);
     });
   }
-  return tehtud.length ? tehtud.join("\n") : "Uusi pilte ei olnud.";
+  var tekst = tehtud.length ? tehtud.join("\n") : "Uusi pilte ei olnud.";
+  try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
+  return tekst;
 }
 
 function koguTooted(kaust, olemas) {
@@ -111,8 +116,12 @@ function pildiOsad(nimi) {
   return { pohi: puhas.toLowerCase(), jrk: 0 };
 }
 
-function onPilt(nimi) {
-  return /\.(jpe?g|png|webp|gif)$/i.test(nimi);
+function onPilt(fail) {
+  var nimi = fail.getName();
+  if (/\.(jpe?g|png|webp|gif)$/i.test(nimi)) return true;
+  var tyyp = "";
+  try { tyyp = fail.getMimeType() || ""; } catch (e) {}
+  return tyyp.indexOf("image/") === 0;
 }
 
 function onJubaToodeldud(nimi, olemas) {
