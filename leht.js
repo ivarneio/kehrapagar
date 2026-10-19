@@ -262,6 +262,22 @@
     return null;
   }
 
+  function paneTelliKinni() {
+    if (!telli) return;
+    telli.classList.remove("lahti");
+    var sisu = telli.querySelector(".sisu");
+    if (sisu) {
+      sisu.classList.remove("lahti");
+      sisu.style.height = "";
+      sisu.style.overflow = "";
+      sisu.style.transition = "";
+      sisu.style.display = "";
+      sisu.style.gridTemplateRows = "";
+    }
+    var tooted = document.getElementById("tooted");
+    if (tooted && tooted.nextElementSibling !== telli) tooted.after(telli);
+  }
+
   function avaLeht(leht) {
     if (!leht || !lava) return;
     if (leht === avatudKast()) return;
@@ -288,19 +304,7 @@
   function sulgeKoik() {
     kaardid().forEach(sulgeGrupp);
     taastaJarjekord();
-    if (telli) {
-      telli.classList.remove("lahti");
-      var sisu = telli.querySelector(".sisu");
-      if (sisu) {
-        sisu.style.height = "";
-        sisu.style.overflow = "";
-        sisu.style.transition = "";
-        sisu.style.display = "";
-        sisu.style.gridTemplateRows = "";
-      }
-      var tooted = document.getElementById("tooted");
-      if (tooted && tooted.nextElementSibling !== telli) tooted.after(telli);
-    }
+    if (telli) paneTelliKinni();
     document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
   }
 
