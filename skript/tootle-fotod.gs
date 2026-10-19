@@ -24,6 +24,23 @@ var SEADED = {
   }
 };
 
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu("Kehra Pagar")
+    .addItem("Töötle fotod", "tootleFotod")
+    .addToUi();
+}
+
+function onEdit(e) {
+  if (!e || !e.range) return;
+  if (e.range.getSheet().getName() !== "Töötle") return;
+  if (e.range.getA1Notation() !== "B2") return;
+  if (e.range.getValue() !== "Töötle fotod") return;
+  e.range.setValue("");
+  var tulemus = tootleFotod();
+  SpreadsheetApp.getUi().alert(tulemus);
+}
+
 function tootleFotod() {
   var web = DriveApp.getFolderById(SEADED.webipildid);
   var olemas = loeOlemas(web);
