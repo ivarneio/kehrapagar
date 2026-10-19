@@ -14,6 +14,7 @@ var SEADED = {
   tootedKaust: "1qqgM4fu3l_wbdBzoS8ZAFaZZ6b6VuiVA",
   webipildid: "1CaMXBN8MjjVI5KkpI3gKdxMCONU4yFi3",
   tabel: "1uMxtlXg6EDMhJ-Eww2u_Y8hVUrv5ximPRm-mhmSvu3E",
+  pakett: "1CeA8LyT8eDlbz0zxvNoXT362SjiK5TgA",
   pikemKulg: 1200,
   grupid: {
     "Kringlid": 1,
@@ -28,6 +29,7 @@ function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu("Kehra Pagar")
     .addItem("Töötle fotod", "tootleFotod")
+    .addItem("Tee pakett", "teePakett")
     .addToUi();
 }
 
@@ -88,6 +90,64 @@ function tootleFotod() {
     });
   }
   var tekst = tehtud.length ? ("Tehtud:\n" + tehtud.join("\n")) : "Uusi pilte ei leitud.";
+  kirjutaOlek(tekst);
+  try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
+  return tekst;
+}
+
+function teePakett() {
+  var leht = SpreadsheetApp.openById(SEADED.tabel).getSheetByName("Tooted");
+  var read = leht.getDataRange().getValues();
+  var pais = read[0];
+  var iKood = pais.indexOf("kood");
+  var iGrupp = pais.indexOf("grupp");
+  var iNimi = pais.indexOf("nimi");
+  var iTekst = pais.indexOf("tekst_et");
+  var iAktiivne = pais.indexOf("aktiivne");
+  var aktiivsed = [];
+  read.slice(1).forEach(function (r) {
+    var kood = String(r[iKood] || "");
+    var aktiivne = String(r[iAktiivne] || "").toLowerCase();
+    if (!/^\d{5}$/.test(kood)) return;
+    if (aktiivne !== "jah" && aktiivne !== "ja" && aktiivne !== "1") return;
+    aktiivsed.push({
+      kood: kood,
+      grupp: r[iGrupp] || "",
+      nimi: r[iNimi] || "",
+      tekst: r[iTekst] || "",
+      pildid: []
+    });
+  });
+
+  var web = DriveApp.getFolderById(SEADED.webipildid);
+  var siht = DriveApp.getFolderById(SEADED.pakett);
+  var vanad = siht.getFiles();
+  while (vanad.hasNext()) vanad.next().setTrashed(true);
+
+  var failid = {};
+  var it = web.getFiles();
+  while (it.hasNext()) {
+    var f = it.next();
+    var m = f.getName().match(/^(\d{5})/);
+    if (m) {
+      if (!failid[m[1]]) failid[m[1]] = [];
+      failid[m[1]].push(f);
+    }
+  }
+
+  aktiivsed.forEach(function (t) {
+    (failid[t.kood] || []).sort(function (a, b) {
+      return a.getName().localeCompare(b.getName());
+    }).forEach(function (f) {
+      f.makeCopy(f.getName(), siht);
+      t.pildid.push(f.getName());
+    });
+  });
+
+  siht.createFile("tooted.json", JSON.stringify(aktiivsed, null, 2), MimeType.PLAIN_TEXT);
+  var tekst = aktiivsed.length
+    ? ("Pakett valmis. Tooteid: " + aktiivsed.length)
+    : "Aktiivseid tooteid ei ole. Pakett on tühi.";
   kirjutaOlek(tekst);
   try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
   return tekst;
