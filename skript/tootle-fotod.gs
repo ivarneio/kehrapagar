@@ -86,7 +86,7 @@ function koguTooted(kaust, olemas) {
   var failid = kaust.getFiles();
   while (failid.hasNext()) {
     var fail = failid.next();
-    if (!onPilt(fail.getName())) continue;
+    if (!onPilt(fail)) continue;
     if (onJubaToodeldud(fail.getName(), olemas)) continue;
     var osade = pildiOsad(fail.getName());
     if (!tootepildid[osade.pohi]) tootepildid[osade.pohi] = [];
