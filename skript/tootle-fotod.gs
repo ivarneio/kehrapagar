@@ -31,14 +31,26 @@ function onOpen() {
     .addToUi();
 }
 
-function onEdit(e) {
+function looNupp() {
+  var vanad = ScriptApp.getProjectTriggers();
+  vanad.forEach(function (t) {
+    if (t.getHandlerFunction() === "tootleNupust") ScriptApp.deleteTrigger(t);
+  });
+  ScriptApp.newTrigger("tootleNupust")
+    .forSpreadsheet(SEADED.tabel)
+    .onEdit()
+    .create();
+  SpreadsheetApp.getUi().alert("Nupp on valmis. Kolmas osapool vajutab vahekaardil Töötle lahtrit Töötle fotod.");
+}
+
+function tootleNupust(e) {
   if (!e || !e.range) return;
   if (e.range.getSheet().getName() !== "Töötle") return;
   if (e.range.getA1Notation() !== "B2") return;
   if (e.range.getValue() !== "Töötle fotod") return;
   e.range.setValue("");
   var tulemus = tootleFotod();
-  SpreadsheetApp.getUi().alert(tulemus);
+  kirjutaOlek(tulemus);
 }
 
 function tootleFotod() {
