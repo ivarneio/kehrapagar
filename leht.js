@@ -207,8 +207,8 @@
     window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
   }
 
-  function lukkaAlla(kast) {
-    if (!kast) return;
+  function lukkaAlla(kast, valmis) {
+    if (!kast) { if (valmis) valmis(); return; }
     kast.style.overflow = "hidden";
     kast.style.transition = "none";
     kast.style.height = "auto";
@@ -217,31 +217,72 @@
     void kast.offsetHeight;
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        kast.style.transition = "height 1.6s cubic-bezier(.22, 1, .36, 1)";
+        kast.style.transition = "height 1.2s cubic-bezier(.22, 1, .36, 1)";
         kast.style.height = h + "px";
       });
     });
-    function puhasta() {
+    function puhasta(e) {
+      if (e && e.propertyName !== "height") return;
+      kast.classList.add("lahti");
       kast.style.height = "";
       kast.style.overflow = "";
       kast.style.transition = "";
       kast.removeEventListener("transitionend", puhasta);
+      if (valmis) valmis();
     }
     kast.addEventListener("transitionend", puhasta);
   }
 
+  function sulgeAeglaselt(kast, valmis) {
+    if (!kast) { if (valmis) valmis(); return; }
+    var h = kast.getBoundingClientRect().height;
+    kast.style.overflow = "hidden";
+    kast.style.transition = "none";
+    kast.style.height = h + "px";
+    void kast.offsetHeight;
+    kast.style.transition = "height 1.2s cubic-bezier(.22, 1, .36, 1)";
+    kast.style.height = "0px";
+    function puhasta(e) {
+      if (e && e.propertyName !== "height") return;
+      kast.classList.remove("lahti");
+      kast.style.height = "";
+      kast.style.overflow = "";
+      kast.style.transition = "";
+      kast.removeEventListener("transitionend", puhasta);
+      if (kast.classList.contains("tekstileht")) kast.hidden = true;
+      if (valmis) valmis();
+    }
+    kast.addEventListener("transitionend", puhasta);
+  }
+
+  function avatudKast() {
+    var leht = document.querySelector(".tekstileht:not([hidden])");
+    if (leht) return leht;
+    if (telli && telli.classList.contains("lahti")) return telli.querySelector(".sisu") || telli;
+    return null;
+  }
+
   function avaLeht(leht) {
     if (!leht || !lava) return;
-    document.querySelectorAll(".tekstileht").forEach(function (x) {
-      x.hidden = true;
-      x.classList.remove("lahti");
-      x.style.height = "";
-      x.style.transition = "";
-    });
-    lava.parentElement.insertBefore(leht, lava);
-    leht.hidden = false;
-    allaPaise(leht);
-    lukkaAlla(leht);
+    if (leht === avatudKast()) return;
+    var vana = avatudKast();
+    function ava() {
+      document.querySelectorAll(".tekstileht").forEach(function (x) {
+        if (x !== leht) { x.hidden = true; x.classList.remove("lahti"); }
+      });
+      if (telli) {
+        telli.classList.remove("lahti");
+        var tooted = document.getElementById("tooted");
+        if (tooted && tooted.nextElementSibling !== telli) tooted.after(telli);
+      }
+      lava.parentElement.insertBefore(leht, lava);
+      leht.hidden = false;
+      leht.classList.remove("lahti");
+      allaPaise(leht);
+      lukkaAlla(leht);
+    }
+    if (vana && vana !== leht) sulgeAeglaselt(vana, ava);
+    else ava();
   }
 
   function sulgeKoik() {
@@ -360,16 +401,25 @@
   if (telli) {
     var telliNupp = telli.querySelector(":scope > button");
     function viiTelliUles() {
-      sulgeKoik();
-      if (lava) lava.parentElement.insertBefore(telli, lava);
       var sisu = telli.querySelector(".sisu");
-      if (sisu) {
-        sisu.style.display = "block";
-        sisu.style.gridTemplateRows = "none";
+      var kast = sisu || telli;
+      if (telli.classList.contains("lahti")) return;
+      var vana = avatudKast();
+      function ava() {
+        document.querySelectorAll(".tekstileht").forEach(function (x) {
+          x.hidden = true;
+          x.classList.remove("lahti");
+        });
+        if (lava) lava.parentElement.insertBefore(telli, lava);
+        if (sisu) {
+          sisu.style.display = "block";
+          sisu.style.gridTemplateRows = "none";
+        }
+        allaPaise(telli);
+        lukkaAlla(kast, function () { telli.classList.add("lahti"); });
       }
-      allaPaise(telli);
-      lukkaAlla(sisu || telli);
-      telli.classList.add("lahti");
+      if (vana) sulgeAeglaselt(vana, ava);
+      else ava();
     }
     if (telliNupp) {
       telliNupp.addEventListener("click", function () {
@@ -401,7 +451,6 @@
         var id = a.getAttribute("href").slice(1);
         var leht = document.getElementById(id);
         if (!leht || !lava) return;
-        sulgeKoik();
         avaLeht(leht);
       });
     });
@@ -473,16 +522,7 @@
 
     function avaVorm() {
       sulgeVaade();
-      sulgeKoik();
-      if (lava) lava.parentElement.insertBefore(telli, lava);
-      var sisu = telli.querySelector(".sisu");
-      if (sisu) {
-        sisu.style.display = "block";
-        sisu.style.gridTemplateRows = "none";
-      }
-      allaPaise(telli);
-      lukkaAlla(sisu || telli);
-      telli.classList.add("lahti");
+      viiTelliUles();
     }
     suurTelli.addEventListener("click", avaVorm);
     document.querySelectorAll(".telli-link").forEach(function (a) {
