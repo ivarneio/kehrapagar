@@ -173,6 +173,31 @@
       rakenda();
     });
 
+  fetch("tooted.json")
+    .then(function (r) { return r.ok ? r.json() : []; })
+    .then(function (read) {
+      if (!read || !read.length) return;
+      read.forEach(function (t) {
+        var fail = (t.pildid && t.pildid[0]) || "";
+        if (!fail) return;
+        var nupp = document.querySelector('.pisi[data-pildid*="' + fail + '"]');
+        if (!nupp) return;
+        var nimi = nupp.querySelector(".nimi");
+        if (nimi && t.nimi) nimi.textContent = t.nimi;
+        var img = nupp.querySelector("img");
+        if (img && t.nimi) img.alt = t.nimi;
+        if (!t.tekst) return;
+        var tekst = nupp.querySelector(".tekst");
+        if (!tekst) {
+          tekst = document.createElement("span");
+          tekst.className = "tekst";
+          nupp.appendChild(tekst);
+        }
+        tekst.textContent = t.tekst;
+      });
+    })
+    .catch(function () {});
+
   function sulgeGrupp(grupp) {
     grupp.classList.remove("lahti");
     var riba = grupp.querySelector(".riba");

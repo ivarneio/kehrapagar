@@ -47,12 +47,33 @@ function looNupp() {
 
 function tootleNupust(e) {
   if (!e || !e.range) return;
-  if (e.range.getSheet().getName() !== "Töötle") return;
-  if (e.range.getA1Notation() !== "B2") return;
-  if (e.range.getValue() !== "Töötle fotod") return;
-  e.range.setValue("");
-  var tulemus = tootleFotod();
-  kirjutaOlek(tulemus);
+  var leht = e.range.getSheet().getName();
+  if (leht === "Töötle" && e.range.getA1Notation() === "B2" && e.range.getValue() === "Töötle fotod") {
+    e.range.setValue("");
+    var tulemus = tootleFotod();
+    kirjutaOlek(tulemus);
+    return;
+  }
+  if (leht === "Tooted") kontrolliAktiveerimist(e);
+}
+
+function kontrolliAktiveerimist(e) {
+  var leht = e.range.getSheet();
+  var pais = leht.getRange(1, 1, 1, leht.getLastColumn()).getValues()[0];
+  var iAkt = pais.indexOf("aktiivne");
+  var iNimi = pais.indexOf("nimi");
+  var iTekst = pais.indexOf("tekst_et");
+  if (iAkt < 0 || iNimi < 0 || iTekst < 0) return;
+  if (e.range.getColumn() !== iAkt + 1) return;
+  var val = String(e.range.getValue() || "").toLowerCase().trim();
+  if (val !== "jah" && val !== "ja" && val !== "1") return;
+  var rida = e.range.getRow();
+  if (rida < 2) return;
+  var nimi = String(leht.getRange(rida, iNimi + 1).getValue() || "").trim();
+  var tekst = String(leht.getRange(rida, iTekst + 1).getValue() || "").trim();
+  if (nimi && tekst) return;
+  e.range.setValue("ei");
+  SpreadsheetApp.getUi().alert("Enne aktiveerimist täida nimi ja kirjeldus.");
 }
 
 function tootleFotod() {
@@ -110,6 +131,9 @@ function teePakett() {
     var aktiivne = String(r[iAktiivne] || "").toLowerCase();
     if (!/^\d{5}$/.test(kood)) return;
     if (aktiivne !== "jah" && aktiivne !== "ja" && aktiivne !== "1") return;
+    var nimi = String(r[iNimi] || "").trim();
+    var tekst = String(r[iTekst] || "").trim();
+    if (!nimi || !tekst) return;
     aktiivsed.push({
       kood: kood,
       grupp: r[iGrupp] || "",
