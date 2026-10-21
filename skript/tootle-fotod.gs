@@ -185,69 +185,85 @@ function tootleFotod() {
 }
 
 function teePakett() {
-  var leht = SpreadsheetApp.openById(SEADED.tabel).getSheetByName("Tooted");
-  var read = leht.getDataRange().getValues();
-  var pais = read[0];
-  var iKood = pais.indexOf("kood");
-  var iGrupp = pais.indexOf("grupp");
-  var iNimi = pais.indexOf("nimi");
-  var iTekst = pais.indexOf("tekst_et");
-  var iAktiivne = pais.indexOf("aktiivne");
-  var aktiivsed = [];
-  read.slice(1).forEach(function (r) {
-    var kood = String(r[iKood] || "");
-    var aktiivne = String(r[iAktiivne] || "").toLowerCase();
-    if (!/^\d{5}$/.test(kood)) return;
-    if (aktiivne !== "jah" && aktiivne !== "ja" && aktiivne !== "1") return;
-    var nimi = String(r[iNimi] || "").trim();
-    var tekst = String(r[iTekst] || "").trim();
-    if (!nimi || !tekst) return;
-    aktiivsed.push({
-      kood: kood,
-      grupp: r[iGrupp] || "",
-      nimi: nimi,
-      alaliik_et: r[pais.indexOf("alaliik_et")] || "",
-      alaliik_ru: r[pais.indexOf("alaliik_ru")] || "",
-      alaliik_en: r[pais.indexOf("alaliik_en")] || "",
-      tekst: tekst,
-      tekst_ru: r[pais.indexOf("tekst_ru")] || "",
-      tekst_en: r[pais.indexOf("tekst_en")] || "",
-      pildid: []
-    });
-  });
-
-  var web = DriveApp.getFolderById(SEADED.webipildid);
-  var siht = DriveApp.getFolderById(SEADED.pakett);
-  var vanad = siht.getFiles();
-  while (vanad.hasNext()) vanad.next().setTrashed(true);
-
-  var failid = {};
-  var it = web.getFiles();
-  while (it.hasNext()) {
-    var f = it.next();
-    var m = f.getName().match(/^(\d{5})/);
-    if (m) {
-      if (!failid[m[1]]) failid[m[1]] = [];
-      failid[m[1]].push(f);
-    }
+  if (onKasib()) {
+    naitaEdenemine(0, "Juba käib. Oota.");
+    return "Juba käib.";
   }
-
-  aktiivsed.forEach(function (t) {
-    (failid[t.kood] || []).sort(function (a, b) {
-      return a.getName().localeCompare(b.getName());
-    }).forEach(function (f) {
-      f.makeCopy(f.getName(), siht);
-      t.pildid.push(f.getName());
+  seaKaib(true);
+  try {
+    naitaEdenemine(5, "Loen tabelit. Ära vajuta uuesti.");
+    var leht = SpreadsheetApp.openById(SEADED.tabel).getSheetByName("Tooted");
+    var read = leht.getDataRange().getValues();
+    var pais = read[0];
+    var iKood = pais.indexOf("kood");
+    var iGrupp = pais.indexOf("grupp");
+    var iNimi = pais.indexOf("nimi");
+    var iTekst = pais.indexOf("tekst_et");
+    var iAktiivne = pais.indexOf("aktiivne");
+    var aktiivsed = [];
+    read.slice(1).forEach(function (r) {
+      var kood = String(r[iKood] || "");
+      var aktiivne = String(r[iAktiivne] || "").toLowerCase();
+      if (!/^\d{5}$/.test(kood)) return;
+      if (aktiivne !== "jah" && aktiivne !== "ja" && aktiivne !== "1") return;
+      var nimi = String(r[iNimi] || "").trim();
+      var tekst = String(r[iTekst] || "").trim();
+      if (!nimi || !tekst) return;
+      aktiivsed.push({
+        kood: kood,
+        grupp: r[iGrupp] || "",
+        nimi: nimi,
+        alaliik_et: r[pais.indexOf("alaliik_et")] || "",
+        alaliik_ru: r[pais.indexOf("alaliik_ru")] || "",
+        alaliik_en: r[pais.indexOf("alaliik_en")] || "",
+        tekst: tekst,
+        tekst_ru: r[pais.indexOf("tekst_ru")] || "",
+        tekst_en: r[pais.indexOf("tekst_en")] || "",
+        pildid: []
+      });
     });
-  });
 
-  siht.createFile("tooted.json", JSON.stringify(aktiivsed, null, 2), MimeType.PLAIN_TEXT);
-  var tekst = aktiivsed.length
-    ? ("Pakett valmis. Tooteid: " + aktiivsed.length)
-    : "Aktiivseid tooteid ei ole. Pakett on tühi.";
-  kirjutaOlek(tekst);
-  try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
-  return tekst;
+    naitaEdenemine(20, "Tühjendan vana paketi.");
+    var web = DriveApp.getFolderById(SEADED.webipildid);
+    var siht = DriveApp.getFolderById(SEADED.pakett);
+    var vanad = siht.getFiles();
+    while (vanad.hasNext()) vanad.next().setTrashed(true);
+
+    naitaEdenemine(35, "Loen fotosid.");
+    var failid = {};
+    var it = web.getFiles();
+    while (it.hasNext()) {
+      var f = it.next();
+      var m = f.getName().match(/^(\d{5})/);
+      if (m) {
+        if (!failid[m[1]]) failid[m[1]] = [];
+        failid[m[1]].push(f);
+      }
+    }
+
+    var kokku = Math.max(aktiivsed.length, 1);
+    aktiivsed.forEach(function (t, i) {
+      naitaEdenemine(40 + Math.round((i / kokku) * 50), "Kopeerin " + (t.nimi || t.kood));
+      (failid[t.kood] || []).sort(function (a, b) {
+        return a.getName().localeCompare(b.getName());
+      }).forEach(function (f) {
+        f.makeCopy(f.getName(), siht);
+        t.pildid.push(f.getName());
+      });
+    });
+
+    naitaEdenemine(95, "Kirjutan tooted.json.");
+    siht.createFile("tooted.json", JSON.stringify(aktiivsed, null, 2), MimeType.PLAIN_TEXT);
+    var tekst = aktiivsed.length
+      ? ("Pakett valmis. Tooteid: " + aktiivsed.length)
+      : "Aktiivseid tooteid ei ole. Pakett on tühi.";
+    naitaEdenemine(100, tekst);
+    kirjutaOlek(tekst);
+    try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
+    return tekst;
+  } finally {
+    seaKaib(false);
+  }
 }
 
 function koguTooted(kaust, olemas) {
@@ -358,6 +374,28 @@ function kropi(fail) {
     outputWidth: siht.w
   });
   return cropped.setName(fail.getName());
+}
+
+function naitaEdenemine(protsent, tekst) {
+  var leht = SpreadsheetApp.openById(SEADED.tabel).getSheetByName("Töötle");
+  if (leht) {
+    leht.getRange("A5").setValue(new Date());
+    leht.getRange("A6").setValue(protsent + "%  " + tekst);
+    leht.getRange("B2").setBackground(protsent < 100 ? "#f4c430" : "#ffffff");
+  }
+  SpreadsheetApp.flush();
+  try {
+    SpreadsheetApp.getActive().toast(protsent + "%  " + tekst, "Kehra Pagar", 8);
+  } catch (e) {}
+}
+
+function onKasib() {
+  var v = PropertiesService.getScriptProperties().getProperty("kaib");
+  return v === "1";
+}
+
+function seaKaib(jah) {
+  PropertiesService.getScriptProperties().setProperty("kaib", jah ? "1" : "0");
 }
 
 function kirjutaOlek(tekst) {
