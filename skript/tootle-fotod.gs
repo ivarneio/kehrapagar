@@ -15,6 +15,7 @@ var SEADED = {
   webipildid: "1CaMXBN8MjjVI5KkpI3gKdxMCONU4yFi3",
   tabel: "1uMxtlXg6EDMhJ-Eww2u_Y8hVUrv5ximPRm-mhmSvu3E",
   pakett: "1CeA8LyT8eDlbz0zxvNoXT362SjiK5TgA",
+  backup: "1ytdc3235uytEYotLhnlAPkH3YNuw8WHL",
   pikemKulg: 1200,
   grupid: {
     "Kringlid": 1,
@@ -29,6 +30,7 @@ function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu("Kehra Pagar")
     .addItem("Töötle fotod", "tootleFotod")
+    .addItem("Tõlgi puuduvad", "tolgiPuuduvad")
     .addItem("Tee pakett", "teePakett")
     .addToUi();
 }
@@ -54,7 +56,73 @@ function tootleNupust(e) {
     kirjutaOlek(tulemus);
     return;
   }
-  if (leht === "Tooted") kontrolliAktiveerimist(e);
+  if (leht === "Tooted") {
+    if (kontrolliTolgiNupp(e)) return;
+    kontrolliAktiveerimist(e);
+  }
+}
+
+function kontrolliTolgiNupp(e) {
+  var leht = e.range.getSheet();
+  var pais = leht.getRange(1, 1, 1, leht.getLastColumn()).getValues()[0];
+  var iTolgi = pais.indexOf("tõlgi");
+  if (iTolgi < 0) return false;
+  if (e.range.getColumn() !== iTolgi + 1) return false;
+  var val = String(e.range.getValue() || "").toLowerCase().trim();
+  if (val !== "jah" && val !== "ja" && val !== "1") return false;
+  var rida = e.range.getRow();
+  if (rida < 2) return true;
+  e.range.setValue("");
+  teeBackup("rea-tolge");
+  var n = tolgiRida(leht, pais, rida, true);
+  SpreadsheetApp.getUi().alert(n ? "Rida tõlgitud." : "Eesti teksti ei ole. Midagi ei tõlgitud.");
+  return true;
+}
+
+function tolgiPuuduvad() {
+  var leht = SpreadsheetApp.openById(SEADED.tabel).getSheetByName("Tooted");
+  var read = leht.getDataRange().getValues();
+  var pais = read[0];
+  teeBackup("puuduvad");
+  var n = 0;
+  for (var i = 1; i < read.length; i++) {
+    n += tolgiRida(leht, pais, i + 1, false);
+  }
+  var tekst = n ? ("Tõlgitud ridu: " + n) : "Puuduvaid tõlkeid ei olnud.";
+  kirjutaOlek(tekst);
+  try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
+  return tekst;
+}
+
+function tolgiRida(leht, pais, rida, sunni) {
+  var paarid = [
+    ["alaliik_et", "alaliik_ru", "alaliik_en"],
+    ["tekst_et", "tekst_ru", "tekst_en"]
+  ];
+  var muutus = 0;
+  paarid.forEach(function (p) {
+    var iEt = pais.indexOf(p[0]);
+    var iRu = pais.indexOf(p[1]);
+    var iEn = pais.indexOf(p[2]);
+    if (iEt < 0 || iRu < 0 || iEn < 0) return;
+    var et = String(leht.getRange(rida, iEt + 1).getValue() || "").trim();
+    if (!et) return;
+    [["ru", iRu], ["en", iEn]].forEach(function (siht) {
+      var lahter = leht.getRange(rida, siht[1] + 1);
+      var olemas = String(lahter.getValue() || "").trim();
+      if (olemas && !sunni) return;
+      var tolge = LanguageApp.translate(et, "et", siht[0]);
+      lahter.setValue(tolge);
+      muutus++;
+    });
+  });
+  return muutus ? 1 : 0;
+}
+
+function teeBackup(pohjus) {
+  var fail = DriveApp.getFileById(SEADED.tabel);
+  var nimi = "tooted-" + Utilities.formatDate(new Date(), "Europe/Tallinn", "yyyy-MM-dd-HHmm") + "-" + pohjus;
+  fail.makeCopy(nimi, DriveApp.getFolderById(SEADED.backup));
 }
 
 function kontrolliAktiveerimist(e) {
@@ -137,8 +205,13 @@ function teePakett() {
     aktiivsed.push({
       kood: kood,
       grupp: r[iGrupp] || "",
-      nimi: r[iNimi] || "",
-      tekst: r[iTekst] || "",
+      nimi: nimi,
+      alaliik_et: r[pais.indexOf("alaliik_et")] || "",
+      alaliik_ru: r[pais.indexOf("alaliik_ru")] || "",
+      alaliik_en: r[pais.indexOf("alaliik_en")] || "",
+      tekst: tekst,
+      tekst_ru: r[pais.indexOf("tekst_ru")] || "",
+      tekst_en: r[pais.indexOf("tekst_en")] || "",
       pildid: []
     });
   });

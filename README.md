@@ -270,6 +270,16 @@ Galerii näitab ühe toote kõiki fotosid, mitte ühte. Esimene foto on see, mis
 
 Kolmas osapool käivitab impordi menüüst Kehra Pagar, siis Töötle fotod. Paketi teeb samast menüüst Tee pakett. Veeb ei uuene ise. Pakett tuleb lehe kausta tõsta.
 
+### Tõlge
+
+Tõlge on oma tegevus, mitte paketi osa. Pakett võtab selle, mis tabelis juba on.
+
+Menüü Kehra Pagar, Tõlgi puuduvad. Täidab ainult tühjad vene ja inglise lahtrid eesti teksti pealt. Täidetud lahtrit ei puutu. Nime ei tõlgi. Enne teeb backupi.
+
+Igal real on veerg `tõlgi`. Valik `jah` sunnib selle rea tõlked üle kirjutama, ka kui need on olemas. Siis lahter tühjeneb. See on peenhäälestus, kui eesti teksti muudeti.
+
+Tõlgitakse alaliik ja kirjeldus. Toote nime ei tõlgita. Kui tõlge puudub, pakett läheb ikka. Leht näitab siis eesti teksti.
+
 ## Failid
 
 Esimene hoog. Kõike ei panda ühte `index` faili, nagu Helirännakul. Seal oli üks vaade ja vorm läks Google'i skripti. Siin on leht, tellimus, pagarivaade ja uudiskiri. Tellimused ja nimekiri ei tohi avalikku lehte sattuda.
