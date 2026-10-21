@@ -278,23 +278,38 @@
     if (tooted && tooted.nextElementSibling !== telli) tooted.after(telli);
   }
 
+  function sulgeTelliAeglaselt(valmis) {
+    if (!telli || !telli.classList.contains("lahti")) {
+      paneTelliKinni();
+      if (valmis) valmis();
+      return;
+    }
+    var sisu = telli.querySelector(".sisu") || telli;
+    sulgeAeglaselt(sisu, function () {
+      paneTelliKinni();
+      if (valmis) valmis();
+    });
+  }
+
   function avaLeht(leht) {
     if (!leht || !lava) return;
-    if (leht === avatudKast()) return;
-    var vana = avatudKast();
     function ava() {
       document.querySelectorAll(".tekstileht").forEach(function (x) {
         if (x !== leht) { x.hidden = true; x.classList.remove("lahti"); }
       });
-      paneTelliKinni();
       lava.parentElement.insertBefore(leht, lava);
       leht.hidden = false;
       leht.classList.remove("lahti");
       allaPaise(leht);
       lukkaAlla(leht);
     }
-    if (vana && vana !== leht) sulgeAeglaselt(vana, ava);
-    else ava();
+    var vanaLeht = document.querySelector(".tekstileht:not([hidden])");
+    function avaKuiLehtKinni() {
+      if (vanaLeht && vanaLeht !== leht) sulgeAeglaselt(vanaLeht, ava);
+      else ava();
+    }
+    if (telli && telli.classList.contains("lahti")) sulgeTelliAeglaselt(avaKuiLehtKinni);
+    else avaKuiLehtKinni();
   }
 
   function sulgeKoik() {
@@ -359,28 +374,31 @@
 
   document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
     nupp.addEventListener("click", function () {
-      document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
-      paneTelliKinni();
-      var grupp = nupp.parentElement;
-      if (!lava) return;
-      if (vahemLiikumine) {
-        var oliVaikne = grupp.classList.contains("lahti");
-        kaardid().forEach(sulgeGrupp);
-        if (!oliVaikne) {
-          lava.insertBefore(grupp, lava.firstChild);
-          grupp.classList.add("lahti");
-          avaLint(grupp);
-          allaPaise(grupp);
-        } else {
-          taastaJarjekord();
+      function avaGrupp() {
+        document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
+        var grupp = nupp.parentElement;
+        if (!lava) return;
+        if (vahemLiikumine) {
+          var oliVaikne = grupp.classList.contains("lahti");
+          kaardid().forEach(sulgeGrupp);
+          if (!oliVaikne) {
+            lava.insertBefore(grupp, lava.firstChild);
+            grupp.classList.add("lahti");
+            avaLint(grupp);
+            allaPaise(grupp);
+          } else {
+            taastaJarjekord();
+          }
+          seaSormed();
+          return;
         }
-        seaSormed();
-        return;
+        if (flipKinni) return;
+        var oli = grupp.classList.contains("lahti");
+        flipKinni = true;
+        liiguta(grupp, !oli);
       }
-      if (flipKinni) return;
-      var oli = grupp.classList.contains("lahti");
-      flipKinni = true;
-      liiguta(grupp, !oli);
+      if (telli && telli.classList.contains("lahti")) sulgeTelliAeglaselt(avaGrupp);
+      else avaGrupp();
     });
   });
 
@@ -421,7 +439,7 @@
       telliNupp.addEventListener("click", function () {
         var oli = telli.classList.contains("lahti");
         if (oli) {
-          sulgeGrupp(telli);
+          sulgeTelliAeglaselt();
           return;
         }
         viiTelliUles();
@@ -430,9 +448,11 @@
     document.querySelectorAll('nav a[href="#tooted"]').forEach(function (a) {
       a.addEventListener("click", function (e) {
         e.preventDefault();
-        sulgeKoik();
-        var tooted = document.getElementById("tooted");
-        allaPaise(tooted);
+        sulgeTelliAeglaselt(function () {
+          sulgeKoik();
+          var tooted = document.getElementById("tooted");
+          allaPaise(tooted);
+        });
       });
     });
     document.querySelectorAll('nav a[href="#telli"]').forEach(function (a) {
