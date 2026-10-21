@@ -236,6 +236,40 @@ Kausta koht ei seo pilti tekstiga. Kui `kaneel.jpg` liigub ühest grupikataloogi
 
 Nime ega rea järjekorraga pilti ei seota. Nimi muutub, ja rida nihkub, kui keegi vahele lisab.
 
+Vana tunnus `kaneel` on asendatud koodiga. Kehtiv reegel on allpool, jaotises Tooted ja pildid.
+
+## Tooted ja pildid
+
+Kinnitatud 2026-10-21. Leht hakkab lugema paketti, mitte Drive'i.
+
+### Kood
+
+Pildi ID on kuus numbrit: grupp (1) + toode (4) + pildi järjekord (1). Näide `100021`. Toote kood Excelis on viis numbrit, näide `10002`. Inimese failinimi jääb koodi järele: `100021_juustukringel1.jpg`.
+
+Sama toode on sama põhjanimi. Faili lõpu number on järjekord: `juustukringel1.jpg`, `juustukringel2.jpg`, `juustukringel3.jpg`. Üle 9 foto ühe toote kohta ei lähe. Kui lõpus numbrit ei ole, paneb süsteem järjekorra ise alates 1-st. Siis ei ole kindel, milline foto on esimene.
+
+Üks toode on Excelis üks rida. Pildid on seal koos, komaga.
+
+### Aktiveerimine
+
+Uus rida on vaikimisi `ei`. Ainult inimene aktiveerib. Süsteem kirjutab koodi, grupi ja pildid. Nime ja kirjelduse kirjutab inimene.
+
+Ilma nime ja kirjelduseta ei saa aktiveerida. Lahter jääb `ei` ja tuleb teade: «Enne aktiveerimist täida nimi ja kirjeldus.» Koduleht veateadet ei anna. Ta näitab seda, mis on olemas.
+
+### Kaks kausta
+
+`webipildid` on töötluse arhiiv. Sealt ei kustutata, kui toode ei ole enam aktiivne. Algseid fotosid grupikaustades ei kustutata.
+
+`pakett` tehakse iga kord uuesti. Sinna lähevad ainult aktiivsed tooted, millel on nimi ja kirjeldus. Eelmine aktiivne, mis enam ei ole, kaob paketist. Uus aktiivne lisandub. Kolm fotot ühest tootest lähevad kõik kaasa.
+
+### Leht
+
+Leht ei loe Drive'i. Ta loeb lehe kaustas olevat paketti: nimi, kirjeldus ja kõik fotod.
+
+Galerii näitab ühe toote kõiki fotosid, mitte ühte. Esimene foto on see, mis grupi avanedes välja tuleb. Ülejäänud avanevad galeriis.
+
+Kolmas osapool käivitab impordi menüüst Kehra Pagar, siis Töötle fotod. Paketi teeb samast menüüst Tee pakett. Veeb ei uuene ise. Pakett tuleb lehe kausta tõsta.
+
 ## Failid
 
 Esimene hoog. Kõike ei panda ühte `index` faili, nagu Helirännakul. Seal oli üks vaade ja vorm läks Google'i skripti. Siin on leht, tellimus, pagarivaade ja uudiskiri. Tellimused ja nimekiri ei tohi avalikku lehte sattuda.
