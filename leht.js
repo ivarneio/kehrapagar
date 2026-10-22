@@ -549,30 +549,38 @@
   }
 
   function naitaKuju(src, silt, kollaaz, tekst) {
-    kujud.innerHTML = "";
-    var kast = document.createElement("figure");
-    kast.className = kollaaz ? "kuju kollaaz" : "kuju";
-    var img = document.createElement("img");
-    img.src = src;
-    img.alt = silt || "";
-    kast.appendChild(img);
-    if (silt) {
-      var s = document.createElement("span");
-      s.textContent = silt;
-      kast.appendChild(s);
-    }
-    if (kollaaz && tekst) {
-      var paber = document.createElement("div");
-      paber.className = "paber";
-      paber.textContent = tekst;
-      kast.appendChild(paber);
-      var telefon = window.matchMedia("(max-width: 799px)").matches;
-      if (!telefon) {
-        kast.addEventListener("mouseenter", function () { paber.classList.add("sees"); });
-        kast.addEventListener("mouseleave", function () { paber.classList.remove("sees"); });
+    var vana = kujud.querySelector(".kuju");
+    function loo() {
+      kujud.innerHTML = "";
+      var kast = document.createElement("figure");
+      kast.className = kollaaz ? "kuju kollaaz" : "kuju";
+      kast.style.opacity = "0";
+      var img = document.createElement("img");
+      img.src = src;
+      img.alt = silt || "";
+      kast.appendChild(img);
+      if (silt) {
+        var s = document.createElement("span");
+        s.textContent = silt;
+        kast.appendChild(s);
       }
+      if (kollaaz && tekst) {
+        var paber = document.createElement("div");
+        paber.className = "paber";
+        paber.textContent = tekst;
+        kast.appendChild(paber);
+        var telefon = window.matchMedia("(max-width: 799px)").matches;
+        if (!telefon) {
+          kast.addEventListener("mouseenter", function () { paber.classList.add("sees"); });
+          kast.addEventListener("mouseleave", function () { paber.classList.remove("sees"); });
+        }
+      }
+      kujud.appendChild(kast);
+      requestAnimationFrame(function () { kast.style.opacity = "1"; });
     }
-    kujud.appendChild(kast);
+    if (!vana) { loo(); return; }
+    vana.style.opacity = "0";
+    setTimeout(loo, 280);
   }
 
   function teeKollaaz(teed, valmis) {
