@@ -177,23 +177,52 @@
     .then(function (r) { return r.ok ? r.json() : []; })
     .then(function (read) {
       if (!read || !read.length) return;
+      var grupid = {};
       read.forEach(function (t) {
-        var fail = (t.pildid && t.pildid[0]) || "";
-        if (!fail) return;
-        var nupp = document.querySelector('.pisi[data-pildid*="' + fail + '"]');
-        if (!nupp) return;
-        var nimi = nupp.querySelector(".nimi");
-        if (nimi && t.nimi) nimi.textContent = t.nimi;
-        var img = nupp.querySelector("img");
-        if (img && t.nimi) img.alt = t.nimi;
-        if (!t.tekst) return;
-        var tekst = nupp.querySelector(".tekst");
-        if (!tekst) {
-          tekst = document.createElement("span");
-          tekst.className = "tekst";
-          nupp.appendChild(tekst);
-        }
-        tekst.textContent = t.tekst;
+        var g = t.grupp || "";
+        if (!grupid[g]) grupid[g] = [];
+        grupid[g].push(t);
+      });
+      Object.keys(grupid).forEach(function (nimi) {
+        var grupp = null;
+        document.querySelectorAll(".grupid .grupp").forEach(function (el) {
+          var nupp = el.querySelector(":scope > button");
+          if (nupp && nupp.textContent.trim() === nimi) grupp = el;
+        });
+        if (!grupp) return;
+        var riba = grupp.querySelector(".riba");
+        if (!riba) return;
+        riba.innerHTML = "";
+        grupid[nimi].forEach(function (t) {
+          var pildid = (t.pildid || []).filter(Boolean);
+          if (!pildid.length) return;
+          var teed = pildid.map(function (f) { return "pildid/pakett/" + f; });
+          var nupp = document.createElement("button");
+          nupp.className = "pisi";
+          nupp.type = "button";
+          nupp.setAttribute("data-pildid", teed.join("|"));
+          nupp.setAttribute("data-sildid", t.nimi || "");
+          var img = document.createElement("img");
+          img.src = teed[0];
+          img.alt = t.nimi || "";
+          nupp.appendChild(img);
+          var silt = document.createElement("span");
+          silt.className = "nimi";
+          silt.textContent = t.nimi || "";
+          nupp.appendChild(silt);
+          if (t.tekst) {
+            var tekst = document.createElement("span");
+            tekst.className = "tekst";
+            tekst.textContent = t.tekst;
+            nupp.appendChild(tekst);
+          }
+          var link = document.createElement("a");
+          link.className = "telli-link";
+          link.href = "#telli";
+          link.textContent = "Lisa tellimusse";
+          nupp.appendChild(link);
+          riba.appendChild(nupp);
+        });
       });
     })
     .catch(function () {});

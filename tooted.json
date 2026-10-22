@@ -1,37 +1,13 @@
 [
   {
-    "kood": "10001",
-    "grupp": "Kringlid",
-    "nimi": "",
-    "tekst": "",
-    "pildid": ["100011_Martsipanikringel.jpg"]
-  },
-  {
     "kood": "10002",
     "grupp": "Kringlid",
-    "nimi": "",
-    "tekst": "",
-    "pildid": ["100021_ounaparg1.jpg"]
-  },
-  {
-    "kood": "10003",
-    "grupp": "Kringlid",
-    "nimi": "",
-    "tekst": "",
-    "pildid": ["100031_max1.jpg"]
-  },
-  {
-    "kood": "10004",
-    "grupp": "Kringlid",
-    "nimi": "",
-    "tekst": "",
-    "pildid": ["100041_KringelKodu1.jpg"]
-  },
-  {
-    "kood": "10005",
-    "grupp": "Kringlid",
-    "nimi": "",
-    "tekst": "",
-    "pildid": ["100051_juustukringel1.jpg"]
+    "nimi": "Juustukringel",
+    "tekst": "Väga maitsev kringel",
+    "pildid": [
+      "100021_juustukringel1.jpg",
+      "100022_juustukringel2.jpg",
+      "100023_juustukringel3.jpg"
+    ]
   }
 ]
