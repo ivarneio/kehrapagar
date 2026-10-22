@@ -251,6 +251,7 @@ function teePakett() {
         tekst_ru: r[pais.indexOf("tekst_ru")] || "",
         tekst_en: r[pais.indexOf("tekst_en")] || "",
         tellitav: /^(jah|ja|1)$/.test(String(r[pais.indexOf("tellitav")] || "").toLowerCase().trim()),
+        hind: String(r[pais.indexOf("hind")] || "").trim(),
         pildid: []
       });
     });

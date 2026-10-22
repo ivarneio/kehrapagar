@@ -272,6 +272,8 @@ Galerii näitab ühe toote kõiki fotosid. Limiiti ei ole. Kui fotosid on mitu, 
 
 Toote tekst ei ole lehel kogu aeg näha. Desktopis tuleb vana paber ette, kui hiir on kollaazil, ja kaob, kui hiir läheb ära. Telefonis vajutus kollaazile toob paberi ette, teine vajutus võtab ära. Tekst on valitud keeles. Kui tõlget ei ole, jääb eesti.
 
+Veerus `hind` on toote hind. Leht näitab seda toote nime all. Kui toode lisatakse korvi, läheb hind kaasa.
+
 Veerus `tellitav` on `jah` või `ei`. Kui on `jah`, on toote all link «Lisa tellimusse». Vajutus lisab korvi selle toote, mitte teisi. Kui on `ei` või tühi, linki ei ole.
 
 Kolmas osapool käivitab impordi menüüst Kehra Pagar, siis Töötle fotod. Paketi teeb samast menüüst Tee pakett. Veeb ei uuene ise. Pakett tuleb lehe kausta tõsta.

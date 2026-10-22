@@ -205,6 +205,7 @@
           nupp.setAttribute("data-tekst-et", t.tekst || "");
           nupp.setAttribute("data-tekst-ru", t.tekst_ru || "");
           nupp.setAttribute("data-tekst-en", t.tekst_en || "");
+          nupp.setAttribute("data-hind", t.hind || "");
           var img = document.createElement("img");
           img.src = teed[0];
           img.alt = t.nimi || "";
@@ -213,6 +214,12 @@
           silt.className = "nimi";
           silt.textContent = t.nimi || "";
           nupp.appendChild(silt);
+          if (t.hind) {
+            var hindSilt = document.createElement("span");
+            hindSilt.className = "hind";
+            hindSilt.textContent = t.hind;
+            nupp.appendChild(hindSilt);
+          }
           if (/^(jah|ja|1|true)$/.test(String(t.tellitav || "").toLowerCase())) {
             var link = document.createElement("a");
             link.className = "telli-link";
@@ -711,8 +718,9 @@
       e.preventDefault();
       e.stopPropagation();
       var nimi = a.closest(".pisi") ? a.closest(".pisi").querySelector(".nimi").textContent : "";
+      var hindVaartus = a.closest(".pisi") ? (a.closest(".pisi").getAttribute("data-hind") || "") : "";
       if (nimi) {
-        korv.push({ nimi: nimi, kaal: "1,0 kg", kogus: "1" });
+        korv.push({ nimi: nimi, kaal: "1,0 kg", kogus: "1", hind: hindVaartus });
         joonista();
       }
       avaVorm();
@@ -736,7 +744,7 @@
     var lisa = vorm.querySelector(".lisa");
     var korv = [];
     function hind(r) {
-      return "—";
+      return r.hind || "—";
     }
     function joonista() {
       if (!korvEl) return;
