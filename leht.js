@@ -220,7 +220,9 @@
             var hindSilt = document.createElement("span");
             hindSilt.className = "hind";
             var uhik = String(t.uhik || "").toLowerCase();
-            hindSilt.textContent = t.hind + " €" + (uhik === "kg" ? " / 1 kg" : "");
+            hindSilt.textContent = t.hind + " €";
+            if (uhik === "kg") hindSilt.textContent += "\n1 kg";
+            if (uhik === "tk") hindSilt.textContent += "\ntk";
             nupp.appendChild(hindSilt);
           }
           if (/^(jah|ja|1|true)$/.test(String(t.tellitav || "").toLowerCase())) {
