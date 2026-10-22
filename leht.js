@@ -758,17 +758,9 @@
     function joonista() {
       if (!korvEl) return;
       if (!korv.length) { korvEl.innerHTML = ""; return; }
-      var kaalud = ["0,5 kg", "1,0 kg", "1,5 kg", "2,0 kg"];
       var h = "<ul>";
       korv.forEach(function (r, i) {
-        var kaalValik = "";
-        if (r.uhik === "kg") {
-          var opts = kaalud.map(function (k) {
-            return "<option" + (k === r.kaal ? " selected" : "") + ">" + k + "</option>";
-          }).join("");
-          kaalValik = " <select data-i=\"" + i + "\" class=\"kaal-vali\">" + opts + "</select>";
-        }
-        h += "<li>" + r.nimi + kaalValik + " · " + r.kogus + " tk · " + reaHind(r) + " <button type=\"button\" data-i=\"" + i + "\">eemalda</button></li>";
+        h += "<li>" + r.nimi + " · " + r.kogus + " tk · " + reaHind(r) + " <button type=\"button\" data-i=\"" + i + "\">eemalda</button></li>";
       });
       h += "</ul>";
       korvEl.innerHTML = h;
