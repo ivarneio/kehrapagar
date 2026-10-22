@@ -202,6 +202,9 @@
           nupp.type = "button";
           nupp.setAttribute("data-pildid", teed.join("|"));
           nupp.setAttribute("data-sildid", t.nimi || "");
+          nupp.setAttribute("data-tekst-et", t.tekst || "");
+          nupp.setAttribute("data-tekst-ru", t.tekst_ru || "");
+          nupp.setAttribute("data-tekst-en", t.tekst_en || "");
           var img = document.createElement("img");
           img.src = teed[0];
           img.alt = t.nimi || "";
@@ -210,12 +213,6 @@
           silt.className = "nimi";
           silt.textContent = t.nimi || "";
           nupp.appendChild(silt);
-          if (t.tekst) {
-            var tekst = document.createElement("span");
-            tekst.className = "tekst";
-            tekst.textContent = t.tekst;
-            nupp.appendChild(tekst);
-          }
           var link = document.createElement("a");
           link.className = "telli-link";
           link.href = "#telli";
@@ -544,10 +541,17 @@
     suurTelli.hidden = true;
   }
 
-  function naitaKuju(src, silt) {
+  function tooteTekst(nupp) {
+    if (!nupp) return "";
+    var oma = nupp.getAttribute("data-tekst-" + keel) || "";
+    if (oma.trim()) return oma.trim();
+    return (nupp.getAttribute("data-tekst-et") || "").trim();
+  }
+
+  function naitaKuju(src, silt, kollaaz, tekst) {
     kujud.innerHTML = "";
     var kast = document.createElement("figure");
-    kast.className = "kuju";
+    kast.className = kollaaz ? "kuju kollaaz" : "kuju";
     var img = document.createElement("img");
     img.src = src;
     img.alt = silt || "";
@@ -556,6 +560,17 @@
       var s = document.createElement("span");
       s.textContent = silt;
       kast.appendChild(s);
+    }
+    if (kollaaz && tekst) {
+      var paber = document.createElement("div");
+      paber.className = "paber";
+      paber.textContent = tekst;
+      kast.appendChild(paber);
+      var telefon = window.matchMedia("(max-width: 799px)").matches;
+      if (!telefon) {
+        kast.addEventListener("mouseenter", function () { paber.classList.add("sees"); });
+        kast.addEventListener("mouseleave", function () { paber.classList.remove("sees"); });
+      }
     }
     kujud.appendChild(kast);
   }
@@ -622,6 +637,7 @@
     if (!nupp) return;
     var pildid = (nupp.getAttribute("data-pildid") || "").split("|").filter(Boolean);
     var silt = nupp.querySelector(".nimi") ? nupp.querySelector(".nimi").textContent : "";
+    var tekst = tooteTekst(nupp);
     if (galeriiTaimer) { clearTimeout(galeriiTaimer); galeriiTaimer = null; }
     if (!pildid.length) return;
     var i = 0;
@@ -633,7 +649,7 @@
         return;
       }
       teeKollaaz(pildid, function (src) {
-        if (src) naitaKuju(src, silt);
+        if (src) naitaKuju(src, silt, true, tekst);
       });
     }
     samm();
@@ -652,7 +668,16 @@
     var dy = Math.abs(e.clientY - algus.y);
     var keris = Math.abs(kujud.scrollTop - algus.keri) > 4;
     algus = null;
-    if (dx < 8 && dy < 8 && !keris && e.target.closest && e.target.closest(".kuju")) sulgeVaade();
+    if (dx < 8 && dy < 8 && !keris && e.target.closest && e.target.closest(".kuju")) {
+      var kollaaz = e.target.closest(".kollaaz");
+      var telefon = window.matchMedia("(max-width: 799px)").matches;
+      if (kollaaz && telefon) {
+        var paber = kollaaz.querySelector(".paber");
+        if (paber) paber.classList.toggle("sees");
+        return;
+      }
+      sulgeVaade();
+    }
   });
   kujud.addEventListener("pointercancel", function () { algus = null; });
 

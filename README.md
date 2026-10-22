@@ -270,6 +270,8 @@ Grupp näitab ainult neid tooteid, mis paketis on. Kui grupil paketti ei ole, j�
 
 Galerii näitab ühe toote kõiki fotosid. Limiiti ei ole. Kui fotosid on mitu, jookseb galerii need täiskaadris läbi, igaüks 1,3 sekundit, ja jääb pidama kollaazil. Kollaaz tekib lehel avamise hetkel, mitte tabelis. Ühe foto puhul kollaazi ei ole.
 
+Toote tekst ei ole lehel kogu aeg näha. Desktopis tuleb vana paber ette, kui hiir on kollaazil, ja kaob, kui hiir läheb ära. Telefonis vajutus kollaazile toob paberi ette, teine vajutus võtab ära. Tekst on valitud keeles. Kui tõlget ei ole, jääb eesti.
+
 Kolmas osapool käivitab impordi menüüst Kehra Pagar, siis Töötle fotod. Paketi teeb samast menüüst Tee pakett. Veeb ei uuene ise. Pakett tuleb lehe kausta tõsta.
 
 ### Tõlge
