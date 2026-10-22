@@ -423,9 +423,9 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   }
   .grupid::after { display: none; }
   .grupid .grupp > button {
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
+    width: calc(100% - 1rem);
+    margin: 0 .5rem;
+    border-radius: 2rem;
     text-align: right;
     padding-right: 1rem;
   }
