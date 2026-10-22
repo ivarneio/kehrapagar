@@ -223,9 +223,8 @@
             nupp.appendChild(hindSilt);
           }
           if (/^(jah|ja|1|true)$/.test(String(t.tellitav || "").toLowerCase())) {
-            var link = document.createElement("a");
+            var link = document.createElement("span");
             link.className = "telli-link";
-            link.href = "#telli";
             link.textContent = "Lisa tellimusse";
             nupp.appendChild(link);
           }
@@ -653,7 +652,7 @@
 
   document.addEventListener("click", function (e) {
     var nupp = e.target.closest ? e.target.closest(".pisi") : null;
-    if (!nupp) return;
+    if (!nupp || (e.target.closest && e.target.closest(".telli-link"))) return;
     var pildid = (nupp.getAttribute("data-pildid") || "").split("|").filter(Boolean);
     var silt = nupp.querySelector(".nimi") ? nupp.querySelector(".nimi").textContent : "";
     var tekst = tooteTekst(nupp);
