@@ -78,7 +78,7 @@ Muul kringlil on kaal 0,5 / 1,0 / 1,5 / 2,0 kg. Täidiseid ei ole.
 
 Eraldi ostukorvi vaadet ei ole. Korvi sisu kajastub vormi all: toode, kaal, kogus. Rea saab muuta või ära võtta. All on summa, mida klient maksab kättesaamisel.
 
-Hind on tabelis, mitte koodis. Tellitavatel toodetel on oma tabel. Seal on kringli kilogrammi hind ja täidise lisahind. Kolmas pool muudab seda. Reliis kopeerib hinna Zone'i. Leht loeb Zone'i koopiat, mitte pilve. Vormis on iga kaalu juures hind. Kui hind puudub, näitab «hind kinnitatakse kontoris».
+Hind on toodete tabelis. Veerg `hind` on toote all. `ühik` on `tk` või `kg`. Kilohinnad on `0,5` / `1,0` / `1,5` / `2,0`. Pakett kopeerib need lehele.
 
 Päev, kellaaeg ja nimi jäävad. Märkeruut «Tahan uudiseid» jääb. «Helista ja telli» jääb vormi kõrvale.
 
@@ -272,11 +272,17 @@ Galerii näitab ühe toote kõiki fotosid. Limiiti ei ole. Kui fotosid on mitu, 
 
 Toote tekst ei ole lehel kogu aeg näha. Desktopis tuleb vana paber ette, kui hiir on kollaazil, ja kaob, kui hiir läheb ära. Telefonis vajutus kollaazile toob paberi ette, teine vajutus võtab ära. Tekst on valitud keeles. Kui tõlget ei ole, jääb eesti.
 
-Veerus `hind` on toote all näidatav hind.
+### Hind ja tellimine
 
-Veerus `ühik` on dropdown `tk` või `kg`. Inimene valib. Kui on `kg`, on neli kilohinda: `0,5`, `1,0`, `1,5`, `2,0`. Tellimisvorm võtab hinna valitud kaalu järgi. Kui on `tk`, kaalu ei ole ja hind on tükihind.
+Hind on toodete tabelis, mitte koodis. Kolmas pool täidab veerud. Pakett võtab need kaasa. Leht loeb paketti, mitte tabelit.
 
-Veerus `tellitav` on `jah` või `ei`. Kui on `jah`, on toote all link «Lisa tellimusse». Vajutus lisab korvi selle toote, mitte teisi. Kui on `ei` või tühi, linki ei ole.
+- `hind` on see, mis on toote all näha.
+- `ühik` on dropdown `tk` või `kg`. Inimene valib.
+- `kg`: neli kilohinda veergudes `0,5`, `1,0`, `1,5`, `2,0`. Tellimisvormis on kaaluvalik. Hind tuleb valitud kaalu järgi.
+- `tk`: kaalu ei ole. Hind on tükihind veerust `hind`.
+- `tellitav` on dropdown `jah` või `ei`. Kui on `jah`, on toote all «Lisa tellimusse». Vajutus lisab korvi selle toote. Kui on `ei` või tühi, linki ei ole.
+
+Kui paketti ei tehta, jääb lehele vana.
 
 Kolmas osapool käivitab impordi menüüst Kehra Pagar, siis Töötle fotod. Paketi teeb samast menüüst Tee pakett. Veeb ei uuene ise. Pakett tuleb lehe kausta tõsta.
 
