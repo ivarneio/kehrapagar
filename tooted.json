@@ -3,7 +3,21 @@
     "kood": "10002",
     "grupp": "Kringlid",
     "nimi": "Juustukringel",
+    "alaliik_et": "",
+    "alaliik_ru": "",
+    "alaliik_en": "",
     "tekst": "Väga maitsev kringel",
+    "tekst_ru": "Очень вкусный крендель",
+    "tekst_en": "Very tasty pretzel",
+    "tellitav": true,
+    "uhik": "kg",
+    "hind": "20",
+    "hinnad": {
+      "0,5": "",
+      "1,0": "20",
+      "1,5": "",
+      "2,0": ""
+    },
     "pildid": [
       "100021_juustukringel1.jpg",
       "100022_juustukringel2.jpg",
