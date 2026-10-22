@@ -73,25 +73,42 @@ function kontrolliTolgiNupp(e) {
   var rida = e.range.getRow();
   if (rida < 2) return true;
   e.range.setValue("");
+  naitaEdenemine(10, "Tõlgin rida. Ära vajuta uuesti.");
   teeBackup("rea-tolge");
   var n = tolgiRida(leht, pais, rida, true);
-  SpreadsheetApp.getUi().alert(n ? "Rida tõlgitud." : "Eesti teksti ei ole. Midagi ei tõlgitud.");
+  var tekst = n ? "Rida tõlgitud." : "Eesti teksti ei ole. Midagi ei tõlgitud.";
+  naitaEdenemine(100, tekst);
+  SpreadsheetApp.getUi().alert(tekst);
   return true;
 }
 
 function tolgiPuuduvad() {
-  var leht = SpreadsheetApp.openById(SEADED.tabel).getSheetByName("Tooted");
-  var read = leht.getDataRange().getValues();
-  var pais = read[0];
-  teeBackup("puuduvad");
-  var n = 0;
-  for (var i = 1; i < read.length; i++) {
-    n += tolgiRida(leht, pais, i + 1, false);
+  if (onKasib()) {
+    naitaEdenemine(0, "Juba käib. Oota.");
+    return "Juba käib.";
   }
-  var tekst = n ? ("Tõlgitud ridu: " + n) : "Puuduvaid tõlkeid ei olnud.";
-  kirjutaOlek(tekst);
-  try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
-  return tekst;
+  seaKaib(true);
+  try {
+    naitaEdenemine(5, "Loen tabelit. Ära vajuta uuesti.");
+    var leht = SpreadsheetApp.openById(SEADED.tabel).getSheetByName("Tooted");
+    var read = leht.getDataRange().getValues();
+    var pais = read[0];
+    naitaEdenemine(15, "Teen backupi.");
+    teeBackup("puuduvad");
+    var n = 0;
+    var kokku = Math.max(read.length - 1, 1);
+    for (var i = 1; i < read.length; i++) {
+      naitaEdenemine(20 + Math.round((i / kokku) * 70), "Tõlgin rida " + (i + 1));
+      n += tolgiRida(leht, pais, i + 1, false);
+    }
+    var tekst = n ? ("Tõlgitud ridu: " + n) : "Puuduvaid tõlkeid ei olnud.";
+    naitaEdenemine(100, tekst);
+    kirjutaOlek(tekst);
+    try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
+    return tekst;
+  } finally {
+    seaKaib(false);
+  }
 }
 
 function tolgiRida(leht, pais, rida, sunni) {
@@ -145,43 +162,57 @@ function kontrolliAktiveerimist(e) {
 }
 
 function tootleFotod() {
-  var web = DriveApp.getFolderById(SEADED.webipildid);
-  var olemas = loeOlemas(web);
-  var tooted = DriveApp.getFolderById(SEADED.tootedKaust);
-  var kaustad = tooted.getFolders();
-  var tehtud = [];
-
-  while (kaustad.hasNext()) {
-    var kaust = kaustad.next();
-    var gruppNr = SEADED.grupid[kaust.getName()];
-    if (!gruppNr) continue;
-    var tootepildid = koguTooted(kaust, olemas);
-    Object.keys(tootepildid).forEach(function (pohi) {
-      var pildid = tootepildid[pohi];
-      var tooteNr = jargmineToode(gruppNr, olemas);
-      var kood = String(gruppNr) + pad(tooteNr, 4);
-      var failinimed = [];
-      pildid.forEach(function (p) {
-        var pildiId = kood + String(p.jrk);
-        var algne = p.fail.getName();
-        if (!/\.[^.]+$/.test(algne)) algne += ".jpg";
-        var uusNimi = pildiId + "_" + algne;
-        var blob = kropi(p.fail);
-        blob.setName(uusNimi);
-        web.createFile(blob);
-        olemas.pildid[pildiId] = true;
-        olemas.nimeJargi[pildiId] = p.fail.getName();
-        failinimed.push(uusNimi);
-      });
-      olemas.tooted[gruppNr] = Math.max(olemas.tooted[gruppNr] || 0, tooteNr);
-      kirjutaRida(kood, kaust.getName(), kaust.getUrl(), failinimed.join(", "));
-      tehtud.push(kood + " " + pohi);
-    });
+  if (onKasib()) {
+    naitaEdenemine(0, "Juba käib. Oota.");
+    return "Juba käib.";
   }
-  var tekst = tehtud.length ? ("Tehtud:\n" + tehtud.join("\n")) : "Uusi pilte ei leitud.";
-  kirjutaOlek(tekst);
-  try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
-  return tekst;
+  seaKaib(true);
+  try {
+    naitaEdenemine(5, "Loen olemasolevaid. Ära vajuta uuesti.");
+    var web = DriveApp.getFolderById(SEADED.webipildid);
+    var olemas = loeOlemas(web);
+    var tooted = DriveApp.getFolderById(SEADED.tootedKaust);
+    var kaustad = tooted.getFolders();
+    var tehtud = [];
+    var nimekiri = [];
+    while (kaustad.hasNext()) nimekiri.push(kaustad.next());
+    var kokku = Math.max(nimekiri.length, 1);
+
+    nimekiri.forEach(function (kaust, i) {
+      var gruppNr = SEADED.grupid[kaust.getName()];
+      if (!gruppNr) return;
+      naitaEdenemine(15 + Math.round((i / kokku) * 70), "Töötlen " + kaust.getName());
+      var tootepildid = koguTooted(kaust, olemas);
+      Object.keys(tootepildid).forEach(function (pohi) {
+        var pildid = tootepildid[pohi];
+        var tooteNr = jargmineToode(gruppNr, olemas);
+        var kood = String(gruppNr) + pad(tooteNr, 4);
+        var failinimed = [];
+        pildid.forEach(function (p) {
+          var pildiId = kood + String(p.jrk);
+          var algne = p.fail.getName();
+          if (!/\.[^.]+$/.test(algne)) algne += ".jpg";
+          var uusNimi = pildiId + "_" + algne;
+          var blob = kropi(p.fail);
+          blob.setName(uusNimi);
+          web.createFile(blob);
+          olemas.pildid[pildiId] = true;
+          olemas.nimeJargi[pildiId] = p.fail.getName();
+          failinimed.push(uusNimi);
+        });
+        olemas.tooted[gruppNr] = Math.max(olemas.tooted[gruppNr] || 0, tooteNr);
+        kirjutaRida(kood, kaust.getName(), kaust.getUrl(), failinimed.join(", "));
+        tehtud.push(kood + " " + pohi);
+      });
+    });
+    var tekst = tehtud.length ? ("Tehtud:\n" + tehtud.join("\n")) : "Uusi pilte ei leitud.";
+    naitaEdenemine(100, tehtud.length ? ("Tehtud: " + tehtud.length) : "Uusi pilte ei leitud.");
+    kirjutaOlek(tekst);
+    try { SpreadsheetApp.getUi().alert(tekst); } catch (e) {}
+    return tekst;
+  } finally {
+    seaKaib(false);
+  }
 }
 
 function teePakett() {
