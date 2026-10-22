@@ -219,7 +219,8 @@
           if (t.hind) {
             var hindSilt = document.createElement("span");
             hindSilt.className = "hind";
-            hindSilt.textContent = t.hind;
+            var uhik = String(t.uhik || "").toLowerCase();
+            hindSilt.textContent = t.hind + " €" + (uhik === "kg" ? " / 1 kg" : "");
             nupp.appendChild(hindSilt);
           }
           if (/^(jah|ja|1|true)$/.test(String(t.tellitav || "").toLowerCase())) {
@@ -751,9 +752,9 @@
     function reaHind(r) {
       if (r.uhik === "kg" && r.hinnad) {
         var v = (r.kaal || "").replace(" kg", "");
-        if (r.hinnad[v]) return r.hinnad[v];
+        if (r.hinnad[v]) return r.hinnad[v] + " €";
       }
-      return r.hind || "—";
+      return r.hind ? (r.hind + " €") : "—";
     }
     function joonista() {
       if (!korvEl) return;
