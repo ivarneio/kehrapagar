@@ -213,11 +213,13 @@
           silt.className = "nimi";
           silt.textContent = t.nimi || "";
           nupp.appendChild(silt);
-          var link = document.createElement("a");
-          link.className = "telli-link";
-          link.href = "#telli";
-          link.textContent = "Lisa tellimusse";
-          nupp.appendChild(link);
+          if (/^(jah|ja|1|true)$/.test(String(t.tellitav || "").toLowerCase())) {
+            var link = document.createElement("a");
+            link.className = "telli-link";
+            link.href = "#telli";
+            link.textContent = "Lisa tellimusse";
+            nupp.appendChild(link);
+          }
           riba.appendChild(nupp);
         });
       });
@@ -703,17 +705,17 @@
       viiTelliUles();
     }
     suurTelli.addEventListener("click", avaVorm);
-    document.querySelectorAll(".telli-link").forEach(function (a) {
-      a.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var nimi = a.closest(".pisi") ? a.closest(".pisi").querySelector(".nimi").textContent : "";
-        if (nimi) {
-          korv.push({ nimi: nimi, kaal: "1,0 kg", kogus: "1" });
-          joonista();
-        }
-        avaVorm();
-      });
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest ? e.target.closest(".telli-link") : null;
+      if (!a) return;
+      e.preventDefault();
+      e.stopPropagation();
+      var nimi = a.closest(".pisi") ? a.closest(".pisi").querySelector(".nimi").textContent : "";
+      if (nimi) {
+        korv.push({ nimi: nimi, kaal: "1,0 kg", kogus: "1" });
+        joonista();
+      }
+      avaVorm();
     });
     fetch("tellitavad.json")
       .then(function (r) { return r.json(); })
