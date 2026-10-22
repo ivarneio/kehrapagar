@@ -535,33 +535,108 @@
   kujud.style.maxHeight = "78vh";
   kujud.style.cursor = "pointer";
 
+  var galeriiTaimer = null;
+
   function sulgeVaade() {
+    if (galeriiTaimer) { clearTimeout(galeriiTaimer); galeriiTaimer = null; }
     vaade.classList.remove("sees");
     kujud.innerHTML = "";
     suurTelli.hidden = true;
   }
 
+  function naitaKuju(src, silt) {
+    kujud.innerHTML = "";
+    var kast = document.createElement("figure");
+    kast.className = "kuju";
+    var img = document.createElement("img");
+    img.src = src;
+    img.alt = silt || "";
+    kast.appendChild(img);
+    if (silt) {
+      var s = document.createElement("span");
+      s.textContent = silt;
+      kast.appendChild(s);
+    }
+    kujud.appendChild(kast);
+  }
+
+  function teeKollaaz(teed, valmis) {
+    var laaditud = [];
+    var jaanud = teed.length;
+    teed.forEach(function (src, i) {
+      var img = new Image();
+      img.onload = function () {
+        laaditud[i] = img;
+        jaanud--;
+        if (!jaanud) joonista();
+      };
+      img.onerror = function () {
+        jaanud--;
+        if (!jaanud) joonista();
+      };
+      img.src = src;
+    });
+    function joonista() {
+      var pildid = laaditud.filter(Boolean);
+      if (!pildid.length) { valmis(""); return; }
+      var W = 1200, H = 900, vahe = 12;
+      var c = document.createElement("canvas");
+      c.width = W;
+      c.height = H;
+      var g = c.getContext("2d");
+      g.fillStyle = "#efe6d4";
+      g.fillRect(0, 0, W, H);
+      var n = pildid.length;
+      var lahtrid = [];
+      if (n === 2) {
+        lahtrid = [[0, 0, W / 2, H], [W / 2, 0, W / 2, H]];
+      } else if (n === 3) {
+        lahtrid = [[0, 0, W, H * 0.62], [0, H * 0.62, W / 2, H * 0.38], [W / 2, H * 0.62, W / 2, H * 0.38]];
+      } else {
+        var veerud = Math.ceil(Math.sqrt(n));
+        var read = Math.ceil(n / veerud);
+        var lw = W / veerud, lh = H / read;
+        for (var i = 0; i < n; i++) {
+          lahtrid.push([(i % veerud) * lw, Math.floor(i / veerud) * lh, lw, lh]);
+        }
+      }
+      pildid.forEach(function (img, i) {
+        var L = lahtrid[i];
+        if (!L) return;
+        var x = L[0] + vahe / 2, y = L[1] + vahe / 2, w = L[2] - vahe, h = L[3] - vahe;
+        var suhe = Math.max(w / img.width, h / img.height);
+        var dw = img.width * suhe, dh = img.height * suhe;
+        g.save();
+        g.beginPath();
+        g.rect(x, y, w, h);
+        g.clip();
+        g.drawImage(img, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
+        g.restore();
+      });
+      valmis(c.toDataURL("image/jpeg", 0.85));
+    }
+  }
+
   document.addEventListener("click", function (e) {
     var nupp = e.target.closest ? e.target.closest(".pisi") : null;
     if (!nupp) return;
-    var pildid = (nupp.getAttribute("data-pildid") || "").split("|");
-    var sildid = (nupp.getAttribute("data-sildid") || "").split("|");
-    kujud.innerHTML = "";
-    pildid.forEach(function (src, i) {
-      if (!src) return;
-      var kast = document.createElement("figure");
-      kast.className = "kuju";
-      var img = document.createElement("img");
-      img.src = src;
-      img.alt = nupp.querySelector("img").alt;
-      kast.appendChild(img);
-      if (sildid[i]) {
-        var silt = document.createElement("span");
-        silt.textContent = sildid[i];
-        kast.appendChild(silt);
+    var pildid = (nupp.getAttribute("data-pildid") || "").split("|").filter(Boolean);
+    var silt = nupp.querySelector(".nimi") ? nupp.querySelector(".nimi").textContent : "";
+    if (galeriiTaimer) { clearTimeout(galeriiTaimer); galeriiTaimer = null; }
+    if (!pildid.length) return;
+    var i = 0;
+    function samm() {
+      if (i < pildid.length) {
+        naitaKuju(pildid[i], silt);
+        i++;
+        if (pildid.length > 1) galeriiTaimer = setTimeout(samm, 1300);
+        return;
       }
-      kujud.appendChild(kast);
-    });
+      teeKollaaz(pildid, function (src) {
+        if (src) naitaKuju(src, silt);
+      });
+    }
+    samm();
     suurTelli.hidden = false;
     vaade.classList.add("sees");
   });

@@ -268,7 +268,7 @@ Leht ei loe Drive'i. Ta loeb lehe kaustas olevat paketti: nimi, kirjeldus ja kõ
 
 Grupp näitab ainult neid tooteid, mis paketis on. Kui grupil paketti ei ole, jääb vana näidis alles. Kringlid loeb paketti.
 
-Galerii näitab ühe toote kõiki fotosid. Limiiti ei ole. Esimene foto on see, mis grupi avanedes välja tuleb. Ülejäänud avanevad galeriis.
+Galerii näitab ühe toote kõiki fotosid. Limiiti ei ole. Kui fotosid on mitu, jookseb galerii need täiskaadris läbi, igaüks 1,3 sekundit, ja jääb pidama kollaazil. Kollaaz tekib lehel avamise hetkel, mitte tabelis. Ühe foto puhul kollaazi ei ole.
 
 Kolmas osapool käivitab impordi menüüst Kehra Pagar, siis Töötle fotod. Paketi teeb samast menüüst Tee pakett. Veeb ei uuene ise. Pakett tuleb lehe kausta tõsta.
 

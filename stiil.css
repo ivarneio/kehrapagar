@@ -272,7 +272,7 @@ fieldset input { width: auto; }
   overflow-x: auto;
 }
 .kuju { text-align: center; color: #f4f0e6; }
-.kuju img { max-height: 70vh; max-width: 46vw; display: block; background: #efe6d4; }
+.kuju img { max-height: 78vh; max-width: 92vw; display: block; background: #efe6d4; }
 .kuju span { display: block; margin-top: .35rem; font-size: .9rem; }
 .taisekraan .telli-nupp {
   width: auto;
