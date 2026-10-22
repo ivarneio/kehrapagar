@@ -229,7 +229,7 @@ Drive'is on üks kataloog `tooted`. Selle all võivad olla tootegrupid kataloogi
 - Pildifail kannab sama tunnust: `kaneel.jpg`. Veerg `pilt` ütleb selle failinime.
 - Makro otsib `tooted` alt, ka alamkataloogidest, sama nime ja kopeerib pildi koos selle rea tekstiga.
 - Uus fail uue nimega ja sama tunnusega rida on tavaline reliis. Koodi selleks ei muudeta.
-- Mitu pilti: `kaneel-1.jpg`, `kaneel-2.jpg`, kuni neli. Veergu kirjutatakse need komaga. Esimene on see, mis grupi avanedes välja rullub. Ülejäänud on paneeli pisipildid.
+- Mitu pilti: sama toote fotod, järjekord failinime lõpus. Vana „kuni neli“ ei kehti. Kehtiv reegel on jaotises Tooted ja pildid.
 - Kui faili ei ole, tuleb märkus, nagu kirjaveast. Reliis ei jää tegemata. Toode läheb välja ilma pildita, kuni fail tuleb.
 
 Kausta koht ei seo pilti tekstiga. Kui `kaneel.jpg` liigub ühest grupikataloogist teise, jääb side alles. Grupi otsustab tabeli veerg, mitte see, mis kaustas fail parasjagu on.
@@ -260,13 +260,15 @@ Ilma nime ja kirjelduseta ei saa aktiveerida. Lahter jääb `ei` ja tuleb teade:
 
 `webipildid` on töötluse arhiiv. Sealt ei kustutata, kui toode ei ole enam aktiivne. Algseid fotosid grupikaustades ei kustutata.
 
-`pakett` tehakse iga kord uuesti. Sinna lähevad ainult aktiivsed tooted, millel on nimi ja kirjeldus. Eelmine aktiivne, mis enam ei ole, kaob paketist. Uus aktiivne lisandub. Kolm fotot ühest tootest lähevad kõik kaasa.
+`pakett` tehakse iga kord uuesti. Sinna lähevad ainult aktiivsed tooted, millel on nimi ja kirjeldus. Eelmine aktiivne, mis enam ei ole, kaob paketist. Uus aktiivne lisandub. Kõik selle toote fotod lähevad kaasa. Fotode arvul ei ole limiiti peale koodi: järjekord on 1–9.
 
 ### Leht
 
 Leht ei loe Drive'i. Ta loeb lehe kaustas olevat paketti: nimi, kirjeldus ja kõik fotod.
 
-Galerii näitab ühe toote kõiki fotosid, mitte ühte. Esimene foto on see, mis grupi avanedes välja tuleb. Ülejäänud avanevad galeriis.
+Grupp näitab ainult neid tooteid, mis paketis on. Kui grupil paketti ei ole, jääb vana näidis alles. Kringlid loeb paketti.
+
+Galerii näitab ühe toote kõiki fotosid. Limiiti ei ole. Esimene foto on see, mis grupi avanedes välja tuleb. Ülejäänud avanevad galeriis.
 
 Kolmas osapool käivitab impordi menüüst Kehra Pagar, siis Töötle fotod. Paketi teeb samast menüüst Tee pakett. Veeb ei uuene ise. Pakett tuleb lehe kausta tõsta.
 
