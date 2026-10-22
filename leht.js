@@ -550,37 +550,37 @@
 
   function naitaKuju(src, silt, kollaaz, tekst) {
     var vana = kujud.querySelector(".kuju");
-    function loo() {
-      kujud.innerHTML = "";
-      var kast = document.createElement("figure");
-      kast.className = kollaaz ? "kuju kollaaz" : "kuju";
-      kast.style.opacity = "0";
-      var img = document.createElement("img");
-      img.src = src;
-      img.alt = silt || "";
-      kast.appendChild(img);
-      if (silt) {
-        var s = document.createElement("span");
-        s.textContent = silt;
-        kast.appendChild(s);
-      }
-      if (kollaaz && tekst) {
-        var paber = document.createElement("div");
-        paber.className = "paber";
-        paber.textContent = tekst;
-        kast.appendChild(paber);
-        var telefon = window.matchMedia("(max-width: 799px)").matches;
-        if (!telefon) {
-          kast.addEventListener("mouseenter", function () { paber.classList.add("sees"); });
-          kast.addEventListener("mouseleave", function () { paber.classList.remove("sees"); });
-        }
-      }
-      kujud.appendChild(kast);
-      requestAnimationFrame(function () { kast.style.opacity = "1"; });
+    var kast = document.createElement("figure");
+    kast.className = kollaaz ? "kuju kollaaz" : "kuju";
+    kast.style.opacity = "0";
+    kast.style.position = vana ? "absolute" : "";
+    kast.style.inset = vana ? "0" : "";
+    var img = document.createElement("img");
+    img.src = src;
+    img.alt = silt || "";
+    kast.appendChild(img);
+    if (silt) {
+      var s = document.createElement("span");
+      s.textContent = silt;
+      kast.appendChild(s);
     }
-    if (!vana) { loo(); return; }
-    vana.style.opacity = "0";
-    setTimeout(loo, 280);
+    if (kollaaz && tekst) {
+      var paber = document.createElement("div");
+      paber.className = "paber";
+      paber.textContent = tekst;
+      kast.appendChild(paber);
+      var telefon = window.matchMedia("(max-width: 799px)").matches;
+      if (!telefon) {
+        kast.addEventListener("mouseenter", function () { paber.classList.add("sees"); });
+        kast.addEventListener("mouseleave", function () { paber.classList.remove("sees"); });
+      }
+    }
+    kujud.appendChild(kast);
+    requestAnimationFrame(function () { kast.style.opacity = "1"; });
+    if (vana) {
+      vana.style.opacity = "0";
+      setTimeout(function () { if (vana.parentNode) vana.remove(); kast.style.position = ""; kast.style.inset = ""; }, 360);
+    }
   }
 
   function teeKollaaz(teed, valmis) {

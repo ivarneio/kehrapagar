@@ -270,8 +270,10 @@ fieldset input { width: auto; }
   justify-content: center;
   max-width: 100%;
   overflow-x: auto;
+  position: relative;
+  min-height: 42vh;
 }
-.kuju { text-align: center; color: var(--tint); position: relative; opacity: 1; transition: opacity .35s ease; }
+.kuju { text-align: center; color: var(--tint); position: relative; opacity: 1; transition: opacity .35s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .paber {
   display: none;
   position: absolute;
