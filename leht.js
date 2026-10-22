@@ -206,6 +206,8 @@
           nupp.setAttribute("data-tekst-ru", t.tekst_ru || "");
           nupp.setAttribute("data-tekst-en", t.tekst_en || "");
           nupp.setAttribute("data-hind", t.hind || "");
+          nupp.setAttribute("data-uhik", t.uhik || "");
+          nupp.setAttribute("data-hinnad", JSON.stringify(t.hinnad || {}));
           var img = document.createElement("img");
           img.src = teed[0];
           img.alt = t.nimi || "";
@@ -718,9 +720,13 @@
       e.preventDefault();
       e.stopPropagation();
       var nimi = a.closest(".pisi") ? a.closest(".pisi").querySelector(".nimi").textContent : "";
-      var hindVaartus = a.closest(".pisi") ? (a.closest(".pisi").getAttribute("data-hind") || "") : "";
+      var toode = a.closest(".pisi");
+      var hindVaartus = toode ? (toode.getAttribute("data-hind") || "") : "";
+      var uhik = toode ? (toode.getAttribute("data-uhik") || "") : "";
+      var hinnad = {};
+      try { hinnad = JSON.parse(toode ? toode.getAttribute("data-hinnad") || "{}" : "{}"); } catch (err) {}
       if (nimi) {
-        korv.push({ nimi: nimi, kaal: "1,0 kg", kogus: "1", hind: hindVaartus });
+        korv.push({ nimi: nimi, kaal: uhik === "kg" ? "1,0 kg" : "", kogus: "1", hind: hindVaartus, uhik: uhik, hinnad: hinnad });
         joonista();
       }
       avaVorm();
@@ -743,7 +749,11 @@
     var kogus = vorm.querySelector("[name=kogus]");
     var lisa = vorm.querySelector(".lisa");
     var korv = [];
-    function hind(r) {
+    function reaHind(r) {
+      if (r.uhik === "kg" && r.hinnad) {
+        var v = (r.kaal || "").replace(" kg", "");
+        if (r.hinnad[v]) return r.hinnad[v];
+      }
       return r.hind || "—";
     }
     function joonista() {
@@ -752,10 +762,14 @@
       var kaalud = ["0,5 kg", "1,0 kg", "1,5 kg", "2,0 kg"];
       var h = "<ul>";
       korv.forEach(function (r, i) {
-        var opts = kaalud.map(function (k) {
-          return "<option" + (k === r.kaal ? " selected" : "") + ">" + k + "</option>";
-        }).join("");
-        h += "<li>" + r.nimi + " <select data-i=\"" + i + "\" class=\"kaal-vali\">" + opts + "</select> · " + r.kogus + " tk · " + hind(r) + " <button type=\"button\" data-i=\"" + i + "\">eemalda</button></li>";
+        var kaalValik = "";
+        if (r.uhik === "kg") {
+          var opts = kaalud.map(function (k) {
+            return "<option" + (k === r.kaal ? " selected" : "") + ">" + k + "</option>";
+          }).join("");
+          kaalValik = " <select data-i=\"" + i + "\" class=\"kaal-vali\">" + opts + "</select>";
+        }
+        h += "<li>" + r.nimi + kaalValik + " · " + r.kogus + " tk · " + reaHind(r) + " <button type=\"button\" data-i=\"" + i + "\">eemalda</button></li>";
       });
       h += "</ul>";
       korvEl.innerHTML = h;

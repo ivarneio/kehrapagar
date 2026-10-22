@@ -251,7 +251,14 @@ function teePakett() {
         tekst_ru: r[pais.indexOf("tekst_ru")] || "",
         tekst_en: r[pais.indexOf("tekst_en")] || "",
         tellitav: /^(jah|ja|1)$/.test(String(r[pais.indexOf("tellitav")] || "").toLowerCase().trim()),
+        uhik: String(r[pais.indexOf("ühik")] || "").trim(),
         hind: String(r[pais.indexOf("hind")] || "").trim(),
+        hinnad: {
+          "0,5": String(r[pais.indexOf("0,5")] || "").trim(),
+          "1,0": String(r[pais.indexOf("1,0")] || "").trim(),
+          "1,5": String(r[pais.indexOf("1,5")] || "").trim(),
+          "2,0": String(r[pais.indexOf("2,0")] || "").trim()
+        },
         pildid: []
       });
     });

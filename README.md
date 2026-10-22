@@ -272,7 +272,9 @@ Galerii näitab ühe toote kõiki fotosid. Limiiti ei ole. Kui fotosid on mitu, 
 
 Toote tekst ei ole lehel kogu aeg näha. Desktopis tuleb vana paber ette, kui hiir on kollaazil, ja kaob, kui hiir läheb ära. Telefonis vajutus kollaazile toob paberi ette, teine vajutus võtab ära. Tekst on valitud keeles. Kui tõlget ei ole, jääb eesti.
 
-Veerus `hind` on toote hind. Leht näitab seda toote nime all. Kui toode lisatakse korvi, läheb hind kaasa.
+Veerus `hind` on toote all näidatav hind.
+
+Veerus `ühik` on dropdown `tk` või `kg`. Inimene valib. Kui on `kg`, on neli kilohinda: `0,5`, `1,0`, `1,5`, `2,0`. Tellimisvorm võtab hinna valitud kaalu järgi. Kui on `tk`, kaalu ei ole ja hind on tükihind.
 
 Veerus `tellitav` on `jah` või `ei`. Kui on `jah`, on toote all link «Lisa tellimusse». Vajutus lisab korvi selle toote, mitte teisi. Kui on `ei` või tühi, linki ei ole.
 
