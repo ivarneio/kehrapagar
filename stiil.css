@@ -245,7 +245,7 @@ fieldset input { width: auto; }
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: rgba(28, 22, 14, .92);
+  background: var(--taust);
   place-items: center;
   padding: 3.2rem 1rem 1.2rem;
 }
@@ -258,7 +258,7 @@ fieldset input { width: auto; }
   height: 2.4rem;
   border: 0;
   background: transparent;
-  color: #f4f0e6;
+  color: var(--tint);
   font-size: 2rem;
   line-height: 1;
   cursor: pointer;
@@ -271,7 +271,7 @@ fieldset input { width: auto; }
   max-width: 100%;
   overflow-x: auto;
 }
-.kuju { text-align: center; color: #f4f0e6; position: relative; opacity: 1; transition: opacity .35s ease; }
+.kuju { text-align: center; color: var(--tint); position: relative; opacity: 1; transition: opacity .35s ease; }
 .paber {
   display: none;
   position: absolute;
@@ -303,7 +303,7 @@ fieldset input { width: auto; }
   font-size: 1.6rem;
   font-weight: 600;
   background: transparent;
-  color: #f4f0e6;
+  color: var(--tint);
   border: 0;
 }
 .tekstileht {
