@@ -268,7 +268,7 @@ Leht ei loe Drive'i. Ta loeb lehe kaustas olevat paketti: nimi, kirjeldus ja kõ
 
 Grupp näitab ainult neid tooteid, mis paketis on. Kui grupil paketti ei ole, jääb vana näidis alles. Kringlid loeb paketti.
 
-Galerii näitab ühe toote kõiki fotosid. Limiiti ei ole. Kui fotosid on mitu, jookseb galerii need täiskaadris läbi, igaüks 1,3 sekundit, ja jääb pidama kollaazil. Kollaaz tekib lehel avamise hetkel, mitte tabelis. Ühe foto puhul kollaazi ei ole.
+Galerii näitab ühe toote kõiki fotosid. Limiiti ei ole. Kui fotosid on mitu, jookseb galerii need täiskaadris läbi, igal üks 0,9 sekundit, üleminek on fade. Siis jääb pidama kollaazil. Kollaaz tekib lehel avamise hetkel, mitte tabelis. Ühe foto puhul kollaazi ei ole.
 
 Toote tekst ei ole lehel kogu aeg näha. Desktopis tuleb vana paber ette, kui hiir on kollaazil, ja kaob, kui hiir läheb ära. Telefonis vajutus kollaazile toob paberi ette, teine vajutus võtab ära. Tekst on valitud keeles. Kui tõlget ei ole, jääb eesti.
 

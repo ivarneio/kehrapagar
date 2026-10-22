@@ -271,7 +271,7 @@ fieldset input { width: auto; }
   max-width: 100%;
   overflow-x: auto;
 }
-.kuju { text-align: center; color: #f4f0e6; position: relative; }
+.kuju { text-align: center; color: #f4f0e6; position: relative; opacity: 1; transition: opacity .35s ease; }
 .paber {
   display: none;
   position: absolute;

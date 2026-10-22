@@ -645,7 +645,7 @@
       if (i < pildid.length) {
         naitaKuju(pildid[i], silt);
         i++;
-        if (pildid.length > 1) galeriiTaimer = setTimeout(samm, 1300);
+        if (pildid.length > 1) galeriiTaimer = setTimeout(samm, 900);
         return;
       }
       teeKollaaz(pildid, function (src) {
