@@ -14,7 +14,7 @@ Lehe vaade on üleval link. Kui see annab tühja lehe, on Pages veel kinni: Sett
 - Eesmärgid: tooted, sotsiaalmeedia kampaaniad, kringlitellimused.
 - Tellimus on ainult kohapealne järeletulemine ja kohapealne maksmine. Ettemaksu ei ole.
 - Lehel on suur nupp «Helista ja telli». Telefonis avab see kõne.
-- Tellimine on avamisel kinnine plokk. Toote «Telli» täidab nime ette. Korv hoiab mitu rida (toode, kaal, kogus) ainult selle külastuse ajal. Kaal on 0,5 / 1,0 / 1,5 / 2,0 kg.
+- Tellimine on avamisel kinnine plokk. Tellitava toote «Lisa tellimusse» lisab korvi selle toote. Korv hoiab mitu rida ainult selle külastuse ajal.
 - Tellimus salvestub Zone'i. Igast tellimusest läheb e-kiri pagarikotta.
 - Pagaril on lihtne telefonivaade. Sinna saab kirja panna ka telefonitellimuse, et kõik tellimused oleks ühes kohas. Pagarivaade on eesti keeles.
 - Igal kampaanial on lühike link. `?keel=ru` või `?keel=en` avab sama lehe teises keeles.
@@ -25,9 +25,8 @@ Lehe vaade on üleval link. Kui see annab tühja lehe, on Pages veel kinni: Sett
 - ZoneCloud ei ole andmehoidla. Sealt ei ole reliisi ajal ligipääsu.
 - Foto ja tekst seotakse failinimega. Tunnus on püsiv, nimi ja rea järjekord ei seo.
 - Drive'is on kataloog `tooted`. Tootegrupid võivad olla selle all kataloogidena.
-- Tootegrupid on Kringlid, Pagaritooted, Kondiitritooted, Tordid. Grupp on tabeli rida. Lisamine ja eemaldamine ei ole kood.
-- Toote valik avab toote alla paneeli. Tutvustus on peidus. Pilt avaneb täisekraanil.
-- Paneeli neli pisipilti on ühes reas, mitte üksteise all.
+- Tootegrupid lehel on Kringlid, Stritslid ja struudlid, Saiad ja pirukad, Koogid, Küpsised, Tordid. Grupp, millel on pakett, näitab paketist. Teised on näidised.
+- Toote vajutus avab täisekraani galerii. Mitu fotot jooksevad läbi, 0,9 sekundit, fade, ja jäävad kollaazile. Tekst on kollaazil: desktopis hiirega, telefonis vajutusega, vanal paberil.
 - Jalus on kogu aeg näha. Seal on firma kontaktandmed.
 - Päis on nagu Helirännakul: üleval menüü ja sotsiaalmeedia.
 - Avaleht on `pealeht/pealeht.jpg`. Kui faili ei ole, on tavaline avaleht. Cron kopeerib.
@@ -36,8 +35,7 @@ Lehe vaade on üleval link. Kui see annab tühja lehe, on Pages veel kinni: Sett
 - Eemaldamine on kirja lõpu link. Skript kustutab selle aadressi võtme järgi.
 - Kõike ei kuhjata ühte indexisse. Külastaja leht on üks. Tellimus, uudis ja andmed on eraldi failid.
 - Mallist võetakse olemasolev luu: päis, jalus, keel, pildi side, galerii. Lehte ennast ei kopeerita.
-- Visuaal on kandiline, taust jahune valge. Avamine on nagu ballonsis. Sulgemine on pehmem.
-- Firma sõrmejälg on genereeritud rõhtne ribamuster. Värvireeglid on allpool, jaotises Sõrmejälg.
+- Visuaal: taust jahune valge. Tooteribad on ümarad, sinised ja oranžid. Mobiilis täislaiuses, desktopis kitsamad ja vasakul.
 - Backup on kohustuslik enne tõlget. Koopia läheb kausta `backup` ja püsib vähemalt 30 päeva. Tõlge käib käsitsi, mitte nupuga.
 
 ## Zone cron
@@ -60,7 +58,7 @@ Lehe avamisel ei tõlgita ega loeta pilve. Kui päevane käik ebaõnnestub, jä�
 
 Avamisel on tellimine kinnine plokk, sama kaaluga mis tootegrupp. Vajutus avab vormi. Vorm ei ole lehe avamisel lahti.
 
-Iga tellitava toote juures on nupp «Telli». Vajutus avab vormi ja toote nimi on juba sees. Klient valib kaalu ja koguse ning lisab rea korvi. Fotod näitavad kaalude erinevust.
+Iga tellitava toote juures on link «Lisa tellimusse», kui tabelis on `tellitav` = `jah`. Vajutus lisab korvi selle toote ja avab vormi. Kui ühik on `kg`, on real kaaluvalik ja hind tuleb valitud kaalu järgi. Kui on `tk`, kaalu ei ole.
 
 ### Korv
 
@@ -143,27 +141,19 @@ Koostamine on üks vaade: pealkiri, tekst, nupp «Saada». Enne saatmist näeb, 
 
 Saatmine käib Zone'i postist, aeglaselt, ja jääb piiride sisse. Üks kiri iga 5 sekundi tagant. Tavalisel postkastil kuni 2000 adressaati 24 tunni jooksul. Ühes kirjas tohib olla kuni 400 adressaati, seega saadetakse ükshaaval. Kui nimekiri on sellest suurem, jääb ülejäänu järjekorda ja läheb järgmisel ööpäeval. Saatja näeb, mis on läinud ja mis ootab. Reklaamkiri ilma nõusolekuta on Zone'i mõttes rämpspost ja on keelatud.
 
-### Tootegrupi avanemine (mustand)
+### Tootegrupi avanemine
 
-Tootegrupp on suletuna üks kaart. Puudutus ei vaheta lehte. Valitud kaart tõuseb üles, nagu `ivarneio/balloons`, ja avanedes lükkab teised alla. Sealt tulevad toodete pildid ükshaaval, mitte kõik korraga. Silm jõuab järge pidada. Iga pilt on valik, mitte galerii: nimi ja hind tulevad pildiga kaasa, et aju hakkaks kohe otsustama.
+Tootegrupp on suletuna üks riba. Vajutus avab tooted sama koha peal ja lükkab teised alla. Korraga on lahti üks grupp. Teise avamine sulgeb eelmise.
 
-Avamine on ballonsi liikumine, umbes 0,4 sekundit. Sulgemine ei ole sama hüpe. Kaart langeb oma kohale ja teised tulevad tagasi, ilma et rida kokku hüppaks. Nii on aru saada, mis milleks avanes.
+Tooted tulevad paketist, kui grupil on pakett. Muidu jääb näidis.
 
-Kui telefon küsib vähem liikumist, on efekt väljas. Piltide rida ei peida tellimust ega poodi. Korraga on lahti üks grupp. Teise avamine sulgeb eelmise.
+### Toote galerii
 
-### Toote paneel (mustand)
+Toote vajutus avab täisekraani galerii, mitte paneeli toote all. Vana paneeli reegel ei kehti.
 
-Toote puudutus ei ava uut lehte. Selle toote alla tuleb paneel. Teised tooted lükkuvad alla. Näha on, kust paneel tuli.
+Kui fotosid on mitu, jooksevad need läbi, 0,9 sekundit, fade, ja jäävad kollaazile. Ühe foto puhul kollaazi ei ole. Tekst on kollaazil vanal paberil: desktopis hiirega, telefonis vajutusega. Õige keel, eesti varuga.
 
-Paneelis on kuni neli pisipilti ühes reas, mitte üksteise all. Vertikaalne rida lükkaks järgmised tooted liiga kaugele. Kui pilte on vähem, näidatakse neid, mis on. Tühi koht ei jää ootama. Kitsal ekraanil jääb rida rõhtsalt, pildid lähevad väiksemaks. Kahte ritta ei lähe.
-
-Tutvustus on peidus. Paneelis on viide «Lähemalt». See avab teksti piltide all. Kes ei taha lugeda, ei näe seda. Inimene teab niigi, millega tegu.
-
-Pisipildile vajutus avab selle pildi täisekraanil. See on eraldi samm, mitte pisipiltide suund. Sulgemine on sama pildi vajutus või Esc. Telefonis piisab vajutusest.
-
-Paneel käib sama liikumisega mis grupp. Teise toote valik sulgeb eelmise paneeli. Korraga on lahti üks paneel. Grupi avanemine ja toote paneel on kaks sammu. Esmalt rulluvad grupi pildid. Siis ühe toote all avaneb kuni neli pisipilti reas. Tekst on kolmas samm, ja ainult viitel.
-
-Jalus jääb paneeli ja täisekraani pildi ajal nähtavale. Kontakt ei kao kerides. Päis jääb samuti nähtavale.
+Galerii taust on hele, siniselt oranžiks. Telefonis on pilt peaaegu täisekraan. Sulgemine on rist, Esc või vajutus pildile.
 
 ## Keel ja tekst
 
@@ -345,11 +335,11 @@ Avamise liikumine tuleb `ivarneio/balloons` seest, mitte mallist.
 
 ## Visuaal
 
-Kinnitatud. Sai on ümar, kaart on kandiline. Helirännaku ümaraid nurki ei võeta.
+Kinnitatud lehe järgi. Taust on jahune valge. Tooteribad on ümarad: sinine ja oranž vaheldumisi. Mobiilis on ribad peaaegu täislaiuses, kumerus jääb. Desktopis on ribad kitsamad ja vasakul.
 
-Taust on jahune valge, mitte ekraani valge. Kergelt soe, nagu paber või jahu. Küpsetis paistab selle peal välja. Linane ja hallikas jäid kõrvale. Grupp ei ole eraldi teema, vaid viide samal taustal. Valik tõstab selle üles.
+Avamine lükkab teised alla. Sulgemine on pehmem.
 
-Avamine on nagu ballonsis. Valitud kaart tõuseb ja lükkab teised alla, umbes 0,4 sekundit. Sulgemine ei ole sama hüpe: kaart langeb oma kohale ja teised tulevad tagasi, ilma et rida kokku hüppaks.
+Sõrmejälje triipe lehel praegu ei ole. Värvireeglid on allpool, kui need kunagi tagasi tulevad.
 
 ## Sõrmejälg
 
