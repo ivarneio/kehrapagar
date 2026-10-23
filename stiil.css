@@ -300,6 +300,27 @@ fieldset input { width: auto; }
 .paber.sees { display: block; }
 .kuju img { max-height: 78vh; max-width: 92vw; display: block; background: #efe6d4; }
 .kuju span { display: block; margin-top: .35rem; font-size: .9rem; }
+.galerii-vorm {
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: .8rem;
+  color: var(--tint);
+}
+.galerii-vorm[hidden] { display: none; }
+.galerii-kaal-rida { display: flex; gap: .35rem; align-items: center; }
+.galerii-kaal { width: auto; }
+.galerii-hind { font-weight: 600; min-width: 4rem; }
+.galerii-lisa {
+  background: var(--pais);
+  color: var(--taust);
+  border: 0;
+  padding: .55rem .9rem;
+  cursor: pointer;
+  font: inherit;
+}
 .taisekraan .telli-nupp {
   width: auto;
   margin: 1rem 0 0;

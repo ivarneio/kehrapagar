@@ -208,6 +208,7 @@
           nupp.setAttribute("data-hind", t.hind || "");
           nupp.setAttribute("data-uhik", t.uhik || "");
           nupp.setAttribute("data-hinnad", JSON.stringify(t.hinnad || {}));
+          nupp.setAttribute("data-tellitav", /^(jah|ja|1|true)$/.test(String(t.tellitav || "").toLowerCase()) ? "jah" : "");
           var img = document.createElement("img");
           img.src = teed[0];
           img.alt = t.nimi || "";
@@ -547,11 +548,16 @@
 
   var galeriiTaimer = null;
 
+  var galeriiVorm = vaade.querySelector(".galerii-vorm");
+  var galeriiToode = null;
+
   function sulgeVaade() {
     if (galeriiTaimer) { clearTimeout(galeriiTaimer); galeriiTaimer = null; }
     vaade.classList.remove("sees");
     kujud.innerHTML = "";
     suurTelli.hidden = true;
+    if (galeriiVorm) galeriiVorm.hidden = true;
+    galeriiToode = null;
   }
 
   function tooteTekst(nupp) {
@@ -674,9 +680,59 @@
       });
     }
     samm();
-    suurTelli.hidden = false;
+    if (galeriiVorm && nupp.getAttribute("data-tellitav") === "jah") {
+      var hinnad = {};
+      try { hinnad = JSON.parse(nupp.getAttribute("data-hinnad") || "{}"); } catch (err) {}
+      galeriiToode = {
+        nimi: silt,
+        uhik: nupp.getAttribute("data-uhik") || "",
+        hind: nupp.getAttribute("data-hind") || "",
+        hinnad: hinnad,
+        kaal: "1,0 kg",
+        kogus: 1
+      };
+      var kaalRida = galeriiVorm.querySelector(".galerii-kaal-rida");
+      var kaalValik = galeriiVorm.querySelector(".galerii-kaal");
+      if (kaalRida) kaalRida.hidden = galeriiToode.uhik !== "kg";
+      if (kaalValik) kaalValik.value = "1,0 kg";
+      galeriiVorm.querySelector(".galerii-kogus").textContent = "1";
+      uuendaGaleriiHind();
+      galeriiVorm.hidden = false;
+      suurTelli.hidden = true;
+    } else {
+      galeriiToode = null;
+      if (galeriiVorm) galeriiVorm.hidden = true;
+      suurTelli.hidden = false;
+    }
     vaade.classList.add("sees");
   });
+
+  function uuendaGaleriiHind() {
+    if (!galeriiVorm || !galeriiToode) return;
+    var alus = "";
+    if (galeriiToode.uhik === "kg") alus = galeriiToode.hinnad[galeriiToode.kaal.replace(" kg", "")] || "";
+    else alus = galeriiToode.hind || "";
+    var n = parseFloat(String(alus).replace(",", ".").replace(/[^\d.]/g, ""));
+    var silt = galeriiVorm.querySelector(".galerii-hind");
+    if (!alus || isNaN(n)) { silt.textContent = "hinda ei ole"; return; }
+    var kokku = n * galeriiToode.kogus;
+    silt.textContent = (Math.round(kokku * 100) / 100).toString().replace(".", ",") + " €";
+  }
+  if (galeriiVorm) {
+    galeriiVorm.addEventListener("click", function (e) {
+      if (!galeriiToode) return;
+      if (e.target.closest(".galerii-miinus")) galeriiToode.kogus = Math.max(1, galeriiToode.kogus - 1);
+      if (e.target.closest(".galerii-pluss")) galeriiToode.kogus += 1;
+      galeriiVorm.querySelector(".galerii-kogus").textContent = galeriiToode.kogus;
+      uuendaGaleriiHind();
+    });
+    var gKaal = galeriiVorm.querySelector(".galerii-kaal");
+    if (gKaal) gKaal.addEventListener("change", function () {
+      if (!galeriiToode) return;
+      galeriiToode.kaal = gKaal.value;
+      uuendaGaleriiHind();
+    });
+  }
 
   var algus = null;
   kujud.addEventListener("pointerdown", function (e) {
@@ -716,6 +772,20 @@
       viiTelliUles();
     }
     suurTelli.addEventListener("click", avaVorm);
+    var galeriiLisa = document.querySelector(".galerii-lisa");
+    if (galeriiLisa) galeriiLisa.addEventListener("click", function () {
+      if (!galeriiToode) return;
+      korv.push({
+        nimi: galeriiToode.nimi,
+        kaal: galeriiToode.uhik === "kg" ? galeriiToode.kaal : "",
+        kogus: String(galeriiToode.kogus),
+        hind: galeriiToode.hind,
+        uhik: galeriiToode.uhik,
+        hinnad: galeriiToode.hinnad
+      });
+      joonista();
+      avaVorm();
+    });
     document.addEventListener("click", function (e) {
       var a = e.target.closest ? e.target.closest(".telli-link") : null;
       if (!a) return;

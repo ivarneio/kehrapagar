@@ -153,7 +153,7 @@ Toote vajutus avab täisekraani galerii, mitte paneeli toote all. Vana paneeli r
 
 Kui fotosid on mitu, jooksevad need läbi, 0,9 sekundit, fade, ja jäävad kollaazile. Ühe foto puhul kollaazi ei ole. Tekst on kollaazil vanal paberil: desktopis hiirega, telefonis vajutusega. Õige keel, eesti varuga.
 
-Galerii taust on hele, siniselt oranžiks. Telefonis on pilt peaaegu täisekraan. Sulgemine on rist, Esc või vajutus pildile.
+Galerii all on väike tellimisvorm, kui toode on tellitav. Vaikimisi 1 kg, kogus 1 ja hind. Kaalu ja kogust saab muuta. «Lisa ostukorvi» viib valiku peavormi korvi. Sealt saadetakse tellimus edasi.
 
 ## Keel ja tekst
 
