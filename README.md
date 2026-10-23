@@ -64,7 +64,7 @@ Iga tellitava toote juures on link «Lisa tellimusse», kui tabelis on `tellitav
 
 Korv on ajutine ja elab ainult selle külastuse ajal. Lehe uuesti laadimine või sessiooni lõpp tühjendab korvi. Vormi sulgemine ei tühjenda. Kui avatakse muu menüü, vorm sulgub, aga andmed jäävad. Midagi serverisse ei lähe enne, kui tellimus saadetakse.
 
-Üks rida on toode + kaal + kogus. Kõiki kolme saab korvis muuta. Rea saab ära võtta. Korv näitab juba tehtud valikuid.
+Korvi real on nimi, kaal, kogus ja hind. Kaalu saab muuta, kui ühik on `kg`. Kogust saab plussi ja miinusega, alla ühe ei lähe. Hind on valitud kaalu hind korda kogus, Exceli paketist. Kui selle kaalu hinda ei ole, näitab «hinda ei ole». Eemaldamine on prügikasti ikoon.
 
 Kringli kaal on fikseeritud valik, mitte vaba number: 0,5 / 1,0 / 1,5 / 2,0 kg.
 

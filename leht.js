@@ -751,19 +751,37 @@
     var kogus = vorm.querySelector("[name=kogus]");
     var lisa = vorm.querySelector(".lisa");
     var korv = [];
-    function reaHind(r) {
+    function alusHind(r) {
       if (r.uhik === "kg" && r.hinnad) {
         var v = (r.kaal || "").replace(" kg", "");
-        if (r.hinnad[v]) return r.hinnad[v] + " €";
+        return r.hinnad[v] || "";
       }
-      return r.hind ? (r.hind + " €") : "—";
+      return r.hind || "";
+    }
+    function reaHind(r) {
+      var alus = String(alusHind(r) || "").replace(",", ".").replace(/[^\d.]/g, "");
+      var n = parseFloat(alus);
+      if (!alus || isNaN(n)) return "hinda ei ole";
+      var kokku = n * (parseInt(r.kogus, 10) || 1);
+      return (Math.round(kokku * 100) / 100).toString().replace(".", ",") + " €";
     }
     function joonista() {
       if (!korvEl) return;
       if (!korv.length) { korvEl.innerHTML = ""; return; }
+      var kaalud = ["0,5 kg", "1,0 kg", "1,5 kg", "2,0 kg"];
       var h = "<ul>";
       korv.forEach(function (r, i) {
-        h += "<li>" + r.nimi + " · " + r.kogus + " tk · " + reaHind(r) + " <button type=\"button\" data-i=\"" + i + "\">eemalda</button></li>";
+        var kaalValik = "";
+        if (r.uhik === "kg") {
+          var opts = kaalud.map(function (k) {
+            return "<option" + (k === r.kaal ? " selected" : "") + ">" + k + "</option>";
+          }).join("");
+          kaalValik = "<select data-i=\"" + i + "\" class=\"kaal-vali\">" + opts + "</select>";
+        }
+        h += "<li><span class=\"korv-nimi\">" + r.nimi + "</span>" + kaalValik +
+          "<span class=\"samm\"><button type=\"button\" class=\"vahenda-rida\" data-i=\"" + i + "\">−</button><span>" + r.kogus + "</span><button type=\"button\" class=\"suurenda-rida\" data-i=\"" + i + "\">+</button></span>" +
+          "<span class=\"korv-hind\">" + reaHind(r) + "</span>" +
+          "<button type=\"button\" class=\"prügi\" data-i=\"" + i + "\" aria-label=\"eemalda\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\"><path fill=\"currentColor\" d=\"M9 3h6l1 2h4v2H4V5h4l1-2zm1 6h2v9h-2V9zm4 0h2v9h-2V9zM7 9h2v9H7V9z\"/></svg></button></li>";
       });
       h += "</ul>";
       korvEl.innerHTML = h;
@@ -789,7 +807,13 @@
         var b = e.target.closest ? e.target.closest("button") : null;
         if (!b) return;
         var i = +b.getAttribute("data-i");
-        korv.splice(i, 1);
+        if (b.classList.contains("prügi")) {
+          korv.splice(i, 1);
+        } else if (b.classList.contains("vahenda-rida") && korv[i]) {
+          korv[i].kogus = String(Math.max(1, (parseInt(korv[i].kogus, 10) || 1) - 1));
+        } else if (b.classList.contains("suurenda-rida") && korv[i]) {
+          korv[i].kogus = String((parseInt(korv[i].kogus, 10) || 1) + 1);
+        } else return;
         joonista();
       });
       korvEl.addEventListener("change", function (e) {

@@ -361,8 +361,12 @@ fieldset input { width: auto; }
 
 .korv { margin: .6rem 0; }
 .korv ul { list-style: none; padding: 0; margin: 0; }
-.korv li { display: flex; gap: .5rem; align-items: center; padding: .3rem 0; border-bottom: 1px solid var(--joon); }
-.korv button { background: none; border: 0; color: var(--vaikne); cursor: pointer; font: inherit; text-decoration: underline; }
+.korv li { display: flex; gap: .45rem; align-items: center; padding: .4rem 0; border-bottom: 1px solid var(--joon); flex-wrap: wrap; }
+.korv-nimi { font-weight: 600; flex: 1 1 8rem; }
+.korv .kaal-vali { width: auto; flex: 0 0 auto; }
+.korv .samm { flex: 0 0 auto; }
+.korv-hind { margin-left: auto; font-weight: 600; }
+.korv .prügi { background: none; border: 0; color: var(--vaikne); cursor: pointer; padding: .2rem; display: grid; place-items: center; }
 .lisa { display: block; width: 100%; margin: .4rem 0; padding: .55rem; background: var(--paber); border: 1px solid var(--joon); cursor: pointer; font: inherit; }
 
 .kaal-rida { display: flex; gap: .6rem; align-items: end; }
