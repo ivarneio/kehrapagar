@@ -844,8 +844,19 @@
           "<span class=\"korv-hind\">" + reaHind(r) + "</span>" +
           "<button type=\"button\" class=\"prügi\" data-i=\"" + i + "\" aria-label=\"eemalda\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\"><path fill=\"currentColor\" d=\"M9 3h6l1 2h4v2H4V5h4l1-2zm1 6h2v9h-2V9zm4 0h2v9h-2V9zM7 9h2v9H7V9z\"/></svg></button></li>";
       });
-      h += "</ul>";
+      h += "</ul><div class=\"korv-summa\"><span>Kokku</span><span>" + korviSumma() + "</span></div>";
       korvEl.innerHTML = h;
+    }
+    function korviSumma() {
+      var summa = 0;
+      var puudu = false;
+      korv.forEach(function (r) {
+        var tekst = reaHind(r);
+        if (tekst === "hinda ei ole") { puudu = true; return; }
+        summa += parseFloat(tekst.replace(",", ".").replace(/[^\d.]/g, "")) || 0;
+      });
+      var s = (Math.round(summa * 100) / 100).toString().replace(".", ",") + " €";
+      return puudu ? s + " +" : s;
     }
     var vahenda = vorm.querySelector(".vahenda");
     var suurenda = vorm.querySelector(".suurenda");
