@@ -693,7 +693,7 @@
     } else {
       galeriiToode = null;
       if (galeriiVorm) galeriiVorm.hidden = true;
-      suurTelli.hidden = false;
+      suurTelli.hidden = true;
     }
     vaade.classList.add("sees");
   });
