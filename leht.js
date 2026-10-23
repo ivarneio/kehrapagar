@@ -217,15 +217,6 @@
           silt.className = "nimi";
           silt.textContent = t.nimi || "";
           nupp.appendChild(silt);
-          if (t.hind) {
-            var hindSilt = document.createElement("span");
-            hindSilt.className = "hind";
-            var uhik = String(t.uhik || "").toLowerCase();
-            hindSilt.textContent = t.hind + " €";
-            if (uhik === "kg") hindSilt.textContent += "\n1 kg";
-            if (uhik === "tk") hindSilt.textContent += "\ntk";
-            nupp.appendChild(hindSilt);
-          }
           if (/^(jah|ja|1|true)$/.test(String(t.tellitav || "").toLowerCase())) {
             var link = document.createElement("span");
             link.className = "telli-link";

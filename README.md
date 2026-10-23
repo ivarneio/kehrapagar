@@ -266,7 +266,7 @@ Toote tekst ei ole lehel kogu aeg näha. Desktopis tuleb vana paber ette, kui hi
 
 Hind on toodete tabelis, mitte koodis. Kolmas pool täidab veerud. Pakett võtab need kaasa. Leht loeb paketti, mitte tabelit.
 
-- `hind` on see, mis on toote all näha.
+- `hind` on galeriis ja korvis, mitte pisitoote all.
 - `ühik` on dropdown `tk` või `kg`. Inimene valib.
 - `kg`: neli kilohinda veergudes `0,5`, `1,0`, `1,5`, `2,0`. Tellimisvormis on kaaluvalik. Hind tuleb valitud kaalu järgi.
 - `tk`: kaalu ei ole. Hind on tükihind veerust `hind`.
