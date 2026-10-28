@@ -397,9 +397,14 @@ fieldset input { width: auto; }
 .korv-summa { display: flex; justify-content: space-between; font-weight: 700; padding: .55rem 0 .2rem; }
 .lisa { display: block; width: 100%; margin: .4rem 0; padding: .55rem; background: var(--paber); border: 1px solid var(--joon); cursor: pointer; font: inherit; }
 
-.kaal-rida { display: flex; gap: .6rem; align-items: end; }
-.kaal-rida label { flex: 1; }
-.kaal-rida .kogus { flex: 0 0 auto; }
+.toote-rida { display: flex; gap: .5rem; align-items: end; }
+.toote-rida label { flex: 1; min-width: 0; margin: .35rem 0; }
+.toote-rida label.kogus { flex: 0 0 auto; }
+.toote-rida select, .toote-rida input { width: 100%; }
+@media (max-width: 799px) {
+  .toote-rida { gap: .35rem; }
+  .toote-rida label { font-size: .85rem; }
+}
 .samm { display: flex; align-items: center; gap: .3rem; }
 .samm button { width: 2rem; height: 2rem; border: 1px solid var(--joon); background: #fff; font: inherit; font-size: 1.1rem; cursor: pointer; }
 .samm input { width: 2.4rem; text-align: center; border: 0; background: transparent; }
