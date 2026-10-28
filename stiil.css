@@ -129,6 +129,9 @@ fieldset {
 fieldset label { display: flex; gap: .5rem; align-items: center; }
 fieldset input { width: auto; }
 .rida { display: flex; gap: .5rem; align-items: center; }
+.epost-rida { display: flex; gap: .6rem; align-items: end; }
+.epost-rida > label:first-child { flex: 1; min-width: 0; }
+.uudis-rida { flex: 0 0 auto; margin-bottom: .55rem; white-space: nowrap; }
 .rida input[type="checkbox"] { width: auto; }
 .helista, .saada, .telli-nupp {
   display: block;

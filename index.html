@@ -203,10 +203,12 @@
           <label><span data-k="vorm_telefon">Telefon</span><span class="tarn">*</span>
             <input type="tel" name="telefon">
           </label>
-          <label class="rida"><input type="checkbox" name="uudis"> <span data-k="vorm_uudis">Tahan uudiseid</span></label>
-          <label><span data-k="vorm_epost">E-post</span><span class="tarn">*</span>
-            <input type="email" name="epost">
-          </label>
+          <div class="epost-rida">
+            <label><span data-k="vorm_epost">E-post</span><span class="tarn">*</span>
+              <input type="email" name="epost">
+            </label>
+            <label class="rida uudis-rida"><input type="checkbox" name="uudis"> <span data-k="vorm_uudis">Tahan uudiseid</span></label>
+          </div>
           <label><span>Täpsustus</span>
             <textarea name="tapsustus" rows="3"></textarea>
           </label>
