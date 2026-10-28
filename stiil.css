@@ -133,7 +133,9 @@ fieldset input { width: auto; }
 .epost-rida > label:first-child { flex: 1; min-width: 0; }
 .uudis-rida { flex: 0 0 auto; margin-bottom: .55rem; white-space: nowrap; }
 .rida input[type="checkbox"] { width: auto; }
-.makse-valik { display: flex; gap: 1rem; margin: .6rem 0 .3rem; }
+.makse-valik { display: flex; gap: 1rem; margin: .6rem 0 .3rem; flex-wrap: nowrap; }
+.makse-valik .rida { margin: 0; white-space: nowrap; flex: 0 0 auto; }
+.makse-valik input { width: auto; }
 .makse-link { display: block; text-align: center; background: #e8884a; color: #fff; text-decoration: none; padding: .7rem .6rem; margin: .4rem 0 .2rem; }
 .makse-link[hidden] { display: none; }
 .makse-link.kinni { opacity: .45; pointer-events: none; }
