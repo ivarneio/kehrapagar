@@ -929,18 +929,32 @@
       .catch(function () {});
     vorm.addEventListener("submit", function (e) {
       e.preventDefault();
+      var nimi = vorm.querySelector("[name=nimi]");
       var tel = vorm.querySelector("[name=telefon]");
       var ep = vorm.querySelector("[name=epost]");
-      if (!tel.value || !ep.value) {
-        olek.textContent = "Telefon ja e-post on kohustuslikud.";
+      if (!nimi.value.trim()) {
+        olek.textContent = "Nimi vajab täitmist.";
+        nimi.focus();
+        return;
+      }
+      if (!tel.value.trim()) {
+        olek.textContent = "Telefon vajab täitmist.";
+        tel.focus();
         return;
       }
       if (!/^\+?[0-9]+$/.test(tel.value)) {
         olek.textContent = "Telefonis tohib olla ainult numbreid.";
+        tel.focus();
+        return;
+      }
+      if (!ep.value.trim()) {
+        olek.textContent = "E-post vajab täitmist.";
+        ep.focus();
         return;
       }
       if (ep.value.indexOf("@") < 0) {
         olek.textContent = "E-postis peab olema @.";
+        ep.focus();
         return;
       }
       if (!korv.length) {
