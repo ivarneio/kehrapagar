@@ -17,6 +17,8 @@ Lehe vaade on üleval link. Kui see annab tühja lehe, on Pages veel kinni: Sett
 - Tellimine on avamisel kinnine plokk. Tellitava toote «Lisa tellimusse» lisab korvi selle toote. Korv hoiab mitu rida ainult selle külastuse ajal.
 - Tellimuse kiri läheb kolmele aadressile, mis on `seaded.json` sees. `tellimus_email` on peamine, pagar. `tellimus_cc` on koopia, saaja näeb seda. `tellimus_bcc` on boss, teised seda ei näe. Tühi aadress jäetakse vahele.
 
+Vormi nupu kohal on valik «Tasun kohapeal» või «Tasun kohe». Kohapeal on vaikimisi. Kohe näitab makselinki, mis viib lepingupartneri juurde koos tellimuse summaga. Kui mõnel real hinda ei ole, «Tasun kohe» ei aktiveeru. Partnerit veel ei ole.
+
 Kui tellimuses ei ole fantaasiakringlit, on pagari kirjas nupp «Tellimus on vastu võetud». Vajutus saadab kliendile kohe vastuse. See on ainus inimese samm: kontor võtab tellimuse vastu ja kirjutab selle käsitsi oma seadmesse. Seadmel ei ole võrku, seda ei saa automaatseks teha. Kui tellimuses on fantaasiakringel, nuppu ei ole. Inimene vastab ise.
 - Pagaril on lihtne telefonivaade. Sinna saab kirja panna ka telefonitellimuse, et kõik tellimused oleks ühes kohas. Pagarivaade on eesti keeles.
 - Igal kampaanial on lühike link. `?keel=ru` või `?keel=en` avab sama lehe teises keeles.

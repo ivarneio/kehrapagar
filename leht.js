@@ -847,6 +847,7 @@
       });
       h += "</ul><div class=\"korv-summa\"><span>Kokku</span><span>" + korviSumma() + "</span></div>";
       korvEl.innerHTML = h;
+      uuendaMakse();
     }
     function korviSumma() {
       var summa = 0;
@@ -859,6 +860,32 @@
       var s = (Math.round(summa * 100) / 100).toString().replace(".", ",") + " €";
       return puudu ? s + " +" : s;
     }
+    var makseLink = vorm.querySelector(".makse-link");
+    var makseSumma = vorm.querySelector(".makse-summa");
+    function summaPuudu() {
+      return korv.some(function (r) { return reaHind(r) === "hinda ei ole"; });
+    }
+    function uuendaMakse() {
+      if (!makseLink) return;
+      var kohe = vorm.querySelector("[name=makse][value=kohe]");
+      if (kohe && summaPuudu()) {
+        kohe.disabled = true;
+        if (kohe.checked) vorm.querySelector("[name=makse][value=kohapeal]").checked = true;
+      } else if (kohe) kohe.disabled = false;
+      var valik = vorm.querySelector("[name=makse]:checked");
+      var nahta = valik && valik.value === "kohe";
+      makseLink.hidden = !nahta;
+      if (makseSumma) makseSumma.textContent = korviSumma();
+      makseLink.classList.toggle("kinni", !korv.length || summaPuudu());
+    }
+    vorm.addEventListener("change", function (e) {
+      if (e.target && e.target.name === "makse") uuendaMakse();
+    });
+    if (makseLink) makseLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      olek.textContent = "Makselink tuleb, kui lepingupartner on ühendatud. Summa on " + korviSumma() + ".";
+    });
+
     var vahenda = vorm.querySelector(".vahenda");
     var suurenda = vorm.querySelector(".suurenda");
     if (vahenda) vahenda.addEventListener("click", function () {
