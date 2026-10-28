@@ -392,7 +392,8 @@ fieldset input { width: auto; }
 .korv:empty { display: none; }
 .korv ul { list-style: none; padding: 0; margin: 0; }
 .korv li { display: flex; gap: .45rem; align-items: center; padding: .4rem 0; border-bottom: 1px solid var(--joon); flex-wrap: wrap; }
-.korv-nimi { font-weight: 600; flex: 1 1 8rem; }
+.korv-pilt { width: 2.6rem; height: 2.6rem; object-fit: cover; flex: 0 0 auto; background: #efe6d4; }
+.korv-nimi { font-weight: 600; flex: 1 1 6rem; }
 .korv .kaal-vali { width: auto; flex: 0 0 auto; }
 .korv .samm { flex: 0 0 auto; }
 .korv-hind { margin-left: auto; font-weight: 600; }

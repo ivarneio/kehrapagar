@@ -786,10 +786,11 @@
       var toode = a.closest(".pisi");
       var hindVaartus = toode ? (toode.getAttribute("data-hind") || "") : "";
       var uhik = toode ? (toode.getAttribute("data-uhik") || "") : "";
+      var pilt = toode && toode.querySelector("img") ? toode.querySelector("img").src : "";
       var hinnad = {};
       try { hinnad = JSON.parse(toode ? toode.getAttribute("data-hinnad") || "{}" : "{}"); } catch (err) {}
       if (nimi) {
-        korv.push({ nimi: nimi, kaal: uhik === "kg" ? "1,0 kg" : "", kogus: "1", hind: hindVaartus, uhik: uhik, hinnad: hinnad });
+        korv.push({ nimi: nimi, pilt: pilt, kaal: uhik === "kg" ? "1,0 kg" : "", kogus: "1", hind: hindVaartus, uhik: uhik, hinnad: hinnad });
         joonista();
       }
       avaVorm();
@@ -839,7 +840,7 @@
           }).join("");
           kaalValik = "<select data-i=\"" + i + "\" class=\"kaal-vali\">" + opts + "</select>";
         }
-        h += "<li><span class=\"korv-nimi\">" + r.nimi + "</span>" + kaalValik +
+        h += "<li>" + (r.pilt ? "<img class=\"korv-pilt\" src=\"" + r.pilt + "\" alt=\"\">" : "") + "<span class=\"korv-nimi\">" + r.nimi + "</span>" + kaalValik +
           "<span class=\"samm\"><button type=\"button\" class=\"vahenda-rida\" data-i=\"" + i + "\">−</button><span>" + r.kogus + "</span><button type=\"button\" class=\"suurenda-rida\" data-i=\"" + i + "\">+</button></span>" +
           "<span class=\"korv-hind\">" + reaHind(r) + "</span>" +
           "<button type=\"button\" class=\"prügi\" data-i=\"" + i + "\" aria-label=\"eemalda\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\"><path fill=\"currentColor\" d=\"M9 3h6l1 2h4v2H4V5h4l1-2zm1 6h2v9h-2V9zm4 0h2v9h-2V9zM7 9h2v9H7V9z\"/></svg></button></li>";
