@@ -15,7 +15,7 @@ Lehe vaade on üleval link. Kui see annab tühja lehe, on Pages veel kinni: Sett
 - Tellimus on ainult kohapealne järeletulemine ja kohapealne maksmine. Ettemaksu ei ole.
 - Lehel on suur nupp «Helista ja telli». Telefonis avab see kõne.
 - Tellimine on avamisel kinnine plokk. Tellitava toote «Lisa tellimusse» lisab korvi selle toote. Korv hoiab mitu rida ainult selle külastuse ajal.
-- Tellimus salvestub Zone'i. Igast tellimusest läheb e-kiri pagarikotta.
+- Tellimuse kiri läheb kolmele aadressile, mis on `seaded.json` sees. `tellimus_email` on peamine, pagar. `tellimus_cc` on koopia, saaja näeb seda. `tellimus_bcc` on boss, teised seda ei näe. Tühi aadress jäetakse vahele.
 - Pagaril on lihtne telefonivaade. Sinna saab kirja panna ka telefonitellimuse, et kõik tellimused oleks ühes kohas. Pagarivaade on eesti keeles.
 - Igal kampaanial on lühike link. `?keel=ru` või `?keel=en` avab sama lehe teises keeles.
 - Muudatused on tagasikeeratavad. Eelmise versiooni failid jäävad alles.
