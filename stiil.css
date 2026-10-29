@@ -431,11 +431,18 @@ fieldset input { width: auto; }
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  flex-direction: row-reverse;
   gap: .4rem;
   margin: .2rem 0 .8rem;
-  color: var(--tint);
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
+  text-shadow: 0 1px 2px #000, 0 0 4px #000;
+}
+.korv-rida:has(.vilgub) { color: #5ba3d9; }
+.korv-rida:has(.sees) { color: #e8884a; }
+@media (min-width: 800px) {
+  .korv-rida { justify-content: flex-start; flex-direction: row; }
 }
 .korv-rong {
   position: relative;
