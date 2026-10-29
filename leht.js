@@ -1110,6 +1110,16 @@
       el.style.left = (kesk[nimi].x - d[nimi] / 2) + "px";
       el.style.top = (kesk[nimi].y - d[nimi] / 2) + "px";
     });
+    var grupid = document.querySelector(".grupid");
+    var main = document.querySelector("main");
+    if (grupid && main) {
+      var gr = grupid.getBoundingClientRect();
+      var mr = main.getBoundingClientRect();
+      var x = gr.right - gr.width * 0.18 - mr.left;
+      var y = gr.top + gr.height * 0.42 - mr.top;
+      kast.style.left = (x - w / 2) + "px";
+      kast.style.top = (y - h / 2) + "px";
+    }
   }
   window.addEventListener("resize", function () {
     fetch("seaded.json").then(function (r) { return r.json(); }).then(function (s) {

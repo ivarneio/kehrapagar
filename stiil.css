@@ -16,9 +16,6 @@ html { scroll-behavior: smooth; }
   position: absolute;
   z-index: 0;
   pointer-events: none;
-  right: 22%;
-  top: 58%;
-  transform: translate(50%, -50%);
 }
 .ring {
   position: absolute;
