@@ -427,7 +427,8 @@ fieldset input { width: auto; }
   padding: .45rem .6rem;
   font-size: .82rem;
 }
-.jalus a { color: inherit; text-decoration: none; }
+.jalus-korv { color: inherit; text-decoration: none; }
+.jalus-arv { margin-left: .35rem; font-weight: 700; }
 .info { display: flex; flex-direction: column; gap: 1.2rem; }
 @media (max-width: 799px) {
   .menu-nupp { display: block; }

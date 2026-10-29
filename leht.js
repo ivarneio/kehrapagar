@@ -775,10 +775,13 @@
       teadeTaimer = setTimeout(function () { t.remove(); }, 2400);
     }
     function uuendaMark() {
-      if (!korvMark) return;
       var n = korv.reduce(function (s, r) { return s + (parseInt(r.kogus, 10) || 1); }, 0);
-      korvMark.hidden = !n;
-      korvMark.querySelector("span").textContent = n;
+      if (korvMark) {
+        korvMark.hidden = !n;
+        korvMark.querySelector("span").textContent = n;
+      }
+      var jalusArv = document.querySelector(".jalus-arv");
+      if (jalusArv) jalusArv.textContent = n;
     }
     function lisaKorvi(rida) {
       if (korv.some(function (x) { return x.nimi === rida.nimi; })) {
@@ -792,6 +795,11 @@
     }
     suurTelli.addEventListener("click", avaVorm);
     if (korvMark) korvMark.addEventListener("click", function (e) {
+      e.preventDefault();
+      avaVorm();
+    });
+    var jalusKorv = document.querySelector(".jalus-korv");
+    if (jalusKorv) jalusKorv.addEventListener("click", function (e) {
       e.preventDefault();
       avaVorm();
     });
