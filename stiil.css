@@ -16,7 +16,7 @@ html { scroll-behavior: smooth; }
   position: absolute;
   z-index: 1;
   pointer-events: none;
-  right: -6%;
+  right: 18%;
   top: 42%;
   transform: translate(50%, -50%);
 }
