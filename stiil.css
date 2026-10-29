@@ -422,10 +422,25 @@ fieldset input { width: auto; }
   background: var(--pais);
   color: var(--taust);
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: .8rem;
   padding: .45rem .6rem;
   font-size: .82rem;
+}
+.jalus-korv {
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: .35rem;
+  margin-left: auto;
+  text-shadow: 0 1px 2px #000, 0 0 4px #000;
+}
+.jalus-korv:has(.vilgub) { color: #5ba3d9; }
+.jalus-korv:has(.sees) { color: #e8884a; }
+@media (min-width: 800px) {
+  .jalus-korv { flex-direction: row; margin-left: 0; margin-right: auto; }
 }
 .korv-rida {
   display: flex;
@@ -458,6 +473,13 @@ fieldset input { width: auto; }
   height: 100%;
   animation: poor-valge 8s linear infinite;
   opacity: 0;
+  filter: drop-shadow(0 1px 2px #000) drop-shadow(0 0 4px #000);
+}
+.korv-rong.vilgub { animation: rong-paisu .7s ease; }
+@keyframes rong-paisu {
+  0% { transform: scale(1); }
+  45% { transform: scale(2); }
+  100% { transform: scale(1); }
 }
 .korv-rong .rong-valge { opacity: 1; }
 .korv-rong.sees .rong-valge { opacity: 0; }
