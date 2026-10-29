@@ -772,7 +772,7 @@
       t.textContent = tekst;
       document.body.appendChild(t);
       if (teadeTaimer) clearTimeout(teadeTaimer);
-      teadeTaimer = setTimeout(function () { t.remove(); }, 2200);
+      teadeTaimer = setTimeout(function () { t.remove(); }, 2400);
     }
     function uuendaMark() {
       if (!korvMark) return;
