@@ -1065,7 +1065,49 @@
         if (s.telefon_kuva) el.textContent = s.telefon_kuva;
         if (s.telefon) el.href = "tel:" + s.telefon;
       });
+      seaRingid(s.ringid || {});
     })
     .catch(function () {});
+
+  function seaRingid(suurused) {
+    var kast = document.querySelector(".ringid");
+    if (!kast) return;
+    var vmin = Math.min(window.innerWidth, window.innerHeight) / 100;
+    var d = {
+      valge: (suurused.valge || 14) * vmin,
+      sinine: (suurused.sinine || 16) * vmin,
+      oranz: (suurused.oranz || 18) * vmin
+    };
+    var vahe = 8;
+    var kylg = Math.max(d.valge + d.sinine, d.valge + d.oranz, d.sinine + d.oranz) / 2 + vahe;
+    var korgus = kylg * Math.sqrt(3) / 2;
+    var pad = 12;
+    var w = kylg + Math.max(d.valge, d.sinine, d.oranz) + pad;
+    var h = korgus + Math.max(d.valge, d.sinine, d.oranz) + pad;
+    kast.style.width = w + "px";
+    kast.style.height = h + "px";
+    var kesk = {
+      oranz: { x: w - d.oranz / 2 - pad, y: h - d.oranz / 2 - pad },
+      sinine: { x: 0, y: 0 },
+      valge: { x: 0, y: 0 }
+    };
+    kesk.sinine.x = kesk.oranz.x - kylg;
+    kesk.sinine.y = kesk.oranz.y;
+    kesk.valge.x = kesk.oranz.x - kylg / 2;
+    kesk.valge.y = kesk.oranz.y - korgus;
+    ["valge", "sinine", "oranz"].forEach(function (nimi) {
+      var el = kast.querySelector(".ring-" + nimi);
+      if (!el) return;
+      el.style.width = d[nimi] + "px";
+      el.style.height = d[nimi] + "px";
+      el.style.left = (kesk[nimi].x - d[nimi] / 2) + "px";
+      el.style.top = (kesk[nimi].y - d[nimi] / 2) + "px";
+    });
+  }
+  window.addEventListener("resize", function () {
+    fetch("seaded.json").then(function (r) { return r.json(); }).then(function (s) {
+      seaRingid(s.ringid || {});
+    }).catch(function () { seaRingid({}); });
+  });
 
 })();

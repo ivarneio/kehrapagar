@@ -10,7 +10,11 @@
     "valge": "#ffffff",
     "lapa": 50
   },
-  "tellimus_email": "ivar@neio.ee",
+  "ringid": {
+    "valge": 14,
+    "sinine": 16,
+    "oranz": 18
+  },
   "tellimus_cc": "",
   "tellimus_bcc": "",
   "keelatud_paevad": "https://docs.google.com/spreadsheets/d/1OP3UgZqxvm_jGp6ukpKHKmZ9zJABi56ZjqoRYAFmEbw/export?format=csv&gid=275482179"

@@ -12,6 +12,25 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+.ringid {
+  position: fixed;
+  right: 0;
+  bottom: 2.4rem;
+  width: 42vmin;
+  height: 42vmin;
+  z-index: 1;
+  pointer-events: none;
+}
+.ring {
+  position: absolute;
+  transform-origin: center center;
+}
+.ring-valge { animation: poor-valge 22s linear infinite; }
+.ring-sinine { animation: poor-sinine 28s linear infinite; }
+.ring-oranz { animation: poor-oranz 18s linear infinite; }
+@keyframes poor-valge { to { transform: rotate(360deg); } }
+@keyframes poor-sinine { to { transform: rotate(-360deg); } }
+@keyframes poor-oranz { to { transform: rotate(360deg); } }
 body {
   margin: 0;
   font-family: "Source Sans 3", system-ui, sans-serif;
@@ -99,7 +118,7 @@ nav a {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 .sots svg { width: 1.15rem; height: 1.15rem; display: block; fill: #fff; }
-main { width: min(52rem, calc(100% - 1.6rem)); margin: 0 auto; padding: 1.2rem 0 2rem; }
+main { position: relative; z-index: 2; width: min(52rem, calc(100% - 1.6rem)); margin: 0 auto; padding: 1.2rem 0 2rem; }
 section { scroll-margin-top: 4.2rem; margin: 1.4rem 0; }
 h1, h2 { font-weight: 600; margin: 0 0 .6rem; }
 h1 { font-size: 1.7rem; }
