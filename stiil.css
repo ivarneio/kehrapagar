@@ -422,25 +422,26 @@ fieldset input { width: auto; }
   background: var(--pais);
   color: var(--taust);
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: .8rem;
   padding: .45rem .6rem;
   font-size: .82rem;
 }
 .jalus-korv {
+  position: absolute;
+  right: .8rem;
   color: #fff;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   flex-direction: row-reverse;
   gap: .35rem;
-  margin-left: auto;
   text-shadow: 0 1px 2px #000, 0 0 4px #000;
 }
 .jalus-korv:has(.vilgub) { color: #5ba3d9; }
 .jalus-korv:has(.sees) { color: #e8884a; }
 @media (min-width: 800px) {
-  .jalus-korv { flex-direction: row; margin-left: 0; margin-right: auto; }
+  .jalus-korv { left: .8rem; right: auto; flex-direction: row; }
 }
 .korv-rida {
   display: flex;
