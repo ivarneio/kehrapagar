@@ -13,13 +13,12 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 .ringid {
-  position: fixed;
-  right: 0;
-  bottom: 2.4rem;
-  width: 42vmin;
-  height: 42vmin;
+  position: absolute;
   z-index: 1;
   pointer-events: none;
+  right: -6%;
+  top: 42%;
+  transform: translate(50%, -50%);
 }
 .ring {
   position: absolute;

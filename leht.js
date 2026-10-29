@@ -1074,20 +1074,18 @@
     if (!kast) return;
     var vmin = Math.min(window.innerWidth, window.innerHeight) / 100;
     var d = {
-      valge: (suurused.valge || 14) * vmin,
-      sinine: (suurused.sinine || 16) * vmin,
-      oranz: (suurused.oranz || 18) * vmin
+      valge: (suurused.valge || 28) * vmin,
+      sinine: (suurused.sinine || 32) * vmin,
+      oranz: (suurused.oranz || 36) * vmin
     };
-    var vahe = 8;
-    var kylg = Math.max(d.valge + d.sinine, d.valge + d.oranz, d.sinine + d.oranz) / 2 + vahe;
+    var kylg = 18 * vmin;
     var korgus = kylg * Math.sqrt(3) / 2;
-    var pad = 12;
-    var w = kylg + Math.max(d.valge, d.sinine, d.oranz) + pad;
-    var h = korgus + Math.max(d.valge, d.sinine, d.oranz) + pad;
+    var w = kylg + Math.max(d.valge, d.sinine, d.oranz);
+    var h = korgus + Math.max(d.valge, d.sinine, d.oranz);
     kast.style.width = w + "px";
     kast.style.height = h + "px";
     var kesk = {
-      oranz: { x: w - d.oranz / 2 - pad, y: h - d.oranz / 2 - pad },
+      oranz: { x: w / 2 + kylg / 2, y: h / 2 + korgus / 3 },
       sinine: { x: 0, y: 0 },
       valge: { x: 0, y: 0 }
     };
