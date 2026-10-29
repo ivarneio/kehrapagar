@@ -24,12 +24,12 @@ html { scroll-behavior: smooth; }
   position: absolute;
   transform-origin: center center;
 }
-.ring-valge { animation: poor-valge 132s linear infinite; }
-.ring-sinine { animation: poor-sinine 168s linear infinite; }
-.ring-oranz { animation: poor-oranz 108s linear infinite; }
+.ring-valge { animation: poor-valge 264s linear infinite; }
+.ring-sinine { animation: poor-sinine 336s linear infinite; }
+.ring-oranz { animation: poor-oranz 216s linear infinite; }
 @keyframes poor-valge { to { transform: rotate(360deg); } }
-@keyframes poor-sinine { to { transform: rotate(-360deg); } }
-@keyframes poor-oranz { to { transform: rotate(360deg); } }
+@keyframes poor-sinine { to { transform: rotate(360deg); } }
+@keyframes poor-oranz { to { transform: rotate(-360deg); } }
 body {
   margin: 0;
   font-family: "Source Sans 3", system-ui, sans-serif;
