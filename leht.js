@@ -1093,6 +1093,15 @@
     kesk.sinine.y = kesk.oranz.y;
     kesk.valge.x = kesk.oranz.x - kylg / 2;
     kesk.valge.y = kesk.oranz.y - korgus;
+    var tsenter = {
+      x: (kesk.oranz.x + kesk.sinine.x + kesk.valge.x) / 3,
+      y: (kesk.oranz.y + kesk.sinine.y + kesk.valge.y) / 3
+    };
+    var nihuta = { x: kesk.sinine.x - tsenter.x, y: kesk.sinine.y - tsenter.y };
+    ["valge", "sinine", "oranz"].forEach(function (nimi) {
+      kesk[nimi].x += nihuta.x;
+      kesk[nimi].y += nihuta.y;
+    });
     ["valge", "sinine", "oranz"].forEach(function (nimi) {
       var el = kast.querySelector(".ring-" + nimi);
       if (!el) return;
