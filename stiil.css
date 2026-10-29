@@ -427,8 +427,34 @@ fieldset input { width: auto; }
   padding: .45rem .6rem;
   font-size: .82rem;
 }
-.jalus-korv { color: inherit; text-decoration: none; }
-.jalus-arv { margin-left: .35rem; font-weight: 700; }
+.jalus-korv { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: .35rem; }
+.korv-rong {
+  position: relative;
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-grid;
+  place-items: center;
+}
+.korv-rong .rong {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: poor-valge 8s linear infinite;
+  opacity: 0;
+}
+.korv-rong .rong-valge { opacity: 1; }
+.korv-rong.sees .rong-valge { opacity: 0; }
+.korv-rong.sees .rong-oranz { opacity: 1; animation-duration: 10s; }
+.korv-rong.vilgub .rong-oranz { opacity: 0; }
+.korv-rong.vilgub .rong-sinine { opacity: 1; animation-duration: 6s; }
+.jalus-arv {
+  position: relative;
+  z-index: 1;
+  font-size: .72em;
+  font-weight: 700;
+  line-height: 1;
+}
 .info { display: flex; flex-direction: column; gap: 1.2rem; }
 @media (max-width: 799px) {
   .menu-nupp { display: block; }

@@ -780,8 +780,22 @@
         korvMark.hidden = !n;
         korvMark.querySelector("span").textContent = n;
       }
+      var rong = document.querySelector(".korv-rong");
       var jalusArv = document.querySelector(".jalus-arv");
+      if (!rong) return;
+      if (!n) {
+        rong.classList.remove("sees", "vilgub");
+        if (jalusArv) jalusArv.textContent = "";
+        return;
+      }
       if (jalusArv) jalusArv.textContent = n;
+      if (!rong.classList.contains("sees")) {
+        rong.classList.add("vilgub");
+        setTimeout(function () {
+          rong.classList.remove("vilgub");
+          rong.classList.add("sees");
+        }, 700);
+      } else rong.classList.add("sees");
     }
     function lisaKorvi(rida) {
       if (korv.some(function (x) { return x.nimi === rida.nimi; })) {
