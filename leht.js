@@ -762,20 +762,52 @@
       sulgeVaade();
       viiTelliUles();
     }
+    var korvMark = document.querySelector(".korv-mark");
+    var teadeTaimer = null;
+    function naitaTeade(tekst) {
+      var vana = document.querySelector(".korv-teade");
+      if (vana) vana.remove();
+      var t = document.createElement("div");
+      t.className = "korv-teade";
+      t.textContent = tekst;
+      document.body.appendChild(t);
+      if (teadeTaimer) clearTimeout(teadeTaimer);
+      teadeTaimer = setTimeout(function () { t.remove(); }, 2200);
+    }
+    function uuendaMark() {
+      if (!korvMark) return;
+      var n = korv.reduce(function (s, r) { return s + (parseInt(r.kogus, 10) || 1); }, 0);
+      korvMark.hidden = !n;
+      korvMark.querySelector("span").textContent = n;
+    }
+    function lisaKorvi(rida) {
+      if (korv.some(function (x) { return x.nimi === rida.nimi; })) {
+        naitaTeade("Toode on juba lisatud.");
+        uuendaMark();
+        return;
+      }
+      korv.push(rida);
+      joonista();
+      naitaTeade("Toode on lisatud ostukorvi.");
+    }
     suurTelli.addEventListener("click", avaVorm);
+    if (korvMark) korvMark.addEventListener("click", function (e) {
+      e.preventDefault();
+      avaVorm();
+    });
     var galeriiLisa = document.querySelector(".galerii-lisa");
     if (galeriiLisa) galeriiLisa.addEventListener("click", function () {
       if (!galeriiToode) return;
-      korv.push({
+      lisaKorvi({
         nimi: galeriiToode.nimi,
+        pilt: galeriiToode.pilt || "",
         kaal: galeriiToode.uhik === "kg" ? galeriiToode.kaal : "",
         kogus: String(galeriiToode.kogus),
         hind: galeriiToode.hind,
         uhik: galeriiToode.uhik,
         hinnad: galeriiToode.hinnad
       });
-      joonista();
-      avaVorm();
+      sulgeVaade();
     });
     document.addEventListener("click", function (e) {
       var a = e.target.closest ? e.target.closest(".telli-link") : null;
@@ -790,10 +822,8 @@
       var hinnad = {};
       try { hinnad = JSON.parse(toode ? toode.getAttribute("data-hinnad") || "{}" : "{}"); } catch (err) {}
       if (nimi) {
-        korv.push({ nimi: nimi, pilt: pilt, kaal: uhik === "kg" ? "1,0 kg" : "", kogus: "1", hind: hindVaartus, uhik: uhik, hinnad: hinnad });
-        joonista();
+        lisaKorvi({ nimi: nimi, pilt: pilt, kaal: uhik === "kg" ? "1,0 kg" : "", kogus: "1", hind: hindVaartus, uhik: uhik, hinnad: hinnad });
       }
-      avaVorm();
     });
     fetch("tellitavad.json")
       .then(function (r) { return r.json(); })
@@ -829,7 +859,7 @@
     }
     function joonista() {
       if (!korvEl) return;
-      if (!korv.length) { korvEl.innerHTML = ""; return; }
+      if (!korv.length) { korvEl.innerHTML = ""; uuendaMark(); return; }
       var kaalud = ["0,5 kg", "1,0 kg", "1,5 kg", "2,0 kg"];
       var h = "<ul>";
       korv.forEach(function (r, i) {
@@ -848,6 +878,7 @@
       h += "</ul><div class=\"korv-summa\"><span>Kokku</span><span>" + korviSumma() + "</span></div>";
       korvEl.innerHTML = h;
       uuendaMakse();
+      uuendaMark();
     }
     function korviSumma() {
       var summa = 0;
