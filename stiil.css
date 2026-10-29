@@ -386,12 +386,13 @@ fieldset input { width: auto; }
   left: 50%;
   top: 45%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(180deg, #e8884a, #5ba3d9);
+  background: linear-gradient(180deg, #5ba3d9, #e8884a);
   color: #fff;
-  padding: .7rem 1rem;
+  padding: .7rem 1.2rem;
   font-size: .95rem;
   font-weight: 600;
   max-width: 90vw;
+  border-radius: 2rem;
   text-shadow: 0 1px 2px #000, 0 0 5px #000, 0 0 1px #000;
   animation: teade-alla 2.4s ease forwards;
 }
