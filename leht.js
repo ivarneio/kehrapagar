@@ -780,22 +780,23 @@
         korvMark.hidden = !n;
         korvMark.querySelector("span").textContent = n;
       }
-      var rong = document.querySelector(".korv-rong");
-      var jalusArv = document.querySelector(".jalus-arv");
-      if (!rong) return;
+      var rongad = document.querySelectorAll(".korv-rong");
+      var arvud = document.querySelectorAll(".jalus-arv");
       if (!n) {
-        rong.classList.remove("sees", "vilgub");
-        if (jalusArv) jalusArv.textContent = "";
+        rongad.forEach(function (rong) { rong.classList.remove("sees", "vilgub"); });
+        arvud.forEach(function (el) { el.textContent = ""; });
         return;
       }
-      if (jalusArv) jalusArv.textContent = n;
-      if (!rong.classList.contains("sees")) {
-        rong.classList.add("vilgub");
-        setTimeout(function () {
-          rong.classList.remove("vilgub");
-          rong.classList.add("sees");
-        }, 700);
-      } else rong.classList.add("sees");
+      arvud.forEach(function (el) { el.textContent = n; });
+      rongad.forEach(function (rong) {
+        if (!rong.classList.contains("sees")) {
+          rong.classList.add("vilgub");
+          setTimeout(function () {
+            rong.classList.remove("vilgub");
+            rong.classList.add("sees");
+          }, 700);
+        } else rong.classList.add("sees");
+      });
     }
     function lisaKorvi(rida) {
       if (korv.some(function (x) { return x.nimi === rida.nimi; })) {
@@ -816,6 +817,12 @@
     if (jalusKorv) jalusKorv.addEventListener("click", function (e) {
       e.preventDefault();
       avaVorm();
+    });
+    document.querySelectorAll(".korv-rida").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        avaVorm();
+      });
     });
     var galeriiLisa = document.querySelector(".galerii-lisa");
     if (galeriiLisa) galeriiLisa.addEventListener("click", function () {

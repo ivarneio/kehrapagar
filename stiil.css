@@ -427,7 +427,16 @@ fieldset input { width: auto; }
   padding: .45rem .6rem;
   font-size: .82rem;
 }
-.jalus-korv { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: .35rem; }
+.korv-rida {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .4rem;
+  margin: .2rem 0 .8rem;
+  color: var(--tint);
+  text-decoration: none;
+  font-weight: 600;
+}
 .korv-rong {
   position: relative;
   width: 1.5em;
