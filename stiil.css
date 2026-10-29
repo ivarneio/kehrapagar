@@ -14,7 +14,7 @@
 html { scroll-behavior: smooth; }
 .ringid {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   right: 18%;
   top: 42%;
@@ -24,9 +24,9 @@ html { scroll-behavior: smooth; }
   position: absolute;
   transform-origin: center center;
 }
-.ring-valge { animation: poor-valge 66s linear infinite; }
-.ring-sinine { animation: poor-sinine 84s linear infinite; }
-.ring-oranz { animation: poor-oranz 54s linear infinite; }
+.ring-valge { animation: poor-valge 132s linear infinite; }
+.ring-sinine { animation: poor-sinine 168s linear infinite; }
+.ring-oranz { animation: poor-oranz 108s linear infinite; }
 @keyframes poor-valge { to { transform: rotate(360deg); } }
 @keyframes poor-sinine { to { transform: rotate(-360deg); } }
 @keyframes poor-oranz { to { transform: rotate(360deg); } }
@@ -518,7 +518,8 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   text-shadow: 0 1px 3px #000;
 }
 .grupid .grupp > button .sorm-nimi { padding: .5rem 1rem; }
-.grupid .grupp + .grupp { margin-top: 14px; position: relative; }
+.grupid .grupp { position: relative; z-index: 1; }
+.grupid .grupp + .grupp { margin-top: 14px; }
 .grupid .grupp + .grupp::before {
   content: "";
   position: absolute;
