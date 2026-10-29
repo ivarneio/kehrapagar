@@ -1112,13 +1112,15 @@
     });
     var grupid = document.querySelector(".grupid");
     var main = document.querySelector("main");
-    if (grupid && main) {
+    if (grupid && main && grupid.offsetHeight) {
       var gr = grupid.getBoundingClientRect();
       var mr = main.getBoundingClientRect();
-      var x = gr.right - gr.width * 0.18 - mr.left;
+      var x = gr.right - gr.width * 0.12 - mr.left;
       var y = gr.top + gr.height * 0.42 - mr.top;
       kast.style.left = (x - w / 2) + "px";
       kast.style.top = (y - h / 2) + "px";
+      kast.style.right = "auto";
+      kast.style.transform = "none";
     }
   }
   window.addEventListener("resize", function () {
