@@ -24,7 +24,7 @@ html { scroll-behavior: smooth; }
   position: absolute;
   transform-origin: center center;
 }
-.ring-valge { animation: poor-valge 528s linear infinite; filter: drop-shadow(0 0 28px rgba(160, 140, 110, .22)); }
+.ring-valge { animation: poor-valge 528s linear infinite; filter: drop-shadow(0 0 28px rgba(160, 140, 110, .23)); }
 .ring-sinine { animation: poor-sinine 672s linear infinite; }
 .ring-oranz { animation: poor-oranz 432s linear infinite; }
 @keyframes poor-valge { to { transform: rotate(360deg); } }
