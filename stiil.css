@@ -441,7 +441,7 @@ fieldset input { width: auto; }
 .jalus-korv:has(.vilgub) { color: #5ba3d9; }
 .jalus-korv:has(.sees) { color: #e8884a; }
 @media (min-width: 800px) {
-  .jalus-korv { left: .8rem; right: auto; flex-direction: row; }
+  .jalus-korv { left: max(1.5rem, calc((100% - 52rem) / 2)); right: auto; flex-direction: row; }
 }
 .korv-rida {
   display: flex;
