@@ -274,7 +274,7 @@ Hind on toodete tabelis, mitte koodis. Kolmas pool täidab veerud. Pakett võtab
 - `ühik` on dropdown `tk` või `kg`. Inimene valib.
 - `kg`: neli kilohinda veergudes `0,5`, `1,0`, `1,5`, `2,0`. Tellimisvormis on kaaluvalik. Hind tuleb valitud kaalu järgi.
 - `tk`: kaalu ei ole. Hind on tükihind veerust `hind`.
-- `tellitav` on dropdown `jah` või `ei`. Kui on `jah`, on toote all «Lisa tellimusse». Vajutus lisab korvi selle toote. Kui on `ei` või tühi, linki ei ole.
+- `tellitav` on dropdown `jah` või `ei`. Kui on `jah`, on toote all «Lisa tellimusse». Vajutus lisab korvi selle toote ja näitab teadet, lehele Telli ei hüppa. Kui sama toode on juba korvis, teist korda ei lisata. Kui on `ei` või tühi, linki ei ole. Ostukorvi märk on telefonis all paremal, arvutis üleval paremal.
 
 Kui paketti ei tehta, jääb lehele vana.
 
