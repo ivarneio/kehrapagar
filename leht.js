@@ -225,6 +225,7 @@
           }
           riba.appendChild(nupp);
         });
+        seaVedaja(riba);
       });
     })
     .catch(function () {});
@@ -422,6 +423,8 @@
           uus.classList.add("lahti");
           avaLint(uus);
           allaPaise(uus);
+          var avatudRiba = uus.querySelector(".riba");
+          if (avatudRiba) avatudRiba.dispatchEvent(new Event("scroll"));
         }
         seaSormed();
         flipKinni = false;
@@ -459,7 +462,41 @@
     });
   });
 
+  function seaVedaja(riba) {
+    if (!riba || riba.dataset.vedaja) return;
+    riba.dataset.vedaja = "1";
+    var vedaja = document.createElement("div");
+    vedaja.className = "vedaja";
+    var nupp = document.createElement("span");
+    vedaja.appendChild(nupp);
+    riba.after(vedaja);
+    function uuenda() {
+      var kokku = riba.scrollWidth;
+      var nahtav = riba.clientWidth;
+      if (kokku <= nahtav + 4) { vedaja.hidden = true; return; }
+      vedaja.hidden = false;
+      nupp.style.width = Math.max(12, nahtav / kokku * 100) + "%";
+      nupp.style.left = (riba.scrollLeft / kokku * 100) + "%";
+    }
+    riba.addEventListener("scroll", uuenda);
+    var lohistan = false, algusX = 0, algusLeft = 0;
+    nupp.addEventListener("pointerdown", function (e) {
+      lohistan = true;
+      algusX = e.clientX;
+      algusLeft = riba.scrollLeft;
+      nupp.setPointerCapture(e.pointerId);
+    });
+    nupp.addEventListener("pointermove", function (e) {
+      if (!lohistan) return;
+      var dx = e.clientX - algusX;
+      riba.scrollLeft = algusLeft + dx * (riba.scrollWidth / vedaja.clientWidth);
+    });
+    nupp.addEventListener("pointerup", function () { lohistan = false; });
+    window.addEventListener("resize", uuenda);
+    uuenda();
+  }
   document.querySelectorAll(".riba").forEach(function (riba) {
+    seaVedaja(riba);
     riba.addEventListener("wheel", function (e) {
       var samm = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       if (samm === 0) return;

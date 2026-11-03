@@ -242,15 +242,35 @@ fieldset input { width: auto; }
   display: flex;
   gap: .6rem;
   overflow-x: auto;
-  padding: 0 1rem .9rem;
+  padding: 0 1rem .4rem;
   scroll-snap-type: none;
+  scrollbar-width: none;
+}
+.riba::-webkit-scrollbar { display: none; }
+.vedaja {
+  position: relative;
+  height: 8px;
+  margin: .15rem 1rem .6rem;
+  background: rgba(44, 36, 22, .08);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.vedaja[hidden] { display: none; }
+.vedaja span {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  min-width: 1.4rem;
+  background: rgba(44, 36, 22, .35);
+  border-radius: 4px;
+  cursor: grab;
 }
 .riba.sisse { animation: paremalt 1.1s cubic-bezier(.22, 1, .36, 1); }
 @keyframes paremalt {
   from { transform: translateX(100%); }
   to { transform: none; }
 }
-.grupp.lahti .sisu > div { overflow: visible; }
+.grupp.lahti .sisu > div { overflow-x: hidden; }
 .pisi {
   flex: 0 0 8.6rem;
   border: 0;
