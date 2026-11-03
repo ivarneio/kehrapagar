@@ -343,6 +343,7 @@
     var sisu = telli.querySelector(".sisu") || telli;
     sulgeAeglaselt(sisu, function () {
       paneTelliKinni();
+      jargiRingid();
       if (valmis) valmis();
     });
   }
@@ -487,6 +488,7 @@
         }
         allaPaise(telli);
         lukkaAlla(kast, function () { telli.classList.add("lahti"); });
+        jargiRingid();
       }
       if (vana) sulgeAeglaselt(vana, ava);
       else ava();
@@ -1094,10 +1096,20 @@
         if (s.telefon_kuva) el.textContent = s.telefon_kuva;
         if (s.telefon) el.href = "tel:" + s.telefon;
       });
-      seaRingid(s.ringid || {});
+      viimasedRingid = s.ringid || {};
+      seaRingid(viimasedRingid);
     })
     .catch(function () {});
 
+  var viimasedRingid = {};
+  function jargiRingid() {
+    var n = 0;
+    var t = setInterval(function () {
+      seaRingid(viimasedRingid);
+      n++;
+      if (n > 16) clearInterval(t);
+    }, 50);
+  }
   function seaRingid(suurused) {
     var kast = document.querySelector(".ringid");
     if (!kast) return;
