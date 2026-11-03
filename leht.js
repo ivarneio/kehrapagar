@@ -1218,7 +1218,16 @@
       kast.style.transform = "none";
     }
   }
+  function seaPoolkaar() {
+    var telefon = window.matchMedia("(max-width: 799px)").matches;
+    document.querySelectorAll(".grupid .grupp > button").forEach(function (nupp) {
+      var r = (nupp.offsetHeight / 2) + "px";
+      nupp.style.borderRadius = telefon ? r + " 0 0 " + r : "0 " + r + " " + r + " 0";
+    });
+  }
+  seaPoolkaar();
   window.addEventListener("resize", function () {
+    seaPoolkaar();
     fetch("seaded.json").then(function (r) { return r.json(); }).then(function (s) {
       seaRingid(s.ringid || {});
     }).catch(function () { seaRingid({}); });
