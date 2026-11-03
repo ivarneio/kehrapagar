@@ -557,16 +557,7 @@
         viiTelliUles();
       });
     }
-    var logo = document.querySelector(".logo");
-  if (logo) logo.addEventListener("click", function (e) {
-    e.preventDefault();
-    function algusesse() {
-      sulgeKoik();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-    if (telli && telli.classList.contains("lahti")) sulgeTelliAeglaselt(algusesse);
-    else algusesse();
-  });
+    document.querySelectorAll('nav a[href="#tooted"]').forEach(function (a) {
       a.addEventListener("click", function (e) {
         e.preventDefault();
         sulgeTelliAeglaselt(function () {
@@ -592,6 +583,17 @@
       });
     });
   }
+
+  var logo = document.querySelector(".logo");
+  if (logo) logo.addEventListener("click", function (e) {
+    e.preventDefault();
+    function algusesse() {
+      sulgeKoik();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    if (telli && telli.classList.contains("lahti")) sulgeTelliAeglaselt(algusesse);
+    else algusesse();
+  });
 
   var vaade = document.querySelector(".taisekraan");
   var kujud = vaade.querySelector(".kujud");
