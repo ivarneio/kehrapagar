@@ -431,7 +431,7 @@ fieldset input { width: auto; }
   left: 50%;
   top: 45%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(180deg, var(--riba-sinine), var(--riba-oranz));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--riba-sinine) 50%, transparent), color-mix(in srgb, var(--riba-oranz) 50%, transparent));
   color: #fff;
   padding: .7rem 1.2rem;
   font-size: .95rem;
