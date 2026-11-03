@@ -557,7 +557,16 @@
         viiTelliUles();
       });
     }
-    document.querySelectorAll('nav a[href="#tooted"]').forEach(function (a) {
+    var logo = document.querySelector(".logo");
+  if (logo) logo.addEventListener("click", function (e) {
+    e.preventDefault();
+    function algusesse() {
+      sulgeKoik();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    if (telli && telli.classList.contains("lahti")) sulgeTelliAeglaselt(algusesse);
+    else algusesse();
+  });
       a.addEventListener("click", function (e) {
         e.preventDefault();
         sulgeTelliAeglaselt(function () {
