@@ -622,7 +622,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   min-height: 2.3rem;
   margin-left: auto;
   margin-right: 6px;
-  border-radius: 2rem 0 0 2rem;
+  border-radius: 999px 0 0 999px;
   text-align: right;
   padding-right: 1rem;
   text-shadow: 0 1px 3px #000;
