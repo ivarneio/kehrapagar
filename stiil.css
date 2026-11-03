@@ -249,14 +249,35 @@ fieldset input { width: auto; }
 .riba::-webkit-scrollbar { display: none; }
 .vedaja {
   position: relative;
-  height: 8px;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  height: 1.4rem;
   margin: .15rem 1rem .6rem;
+}
+.vedaja[hidden] { display: none; }
+.vedaja button {
+  flex: 0 0 auto;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 0;
+  background: none;
+  color: var(--tint);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+.vedaja .tee {
+  position: relative;
+  flex: 1;
+  height: 8px;
   background: rgba(44, 36, 22, .08);
   border-radius: 4px;
   cursor: pointer;
 }
-.vedaja[hidden] { display: none; }
-.vedaja span {
+.vedaja .tee span {
   position: absolute;
   top: 0;
   height: 100%;

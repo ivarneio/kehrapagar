@@ -467,9 +467,26 @@
     riba.dataset.vedaja = "1";
     var vedaja = document.createElement("div");
     vedaja.className = "vedaja";
+    var vasak = document.createElement("button");
+    vasak.type = "button";
+    vasak.textContent = "‹";
+    var tee = document.createElement("div");
+    tee.className = "tee";
     var nupp = document.createElement("span");
-    vedaja.appendChild(nupp);
+    tee.appendChild(nupp);
+    var parem = document.createElement("button");
+    parem.type = "button";
+    parem.textContent = "›";
+    vedaja.appendChild(vasak);
+    vedaja.appendChild(tee);
+    vedaja.appendChild(parem);
     riba.after(vedaja);
+    function samm() {
+      var toode = riba.querySelector(".pisi");
+      return toode ? toode.getBoundingClientRect().width + 10 : 140;
+    }
+    vasak.addEventListener("click", function () { riba.scrollBy({ left: -samm(), behavior: "smooth" }); });
+    parem.addEventListener("click", function () { riba.scrollBy({ left: samm(), behavior: "smooth" }); });
     function uuenda() {
       var kokku = riba.scrollWidth;
       var nahtav = riba.clientWidth;
@@ -489,7 +506,7 @@
     nupp.addEventListener("pointermove", function (e) {
       if (!lohistan) return;
       var dx = e.clientX - algusX;
-      riba.scrollLeft = algusLeft + dx * (riba.scrollWidth / vedaja.clientWidth);
+      riba.scrollLeft = algusLeft + dx * (riba.scrollWidth / tee.clientWidth);
     });
     nupp.addEventListener("pointerup", function () { lohistan = false; });
     window.addEventListener("resize", uuenda);
