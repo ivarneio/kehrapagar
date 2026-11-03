@@ -931,8 +931,34 @@
           o.textContent = nimi;
           kringel.appendChild(o);
         });
+        seaFantaasia();
       })
       .catch(function () {});
+    var fantaasiaRida = vorm.querySelector(".fantaasia-rida");
+    var taidisValikud = ["rosin", "pähkel", "kaneel", "moon", "õun", "martsipan", "pohlamartsipan", "kaneelikreem"];
+    function taidaTaidised() {
+      if (!fantaasiaRida) return;
+      fantaasiaRida.querySelectorAll("select").forEach(function (s) {
+        var vana = s.value;
+        s.innerHTML = "";
+        taidisValikud.forEach(function (nimi) {
+          var o = document.createElement("option");
+          o.textContent = nimi;
+          s.appendChild(o);
+        });
+        if (vana) s.value = vana;
+      });
+    }
+    function seaFantaasia() {
+      if (!fantaasiaRida || !kringel) return;
+      var on = /fantaasia/i.test(kringel.value || "");
+      fantaasiaRida.hidden = !on;
+    }
+    if (kringel) kringel.addEventListener("change", seaFantaasia);
+    fetch("seaded.json").then(function (r) { return r.json(); }).then(function (s) {
+      if (s && s.taidised && s.taidised.length) taidisValikud = s.taidised;
+      taidaTaidised();
+    }).catch(function () { taidaTaidised(); });
 
     var korvEl = vorm.querySelector(".korv");
     var kaal = vorm.querySelector("[name=kaal]");
@@ -1025,7 +1051,13 @@
     if (lisa) {
       lisa.addEventListener("click", function () {
         if (!kringel || !kringel.value) return;
-        korv.push({ nimi: kringel.value, kaal: kaal.value, kogus: kogus.value || "1" });
+        var nimi = kringel.value;
+        if (/fantaasia/i.test(nimi) && fantaasiaRida) {
+          var valitud = [];
+          fantaasiaRida.querySelectorAll("select").forEach(function (s) { if (s.value) valitud.push(s.value); });
+          if (valitud.length) nimi += " (" + valitud.join(", ") + ")";
+        }
+        korv.push({ nimi: nimi, kaal: kaal.value, kogus: kogus.value || "1" });
         joonista();
       });
     }

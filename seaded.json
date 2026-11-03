@@ -15,6 +15,7 @@
     "sinine": 38,
     "oranz": 47
   },
+  "taidised": ["rosin", "pähkel", "kaneel", "moon", "õun", "martsipan", "pohlamartsipan", "kaneelikreem"],
   "tellimus_cc": "",
   "tellimus_bcc": "",
   "keelatud_paevad": "https://docs.google.com/spreadsheets/d/1OP3UgZqxvm_jGp6ukpKHKmZ9zJABi56ZjqoRYAFmEbw/export?format=csv&gid=275482179"

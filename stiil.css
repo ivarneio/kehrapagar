@@ -582,7 +582,10 @@ fieldset input { width: auto; }
 .korv-summa { display: flex; justify-content: space-between; font-weight: 700; padding: .55rem 0 .2rem; }
 .lisa { display: block; width: 100%; margin: .4rem 0; padding: .55rem; background: var(--paber); border: 1px solid var(--joon); cursor: pointer; font: inherit; }
 
-.toote-rida { display: flex; gap: .5rem; align-items: end; }
+.fantaasia-rida { display: flex; gap: .5rem; }
+.fantaasia-rida[hidden] { display: none; }
+.fantaasia-rida label { flex: 1; min-width: 0; margin: .2rem 0 .4rem; font-size: .9rem; }
+.fantaasia-rida select { width: 100%; }
 .toote-rida label { flex: 1; min-width: 0; margin: .35rem 0; }
 .toote-rida label.kogus { flex: 0 0 auto; }
 .toote-rida select, .toote-rida input { width: 100%; }
