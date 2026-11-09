@@ -632,7 +632,14 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   padding-right: 1rem;
   text-shadow: 0 1px 3px #000;
 }
-.grupid .grupp > button .sorm-nimi { padding: .5rem 1rem; }
+.grupid .grupp.lahti > button {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+@media (max-width: 799px) {
+  .grupid .grupp.lahti > button { width: calc(100% - 1rem); margin: 0 .5rem; }
+}
 .grupid .grupp { position: relative; z-index: 1; }
 .grupid .grupp + .grupp { margin-top: 14px; }
 .grupid .grupp + .grupp::before {
