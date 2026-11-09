@@ -653,6 +653,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   width: var(--valge, 66.7%);
   height: 12px;
   background: #fff;
+  filter: drop-shadow(0 0 10px rgba(160, 140, 110, .30));
 }
 
 @media (max-width: 799px) {
