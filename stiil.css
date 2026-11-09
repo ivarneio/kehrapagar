@@ -641,6 +641,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   margin-left: 0;
   margin-right: 0;
 }
+.grupid .grupp > button .sorm-nimi { padding: 0; line-height: 1; }
 @media (max-width: 799px) {
   .grupid .grupp.lahti > button { width: calc(100% - 1rem); margin: 0 .5rem; }
 }
