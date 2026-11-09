@@ -11,9 +11,9 @@
     "lapa": 50
   },
   "ringid": {
-    "valge": 56,
-    "sinine": 38,
-    "oranz": 47
+    "valge": 90,
+    "sinine": 61,
+    "oranz": 75
   },
   "taidised": ["rosin", "pähkel", "kaneel", "moon", "õun", "martsipan", "pohlamartsipan", "kaneelikreem"],
   "tellimus_cc": "",
