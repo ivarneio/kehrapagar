@@ -1206,6 +1206,7 @@
       });
       viimasedRingid = s.ringid || {};
       seaRingid(viimasedRingid);
+      seaFotoRongad(s);
     })
     .catch(function () {});
 
@@ -1217,6 +1218,16 @@
       n++;
       if (n > 16) clearInterval(t);
     }, 50);
+  }
+  function seaFotoRongad(s) {
+    var kampaania = (s && s.kampaania_rongad) || {};
+    document.querySelectorAll(".foto-rong").forEach(function (rong) {
+      var id = rong.getAttribute("data-kampaania");
+      var pilt = kampaania[id];
+      if (!pilt) return;
+      var img = rong.querySelector("img");
+      if (img) img.src = pilt;
+    });
   }
   function seaRingid(suurused) {
     var kast = document.querySelector(".ringid");

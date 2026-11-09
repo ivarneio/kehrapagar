@@ -12,7 +12,32 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-.ringid {
+.foto-rongad {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 22vh;
+  width: min(28rem, 86vw);
+  height: 18rem;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.foto-rong {
+  position: absolute;
+  width: 7.2rem;
+  height: 7.2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px dashed var(--riba-oranz);
+  background: #efe6d4;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .18);
+}
+.foto-rong img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.foto-rong:nth-child(1) { left: 8%; top: 0; }
+.foto-rong:nth-child(2) { left: 38%; top: 1.2rem; border-color: var(--riba-sinine); }
+.foto-rong:nth-child(3) { right: 6%; top: .4rem; }
+.foto-rong:nth-child(4) { left: 18%; top: 6.4rem; border-color: var(--riba-sinine); }
+.foto-rong:nth-child(5) { right: 16%; top: 6.8rem; }
   position: absolute;
   z-index: 0;
   pointer-events: none;
