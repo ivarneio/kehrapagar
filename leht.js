@@ -370,6 +370,7 @@
       lava.parentElement.insertBefore(leht, lava);
       leht.hidden = false;
       leht.classList.remove("lahti");
+      paneAjalukku();
       allaPaise(leht);
       lukkaAlla(leht);
     }
@@ -388,6 +389,20 @@
     if (telli) paneTelliKinni();
     document.querySelectorAll(".tekstileht").forEach(function (x) { x.hidden = true; });
   }
+  var ajaluguSees = false;
+  function paneAjalukku() {
+    if (ajaluguSees) return;
+    ajaluguSees = true;
+    history.pushState({ kehra: 1 }, "");
+  }
+  function tagasiAlgusesse() {
+    ajaluguSees = false;
+    sulgeKoik();
+    var vaade = document.querySelector(".taisekraan");
+    if (vaade) vaade.classList.remove("sees");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  window.addEventListener("popstate", tagasiAlgusesse);
 
   function avaLint(grupp) {
     var riba = grupp.querySelector(".riba");
@@ -434,6 +449,7 @@
         if (ava) {
           uus.classList.add("lahti");
           avaLint(uus);
+          paneAjalukku();
           allaPaise(uus);
           var avatudRiba = uus.querySelector(".riba");
           if (avatudRiba) avatudRiba.dispatchEvent(new Event("scroll"));
@@ -457,6 +473,7 @@
             lava.insertBefore(grupp, lava.firstChild);
             grupp.classList.add("lahti");
             avaLint(grupp);
+            paneAjalukku();
             allaPaise(grupp);
           } else {
             taastaJarjekord();
@@ -553,7 +570,7 @@
           sisu.style.gridTemplateRows = "none";
         }
         allaPaise(telli);
-        lukkaAlla(kast, function () { telli.classList.add("lahti"); });
+        lukkaAlla(kast, function () { telli.classList.add("lahti"); paneAjalukku(); });
       }
       if (vana) sulgeAeglaselt(vana, ava);
       else ava();
