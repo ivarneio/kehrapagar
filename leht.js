@@ -1261,13 +1261,13 @@
       el.style.left = (kesk[nimi].x - d[nimi] / 2) + "px";
       el.style.top = (kesk[nimi].y - d[nimi] / 2) + "px";
     });
-    var grupid = document.querySelector(".grupid");
+    var koht = document.querySelector(".ringi-koht");
     var main = document.querySelector("main");
-    if (grupid && main && grupid.offsetHeight) {
-      var gr = grupid.getBoundingClientRect();
+    if (koht && main) {
+      var kr = koht.getBoundingClientRect();
       var mr = main.getBoundingClientRect();
-      var x = gr.right - gr.width * 0.12 - mr.left;
-      var y = gr.top + gr.height * 0.42 - mr.top;
+      var x = kr.left + kr.width / 2 - mr.left;
+      var y = kr.top + kr.height / 2 - mr.top;
       kast.style.left = (x - w / 2) + "px";
       kast.style.top = (y - h / 2) + "px";
       kast.style.right = "auto";

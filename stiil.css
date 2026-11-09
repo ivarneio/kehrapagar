@@ -123,7 +123,8 @@ main { position: relative; z-index: 2; width: min(52rem, calc(100% - 1.6rem)); m
 #avaleht, #tooted, #firmast, #kauplus, #kontakt, #telli { position: relative; z-index: 1; }
 h1, h2 { font-weight: 600; margin: 0 0 .6rem; }
 h1 { font-size: 1.7rem; }
-.pealeht { width: 100%; max-height: 70vh; object-fit: cover; display: block; margin: 0 0 1rem; }
+.pealeht { display: none; }
+.ringi-koht { min-height: 46vh; }
 h2 { font-size: 1.25rem; }
 #tooted > h2 { display: none; }
 .markus { color: var(--vaikne); margin: 0 0 .8rem; }
