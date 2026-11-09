@@ -102,6 +102,17 @@
     });
   }
   seaSormed();
+  function seaValged() {
+    var jooned = document.querySelectorAll(".grupid .grupp + .grupp");
+    var kasutatud = {};
+    jooned.forEach(function (g) {
+      var p = 50 + Math.floor(Math.random() * 46);
+      while (kasutatud[p]) p = Math.min(96, p + 3);
+      kasutatud[p] = true;
+      g.style.setProperty("--valge", p + "%");
+    });
+  }
+  seaValged();
   window.addEventListener("resize", seaSormed);
 
   var tekstid = {};
