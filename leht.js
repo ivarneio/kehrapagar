@@ -106,10 +106,12 @@
     var jooned = document.querySelectorAll(".grupid .grupp + .grupp");
     var kasutatud = {};
     jooned.forEach(function (g) {
+      var nupp = g.querySelector(":scope > button");
+      var alus = nupp ? nupp.offsetWidth : 0;
       var p = 50 + Math.floor(Math.random() * 46);
       while (kasutatud[p]) p = Math.min(96, p + 3);
       kasutatud[p] = true;
-      g.style.setProperty("--valge", p + "%");
+      g.style.setProperty("--valge", Math.floor(alus * p / 100) + "px");
     });
   }
   seaValged();

@@ -669,7 +669,6 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
     padding-right: 1rem;
   }
   .grupid .grupp + .grupp::before {
-    width: 100%;
     right: 0;
   }
 }
