@@ -19,7 +19,6 @@ html { scroll-behavior: smooth; }
   right: 8%;
   top: 62%;
   transform: translate(40%, -40%);
-  transition: top .8s cubic-bezier(.22, 1, .36, 1);
 }
 .ring {
   position: absolute;

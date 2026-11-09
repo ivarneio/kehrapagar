@@ -357,7 +357,6 @@
     var sisu = telli.querySelector(".sisu") || telli;
     sulgeAeglaselt(sisu, function () {
       paneTelliKinni();
-      jargiRingid();
       if (valmis) valmis();
     });
   }
@@ -555,7 +554,6 @@
         }
         allaPaise(telli);
         lukkaAlla(kast, function () { telli.classList.add("lahti"); });
-        jargiRingid();
       }
       if (vana) sulgeAeglaselt(vana, ava);
       else ava();
