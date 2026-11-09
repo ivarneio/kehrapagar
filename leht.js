@@ -1238,7 +1238,7 @@
       sinine: (suurused.sinine || 32) * vmin,
       oranz: (suurused.oranz || 36) * vmin
     };
-    var kylg = 18 * vmin;
+    var kylg = 8 * vmin;
     var korgus = kylg * Math.sqrt(3) / 2;
     var w = kylg + Math.max(d.valge, d.sinine, d.oranz);
     var h = korgus + Math.max(d.valge, d.sinine, d.oranz);
