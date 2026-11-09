@@ -309,7 +309,7 @@ fieldset input { width: auto; }
   background: #efe6d4;
   display: block;
 }
-.pisi .nimi { display: block; font-weight: 600; font-size: .92rem; margin-top: .35rem; }
+.pisi .nimi { display: block; font-weight: 600; font-size: .92rem; margin-top: .35rem; color: #fff; text-shadow: 0 1px 2px #000, 0 0 5px #000, 0 0 1px #000; }
 .pisi .hind { display: block; font-size: .85rem; color: var(--vaikne); white-space: pre-line; }
 .telli-link { display: block; margin-top: .25rem; font-size: .82rem; color: var(--tint); text-decoration: underline; cursor: pointer; }
 .taisekraan {
