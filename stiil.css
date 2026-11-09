@@ -643,13 +643,13 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   .grupid .grupp.lahti > button { width: calc(100% - 1rem); margin: 0 .5rem; }
 }
 .grupid .grupp { position: relative; z-index: 1; }
-.grupid .grupp + .grupp { margin-top: 14px; }
+.grupid .grupp + .grupp { margin-top: 24px; }
 .grupid .grupp + .grupp::before {
   content: "";
   position: absolute;
   left: auto;
   right: 6px;
-  top: -8.5px;
+  top: -18px;
   width: var(--valge, 66.7%);
   height: 12px;
   background: #fff;
