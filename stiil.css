@@ -620,19 +620,16 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   width: 6px; background: #fff;
 }
 .grupid .grupp > button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  max-width: 100%;
-  min-height: 0;
-  height: 2rem;
+  display: block;
+  width: calc(66.7% - 6px);
+  min-height: 2.4rem;
+  height: 2.4rem;
   margin-left: auto;
   margin-right: 6px;
-  padding: 0 1.1rem;
   border-radius: 1rem 0 1rem 1rem;
   overflow: hidden;
-  text-align: center;
+  text-align: right;
+  padding-right: 1rem;
   text-shadow: 0 1px 3px #000;
   transition: width .7s cubic-bezier(.22, 1, .36, 1), margin .7s cubic-bezier(.22, 1, .36, 1);
 }
@@ -685,6 +682,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   .grupid .grupp > button {
     margin-left: 6px;
     margin-right: auto;
+    width: calc(66.7% - 6px);
     border-radius: 0 1rem 1rem 1rem;
     text-align: left;
     padding-left: 1rem;
