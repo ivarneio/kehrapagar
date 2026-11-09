@@ -651,7 +651,7 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   right: 6px;
   top: -8.5px;
   width: var(--valge, 66.7%);
-  height: 6px;
+  height: 12px;
   background: #fff;
 }
 
