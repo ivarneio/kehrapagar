@@ -38,6 +38,7 @@ html { scroll-behavior: smooth; }
 .foto-rong:nth-child(3) { right: 8%; top: .6rem; width: 15.6rem; height: 15.6rem; z-index: 4; }
 .foto-rong:nth-child(4) { left: 18%; top: 8.2rem; width: 14rem; height: 14rem; z-index: 5; border-color: var(--riba-sinine); }
 .foto-rong:nth-child(5) { right: 16%; top: 8.8rem; width: 12.4rem; height: 12.4rem; z-index: 6; }
+.foto-rong:nth-child(6) { left: 42%; top: 10.4rem; width: 11.6rem; height: 11.6rem; z-index: 7; }
 .ringid {
   position: absolute;
   z-index: 0;
