@@ -16,9 +16,9 @@ html { scroll-behavior: smooth; }
   position: absolute;
   z-index: 5;
   left: 50%;
-  top: 16vh;
+  top: 4vh;
   width: min(40rem, 96vw);
-  height: 28rem;
+  height: 22rem;
   transform: translateX(-50%);
 }
 .foto-rong {
