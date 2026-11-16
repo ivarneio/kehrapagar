@@ -68,9 +68,9 @@ html { scroll-behavior: smooth; }
 .triip.sinine { background: var(--riba-sinine); }
 .triip.valge { background: #fff; }
 .triip.ule { top: 0; width: 1.4rem; }
-.triip.ule.oranz { right: calc(50% - 26rem); height: 56vh; }
+.triip.ule.oranz { right: calc(50% - 26rem - 3.2rem); height: 56vh; }
 .triip.ule.valge { right: calc(50% - 26rem - 1.95rem); width: .7rem; height: 38vh; filter: drop-shadow(0 0 16px rgba(160, 140, 110, .35)); }
-.triip.ule.sinine { right: calc(50% - 26rem - 3.2rem); height: 26vh; }
+.triip.ule.sinine { right: calc(50% - 26rem); height: 26vh; }
 .triip.alla { bottom: 0; width: 1.1rem; }
 .triip.alla.oranz { left: calc(50% - 26rem - 4.4rem); height: 32vh; }
 .triip.alla.sinine { left: calc(50% - 26rem - 1.4rem); height: 16vh; }
