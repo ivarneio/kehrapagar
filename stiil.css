@@ -41,10 +41,10 @@ html { scroll-behavior: smooth; }
 .foto-rong:nth-child(5) { right: 6%; top: 10.8rem; width: 12.4rem; height: 12.4rem; z-index: 6; }
 .foto-rong:nth-child(6) { left: 40%; top: 13.2rem; width: 11.6rem; height: 11.6rem; z-index: 7; }
 .foto-rong:hover { z-index: 20; }
-.foto-rong.reageerib { z-index: 20; animation: rong-paisu .6s ease; }
+.foto-rong.reageerib { z-index: 20; animation: rong-paisu 1.15s ease; }
 @keyframes rong-paisu {
   0% { transform: scale(1); }
-  45% { transform: scale(1.14); }
+  22% { transform: scale(1.14); }
   100% { transform: scale(1); }
 }
 .ringid {
