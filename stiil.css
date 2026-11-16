@@ -78,11 +78,11 @@ html { scroll-behavior: smooth; }
 @media (max-width: 799px) {
   .triip.ule, .triip.alla { width: .45rem; }
   .triip.ule.oranz { right: .2rem; }
-  .triip.ule.valge { right: .8rem; }
+  .triip.ule.valge { right: .9rem; width: .22rem; }
   .triip.ule.sinine { right: 1.4rem; }
   .triip.alla.oranz { left: .2rem; }
   .triip.alla.sinine { left: .8rem; }
-  .triip.alla.valge { left: 1.4rem; }
+  .triip.alla.valge { left: 1.5rem; width: .22rem; }
 }
 body {
   margin: 0;
