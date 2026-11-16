@@ -69,12 +69,12 @@ html { scroll-behavior: smooth; }
 .triip.valge { background: #fff; }
 .triip.ule { top: 0; width: 1.4rem; }
 .triip.ule.oranz { right: calc(50% - 26rem - .2rem); height: 52vh; }
-.triip.ule.valge { right: calc(50% - 26rem - 1.8rem); height: 40vh; filter: drop-shadow(0 0 16px rgba(160, 140, 110, .35)); }
+.triip.ule.valge { right: calc(50% - 26rem - 2.15rem); width: .7rem; height: 40vh; filter: drop-shadow(0 0 16px rgba(160, 140, 110, .35)); }
 .triip.ule.sinine { right: calc(50% - 26rem - 3.4rem); height: 28vh; }
 .triip.alla { bottom: 0; width: 1.1rem; }
 .triip.alla.oranz { left: calc(50% - 26rem - 4.2rem); height: 28vh; }
 .triip.alla.sinine { left: calc(50% - 26rem - 1.4rem); height: 16vh; }
-.triip.alla.valge { left: calc(50% - 26rem - 2.8rem); height: 22vh; filter: drop-shadow(0 0 16px rgba(160, 140, 110, .35)); }
+.triip.alla.valge { left: calc(50% - 26rem - 3.05rem); width: .55rem; height: 22vh; filter: drop-shadow(0 0 16px rgba(160, 140, 110, .35)); }
 @media (max-width: 799px) {
   .triip.ule, .triip.alla { width: .45rem; }
   .triip.ule.oranz { right: .2rem; }
