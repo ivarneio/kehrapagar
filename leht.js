@@ -1236,6 +1236,16 @@
       if (n > 16) clearInterval(t);
     }, 50);
   }
+  document.querySelectorAll(".foto-rong").forEach(function (rong) {
+    rong.addEventListener("mouseenter", function () {
+      rong.classList.remove("reageerib");
+      void rong.offsetWidth;
+      rong.classList.add("reageerib");
+    });
+    rong.addEventListener("animationend", function () {
+      rong.classList.remove("reageerib");
+    });
+  });
   function seaFotoRongad(s) {
     var kampaania = (s && s.kampaania_rongad) || {};
     document.querySelectorAll(".foto-rong").forEach(function (rong) {
