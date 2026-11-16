@@ -1287,17 +1287,19 @@
         el.style.left = (kesk[nimi].x - d[nimi] / 2) + "px";
         el.style.top = (kesk[nimi].y - d[nimi] / 2) + "px";
       });
-      var veerg = 12;
+      var veerg = document.querySelector("main");
+      var r = veerg ? veerg.getBoundingClientRect() : { left: 0, right: window.innerWidth, top: 0, bottom: window.innerHeight };
       if (nurk === "ules") {
-        kast.style.left = Math.max(veerg - tsenter.x, 8) + "px";
-        kast.style.top = Math.max(veerg - tsenter.y, 8) + "px";
+        kast.style.left = (r.left - tsenter.x) + "px";
+        kast.style.top = (r.top - tsenter.y) + "px";
         kast.style.right = "auto";
         kast.style.bottom = "auto";
       } else {
-        kast.style.left = "auto";
-        kast.style.top = "auto";
-        kast.style.right = Math.max(veerg - (w - tsenter.x), 8) + "px";
-        kast.style.bottom = Math.max(veerg - (h - tsenter.y), 8) + "px";
+        var alumine = Math.min(r.bottom, window.innerHeight);
+        kast.style.left = (r.right - tsenter.x) + "px";
+        kast.style.top = (alumine - tsenter.y) + "px";
+        kast.style.right = "auto";
+        kast.style.bottom = "auto";
       }
     }
     aseta(document.querySelector(".ringid:not(.ringid-alla)"), 1, "ules");
