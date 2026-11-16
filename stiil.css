@@ -90,11 +90,11 @@ body {
 .logo {
   color: inherit;
   text-decoration: none;
-  font-weight: 600;
-  letter-spacing: .02em;
-  white-space: nowrap;
   flex: 0 0 auto;
+  display: flex;
+  align-items: center;
 }
+.logo img { height: 2.6rem; width: auto; display: block; }
 .menu-nupp {
   display: none;
   margin-left: .2rem;
