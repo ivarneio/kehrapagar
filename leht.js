@@ -1246,6 +1246,20 @@
       rong.classList.remove("reageerib");
     });
   });
+  function mahutaPildid() {
+    var kast = document.querySelector(".foto-rongad");
+    var grupid = document.querySelector(".grupid");
+    if (!kast || !grupid) return;
+    kast.style.transform = "translateX(-50%)";
+    var kr = kast.getBoundingClientRect();
+    var gr = grupid.getBoundingClientRect();
+    var ruum = gr.top - kr.top - 16;
+    var k = ruum > 40 ? Math.min(1, ruum / kr.height) : 1;
+    kast.style.transform = "translateX(-50%) scale(" + k + ")";
+  }
+  window.addEventListener("resize", mahutaPildid);
+  window.addEventListener("load", mahutaPildid);
+  mahutaPildid();
   function seaFotoRongad(s) {
     var kampaania = (s && s.kampaania_rongad) || {};
     document.querySelectorAll(".foto-rong").forEach(function (rong) {
