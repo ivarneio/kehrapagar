@@ -14,7 +14,7 @@
 html { scroll-behavior: smooth; }
 .foto-rongad {
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   left: 50%;
   top: 16vh;
   width: min(40rem, 96vw);
@@ -41,8 +41,8 @@ html { scroll-behavior: smooth; }
 .foto-rong:nth-child(5) { right: 6%; top: 10.8rem; width: 12.4rem; height: 12.4rem; z-index: 6; }
 .foto-rong:nth-child(6) { left: 40%; top: 13.2rem; width: 11.6rem; height: 11.6rem; z-index: 7; }
 .foto-rong:hover { z-index: 20; }
-.foto-rong.reageerib { z-index: 20; animation: rong-paisu 1.15s ease; }
-@keyframes rong-paisu {
+.foto-rong.reageerib { z-index: 20; animation: foto-paisu 1.15s ease; }
+@keyframes foto-paisu {
   0% { transform: scale(1); }
   22% { transform: scale(1.14); }
   100% { transform: scale(1); }
@@ -155,7 +155,7 @@ main { position: relative; z-index: 2; width: min(52rem, calc(100% - 1.6rem)); m
 h1, h2 { font-weight: 600; margin: 0 0 .6rem; }
 h1 { font-size: 1.7rem; }
 .pealeht { display: none; }
-.ringi-koht { min-height: 46vh; }
+.ringi-koht { min-height: 46vh; pointer-events: none; }
 h2 { font-size: 1.25rem; }
 #tooted > h2 { display: none; }
 .markus { color: var(--vaikne); margin: 0 0 .8rem; }
