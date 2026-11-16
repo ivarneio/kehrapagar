@@ -18,8 +18,9 @@ html { scroll-behavior: smooth; }
   left: 50%;
   top: 4vh;
   width: min(40rem, 96vw);
-  height: 22rem;
+  height: 26rem;
   transform: translateX(-50%);
+  transform-origin: top center;
 }
 .foto-rong {
   position: absolute;
