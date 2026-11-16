@@ -1247,58 +1247,61 @@
     });
   }
   function seaRingid(suurused) {
-    var kast = document.querySelector(".ringid");
-    if (!kast) return;
-    var vmin = Math.min(window.innerWidth, window.innerHeight) / 100;
-    var d = {
-      valge: (suurused.valge || 28) * vmin,
-      sinine: (suurused.sinine || 32) * vmin,
-      oranz: (suurused.oranz || 36) * vmin
-    };
-    var kylg = 8 * vmin;
-    var korgus = kylg * Math.sqrt(3) / 2;
-    var w = kylg + Math.max(d.valge, d.sinine, d.oranz);
-    var h = korgus + Math.max(d.valge, d.sinine, d.oranz);
-    kast.style.width = w + "px";
-    kast.style.height = h + "px";
-    var kesk = {
-      oranz: { x: w / 2 + kylg / 2, y: h / 2 + korgus / 3 },
-      sinine: { x: 0, y: 0 },
-      valge: { x: 0, y: 0 }
-    };
-    kesk.sinine.x = kesk.oranz.x - kylg;
-    kesk.sinine.y = kesk.oranz.y;
-    kesk.valge.x = kesk.oranz.x - kylg / 2;
-    kesk.valge.y = kesk.oranz.y - korgus;
-    var tsenter = {
-      x: (kesk.oranz.x + kesk.sinine.x + kesk.valge.x) / 3,
-      y: (kesk.oranz.y + kesk.sinine.y + kesk.valge.y) / 3
-    };
-    var nihuta = { x: kesk.sinine.x - tsenter.x, y: kesk.sinine.y - tsenter.y };
-    ["valge", "sinine", "oranz"].forEach(function (nimi) {
-      kesk[nimi].x += nihuta.x;
-      kesk[nimi].y += nihuta.y;
-    });
-    ["valge", "sinine", "oranz"].forEach(function (nimi) {
-      var el = kast.querySelector(".ring-" + nimi);
-      if (!el) return;
-      el.style.width = d[nimi] + "px";
-      el.style.height = d[nimi] + "px";
-      el.style.left = (kesk[nimi].x - d[nimi] / 2) + "px";
-      el.style.top = (kesk[nimi].y - d[nimi] / 2) + "px";
-    });
-    var koht = document.querySelector(".ringi-koht");
-    var main = document.querySelector("main");
-    if (koht && main) {
-      var kr = koht.getBoundingClientRect();
-      var mr = main.getBoundingClientRect();
-      var x = kr.left + kr.width / 2 - mr.left;
-      var y = kr.top + kr.height / 2 - mr.top;
-      kast.style.left = (x - w / 2) + "px";
-      kast.style.top = (y - h / 2) + "px";
-      kast.style.right = "auto";
-      kast.style.transform = "none";
+    function aseta(kast, kordaja, nurk) {
+      if (!kast) return;
+      var vmin = Math.min(window.innerWidth, window.innerHeight) / 100;
+      var d = {
+        valge: (suurused.valge || 28) * vmin * kordaja,
+        sinine: (suurused.sinine || 32) * vmin * kordaja,
+        oranz: (suurused.oranz || 36) * vmin * kordaja
+      };
+      var kylg = 8 * vmin * kordaja;
+      var korgus = kylg * Math.sqrt(3) / 2;
+      var w = kylg + Math.max(d.valge, d.sinine, d.oranz);
+      var h = korgus + Math.max(d.valge, d.sinine, d.oranz);
+      kast.style.width = w + "px";
+      kast.style.height = h + "px";
+      var kesk = {
+        oranz: { x: w / 2 + kylg / 2, y: h / 2 + korgus / 3 },
+        sinine: { x: 0, y: 0 },
+        valge: { x: 0, y: 0 }
+      };
+      kesk.sinine.x = kesk.oranz.x - kylg;
+      kesk.sinine.y = kesk.oranz.y;
+      kesk.valge.x = kesk.oranz.x - kylg / 2;
+      kesk.valge.y = kesk.oranz.y - korgus;
+      var tsenter = {
+        x: (kesk.oranz.x + kesk.sinine.x + kesk.valge.x) / 3,
+        y: (kesk.oranz.y + kesk.sinine.y + kesk.valge.y) / 3
+      };
+      var nihuta = { x: kesk.sinine.x - tsenter.x, y: kesk.sinine.y - tsenter.y };
+      ["valge", "sinine", "oranz"].forEach(function (nimi) {
+        kesk[nimi].x += nihuta.x;
+        kesk[nimi].y += nihuta.y;
+      });
+      ["valge", "sinine", "oranz"].forEach(function (nimi) {
+        var el = kast.querySelector(".ring-" + nimi);
+        if (!el) return;
+        el.style.width = d[nimi] + "px";
+        el.style.height = d[nimi] + "px";
+        el.style.left = (kesk[nimi].x - d[nimi] / 2) + "px";
+        el.style.top = (kesk[nimi].y - d[nimi] / 2) + "px";
+      });
+      var veerg = 12;
+      if (nurk === "ules") {
+        kast.style.left = Math.max(veerg - tsenter.x, 8) + "px";
+        kast.style.top = Math.max(veerg - tsenter.y, 8) + "px";
+        kast.style.right = "auto";
+        kast.style.bottom = "auto";
+      } else {
+        kast.style.left = "auto";
+        kast.style.top = "auto";
+        kast.style.right = Math.max(veerg - (w - tsenter.x), 8) + "px";
+        kast.style.bottom = Math.max(veerg - (h - tsenter.y), 8) + "px";
+      }
     }
+    aseta(document.querySelector(".ringid:not(.ringid-alla)"), 1, "ules");
+    aseta(document.querySelector(".ringid-alla"), 0.5, "alla");
   }
   window.addEventListener("resize", function () {
     fetch("seaded.json").then(function (r) { return r.json(); }).then(function (s) {

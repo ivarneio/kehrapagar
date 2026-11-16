@@ -40,12 +40,9 @@ html { scroll-behavior: smooth; }
 .foto-rong:nth-child(5) { right: 16%; top: 8.8rem; width: 12.4rem; height: 12.4rem; z-index: 6; }
 .foto-rong:nth-child(6) { left: 42%; top: 10.4rem; width: 11.6rem; height: 11.6rem; z-index: 7; }
 .ringid {
-  position: absolute;
+  position: fixed;
   z-index: 0;
   pointer-events: none;
-  right: 8%;
-  top: 62%;
-  transform: translate(40%, -40%);
 }
 .ring {
   position: absolute;
