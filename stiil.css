@@ -62,7 +62,28 @@ html { scroll-behavior: smooth; }
 @keyframes poor-valge { to { transform: rotate(360deg); } }
 @keyframes poor-sinine { to { transform: rotate(360deg); } }
 @keyframes poor-oranz { to { transform: rotate(-360deg); } }
-body {
+.triibud { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.triip { position: absolute; }
+.triip.oranz { background: var(--riba-oranz); }
+.triip.sinine { background: var(--riba-sinine); }
+.triip.valge { background: #fff; }
+.triip.ule { top: 0; height: 46vh; width: 1.4rem; }
+.triip.ule.oranz { right: calc(50% - 26rem - .2rem); }
+.triip.ule.valge { right: calc(50% - 26rem - 1.8rem); }
+.triip.ule.sinine { right: calc(50% - 26rem - 3.4rem); }
+.triip.alla { bottom: 0; height: 28vh; width: 1.1rem; }
+.triip.alla.oranz { left: calc(50% - 26rem - .2rem); }
+.triip.alla.sinine { left: calc(50% - 26rem - 1.6rem); }
+.triip.alla.valge { left: calc(50% - 26rem - 3rem); }
+@media (max-width: 799px) {
+  .triip.ule, .triip.alla { width: .45rem; }
+  .triip.ule.oranz { right: .2rem; }
+  .triip.ule.valge { right: .8rem; }
+  .triip.ule.sinine { right: 1.4rem; }
+  .triip.alla.oranz { left: .2rem; }
+  .triip.alla.sinine { left: .8rem; }
+  .triip.alla.valge { left: 1.4rem; }
+}
   margin: 0;
   font-family: "Source Sans 3", system-ui, sans-serif;
   background: linear-gradient(180deg, #d4e8f5 0%, #f5efe6 55%, #f0e6d8 100%);
