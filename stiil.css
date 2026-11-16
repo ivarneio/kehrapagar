@@ -1,1 +1,12 @@
-PLACEHOLDER_CSS
+:root {
+  --taust: #f4f0e6;
+  --paber: #f7f4ec;
+  --tint: #2c2416;
+  --vaikne: #6d6456;
+  --joon: #e4dccb;
+  --pais: #2c2416;
+  --riba-oranz: #e25b2a;
+  --riba-sinine: #2f7fd1;
+  --riba-valge: #ffffff;
+  --riba-lapa: 0.5;
+}
