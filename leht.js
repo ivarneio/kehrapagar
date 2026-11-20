@@ -1275,7 +1275,7 @@
       if (!kast) return;
       var vmin = Math.min(window.innerWidth, window.innerHeight) / 100;
       var d = {
-        valge: (suurused.valge || 28) * vmin * kordaja,
+        valge: (suurused.valge || 28) * vmin * kordaja * (nurk === "ules" ? 1.4 : 1),
         sinine: (suurused.sinine || 32) * vmin * kordaja,
         oranz: (suurused.oranz || 36) * vmin * kordaja
       };
