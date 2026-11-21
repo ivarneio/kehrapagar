@@ -13,11 +13,21 @@ Lehe vaade on üleval link. Kui see annab tühja lehe, on Pages veel kinni: Sett
 - WordPressi ei kasutata. Leht on kerge ja kiire, telefonile esimene, eesti keel on põhikeel.
 - Eesmärgid: tooted, sotsiaalmeedia kampaaniad, kringlitellimused.
 - Tellimus on ainult kohapealne järeletulemine ja kohapealne maksmine. Ettemaksu ei ole.
-- Lehel on suur nupp «Helista ja telli». Telefonis avab see kõne.
+- Lehel on jaluses «Helista». Telefonis avab see kõne. Arvutis näidatakse sama koha peal telefoninumbrit.
 - Tellimine on avamisel kinnine plokk. Tellitava toote «Lisa tellimusse» lisab korvi selle toote. Korv hoiab mitu rida ainult selle külastuse ajal.
 - Tellimuse kiri läheb kolmele aadressile, mis on `seaded.json` sees. `tellimus_email` on peamine, pagar. `tellimus_cc` on koopia, saaja näeb seda. `tellimus_bcc` on boss, teised seda ei näe. Tühi aadress jäetakse vahele.
 
-Ringid on taustakiht alla paremal. Kolm png-d, läbipaistev taust. Keskpunktid on võrdkülgsel kolmnurgal, ei kattu. Suurus on `seaded.json` `ringid` all, protsent ekraani lühemast küljest. Asukohta seadetest ei muuda. Iga ring pöörleb oma kiirusega. Olemasolev kujundus on märkel `enne-ringe`. Kohapeal on vaikimisi. Kohe näitab makselinki, mis viib lepingupartneri juurde koos tellimuse summaga. Kui mõnel real hinda ei ole, «Tasun kohe» ei aktiveeru. Partnerit veel ei ole. Valik läheb tellimuse kirjaga kaasa: kas kringli eest on juba tasutud või tuleb raha küsida poes.
+Ringid on taustakiht. Kolm png-d, läbipaistev taust. Ülemised on aktiivse lehe vasakus ülemises nurgas, alumised paremas alumises nurgas, kaks korda väiksemad. Keskpunktid on võrdkülgsel kolmnurgal. Ülemine valge rõngas on teistest suurem. Suurus on `seaded.json` `ringid` all. Menüü neid ei liiguta. Iga ring pöörleb oma kiirusega.
+
+Püstised ribad on kõige alumine kiht, tausta peal. Üleval paremal, all vasakul. Pool on aktiivse osa sees, pool väljas. Telefonis jäävad vaatesse. Äärmine on oranž ja pikim, valge on värviliste vahel keskel kerge helgiga, sinine on sees.
+
+Avalehe esimene vaade ei ole enam üks pilt. Esipilt on maas. Selle asemel on kuus kampaaniapilti rõngastes, taustarõngaste peal. Keskmine on suurem ja taga. Praegu on näidispildid. Hiljem tulevad pildid pilvest: kui kampaaniakataloogis on pilte, näidatakse neid, muidu juhuslikud tootepildid. Hiir toob pildi ette ja paisutab. Tooteriba ülemine serv on piir, pildid ei kata ribasid.
+
+Päises on logo, mitte tekst. Logo vajutus viib avalehele.
+
+Jalus on kogu aeg näha. Seal on ostukorv, «Helista» või number, ja «Telli». Aadressi jaluses ei ole.
+
+«Lisa tellimusse» lisab toote korvi ja näitab teadet. Vormi see ei ava. Kui toode on juba korvis, tuleb teade, et see on juba lisatud.
 
 Kui tellimuses ei ole fantaasiakringlit, on pagari kirjas nupp «Tellimus on vastu võetud». Vajutus saadab kliendile kohe vastuse. See on ainus inimese samm: kontor võtab tellimuse vastu ja kirjutab selle käsitsi oma seadmesse. Seadmel ei ole võrku, seda ei saa automaatseks teha. Kui tellimuses on fantaasiakringel, nuppu ei ole. Inimene vastab ise.
 - Pagaril on lihtne telefonivaade. Sinna saab kirja panna ka telefonitellimuse, et kõik tellimused oleks ühes kohas. Pagarivaade on eesti keeles.
@@ -31,9 +41,9 @@ Kui tellimuses ei ole fantaasiakringlit, on pagari kirjas nupp «Tellimus on vas
 - Drive'is on kataloog `tooted`. Tootegrupid võivad olla selle all kataloogidena.
 - Tootegrupid lehel on Kringlid, Stritslid ja struudlid, Saiad ja pirukad, Koogid, Küpsised, Tordid. Grupp, millel on pakett, näitab paketist. Teised on näidised.
 - Toote vajutus avab täisekraani galerii. Mitu fotot jooksevad läbi, 0,9 sekundit, fade, ja jäävad kollaazile. Tekst on kollaazil: desktopis hiirega, telefonis vajutusega, vanal paberil.
-- Jalus on kogu aeg näha. Seal on firma kontaktandmed.
+- Jalus on kogu aeg näha. Seal on ostukorv, helista või number, ja telli.
 - Päis on nagu Helirännakul: üleval menüü ja sotsiaalmeedia.
-- Avaleht on `pealeht/pealeht.jpg`. Kui faili ei ole, on tavaline avaleht. Cron kopeerib.
+- Avaleht on kuus kampaaniapilti rõngastes. Esipilti ei ole.
 - Uuenduse teeb Zone'i cron, mitte leht. Skripte on mitu. Aadressid on seadetes.
 - Uudiskiri: soovija kirjutab e-posti, nimekiri on Zone'is, inimene koostab kirja ja saadab välja. Saatmine jääb Zone'i piiride sisse.
 - Eemaldamine on kirja lõpu link. Skript kustutab selle aadressi võtme järgi.
@@ -62,7 +72,7 @@ Lehe avamisel ei tõlgita ega loeta pilve. Kui päevane käik ebaõnnestub, jä�
 
 Avamisel on tellimine kinnine plokk, sama kaaluga mis tootegrupp. Vajutus avab vormi. Vorm ei ole lehe avamisel lahti.
 
-Iga tellitava toote juures on link «Lisa tellimusse», kui tabelis on `tellitav` = `jah`. Vajutus lisab korvi selle toote ja avab vormi. Kui ühik on `kg`, on real kaaluvalik ja hind tuleb valitud kaalu järgi. Kui on `tk`, kaalu ei ole.
+Iga tellitava toote juures on link «Lisa tellimusse», kui tabelis on `tellitav` = `jah`. Vajutus lisab korvi selle toote ja näitab teadet. Vormi see ei ava. Kui ühik on `kg`, on real kaaluvalik ja hind tuleb valitud kaalu järgi. Kui on `tk`, kaalu ei ole.
 
 ### Korv
 
@@ -113,11 +123,11 @@ See ei ole veel lukus. Üks pikk vaade, mitte pood paljude alamlehtedega. Telefo
 5. Tooted. Pilt, nimi, lühike tekst, hind. Kringel on tellitav. Teised tooted on vaatamiseks ja poes ostmiseks.
 6. Oma pood. Aadress, lahtiolek, kuidas järgi tulla. See ei ole e-pood.
 7. Uudis. Üks väli: e-post. Inimene annab ise nõusoleku.
-8. Jalus. Kogu aeg ekraani allservas. Firma kontaktandmed: nimi, aadress, telefon. Telefon avab kõne.
+8. Jalus. Kogu aeg ekraani allservas. Ostukorv, «Helista» või telefoninumber, ja «Telli». Telefon avab kõne.
 
 Pagarivaade on eraldi aadress, menüüs seda ei ole. Uudiskirja koostamine on samas suletud vaates, mitte avalikus menüüs. Keel vahetub samal lehel.
 
-Grupid praegu: Kringlid, Pagaritooted, Kondiitritooted, Tordid. Pood on oma plokk, mitte tootegrupp.
+Grupid praegu: Kringlid, Stritslid ja struudlid, Saiad ja pirukad, Koogid, Küpsised, Tordid. Pood on oma plokk, mitte tootegrupp.
 
 Grupp on tabeli rida, mitte koodis kinni. Uus rida lisab grupi. Rea kustutamine või mitteaktiivseks märkimine võtab grupi lehelt. Tordid on praegu sees. Kui neid tulevikus ei ole, kaob kaart reliisiga. Koodi selleks ei muudeta. Leht näitab niipalju gruppe, kui tabelis aktiivseid on.
 
@@ -125,11 +135,7 @@ Sotsiaalmeedia lingid tulevad seadetest, nagu Helirännakul. Neid ei tõlgita.
 
 ### Avaleht
 
-Tavakasutaja paneb Drive'i kataloogi `pealeht` ühe faili: `pealeht.jpg`. Kui fail on olemas, on see avalehe esimene vaade. Kui kaust on tühi, on tavaline avaleht. Uus pilt pannakse sama nimega vana peale. Kustutamine võtab kampaania maha.
-
-Tekst võib olla juba pildi peal. Eraldi lauset ei ole vaja. `pealeht.txt` on lubatud hiljem, aga ei ole kohustus.
-
-Zone'i cron vaatab kausta umbes iga 15 minuti tagant ja kopeerib faili lehe kausta. Külastaja loeb ainult seda koopiat. Kui Google on maas, jääb viimane pilt ette. Puuduv fail ei ole viga ega peata midagi.
+Esipilti ei ole. Avalehe esimene vaade on kuus kampaaniapilti rõngastes, taustarõngaste peal. Keskmine on suurem ja taga. Praegu on näidispildid. Hiljem tulevad pildid pilvest. Kui kampaaniakataloogis on pilte, näidatakse neid. Kui ei ole, võetakse juhuslikud tootepildid, millel on esilehe märgis. Tooteriba ülemine serv on piir, pildid ei kata ribasid.
 
 ### Uudiskiri
 
