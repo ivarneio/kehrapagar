@@ -99,6 +99,7 @@ body {
   .helista-vaade { display: none; }
   .number-vaade { display: inline; }
 }
+.pais {
   position: sticky;
   top: 0;
   z-index: 30;
