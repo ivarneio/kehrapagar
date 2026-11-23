@@ -101,6 +101,15 @@ html { scroll-behavior: smooth; }
   .foto-rong:nth-child(4) { left: 4%; top: 4.8rem; width: 7rem; height: 7rem; }
   .foto-rong:nth-child(5) { right: 2%; top: 5rem; width: 6.2rem; height: 6.2rem; }
   .foto-rong:nth-child(6) { left: 36%; top: 5.6rem; width: 5.8rem; height: 5.8rem; }
+
+  /* Tooteribad telefonis nii pikad, et pikim tekst mahuks, kõik ühepikkused */
+  .grupp > button {
+    width: 18.5rem;
+    max-width: 92vw;
+  }
+  .sorm {
+    width: 100%;
+  }
 }
 body {
   margin: 0;
