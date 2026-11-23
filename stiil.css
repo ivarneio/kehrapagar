@@ -751,7 +751,8 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   .grupid .grupp.lahti > button {
     width: 17.5rem !important;
     max-width: 92vw !important;
-    margin: 0 .5rem !important;
+    margin-left: auto !important;
+    margin-right: .6rem !important;
     border-radius: 1rem 0 1rem 1rem;
     text-align: right;
     padding-right: 1rem;
