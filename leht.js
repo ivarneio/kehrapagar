@@ -612,15 +612,17 @@
     });
   }
 
-  var logo = document.querySelector(".logo");
-  if (logo) logo.addEventListener("click", function (e) {
-    e.preventDefault();
-    function algusesse() {
-      sulgeKoik();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-    if (telli && telli.classList.contains("lahti")) sulgeTelliAeglaselt(algusesse);
-    else algusesse();
+  document.querySelectorAll(".logo, .galerii-logo").forEach(function (logo) {
+    logo.addEventListener("click", function (e) {
+      e.preventDefault();
+      function algusesse() {
+        sulgeKoik();
+        if (typeof sulgeVaade === "function") sulgeVaade();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      if (telli && telli.classList.contains("lahti")) sulgeTelliAeglaselt(algusesse);
+      else algusesse();
+    });
   });
 
   var vaade = document.querySelector(".taisekraan");
