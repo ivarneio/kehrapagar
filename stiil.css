@@ -102,19 +102,6 @@ html { scroll-behavior: smooth; }
   .foto-rong:nth-child(5) { right: 2%; top: 5rem; width: 6.2rem; height: 6.2rem; }
   .foto-rong:nth-child(6) { left: 36%; top: 5.6rem; width: 5.8rem; height: 5.8rem; }
 
-  /* Tooteribad telefonis nii pikad, et pikim tekst mahuks, kõik ühepikkused */
-  .grupp > button {
-    width: 26rem;
-    max-width: 96vw;
-    white-space: nowrap;
-  }
-  .sorm-nimi {
-    white-space: nowrap;
-    padding-right: 1.2rem;
-  }
-  .sorm {
-    width: 100%;
-  }
 }
 body {
   margin: 0;
@@ -758,11 +745,13 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
   }
   .grupid::after { display: none; }
   .grupid .grupp > button {
-    width: calc(100% - 1rem);
+    width: 26rem;
+    max-width: 96vw;
     margin: 0 .5rem;
     border-radius: 1rem 0 1rem 1rem;
     text-align: right;
     padding-right: 1rem;
+    white-space: nowrap;
   }
   .grupid .grupp + .grupp::before {
     right: 0;
