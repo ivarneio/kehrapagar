@@ -104,8 +104,13 @@ html { scroll-behavior: smooth; }
 
   /* Tooteribad telefonis nii pikad, et pikim tekst mahuks, kõik ühepikkused */
   .grupp > button {
-    width: 18.5rem;
-    max-width: 92vw;
+    width: 26rem;
+    max-width: 96vw;
+    white-space: nowrap;
+  }
+  .sorm-nimi {
+    white-space: nowrap;
+    padding-right: 1.2rem;
   }
   .sorm {
     width: 100%;
