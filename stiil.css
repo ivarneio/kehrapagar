@@ -102,6 +102,7 @@ html { scroll-behavior: smooth; }
   .foto-rong:nth-child(5) { right: 2%; top: 5rem; width: 6.2rem; height: 6.2rem; }
   .foto-rong:nth-child(6) { left: 36%; top: 5.6rem; width: 5.8rem; height: 5.8rem; }
 
+  .ringi-koht { min-height: 11rem; }
 }
 body {
   margin: 0;
