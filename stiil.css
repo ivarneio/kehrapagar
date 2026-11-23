@@ -747,10 +747,11 @@ textarea { font: inherit; border: 1px solid var(--joon); background: #fff; color
     margin-left: calc(50% - 50vw);
   }
   .grupid::after { display: none; }
-  .grupid .grupp > button {
-    width: 26rem;
-    max-width: 96vw;
-    margin: 0 .5rem;
+  .grupid .grupp > button,
+  .grupid .grupp.lahti > button {
+    width: 22rem !important;
+    max-width: 94vw !important;
+    margin: 0 .5rem !important;
     border-radius: 1rem 0 1rem 1rem;
     text-align: right;
     padding-right: 1rem;
