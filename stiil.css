@@ -102,7 +102,6 @@ html { scroll-behavior: smooth; }
   .foto-rong:nth-child(5) { right: 2%; top: 5rem; width: 6.2rem; height: 6.2rem; }
   .foto-rong:nth-child(6) { left: 36%; top: 5.6rem; width: 5.8rem; height: 5.8rem; }
 
-  .ringi-koht { min-height: 11rem; }
 }
 body {
   margin: 0;
@@ -203,6 +202,9 @@ h1, h2 { font-weight: 600; margin: 0 0 .6rem; }
 h1 { font-size: 1.7rem; }
 .pealeht { display: none; }
 .ringi-koht { min-height: 46vh; pointer-events: none; }
+@media (max-width: 799px) {
+  .ringi-koht { min-height: 10rem; }
+}
 h2 { font-size: 1.25rem; }
 #tooted > h2 { display: none; }
 .markus { color: var(--vaikne); margin: 0 0 .8rem; }
