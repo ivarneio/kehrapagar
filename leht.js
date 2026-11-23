@@ -659,9 +659,10 @@
     var vana = kujud.querySelector(".kuju");
     var kast = document.createElement("figure");
     kast.className = kollaaz ? "kuju kollaaz" : "kuju";
-    kast.style.opacity = "0";
-    kast.style.position = vana ? "absolute" : "";
-    kast.style.inset = vana ? "0" : "";
+    kast.style.position = "absolute";
+    kast.style.inset = "0";
+    kast.style.transform = "translateX(100%)";
+    kast.style.transition = "transform 0.6s ease";
     var img = document.createElement("img");
     img.src = src;
     img.alt = silt || "";
@@ -671,22 +672,13 @@
       s.textContent = silt;
       kast.appendChild(s);
     }
-    if (kollaaz && tekst) {
-      var paber = document.createElement("div");
-      paber.className = "paber";
-      paber.textContent = tekst;
-      kast.appendChild(paber);
-      var telefon = window.matchMedia("(max-width: 799px)").matches;
-      if (!telefon) {
-        kast.addEventListener("mouseenter", function () { paber.classList.add("sees"); });
-        kast.addEventListener("mouseleave", function () { paber.classList.remove("sees"); });
-      }
-    }
     kujud.appendChild(kast);
-    requestAnimationFrame(function () { kast.style.opacity = "1"; });
+    requestAnimationFrame(function () {
+      kast.style.transform = "translateX(0)";
+      if (vana) vana.style.transform = "translateX(-100%)";
+    });
     if (vana) {
-      vana.style.opacity = "0";
-      setTimeout(function () { if (vana.parentNode) vana.remove(); kast.style.position = ""; kast.style.inset = ""; }, 360);
+      setTimeout(function () { if (vana.parentNode) vana.remove(); }, 600);
     }
   }
 
@@ -757,15 +749,10 @@
     if (!pildid.length) return;
     var i = 0;
     function samm() {
-      if (i < pildid.length) {
-        naitaKuju(pildid[i], silt);
-        i++;
-        if (pildid.length > 1) galeriiTaimer = setTimeout(samm, 900);
-        return;
-      }
-      teeKollaaz(pildid, function (src) {
-        if (src) naitaKuju(src, silt, true, tekst);
-      });
+      if (!pildid.length) return;
+      naitaKuju(pildid[i], silt, false, tekst);
+      i = (i + 1) % pildid.length;
+      galeriiTaimer = setTimeout(samm, 2000);
     }
     samm();
     if (galeriiVorm && nupp.getAttribute("data-tellitav") === "jah") {
