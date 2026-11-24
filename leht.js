@@ -654,13 +654,14 @@
   }
 
   function naitaKuju(src, silt, kollaaz, tekst) {
-    var vana = kujud.querySelector(".kuju");
+    // Remove all previous images immediately to avoid double layers
+    kujud.querySelectorAll(".kuju").forEach(function (el) { el.remove(); });
     var kast = document.createElement("figure");
     kast.className = kollaaz ? "kuju kollaaz" : "kuju";
     kast.style.position = "absolute";
     kast.style.inset = "0";
     kast.style.transform = "translateX(100%)";
-    kast.style.transition = "transform 0.6s ease";
+    kast.style.transition = "transform 0.5s ease";
     var img = document.createElement("img");
     img.src = src;
     img.alt = silt || "";
@@ -673,11 +674,7 @@
     kujud.appendChild(kast);
     requestAnimationFrame(function () {
       kast.style.transform = "translateX(0)";
-      if (vana) vana.style.transform = "translateX(-100%)";
     });
-    if (vana) {
-      setTimeout(function () { if (vana.parentNode) vana.remove(); }, 600);
-    }
   }
 
   function teeKollaaz(teed, valmis) {
