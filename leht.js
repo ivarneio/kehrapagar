@@ -808,28 +808,6 @@
   }
 
   var algus = null;
-  kujud.addEventListener("pointerdown", function (e) {
-    if (!e.target.closest || !e.target.closest(".kuju")) return;
-    algus = { x: e.clientX, y: e.clientY, keri: kujud.scrollTop };
-  });
-  kujud.addEventListener("pointerup", function (e) {
-    if (!algus) return;
-    var dx = Math.abs(e.clientX - algus.x);
-    var dy = Math.abs(e.clientY - algus.y);
-    var keris = Math.abs(kujud.scrollTop - algus.keri) > 4;
-    algus = null;
-    if (dx < 8 && dy < 8 && !keris && e.target.closest && e.target.closest(".kuju")) {
-      var kollaaz = e.target.closest(".kollaaz");
-      var telefon = window.matchMedia("(max-width: 799px)").matches;
-      if (kollaaz && telefon) {
-        var paber = kollaaz.querySelector(".paber");
-        if (paber) paber.classList.toggle("sees");
-        return;
-      }
-      sulgeVaade();
-    }
-  });
-  kujud.addEventListener("pointercancel", function () { algus = null; });
 
   vaade.querySelector(".sulge").addEventListener("click", sulgeVaade);
   document.addEventListener("keydown", function (e) {
