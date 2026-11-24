@@ -34,7 +34,7 @@ html { scroll-behavior: smooth; }
   cursor: pointer;
   transition: transform .45s ease;
 }
-.foto-rong img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.foto-rong img { width: 100%; height: 100%; object-fit: contain; display: block; pointer-events: none; }
 .foto-rong:nth-child(1) { left: 2%; top: 0; width: 13.2rem; height: 13.2rem; z-index: 3; }
 .foto-rong:nth-child(2) { left: 32%; top: 3.2rem; width: 17.4rem; height: 17.4rem; z-index: 1; border-color: var(--riba-sinine); }
 .foto-rong:nth-child(3) { right: 0; top: 0; width: 15.6rem; height: 15.6rem; z-index: 4; }
@@ -386,7 +386,7 @@ fieldset input { width: auto; }
 .pisi img {
   width: 8.6rem;
   height: 8.6rem;
-  object-fit: cover;
+  object-fit: contain;
   background: #efe6d4;
   display: block;
 }
@@ -420,7 +420,7 @@ fieldset input { width: auto; }
 .taisekraan .kuju img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .taisekraan {
   display: none;
@@ -687,7 +687,7 @@ fieldset input { width: auto; }
 .korv:empty { display: none; }
 .korv ul { list-style: none; padding: 0; margin: 0; }
 .korv li { display: flex; gap: .45rem; align-items: center; padding: .4rem 0; border-bottom: 1px solid var(--joon); flex-wrap: wrap; }
-.korv-pilt { width: 2.6rem; height: 2.6rem; object-fit: cover; flex: 0 0 auto; background: #efe6d4; }
+.korv-pilt { width: 2.6rem; height: 2.6rem; object-fit: contain; flex: 0 0 auto; background: #efe6d4; }
 .korv-nimi { font-weight: 600; flex: 1 1 6rem; }
 .korv .kaal-vali { width: auto; flex: 0 0 auto; }
 .korv .samm { flex: 0 0 auto; }
