@@ -630,8 +630,6 @@
   var suurTelli = vaade.querySelector(".telli-nupp");
   var vorm = document.querySelector("form");
   var kringel = vorm ? vorm.querySelector("[name=kringel]") : null;
-  kujud.style.overflow = "auto";
-  kujud.style.maxHeight = "78vh";
   kujud.style.cursor = "pointer";
 
   var galeriiTaimer = null;
